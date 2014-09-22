@@ -10,8 +10,9 @@ and open the template in the editor.
         <title></title>
     </head>
     <body>
-        <?php
-        // put your code here
-        ?>
+        <form name="wishList" action="wishlist.php" method="GET">
+            Show wish list of: <input type="text" name="user" value="" />
+            <input type="submit" value="Go" />
+        </form>
     </body>
 </html>

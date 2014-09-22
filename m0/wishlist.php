@@ -10,6 +10,7 @@ and open the template in the editor.
         <title></title>
     </head>
     <body>
+        Wish List of <?php echo htmlentities($_GET["user"])."<br/>";?>
         <?php
         // put your code here
         ?>
