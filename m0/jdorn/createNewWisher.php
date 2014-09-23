@@ -1,117 +1,98 @@
-<!DOCTYPE html>
-<!--
-To change this license header, choose License Headers in Project Properties.
-To change this template file, choose Tools | Templates
-and open the template in the editor.
---><?php
-/** database connection credentials */
-$dbHost="sfsuswe.com"; //on MySql
-$dbXeHost="localhost/XE"; 
-$dbUsername="jdorn";
-$dbPassword="dragon12";
+<?php
+require_once("Includes/db.php");
 
-/** other variables */
+/**other variables */
 $userNameIsUnique = true;
-$passwordIsValid = true;				
-$userIsEmpty = false;					
-$passwordIsEmpty = false;				
+$passwordIsValid = true;
+$userIsEmpty = false;
+$passwordIsEmpty = false;
 $password2IsEmpty = false;
 
 /** Check that the page was requested from itself via the POST method. */
-if ($_SERVER["REQUEST_METHOD"] == "POST") {
-
-/** Check whether the user has filled in the wisher's name in the text field "user" */
-
-    if ($_POST["user"]=="") {
+if ($_SERVER['REQUEST_METHOD'] == "POST"){
+    /** Check whether the user has filled in the wisher's name in the text field "user" */
+    if ($_POST['user']==""){
         $userIsEmpty = true;
     }
 
-    
     /** Create database connection */
-    $con = mysqli_connect($dbHost, $dbUsername, $dbPassword);
-    if (!$con) {
-        exit('Connect Error (' . mysqli_connect_errno() . ') '
-                . mysqli_connect_error());
-    }
-   /**set the default client character set */ 
-    mysqli_set_charset($con, 'utf-8');
-   /** Check whether a user whose name matches the "user" field already exists */
 
-    mysqli_select_db($con, "student_jdorn");
-    $user = mysqli_real_escape_string($con, $_POST["user"]);
-    $wisher = mysqli_query($con, "SELECT id FROM wishers WHERE name='".$user."'");
-    $wisherIDnum=mysqli_num_rows($wisher);
-    if ($wisherIDnum) {
+    $wisherID = WishDB::getInstance()->get_wisher_id_by_name($_POST['user']);
+    if ($wisherID) {
         $userNameIsUnique = false;
     }
-    if ($_POST["password"]=="") {
-    $passwordIsEmpty = true;
-}
-if ($_POST["password2"]=="") {
-    $password2IsEmpty = true;
-}
-if ($_POST["password"]!=$_POST["password2"]) {
-    $passwordIsValid = false;
-} 
 
+    /** Check whether a password was entered and confirmed correctly */
+    if ($_POST['password']=="")
+    $passwordIsEmpty = true;
+    if ($_POST['password2']=="")
+    $password2IsEmpty = true;
+    if ($_POST['password']!=$_POST['password2']) {
+        $passwordIsValid = false;
+    }
 
     /** Check whether the boolean values show that the input data was validated successfully.
      * If the data was validated successfully, add it as a new entry in the "wishers" database.
      * After adding the new entry, close the connection and redirect the application to editWishList.php.
      */
     if (!$userIsEmpty && $userNameIsUnique && !$passwordIsEmpty && !$password2IsEmpty && $passwordIsValid) {
-        $password = mysqli_real_escape_string($con, $_POST['password']);
-        mysqli_select_db($con, "wishlist");
-        mysqli_query($con, "INSERT wishers (name, password) VALUES ('" . $user . "', '" . $password . "')");
-        mysqli_free_result($wisher);
-        mysqli_close($con);
-        header('Location: editWishList.php');
+        WishDB::getInstance()->create_wisher($_POST['user'], $_POST['password']);
+        session_start();
+        $_SESSION['user'] = $_POST['user'];
+        header('Location: editWishList.php' );
         exit;
     }
-    
-    
-    
-} 
+}
 ?>
+
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
     <head>
-        <meta http-equiv="content-type" content="text/html; charset=UTF-8">
-        <title></title>
+        <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+        <title>Wish List Application</title>
+        <link href="wishlist.css" type="text/css" rel="stylesheet" media="all" />
     </head>
     <body>
-      Welcome!<br>
-        <form action="createNewWisher.php" method="POST">
-            Your name: <input type="text" name="user"/><br/>
-                <?php
-    if ($userIsEmpty) {
-        echo ("Enter your name, please!");
-        echo ("<br/>");
-    }                
-    if (!$userNameIsUnique) {
-        echo ("The person already exists. Please check the spelling and try again");
-        echo ("<br/>");
-    }
-    ?> 
-            Password: <input type="password" name="password"/><br/>
+        <h1>Welcome!</h1>
+        
+        <form action="createNewWisher.php" method="POST" id="createNewWisher">
+            <label>Your name:</label>
+            <input type="text" name="user"/><br/>
             <?php
- if ($passwordIsEmpty) {
-     echo ("Enter the password, please!");
-     echo ("<br/>");
- }                
- ?>
-            Please confirm your password: <input type="password" name="password2"/><br/>
-            
+            /** Display error messages if "user" field is empty or there is already a user with that name*/
+            if ($userIsEmpty) {
+                echo ('<div class="error">Enter your name, please!</div>');
+            }
+            if (!$userNameIsUnique) {
+                echo ('<div class="error">The person already exists. Please check the spelling and try again</div>');
+            }
+            ?>
+            <label>Password:</label>
+            <input type="password" name="password"/><br/>
             <?php
- if ($password2IsEmpty) {
-     echo ("Confirm your password, please");
-     echo ("<br/>");    
- }                
- if (!$password2IsEmpty && !$passwordIsValid) {
-     echo  ("The passwords do not match!");
-     echo ("<br/>");  
- }                 
-?>
+             /** Display error messages if the "password" field is empty */
+            if ($passwordIsEmpty) {
+                echo ('<div class="error">Enter the password, please</div>');
+            }
+            ?>
+            <label>Password (Again):</label>
+            <input type="password" name="password2"/><br/>
+            <?php
+            /**
+             * Display error messages if the "password2" field is empty
+             * or its contents do not match the "password" field
+             */
+            if ($password2IsEmpty) {
+                echo ('<div class="error">Confirm your password, please</div>');
+            }
+            if (!$password2IsEmpty && !$passwordIsValid) {
+                echo ('<div class="error">The passwords do not match!</div>');
+            }
+            ?>
+            <br />
             <input type="submit" value="Register"/>
+
         </form>
-     </body>
+
+    </body>
 </html>

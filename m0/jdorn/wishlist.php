@@ -1,52 +1,35 @@
-<!DOCTYPE html>
-<!--
-To change this license header, choose License Headers in Project Properties.
-To change this template file, choose Tools | Templates
-and open the template in the editor.
--->
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
     <head>
-        <meta charset="UTF-8">
-        <title></title>
+        <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+        <title>Wish List Application</title>
+        <link href="wishlist.css" type="text/css" rel="stylesheet" media="all" />
     </head>
-    <body>Wish List of <?php echo htmlentities($_GET["user"]) . "<br/>"; ?>
+    <body>
+        <h1>
+            Wish List of <?php echo $_GET['user']; ?>
+        </h1>
         <?php
-        $con = mysqli_connect("sfsuswe.com", "jdorn", "dragon12");
-        if (!$con) {
-            exit('Connect Error (' . mysqli_connect_errno() . ') '
-                    . mysqli_connect_error());
-        }
+        require_once("Includes/db.php");
 
-        //set the default client character set 
-        mysqli_set_charset($con, 'utf-8');
-        $dbname = "student_jdorn";
-        mysqli_select_db($con, $dbname);
-        $user = mysqli_real_escape_string($con, htmlentities($_GET["user"]));
-        $wisher = mysqli_query($con, "SELECT id FROM wishers WHERE name='" . $user . "'");
-        if (mysqli_num_rows($wisher) < 1) {
-            exit("The person " . htmlentities($_GET["user"]) . " is not found. Please check the spelling and try again");
+        $wisherID = WishDB::getInstance()->get_wisher_id_by_name($_GET['user']);
+        if (!$wisherID) {
+            exit("The person " . $_GET['user'] . " is not found. Please check the spelling and try again");
         }
-        $row = mysqli_fetch_row($wisher);
-        $wisherID = $row[0];
-        mysqli_free_result($wisher);
         ?>
-        
-        <table border="black">
-    <tr>
-        <th>Item</th>
-        <th>Due Date</th>
-    </tr>
-    <?php
-$result = mysqli_query($con, "SELECT description, due_date FROM wishes WHERE wisher_id=" . $wisherID);
-while ($row = mysqli_fetch_array($result)) {
-    echo "<tr><td>" . htmlentities($row["description"]) . "</td>";
-    echo "<td>" . htmlentities($row["due_date"]) . "</td></tr>\n";
-}
-mysqli_free_result($result);
-mysqli_close($con);
-?>
-</table>
-        
-        
+        <table class="std">
+            <tr>
+                <th>Item</th>
+                <th>Due Date</th>
+            </tr>
+            <?php
+            $result = WishDB::getInstance()->get_wishes_by_wisher_id($wisherID);
+            while ($row = mysqli_fetch_array($result)) {
+                echo "<tr><td>&nbsp;" . htmlentities($row['description']) . "</td>";
+                echo "<td>&nbsp;" . htmlentities($row['due_date']) . "</td></tr>\n";
+            }
+            mysqli_free_result($result);
+            ?>
+        </table>
     </body>
 </html>
