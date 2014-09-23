@@ -11,7 +11,7 @@ and open the template in the editor.
     </head>
     <body>
         <form name="wishList" action="wishlist.php" method="GET">
-            Show wish list of: <input type="text" name="user" value="" />
+            HELLO!Show wish list of: <input type="text" name="user" value="" />
             <input type="submit" value="Go" />
         </form>
     </body>
