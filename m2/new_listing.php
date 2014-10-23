@@ -10,11 +10,13 @@ and open the template in the editor.
         <title></title>
     </head>
     <body>
-        
         <div>
-            <?php include('navbar.php'); ?>
+            <?php 
+            include('navbar.php');
+            echo "<br><br><br>"
+            ?>
         </div>
-        
+
         <form action="new_listing_created.php" method="post" enctype="multipart/form-data">
             State:      <input type="text" name="us_state" value="" /><br />
             <br />

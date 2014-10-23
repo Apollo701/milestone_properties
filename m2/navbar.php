@@ -1,3 +1,23 @@
+<head>
+        <title>Milestone Properties</title>
+        <style>
+            @import url(http://fonts.googleapis.com/css?family=Vollkorn);   
+            /* Custom container */
+.container-full {
+  margin: 0 auto;
+  width: 100%;
+  min-height:100%;
+  background-color:110022;
+  color:#eee;
+  overflow:hidden;
+  font-family: 'Vollkorn', serif;
+}
+
+
+        </style>
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <link href="css/bootstrap.css" rel="stylesheet">
+    </head>
 <nav class="navbar navbar-default navbar-fixed-top" role="navigation">
             <div class="container">
                 <div class="navbar-header">
