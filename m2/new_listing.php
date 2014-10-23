@@ -10,9 +10,7 @@ and open the template in the editor.
         <title></title>
     </head>
     <body>
-       <h1>
-       Test #2
-       </h1>
+
         <form action="new_listing_created.php" method="post" enctype="multipart/form-data">
             State:      <input type="text" name="us_state" value="" /><br />
             <br />
