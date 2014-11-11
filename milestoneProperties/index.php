@@ -1,5 +1,6 @@
 <?php include 'navbar.php'; ?>
 <?php include_once 'functions.php'; ?>
+
 <!DOCTYPE>
 <html lang="en">
     <head>
@@ -20,10 +21,14 @@
         .col-lg-12{
             padding-top: 6%;
         }
+        .navbar-form{
+            visibility: hidden;
+        }
      
         </style>
     </head>
     <body id="indexBackground">
+        
         <div class="container" id="index">
             <div class="row">
                 <div class="col-lg-12 text-center v-center">
@@ -40,6 +45,7 @@
                     </form>
                 </div>
             </div>
+        
         <script src="//maxcdn.bootstrapcdn.com/bootstrap/3.3.0/js/bootstrap.min.js"></script>
     </body>  
 </html>
