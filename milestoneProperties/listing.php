@@ -8,40 +8,37 @@
         <link href="//maxcdn.bootstrapcdn.com/bootstrap/3.3.0/css/bootstrap.min.css" rel="stylesheet">
         <title>Listings Page</title>
         <style>
+            .breadcrumb{
+                background: none;
+                text-align: left;
+            }
+            body{padding-top:4%;}
         </style>
     </head>
     <body>
-        
-        <div class="jumbotron">
-            <div class="container text-center">
-                    <h1>Search Results</h1>
-                    <p>For x/y Results</p>
-                        
-            </div>
-            </div>
         <div class="container">
             <div class="row">
+                <div class="col-md-5">
+                    <ol class="breadcrumb">
+                        <li><a href="index.php">Home</a></li>
+                        <li><a href="index.php">Search</a></li>
+                        <li class="active">Listings</li>
+                    </ol>
+                </div>
+                <div class="col-md-7 text-left">
+                    <h2>Search Results</h2>
+                    <p>For X results</p>
+                </div>
+            </div>
+            <div class="row">
                 <nav class="navbar navbar-default"><ul class="nav navbar-nav">
-                    <li><a href="#">Filters</a></li>
-                    <li><a href="#">Filters</a></li>
                     <li><a href="#">Price</a></li>
                     <li><a href="#">SqFt</a></li>
                     <li><a href="#">Walkscore</a></li>
             </ul></nav>
             </div>
             <div class="row">
-                <div class="col-md-2">
-                <ul class="nav nav-pills nav-stacked" role="tablist">
-                    <li role="presentation"><a href="#">Min Price</a></li>
-                    <li role="presentation"><a href="#">Max Price</a></li>
-                    <li role="presentation"><a href="#">Walkscore</a></li>
-                    <li role="presentation"><a href="#">SqFt</a></li>
-                    <li role="presentation"><a href="#">Bedrooms</a></li>
-                    <li role="presentation"><a href="#">Bathrooms</a></li>
-                    <li role="presentation"><a href="#">Schools</a></li>
-                </ul>
-                </div>
-                <div class="col-md-4">
+                <div class="col-md-6">
                     <?php
         $connection = connect_to_mysql();
         $results = milestone_search($connection);
