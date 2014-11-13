@@ -35,8 +35,7 @@ and open the template in the editor.
                         <li><a href="signup.php"><span class="glyphicon glyphicon-road"></span> Sign up?</a></li>
                         <li><a href="login.php"><span class="glyphicon glyphicon-user"></span> Log-in</a></li>
                     </ul>
-
-
+                    
             </div>
             </div>
         </nav>

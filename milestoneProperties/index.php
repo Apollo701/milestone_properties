@@ -38,8 +38,8 @@
             </div>
                     <div class="row">   
                     <form class="col-lg-12" action="listing.php" method="post">
-                        <div class="input-group input-group-lg col-sm-offset-4 col-sm-4">
-                            <input name="usersearch" type="text" class="center-block form-control input-lg" title="Enter search query" name="Enter state, city, zip code, or address...">
+                        <div class="input-group input-group-md col-sm-offset-4 col-sm-3">
+                            <input name="usersearch" type="text" class="center-block form-control input-lg" title="Enter search query" placeholder="Enter state, city, zip code, or address...">
                             <span class="input-group-btn"><button class="btn btn-lg btn-primary" type="submit">Search</button></span>
                         </div>
                     </form>
