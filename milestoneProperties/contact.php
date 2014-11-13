@@ -1,47 +1,94 @@
-<!DOCTYPE html>
-<!--
-To change this license header, choose License Headers in Project Properties.
-To change this template file, choose Tools | Templates
-and open the template in the editor.
--->
-<html>
+<?php include 'navbar.php'; ?>
+<?php include_once 'functions.php'; ?>
+<!doctype html>
+<html lang="en">
     <head>
-        <meta charset="UTF-8">
-        <title></title>
+        <meta charset="utf-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <link href="css/bootstrap.css" rel="stylesheet">
+        <link href="//maxcdn.bootstrapcdn.com/bootstrap/3.3.0/css/bootstrap.min.css" rel="stylesheet">
+        <title>About Us Page</title>
+        <style>
+            .jumbotron {
+
+                color: #000;
+                border-radius: 0px;
+            }
+            .jumbotron-sm { padding-top: 24px;
+                            padding-bottom: 24px; }
+            .jumbotron small {
+                color: #000;
+            }
+            .h1 {
+                text-align: center;
+            }
+            .h2 {
+                text-align: center;
+                font-size: 18px
+            }
+        </style>
     </head>
+
     <body>
-                <nav class="navbar navbar-default navbar-fixed-top" role="navigation">
+        <div class="jumbotron jumbotron-sm">
             <div class="container">
-                <div class="navbar-header">
-                    <button class="navbar-toggle" type="button" data-toggle="collapse" data-target=".navbar-collapse">
-                        <span class="sr-only">Toggle Navigation</span>
-                        <span class="icon-bar"></span>
-                        <span class="icon-bar"></span>
-                        <span class="icon-bar"></span>
-                    </button>
-<!--                    <a href="index.php" class="navbar-brand">Milestone Properties</a>-->
+                <div class="row">
+                    <div class="col-sm-12 col-md-12">
+                        <h1 class="h1">
+                            Contact us </h1>
+                        <h2 class="h2">Feel free to contact us</h2>
+                    </div>
                 </div>
-                <!-- Collect the nav links, forms, and other content for toggling -->
-                
-                <div class="collapse navbar-collapse" role="navigation">
-                    <ul class="nav navbar-nav">
-                        <li class="active"><a href="index.php"><span class="glyphicon glyphicon-home"></span> Milestone Properties</a></li>
-                        <li><a href="search.php"><span class="glyphicon glyphicon-star"></span> Find a new home</a></li>
-                    </ul>
-                    <ul class="nav navbar-nav navbar-right">
-                        <li><a href="about.php"><span class="glyphicon glyphicon-leaf"></span> About Us</a></li>
-                        <li><a href="contact.php"><span class="glyphicon glyphicon-envelope"></span> Contact Us</a></li>
-                        <li><a href="signup.php"><span class="glyphicon glyphicon-road"></span> Sign up?</a></li>
-                        <li><a href="login.php"><span class="glyphicon glyphicon-user"></span> Log-in</a></li>
-                    </ul>
-
+            </div>
+        </div>
+        <div class="container">
+            <div class="row">
+                <div class="col-md-12" >
+                    <div class="well well-sm">
+                        <form>
+                            <div class="row">
+                                <div class="col-md-6">
+                                    <div class="form-group">
+                                        <label for="name">
+                                            Name</label>
+                                        <input type="text" class="form-control" id="name" placeholder="Enter name" required="required" />
+                                    </div>
+                                    <div class="form-group">
+                                        <label for="email">
+                                            Email Address</label>
+                                        <div class="input-group">
+                                            <span class="input-group-addon"><span class="glyphicon glyphicon-envelope"></span>
+                                            </span>
+                                            <input type="email" class="form-control" id="email" placeholder="Enter email" required="required" /></div>
+                                    </div>
+                                    <div class="form-group">
+                                        <label for="phone">
+                                            Phone Number</label>
+                                        <div class="input-group">
+                                            <span class="input-group-addon"><span class="glyphicon glyphicon-phone"></span>
+                                            </span>
+                                            <input type="phone" class="form-control" id="phone" placeholder="Enter phone number" required="required" /></div>
+                                    </div>
+                                </div>
+                                <div class="col-md-6">
+                                    <div class="form-group">
+                                        <label for="name">
+                                            Message</label>
+                                        <textarea name="message" id="message" class="form-control" rows="9" cols="25" required="required"
+                                                  placeholder="Description"></textarea>
+                                    </div>
+                                </div>
+                                <div class="col-md-12">
+                                    <button type="submit" class="btn btn-primary pull-right" id="btnContactUs">
+                                        Send Message</button>
+                                </div>
+                            </div>
+                        </form>
+                    </div>
+                </div>
 
             </div>
-            </div>
-        </nav>
-        <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
-        <script src="js/bootstrap.js"></script>
+        </div>
+
+        <script src="//maxcdn.bootstrapcdn.com/bootstrap/3.3.0/js/bootstrap.min.js"></script>
     </body>
 </html>
