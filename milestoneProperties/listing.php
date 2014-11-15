@@ -12,12 +12,41 @@
                 background: none;
                 text-align: left;
             }
-            body{padding-top:4%;}
+            .top-container{
+                margin-top: 80px;
+                background-color:#e5e5e5;
+                border-radius: 10px; 
+                
+            }
+            .bottom-container{
+                margin-top: 40px;
+                background-color:#e5e5e5;
+                border-radius: 10px; 
+            }
+
         </style>
     </head>
     <body>
-        <div class="container">
+        
+            
+        <div class="container top-container">
             <div class="row">
+                <div class="col-sm-3">
+                <ol class="breadcrumb text-left">
+                        <li><a href="index.php">Home</a></li>
+                        <li><a href="index.php">Search</a></li>
+                        <li class="active">Listings</li>
+                    </ol>
+                </div>
+                <div class="col-sm-6 text-center">
+                <h2>Search Results</h2>
+                    <p>For X results</p>
+            </div>
+                <div class="col-sm-3"></div>
+            </div>
+        </div>
+            
+<!--            <div class="row">
                 <div class="col-md-5">
                     <ol class="breadcrumb">
                         <li><a href="index.php">Home</a></li>
@@ -29,8 +58,9 @@
                     <h2>Search Results</h2>
                     <p>For X results</p>
                 </div>
-            </div>
-            <div class="row">
+            </div>-->
+<div class="container bottom-container">
+<!--            <div class="row">
                 <div class="container">
                 <nav class="navbar navbar-default">
                     <ul class="nav navbar-nav">
@@ -40,9 +70,9 @@
                     </ul>
                 </nav>
                 </div>
-            </div>
-            <div class="row">
-                <div class="col-md-6">
+            </div>-->
+<div class="row">
+<!--                <div class="col-md-6">-->
                     <?php
         $connection = connect_to_mysql();
         $results = milestone_search($connection);
@@ -51,8 +81,8 @@
         close_mysql_connection($connection);
         ?>
                     
-                </div>
-                <div class="col-md-3">
+<!--                </div>-->
+<!--                <div class="col-md-3">
                     <ul>
                         <li>Address</li>
                         <li>Square Feet</li>
@@ -60,17 +90,18 @@
                         <li>Bedrooms</li>
                         <li>Bathrooms</li>
                     </ul>
-                </div>
-                <div class="col-md-3">
+                </div>-->
+<!--                <div class="col-md-3">
                     <ul>
                         <li>Price</li>
                         <li>Walkscore</li>
                         <li>Schools Nearby</li>
                         <li>Details</li>
                     </ul>
-                </div>
+                </div>-->
+    </div>
             </div>
-        </div>
+        
                 <script src="//maxcdn.bootstrapcdn.com/bootstrap/3.3.0/js/bootstrap.min.js"></script>
     </body>
 </html>

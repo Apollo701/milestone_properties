@@ -14,7 +14,7 @@
     <!-- Collect the nav links, forms, and other content for toggling -->
     <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
       <ul class="nav navbar-nav">
-        <li><a href="sell_home.php" class="btn btn-lg" role="button"> Sell</a></li>
+        <li><a href="sell_home.php" class="btn btn-sm" role="button"> Sell</a></li>
       </ul>
 
       <ul class="nav navbar-nav navbar-right">
