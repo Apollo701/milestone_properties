@@ -31,11 +31,15 @@
                 </div>
             </div>
             <div class="row">
-                <nav class="navbar navbar-default"><ul class="nav navbar-nav">
+                <div class="container">
+                <nav class="navbar navbar-default">
+                    <ul class="nav navbar-nav">
                     <li><a href="#">Price</a></li>
                     <li><a href="#">SqFt</a></li>
                     <li><a href="#">Walkscore</a></li>
-            </ul></nav>
+                    </ul>
+                </nav>
+                </div>
             </div>
             <div class="row">
                 <div class="col-md-6">
