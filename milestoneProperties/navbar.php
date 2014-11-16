@@ -14,9 +14,9 @@
     <!-- Collect the nav links, forms, and other content for toggling -->
     <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
       <ul class="nav navbar-nav">
-          <li class="divider-vertical"></li>
+          <li class="divider-vertical" style="height: 35px;margin: 8px 9px;border-left: 1px solid darkgray;border-right: 1px solid darkgray;"></li>
           <li><a href="index.php" class="btn btn-lg" role="button"> Buy</a></li>
-          <li class="divider-vertical"></li>
+          <li class="divider-vertical" style="height: 35px;margin: 8px 9px;border-left: 1px solid darkgray;border-right: 1px solid darkgray;"></li>
         <li><a href="sell_home.php" class="btn btn-lg" role="button"> Sell</a></li>
       </ul>
 

@@ -9,12 +9,7 @@
         <link href="//maxcdn.bootstrapcdn.com/bootstrap/3.3.0/css/bootstrap.min.css" rel="stylesheet">
         <title>Milestone Properties</title>
         <style>
-       .navbar .divider-vertical {
-            height: 35px;
-            margin: 8px 9px;
-            border-left: 1px solid darkgray;
-            border-right: 1px solid darkgray;
-}
+
         #index{  
             padding-top:80px;
         }
