@@ -10,22 +10,20 @@
       </button>
       <a class="navbar-brand" href="index.php"><span class="glyphicon glyphicon-home"></span> Milestone Properties</a>
     </div>
-
     <!-- Collect the nav links, forms, and other content for toggling -->
     <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
       <ul class="nav navbar-nav">
-        <li><a href="sell_home.php" class="btn btn-sm" role="button"> Sell</a></li>
+          <li class="divider"></li>
+        <li><a href="sell_home.php" class="btn btn-lg" role="button"> Sell</a></li>
       </ul>
 
       <ul class="nav navbar-nav navbar-right">
         <li class="dropdown">
-          <a href="#" class="dropdown-toggle" data-toggle="dropdown"><span class="glyphicon glyphicon-user"></span> My Account <span class="caret"></span></a>
+            <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button"><span class="glyphicon glyphicon-user"></span> My Account <span class="caret"></span></a>
           <ul class="dropdown-menu" role="menu">
             <li><a href="#">Log-in</a></li>
-            <li><a href="#">Another action</a></li>
-            <li><a href="#">Something else here</a></li>
             <li class="divider"></li>
-            <li><a href="#">Separated link</a></li>
+            <li><a href="#">Sign-up</a></li>
           </ul>
         </li>
       </ul>
