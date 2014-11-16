@@ -37,7 +37,12 @@
             font-family: 'Crimson Text', serif;
 
         }
-     
+        .transbox{
+            background:rgba(0, 0, 0, 0.2);
+            padding: 4%;
+            border-radius: 10px; 
+        }
+
         </style>
     </head>
     <body>
@@ -62,6 +67,25 @@
                         <div class="col-sm-2"></div>
                 </div>
             </div>
+        
+<!--                <div class="container" id="index">
+                    <div class="row">
+                <div class="col-sm-3"></div>
+                <div class="col-sm-6 text-center">
+                    <div class="transbox">
+                    <h1 class="welcome">Milestone Properties</h1>
+                    <h3 class="welcome-paragraph text-center">Find your dream home today</h3>
+                    <form action="listing.php" method="post">
+                        <div class="input-group input-group-md">
+                            <input name="usersearch" type="text" class="center-block form-control input-md" title="Enter search query" placeholder="Enter state, city, zip code, or address...">
+                            <span class="input-group-btn"><button class="btn btn-md btn-primary" type="submit">Search</button></span>
+                        </div>
+                    </form>
+                    </div>
+                </div>
+                <div class="col-sm-3"></div>
+            </div> 
+            </div>-->
         <script src="//ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
         <script src="//maxcdn.bootstrapcdn.com/bootstrap/3.3.0/js/bootstrap.min.js"></script>
     </body>  

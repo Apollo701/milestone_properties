@@ -91,8 +91,5 @@
         
     }
     
-    function display_image($result){
-        
-    }
     
 ?>
