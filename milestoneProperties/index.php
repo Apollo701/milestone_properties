@@ -13,11 +13,11 @@
         <style>
 
         #index{  
-            padding-top:80px;
+            padding-top:50px;
             background: url('assets/images/bg08.jpg');
-            height: 70%;
+            height: 600px;
             border-radius: 10px;
-            width: 73%;
+/*            width: 73%;*/
         }
         .navbar-form{
             visibility: hidden;
@@ -45,21 +45,21 @@
         <div class="container" id="index">
             <div class="row">
                 <div class="col-sm-4"></div>
-                <div class="col-sm-4 text-center">
+                <div class="col-sm-5 text-center">
                     <h1 class="welcome">Milestone Properties</h1>
-                    <h3 class="welcome-paragraph">Find your dream home today</h3>
+                    <h3 class="welcome-paragraph text-right">Find your dream home today</h3>
                 </div>
-                <div class="col-sm-4"></div>
+                <div class="col-sm-3"></div>
             </div>
                     <div class="row">
-                        <div class="col-sm-4"></div>
+                        <div class="col-sm-6"></div>
                     <form class="col-sm-4" action="listing.php" method="post">
                         <div class="input-group input-group-md">
                             <input name="usersearch" type="text" class="center-block form-control input-md" title="Enter search query" placeholder="Enter state, city, zip code, or address...">
                             <span class="input-group-btn"><button class="btn btn-md btn-primary" type="submit">Search</button></span>
                         </div>
                     </form>
-                        <div class="col-sm-4"></div>
+                        <div class="col-sm-2"></div>
                 </div>
             </div>
         <script src="//ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
