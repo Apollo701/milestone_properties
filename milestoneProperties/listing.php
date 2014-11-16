@@ -23,6 +23,10 @@
                 background-color:#e5e5e5;
                 border-radius: 10px; 
             }
+            .navbar-brand{
+            font-family: 'Crimson Text', serif;
+
+        }
 
         </style>
     </head>
