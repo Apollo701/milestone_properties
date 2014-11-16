@@ -9,11 +9,14 @@
         <span class="icon-bar"></span>
       </button>
       <a class="navbar-brand" href="index.php"><span class="glyphicon glyphicon-home"></span> Milestone Properties</a>
+      
     </div>
     <!-- Collect the nav links, forms, and other content for toggling -->
     <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
       <ul class="nav navbar-nav">
-          <li class="divider"></li>
+          <li class="divider-vertical"></li>
+          <li><a href="index.php" class="btn btn-lg" role="button"> Buy</a></li>
+          <li class="divider-vertical"></li>
         <li><a href="sell_home.php" class="btn btn-lg" role="button"> Sell</a></li>
       </ul>
 
