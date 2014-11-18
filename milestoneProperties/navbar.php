@@ -30,12 +30,6 @@
           </ul>
         </li>
       </ul>
-      <form class="navbar-form navbar-right" role="search" action="listing.php" method="post">
-        <div class="form-group">
-          <input name="usersearch" type="text" class="form-control" placeholder="State, City, Zip Code...">
-        </div>
-          <button type="submit" class="btn btn-default"><span class="glyphicon glyphicon-map-marker"></span> Home Search</button>
-      </form>
     </div><!-- /.navbar-collapse -->
   </div><!-- /.container-fluid -->
 </nav>

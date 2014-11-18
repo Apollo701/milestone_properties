@@ -14,6 +14,10 @@
             #sellhome{
             padding-top:4%;
             }
+        .navbar-brand{
+            font-family: 'Crimson Text', serif;
+
+        }
         </style>
     </head>
     <body>

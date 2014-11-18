@@ -22,6 +22,7 @@
             }
             .bottom-container{
                 margin-top: 40px;
+                padding: 2%;
                 background-color:#e5e5e5;
                 border-radius: 10px; 
             }
@@ -30,9 +31,8 @@
         }
             .transbox{
                 background:rgba(0, 0, 0, .07);
-                padding: 4%;
                 border-radius: 10px; 
-                box-shadow: 1px 7px 36px -5px
+                box-shadow: 1px 7px 36px -5px;
         }
         </style>
     </head>
@@ -43,8 +43,7 @@
         ?>
         
             
-        <div class="container top-container transbox">
-             
+        <div class="container top-container transbox"> 
             <div class="row">
                 <div class="col-sm-3">
                 <ol class="breadcrumb text-left">
@@ -54,46 +53,40 @@
                 </div>
                 <div class="col-sm-6 text-center">
                     <h2>Showing <?php echo number_of_listings($results); ?> Results for:<br> <?php echo '"' . $_POST["usersearch"]. '"'; ?> </h2>
-                    <br>
+                </div>
+            </div>
+                    <div class="row center-block">
+                        <div class="col-sm-4"></div>
+                        <div class="col-sm-4 text-center">
                     <form action="listing.php" method="post">
                         <div class="input-group input-group-md">
-                            <input name="usersearch" type="text" class="center-block form-control input-md" title="Enter search query" placeholder="<?php echo $_POST["usersearch"]  ?>">
-                            <span class="input-group-btn"><button class="btn btn-md btn-primary" type="submit">Search Homes</button></span>
+                            <input name="usersearch" type="text" class="center-block form-control input-md" title="Enter search query" value="<?php echo $_POST["usersearch"]  ?>">
+                            <span class="input-group-btn"><button class="btn btn-md btn-primary" type="submit">Search</button></span>
                         </div>
-                    </form>   
-                
-                    
-            </div>
-                <div class="col-sm-3"></div>
-            </div>
-        
+                    </form>
+                           </div>
+                        </div>
+            <br>   
         </div>
-            
-<!--            <div class="row">
-                <div class="col-md-5">
-                    <ol class="breadcrumb">
-                        <li><a href="index.php">Home</a></li>
-                        <li><a href="index.php">Search</a></li>
-                        <li class="active">Listings</li>
-                    </ol>
-                </div>
-                <div class="col-md-7 text-left">
-                    <h2>Search Results</h2>
-                    <p>For X results</p>
-                </div>
-            </div>-->
-<div class="container bottom-container">
-<!--            <div class="row">
-                <div class="container">
-                <nav class="navbar navbar-default">
-                    <ul class="nav navbar-nav">
-                    <li><a href="#">Price</a></li>
-                    <li><a href="#">SqFt</a></li>
-                    <li><a href="#">Walkscore</a></li>
-                    </ul>
-                </nav>
-                </div>
-            </div>-->
+        
+<div class="container bottom-container transbox">
+    <div class="row center-block">
+        <div class="col-sm-4"></div>
+        <div class="col-sm-4 text-center">
+            Sort results by:
+  <button class="btn btn-default btn-sm dropdown-toggle" type="button" data-toggle="dropdown" aria-expanded="false">
+    ------------- <span class="caret"></span>
+  </button>
+  <ul class="dropdown-menu" role="menu">
+    <li><a href="listing.php">price: low to high</a></li>
+    <li><a href="listing.php">price: high to low</a></li>
+    <li><a href="listing.php">walkscore: high to low</a></li>
+    <li><a href="listing.php">SqFt high to low</a></li>
+  </ul>
+    </div>
+        <div class="col-sm-4"></div>
+    </div>
+    <br><br>
 <div class="row">
 <!--                <div class="col-md-6">-->
                     <?php
