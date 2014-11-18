@@ -24,7 +24,7 @@
         <li class="dropdown">
             <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button"><span class="glyphicon glyphicon-user"></span> My Account <span class="caret"></span></a>
           <ul class="dropdown-menu" role="menu">
-            <li><a href="#">Log-in</a></li>
+            <li><a href="login.php">Log-in</a></li>
             <li class="divider"></li>
             <li><a href="signup.php">Sign-up</a></li>
           </ul>

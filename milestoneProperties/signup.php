@@ -14,6 +14,9 @@
                 background: none;
                 text-align: left;
             }
+            .navbar-brand{
+            font-family: 'Crimson Text', serif;
+            }
             body{padding-top:0%;}
             .top-container{
                 margin-top: 80px;
@@ -29,6 +32,7 @@
         </style>
     </head>
     <body>
+        <?php run_scripts_body()?>
         <div class="container top-container transbox">
             <div class="container text-center">
                 <h1>Account Creation</h1>
