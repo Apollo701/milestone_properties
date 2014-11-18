@@ -34,21 +34,20 @@
     
     function display_search_results($result){
         while ($row = mysqli_fetch_array($result)) {
-            echo 'Price: $' . $row["price"] . "<br />";
-            echo 'Address: ' . $row["address"] . ", ";
-            echo $row["city"] . ", ";
-            echo $row["us_state"] . ", ";
-            echo $row["zip_code"] . "<br />";
-            echo 'Description: ' . $row["description"] . "<br /><br />";
+            echo '<div class="container bottom-container transbox">';
+            echo '<div class="panel panel-default">';
+            echo '<div class="panel-heading">$' . $row["price"] . " for " . $row["address"] . ", " . $row["city"] . ", " . $row["us_state"]. ", " . $row["zip_code"] . '</div>';
+            echo '<h3 class="panel-title">' . $row["description"] . '</h3>';
+            echo '</div>';
+            echo '<div class="panel-body">';
             $img_name = $row["image1"];
             $img_path = 'http://sfsuswe.com/~f14g02/assets/images/' . $img_name;
-            
-            ?>
-            <img src ="<?php echo $img_path; ?>" style="width:250px;height:200px" />
-            
-            <?php 
-            echo "<br /><br />";
-            
+            echo '<img src=" ' . $img_path . '" ' . 'style="width:250px;height:200px" />';
+            echo '</div>';
+            echo '</div>';
+            echo '</div>';
+            echo '<br>';
+                     
 }
         mysqli_free_result($result);
     }
