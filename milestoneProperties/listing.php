@@ -27,9 +27,7 @@
             }
             .navbar-brand{
             font-family: 'Crimson Text', serif;
-
         }
-
         </style>
     </head>
     <body>
@@ -107,7 +105,7 @@
                 </div>-->
     </div>
             </div>
-        
+                <script src="//ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
                 <script src="//maxcdn.bootstrapcdn.com/bootstrap/3.3.0/js/bootstrap.min.js"></script>
     </body>
 </html>

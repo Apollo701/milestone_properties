@@ -12,7 +12,7 @@
         <title>Milestone Properties</title>
         <style>
 
-        #index{  
+        #index{
             padding-top:50px;
             background: url('assets/images/bg08.jpg');
             height: 600px;
@@ -47,7 +47,7 @@
     </head>
     <body>
         
-        <div class="container" id="index">
+<!--        <div class="container" id="index">
             <div class="row">
                 <div class="col-sm-4"></div>
                 <div class="col-sm-5 text-center">
@@ -66,9 +66,9 @@
                     </form>
                         <div class="col-sm-2"></div>
                 </div>
-            </div>
+            </div>-->
         
-<!--                <div class="container" id="index">
+                <div class="container" id="index">
                     <div class="row">
                 <div class="col-sm-3"></div>
                 <div class="col-sm-6 text-center">
@@ -85,7 +85,7 @@
                 </div>
                 <div class="col-sm-3"></div>
             </div> 
-            </div>-->
+            </div>
         <script src="//ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
         <script src="//maxcdn.bootstrapcdn.com/bootstrap/3.3.0/js/bootstrap.min.js"></script>
     </body>  

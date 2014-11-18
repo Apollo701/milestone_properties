@@ -1,22 +1,23 @@
-<!DOCTYPE html>
-<!--
-To change this license header, choose License Headers in Project Properties.
-To change this template file, choose Tools | Templates
-and open the template in the editor.
--->
-<html>
+<?php include 'navbar.php'; ?>
+<?php include_once 'functions.php'; ?>
+
+<!DOCTYPE>
+<html lang="en">
     <head>
-        <meta charset="UTF-8">
-        <title></title>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <link href="//maxcdn.bootstrapcdn.com/bootstrap/3.3.0/css/bootstrap.min.css" rel="stylesheet">
+        <link href="//maxcdn.bootstrapcdn.com/font-awesome/4.2.0/css/font-awesome.min.css" rel="stylesheet">
+        <link href='http://fonts.googleapis.com/css?family=Crimson+Text' rel='stylesheet' type='text/css'>
+        <title>Milestone Properties</title>
+        <style>
+            #sellhome{
+            padding-top:4%;
+            }
+        </style>
     </head>
     <body>
-        <div>
-            <?php 
-            include('navbar.php');
-            echo "<br><br><br>"
-            ?>
-        </div>
-
+        <div class="container" id="sellhome">
         <form action="new_listing_created.php" method="post" enctype="multipart/form-data">
             State:      <input type="text" name="us_state" value="" /><br />
             <br />
@@ -42,9 +43,8 @@ and open the template in the editor.
             <br />
             <input type="submit" name="submit" value="Submit" />
             <br />
-            
-            
         </form>
+        </div>
         <?php
         // put your code here
         ?>
