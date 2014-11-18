@@ -46,15 +46,14 @@
         <div class="container top-container transbox">
              
             <div class="row">
-                <div class="col-sm-4">
+                <div class="col-sm-3">
                 <ol class="breadcrumb text-left">
                         <li><a href="index.php">Home</a></li>
-                        <li><a href="index.php">Search</a></li>
-                        <li class="active">Listings</li>
+                        <li class="active">Listings: <?php echo $_POST["usersearch"];?></li>
                     </ol>
                 </div>
-                <div class="col-sm-6">
-                    <h2>Showing <?php echo number_of_listings($results); ?> Results for <?php echo '"' . $_POST["usersearch"]. '"'; ?> </h2>
+                <div class="col-sm-6 text-center">
+                    <h2>Showing <?php echo number_of_listings($results); ?> Results for:<br> <?php echo '"' . $_POST["usersearch"]. '"'; ?> </h2>
                     <br>
                     <form action="listing.php" method="post">
                         <div class="input-group input-group-md">
