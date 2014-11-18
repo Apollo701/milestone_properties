@@ -55,64 +55,103 @@
                     <h2>Showing <?php echo number_of_listings($results); ?> Results for:<br> <?php echo '"' . $_POST["usersearch"]. '"'; ?> </h2>
                 </div>
             </div>
-                    <div class="row center-block">
-                        <div class="col-sm-4"></div>
-                        <div class="col-sm-4 text-center">
-                    <form action="listing.php" method="post">
-                        <div class="input-group input-group-md">
-                            <input name="usersearch" type="text" class="center-block form-control input-md" title="Enter search query" value="<?php echo $_POST["usersearch"]  ?>">
-                            <span class="input-group-btn"><button class="btn btn-md btn-primary" type="submit">Search</button></span>
-                        </div>
-                    </form>
-                           </div>
-                        </div>
-            <br>   
+           <div class="row">
+          <div class="col-md-10 col-md-offset-1">
+            <div class="quick-search">
+              <div class="row">
+                <form action="listing.php" method="post">
+                  <div class="col-md-3 col-sm-3">
+                    <div class="form-group">
+                      <label for="bedroom">Search Homes</label>
+                      <input name="usersearch" type="text" class="form-control" placeholder="Enter state, city, or zip code...">
+                    </div>
+                    <div class="form-group">
+                      <label for="bedroom">Bedroom</label>
+                      <select class="form-control">
+                        <option>1</option>
+                        <option>2</option>
+                        <option>3</option>
+                        <option>4</option>
+                      </select>
+                    </div>
+                  </div>
+                    <div class="col-md-3 col-sm-3">
+                    <div class="form-group">
+                      <label for="status">Walkscore</label>
+                      <select class="form-control">
+                        <option>90+</option>
+                        <option>80+</option>
+                        <option>70+</option>
+                        <option>60+</option>
+                        <option>50+</option>
+                      </select>
+                    </div>
+                    <div class="form-group">
+                      <label for="bathroom">Bathroom</label>
+                      <select class="form-control">
+                        <option>1</option>
+                        <option>2</option>
+                        <option>3</option>
+                        <option>4</option>
+                      </select>
+                    </div>
+                  </div>
+                  <!-- break -->
+                  <div class="col-md-3 col-sm-3">
+                    <div class="form-group">
+                      <label for="type">Sq Ft</label>
+                      <select class="form-control">
+                        <option>70+</option>
+                        <option>120+</option>
+                        <option>170+</option>
+                        <option>190+</option>
+                        <option>210+</option>
+                        
+                      </select>
+                    </div>
+                    <div class="form-group">
+                      <label for="minprice">Min Price</label>
+                      <select class="form-control">
+                        <option>$20,000</option>
+                        <option>$40,000</option>
+                        <option>$60,000</option>
+                        <option>$70,000</option>
+                      </select>
+                    </div>
+                  </div>
+                  <!-- break -->
+                  <div class="col-md-3 col-sm-3">
+                    <div class="form-group">
+                      <label for="maxprice">Max Price</label>
+                      <select class="form-control">
+                        <option>$8,200</option>
+                        <option>$11,700</option>
+                        <option>$14,150</option>
+                        <option>$21,110</option>
+                      </select>
+                    </div>
+                    <div class="form-group">
+                      <label for="maxprice">&nbsp;</label>
+                      <input type="submit" name="submit" value="Search Again" class="btn btn-primary btn-block">
+                    </div>
+                  </div>
+
+                </form>
+              </div>
+            </div>
+          </div>
         </div>
-        
+            <br>
+        </div>
+        <br>
 <div class="container bottom-container transbox">
-    <div class="row center-block">
-        <div class="col-sm-4"></div>
-        <div class="col-sm-4 text-center">
-            Sort results by:
-  <button class="btn btn-default btn-sm dropdown-toggle" type="button" data-toggle="dropdown" aria-expanded="false">
-    ------------- <span class="caret"></span>
-  </button>
-  <ul class="dropdown-menu" role="menu">
-    <li><a href="listing.php">price: low to high</a></li>
-    <li><a href="listing.php">price: high to low</a></li>
-    <li><a href="listing.php">walkscore: high to low</a></li>
-    <li><a href="listing.php">SqFt high to low</a></li>
-  </ul>
-    </div>
-        <div class="col-sm-4"></div>
-    </div>
-    <br><br>
-<div class="row">
-<!--                <div class="col-md-6">-->
+    <div class="row">
                     <?php
         display_search_results($results);
         
         close_mysql_connection($connection);
         ?>
                     
-<!--                </div>-->
-<!--                <div class="col-md-3">
-                    <ul>
-                        <li>Address</li>
-                        <li>Square Feet</li>
-                        <li>Schools Nearby</li>
-                        <li>Bedrooms</li>
-                        <li>Bathrooms</li>
-                    </ul>
-                </div>-->
-<!--                <div class="col-md-3">
-                    <ul>
-                        <li>Price</li>
-                        <li>Walkscore</li>
-                        <li>Schools Nearby</li>
-                        <li>Details</li>
-                    </ul>
-                </div>-->
     </div>
             </div>
                 <script src="//ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
