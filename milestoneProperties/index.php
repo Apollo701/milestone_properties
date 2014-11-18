@@ -79,7 +79,7 @@
                     <form action="listing.php" method="post">
                         <div class="input-group input-group-md">
                             <input name="usersearch" type="text" class="center-block form-control input-md" title="Enter search query" placeholder="Enter state, city, zip code, or address...">
-                            <span class="input-group-btn"><button class="btn btn-md btn-primary" type="submit">Search</button></span>
+                            <span class="input-group-btn"><button class="btn btn-md btn-primary" type="submit">Search Homes</button></span>
                         </div>
                     </form>
                     </div>

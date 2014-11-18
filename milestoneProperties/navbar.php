@@ -21,8 +21,6 @@
       </ul>
 
       <ul class="nav navbar-nav navbar-right">
-          <li><a href="about.php">About us</a></li>
-          <li><a href="contact.php">Contact us</a></li>
         <li class="dropdown">
             <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button"><span class="glyphicon glyphicon-user"></span> My Account <span class="caret"></span></a>
           <ul class="dropdown-menu" role="menu">

@@ -4,6 +4,7 @@
     define("DB_login", "f14g02");
     define("DB_password", "dreamteam12");
     define("DB_name", "student_f14g02");
+    $counter = 0;
 
     //function to initiate the connection to the mysql database, and choose the particular db
     function connect_to_mysql(){
@@ -47,6 +48,7 @@
             
             <?php 
             echo "<br /><br />";
+            
 }
         mysqli_free_result($result);
     }
@@ -91,5 +93,8 @@
         
     }
     
+    function number_of_listings($result){
+        echo mysqli_num_rows($result);
+    }
     
 ?>

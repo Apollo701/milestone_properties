@@ -16,7 +16,7 @@
             }
             .top-container{
                 margin-top: 80px;
-                background-color:#e5e5e5;
+/*                background-color:#e5e5e5;*/
                 border-radius: 10px; 
                 
             }
@@ -28,26 +28,46 @@
             .navbar-brand{
             font-family: 'Crimson Text', serif;
         }
+            .transbox{
+                background:rgba(0, 0, 0, .07);
+                padding: 4%;
+                border-radius: 10px; 
+                box-shadow: 1px 7px 36px -5px
+        }
         </style>
     </head>
     <body>
+        <?php
+        $connection = connect_to_mysql();
+        $results = milestone_search($connection);
+        ?>
         
             
-        <div class="container top-container">
+        <div class="container top-container transbox">
+             
             <div class="row">
-                <div class="col-sm-3">
+                <div class="col-sm-4">
                 <ol class="breadcrumb text-left">
                         <li><a href="index.php">Home</a></li>
                         <li><a href="index.php">Search</a></li>
                         <li class="active">Listings</li>
                     </ol>
                 </div>
-                <div class="col-sm-6 text-center">
-                <h2>Search Results</h2>
-                    <p>For X results</p>
+                <div class="col-sm-6">
+                    <h2>Showing <?php echo number_of_listings($results); ?> Results for <?php echo '"' . $_POST["usersearch"]. '"'; ?> </h2>
+                    <br>
+                    <form action="listing.php" method="post">
+                        <div class="input-group input-group-md">
+                            <input name="usersearch" type="text" class="center-block form-control input-md" title="Enter search query" placeholder="<?php echo $_POST["usersearch"]  ?>">
+                            <span class="input-group-btn"><button class="btn btn-md btn-primary" type="submit">Search Homes</button></span>
+                        </div>
+                    </form>   
+                
+                    
             </div>
                 <div class="col-sm-3"></div>
             </div>
+        
         </div>
             
 <!--            <div class="row">
@@ -78,8 +98,6 @@
 <div class="row">
 <!--                <div class="col-md-6">-->
                     <?php
-        $connection = connect_to_mysql();
-        $results = milestone_search($connection);
         display_search_results($results);
         
         close_mysql_connection($connection);
