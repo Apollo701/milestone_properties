@@ -41,6 +41,7 @@
             background:rgba(0, 0, 0, 0.2);
             padding: 4%;
             border-radius: 10px; 
+            box-shadow: 1px 7px 36px -5px
         }
 
         </style>
