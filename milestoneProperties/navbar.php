@@ -26,7 +26,7 @@
           <ul class="dropdown-menu" role="menu">
             <li><a href="#">Log-in</a></li>
             <li class="divider"></li>
-            <li><a href="#">Sign-up</a></li>
+            <li><a href="signup.php">Sign-up</a></li>
           </ul>
         </li>
       </ul>

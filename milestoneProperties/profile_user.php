@@ -18,6 +18,7 @@
     <body>
         <div class="container text-center">
             <h1>(%User)'s Profile</h1>                
-        </div>
+        </div
+        
     </body>
 </html>
