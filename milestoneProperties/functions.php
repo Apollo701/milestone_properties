@@ -102,4 +102,12 @@
             <script src="//maxcdn.bootstrapcdn.com/bootstrap/3.3.0/js/bootstrap.min.js"></script>
         ';   
     }
+    
+        function featured_properties($connection) {
+        $query = "SELECT * ";
+	$query .="FROM listings ";
+	$query .="ORDER BY RAND()";
+        $query .="LIMIT 1";
+        return $result = mysqli_query($connection, $query);
+    }
 ?>
