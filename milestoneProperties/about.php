@@ -44,7 +44,7 @@
                 </div>
                 <div class="col-lg-4 col-sm-6 text-center">
                     <img class="img-circle img-responsive img-center" src="http://placehold.it/200x200" alt="">
-                    <h3>Sam
+                    <h3>Sammy Patenotte
                         <small>Tech Lead</small>
                     </h3>
                     <p>Description</p>
@@ -65,14 +65,14 @@
                 </div>
                 <div class="col-lg-4 col-sm-6 text-center">
                     <img class="img-circle img-responsive img-center" src="http://placehold.it/200x200" alt="">
-                    <h3>Harry
+                    <h3>Harry Chiu
                         <small>Job Title</small>
                     </h3>
                     <p>Description</p>
                 </div>
                 <div class="col-lg-4 col-sm-6 text-center">
                     <img class="img-circle img-responsive img-center" src="http://placehold.it/200x200" alt="">
-                    <h3>Jon Do
+                    <h3>Jonathan Do
                         <small>Job Title</small>
                     </h3>
                     <p>Description</p>
