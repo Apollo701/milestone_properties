@@ -103,6 +103,16 @@
         ';   
     }
     
+    function run_scripts_head(){
+        echo '
+            <meta charset="utf-8">
+            <meta name="viewport" content="width=device-width, initial-scale=1.0">
+            <link href="//maxcdn.bootstrapcdn.com/bootstrap/3.3.0/css/bootstrap.min.css" rel="stylesheet">
+            <link href="//maxcdn.bootstrapcdn.com/font-awesome/4.2.0/css/font-awesome.min.css" rel="stylesheet">
+            <link href="http://fonts.googleapis.com/css?family=Crimson+Text" rel="stylesheet" type="text/css">
+        ';
+    }
+    
         function featured_properties($connection) {
         $query = "SELECT * ";
 	$query .="FROM listings ";

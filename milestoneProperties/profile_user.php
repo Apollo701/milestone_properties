@@ -3,16 +3,28 @@
 
 <html lang="en">
     <head>
-        <meta charset="utf-8">
-        <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <link href="//maxcdn.bootstrapcdn.com/bootstrap/3.3.0/css/bootstrap.min.css" rel="stylesheet">
+        <?php run_scripts_head()?>
         <title>User Profile</title>
         <style>
             .breadcrumb{
                 background: none;
                 text-align: left;
             }
-            body{padding-top:4%;}
+            .navbar-brand{
+            font-family: 'Crimson Text', serif;
+            }
+            body{padding-top:0%;}
+            .top-container{
+                margin-top: 80px;
+/*                background-color:#e5e5e5;*/
+                border-radius: 10px; 
+                
+            }
+            .transbox{
+                background:rgba(0, 0, 0, .07);
+                border-radius: 10px; 
+                box-shadow: 1px 7px 36px -5px;
+            }
         </style>
     </head>
     <body>
