@@ -28,9 +28,28 @@
         </style>
     </head>
     <body>
-        <div class="container text-center">
-            <h1>(%User)'s Profile</h1>                
-        </div
+        <?php run_scripts_body()?>
+        
+        <div class="container top-container transbox">
+            <div class="container text-center">
+                <h1>Barry's Profile</h1>
+            </div>
+            <div class="input-group input-group-sm col-sm-offset-4 col-sm-4">
+                <b>Email:</b> bonds.barry@mail.sfsu.edu <br>
+                <b>Password:</b> *********<br>
+                <a href="#"> Change Password</a><br>
+            </div><br>
+        </div>    
+            
+        <div class="container top-container transbox">
+            <div class="container text-center">
+                <h1>Contact Information</h1> <a href="#"> Edit</a>
+            </div>
+           <div class="input-group input-group-sm col-sm-offset-4 col-sm-4">
+                <b>First Name:</b> Barry <br>
+                <b>Last Name:</b> Bonds <br>   
+           </div>
+       <br></div>
         
     </body>
 </html>

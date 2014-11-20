@@ -46,7 +46,7 @@
                 </div>
                 <div class="form-group">
                     <div class="input-group input-group-sm col-sm-offset-4 col-sm-4">
-                        <label for="InputPW1">New Password</label>
+                        <label for="InputPW1">Password</label>
                         <input type="password" class="form-control" id="InputPW1" placeholder="Create Password">
                     </div>
                 </div>
