@@ -1,5 +1,6 @@
 <?php include 'navbar.php';    ?>
 <?php include_once 'functions.php'; ?>
+<?php include 'footer.php'; ?>
 
 <html lang="en">
     <head>
