@@ -92,6 +92,25 @@
         
     }
     
+    function input_user($connection){
+        //$connection = connect_to_mysql();
+        
+        $email = $_POST['email'];
+        $password = $_POST['password'];
+        $first_name = $_POST['first_name'];
+        $last_name = $_POST['last_name'];
+        $query = "INSERT INTO users (email, password, user_type, zip_code, phone_number, first_name, last_name)
+                    VALUES ('$email', '$password', 1,DEFAULT, DEFAULT, '$first_name', '$last_name')";
+        
+        if(!mysqli_query($connection, $query)){
+            die('Error: ' . mysqli_error($connection));
+        }
+        echo "1 record added";
+        
+        close_mysql_connection($connection);
+        
+    }
+    
     function number_of_listings($result){
         echo mysqli_num_rows($result);
     }

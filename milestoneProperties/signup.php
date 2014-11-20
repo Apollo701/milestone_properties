@@ -37,11 +37,11 @@
             <div class="container text-center">
                 <h1>Account Creation</h1>
             </div>
-            <form role="form">
+            <form action="new_user_created.php" method="post" enctype="multipart/form-data" role="form">
                 <div class="form-group">
                     <div class="input-group input-group-sm col-sm-offset-4 col-sm-4">
                         <label for="InputEmail">Email</label>
-                        <input type="email" class="form-control" id="InputEmail" placeholder="Enter Email">
+                        <input type="email" name="email" class="form-control" id="InputEmail" placeholder="Enter Email">
                     </div>
                 </div>
                 <div class="form-group">
@@ -53,19 +53,19 @@
                 <div class="form-group">
                     <div class="input-group input-group-sm col-sm-offset-4 col-sm-4">
                         <label for="InputPW2">Re-Enter New Password</label>
-                        <input type="password" class="form-control" id="InputPW2" placeholder="Re-Enter Password">
+                        <input type="password" name="password" class="form-control" id="InputPW2" placeholder="Re-Enter Password">
                     </div>
                 </div>
                 <div class="form-group">
                     <div class="input-group input-group-sm col-sm-offset-4 col-sm-4">
                         <label for="InputFirstName">First Name</label>
-                        <input type="firstname" class="form-control" id="InputFirstName" placeholder="First Name">
+                        <input type="firstname" name="first_name" class="form-control" id="InputFirstName" placeholder="First Name">
                     </div>
                 </div>
                 <div class="form-group">
                     <div class="input-group input-group-sm col-sm-offset-4 col-sm-4">
                         <label for="InputLastName">Last Name</label>
-                        <input type="lastname" class="form-control" id="InputLastName" placeholder="Last Name">
+                        <input type="lastname" name="last_name" class="form-control" id="InputLastName" placeholder="Last Name">
                     </div>
                 </div>
                 <div class="form-group">
