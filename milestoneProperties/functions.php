@@ -145,11 +145,6 @@
         $secure = SECURE;
         // This stops JavaScript being able to access the session id.
         $httponly = true;
-        // Forces sessions to only use cookies.
-        if (ini_set('session.use_only_cookies', 1) === FALSE) {
-            header("Location: ../error.php?err=Could not initiate a safe session (ini_set)");
-            exit();
-        }
         // Gets current cookies params.
         $cookieParams = session_get_cookie_params();
         session_set_cookie_params($cookieParams["lifetime"],
@@ -161,5 +156,27 @@
         session_name($session_name);
         session_start();            // Start the PHP session 
         session_regenerate_id();    // regenerated the session, delete the old one. 
+    }
+    
+    function check_login() {
+        
+        $email      = filter_var($_POST["email"], FILTER_SANITIZE_EMAIL);
+        $password   = filter_var($_POST["password"], FILTER_SANITIZE_URL);
+        
+        $connection = connect_to_mysql();
+        $row = mysqli_query($connection, "SELECT FROM USERS WHERE EMAIL == " . $email);
+        
+        if(empty($_POST["email"]) || empty($_POST["password"])) {
+            echo "Fields cannot be empty.";
+        }
+        
+        else if(!password_verify($password, $row["password"])) {
+            echo "Wrong email/password combination.";
+        }
+        
+        else {
+            sec_session_start();
+            header("Location: profile_user.php"); 
+        }
     }
 ?>
