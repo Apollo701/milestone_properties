@@ -23,8 +23,6 @@
                 
             }
             .transbox{
-                height: 250px;
-                width: 1000px;
                 background:rgba(0, 0, 0, .07);
                 border-radius: 10px; 
                 box-shadow: 1px 7px 36px -5px;
@@ -36,35 +34,51 @@
         
         <div class="container top-container transbox">
             <div class ="row">
-                <div class="col-md-2">
-                    <font size = "4"> 
-                    <b>Address</b><br>
-                    <b>Square feet</b><br>
-                    <b>Schools Nearby</b><br>
-                    <b>Bedrooms</b><br>
-                    <b>Bathrooms</b><br> 
-                    </font>
-                </div>
-                <div class="col-md-4">
-                    <font size ="4">
-                    A shirt<br>
-                    its feet are round<br>
-                    define 'nearby'<br>
-                    sleepy<br>
-                    yes<br> 
-                    </font>
-                </div>
-                <div class="col-md-4">
-                    Price<br>
-                    <a href="http://sfsuswe.com/~f14g02/about.php"> Contact Us</a><br>
-                    Walkscore<br>
-                    <button type="button" class="btn btn-default btn-md">
-                        <span class="glyphicon glyphicon-star" aria-hidden="true"></span> Bookmark
-                    </button>
-                </div>
+                <div class="brdr bgc-fff pad-10 box-shad btm-mrg-20 property-listing" style="overflow:hidden;">
+                        <div class="media">
+                            <a class="pull-left" href="#" target="_parent">';
+                            
+                            $img_name = $row["image1"];
+                            $img_path = 'http://sfsuswe.com/~f14g02/assets/images/' . $img_name;
+                            echo '<img class="img-responsive" src=" ' . $img_path . '" ' . '" /></a>
+
+                            <div class="clearfix visible-sm"></div>
+
+                            <div class="media-body fnt-smaller">
+                                <a href="#" target="_parent"></a>
+
+                                <h3 class="media-heading">
+                                  <a href="#" target="_parent">$' . number_format($row["price"]) . '</a><small class="pull-right"><i>' . $row["address"] . '</i></small></h3>
+                                     <p><small class="pull-right">' . $row["city"] . ", " . $row["us_state"]. ", " . $row["zip_code"] . '</small></p>
+
+                                <br>
+                                <ul class="list-inline mrg-0 btm-mrg-10 clr-535353 pull-right">
+                                    <li>' . $row["sq_ft"] . ' SqFt</li>
+
+                                    <li style="list-style: none">|</li>
+
+                                    <li>' . $row["num_bedrooms"] . ' Beds</li>
+
+                                    <li style="list-style: none">|</li>
+
+                                    <li>' . $row["num_bathrooms"] . ' Baths</li>
+                                </ul>
+                                <br><br>
+                                <p class="hidden-xs">' . substr($row["description"], 0, 120) . '...</p>
+                                    <div class="btn-toolbar">
+                                    <button type="button" class="btn btn-success btn-sm pull-right">Details</button>
+                                    <button type="button" class="btn btn-default btn-sm pull-right">
+                                <span class="glyphicon glyphicon-star" aria-hidden="true"></span> Star
+                                    </button>
+                                    </div>
+                                    <br>
+                                    <span class="fnt-smaller fnt-lighter fnt-arial">Milestone Properties&copy</span>
+                            </div>
+                        </div>
+                    </div>
                 </div><br>
             </div>
-        </div>    
+          
             
         <div class="container top-container transbox">
             <div class="row">

@@ -261,11 +261,15 @@
                                 </ul>
                                 <br><br>
                                 <p class="hidden-xs">' . substr($row["description"], 0, 120) . '...</p>
-                                    <div class="btn-toolbar">
-                                    <button type="button" class="btn btn-success btn-sm pull-right">Details</button>
-                                    <button type="button" class="btn btn-default btn-sm pull-right">
+                                    <div class="btn-toolbar pull-right">
+                                    <form action="home_details.php" method="post">
+                                    <button type="button" class="btn btn-default btn-sm">
                                 <span class="glyphicon glyphicon-star" aria-hidden="true"></span> Star
                                     </button>
+                                    <button type="submit" class="btn btn-success btn-sm">Details</button>
+                                    
+                                    </form>
+                                    
                                     </div>
                                     <br>
                                     <span class="fnt-smaller fnt-lighter fnt-arial">Milestone Properties&copy</span>
