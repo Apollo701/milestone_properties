@@ -12,8 +12,8 @@ var_dump($temp);
     'lat'=>47.6085,
     'lon'=>-122.3295,
   );
-  var_dump($options)
+  var_dump($options);
   //printf("WalkScore for %s:\n", $options['address']);
   //$score = $w->WalkScore($options)->walkscore;
-  
+  //echo $score; 
   ?>

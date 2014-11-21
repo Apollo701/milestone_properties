@@ -85,16 +85,16 @@
     return $return;
 }
     function get_walkscore($address){
+        require_once("WalkScore.php");
          $l_temp = get_lat_long($address);
-         //$w = new WalkScore('dbd8b3f251a2ea4b4a6be60beae80642');
+         $w = new WalkScore('dbd8b3f251a2ea4b4a6be60beae80642');
          $w_options = array(
         'address' => $address,
         'lat' => $l_temp['lat'],
         'lon' => $l_temp['long'],
         );
-        var_dump($w_options);
-        //$score = $w->WalkScore($options)->walkscore;
-        //return $score;
+        $score = $w->WalkScore($w_options)->walkscore;
+        return $score;
     }
     
     function input_listing($connection){
@@ -111,6 +111,8 @@
         $num_garages = $_POST['num_garages'];
         $target_dir = "/home/f14g02/public_html/assets/images/";
         $target_dir = $target_dir . basename(($_FILES["uploadFile"]["name"]));
+        $w_address = $address . "," . $city . "," .$us_state;
+        $walkscore= get_walkscore($w_address);
         $uploadOk=1;
         if (move_uploaded_file($_FILES["uploadFile"]["tmp_name"], $target_dir)){
             $image1 = basename($_FILES["uploadFile"]["name"]);
@@ -120,9 +122,9 @@
         }
         
         $query = "INSERT INTO listings (description, address, zip_code, city, us_state, price, sq_ft, num_bedrooms,"
-                . "num_bathrooms, num_garages, image1)
+                . "num_bathrooms, num_garages, image1, walkscore)
                     VALUES ('$description', '$address', '$zip_code', '$city', '$us_state', '$price', '$sq_ft',"
-                . " '$num_bedrooms', '$num_bathrooms', '$num_garages', '$image1')";
+                . " '$num_bedrooms', '$num_bathrooms', '$num_garages', '$image1', '$walkscore')";
         
         if(!mysqli_query($connection, $query)){
             die('Error: ' . mysqli_error($connection));
