@@ -1,12 +1,29 @@
 <?php
+/*
+ * PHP version 5 
+ * @author f14g02
+ * @version 1.0
+ * @package sample
+ * define all global variables to be used in connecting to mysql
+ * @global DB_Server string address of sfsuswe server for connecting to sql datatbase
+ * @global DB_login string login name for connecting to sql datatbase
+ * @global DB_password login string password name for connecting to sql datatbase
+ * @global DB_name string team name for connecting to sql datatbase
+ * @global counter integer counter for login
+ */
 
-//define all global variables to be used in connecting to mysql
 define("DB_Server", "sfsuswe.com");
 define("DB_login", "f14g02");
 define("DB_password", "dreamteam12");
 define("DB_name", "student_f14g02");
 $counter = 0;
 
+/*@global DB_Server string address of sfsuswe server for connecting to sql datatbase
+ * @global DB_login string login name for connecting to sql datatbase
+ * @global DB_password login string password name for connecting to sql datatbase
+ * @global DB_name string team name for connecting to sql database
+ * @return mysqli_result $connection returns connection got mysql database or false
+ */
 //function to initiate the connection to the mysql database, and choose the particular db
 function connect_to_mysql() {
     $connection = mysqli_connect(DB_Server, DB_login, DB_password, DB_name);
@@ -17,7 +34,14 @@ function connect_to_mysql() {
     mysqli_set_charset($connection, 'utf-8');
     return $connection;
 }
-
+/*
+ * @param mysqli_result $connection connection to msql database
+ * @global array $_POST array with user search request
+ * @var string nameErr error message
+ * @return mysqli_result $result
+ * @var string $query query to mysql database
+ */
+//fucnction to search database for listings
 function milestone_search($connection) {
     if (empty($_POST["usersearch"])) {
         $nameErr = "Name is required";
@@ -36,7 +60,14 @@ function milestone_search($connection) {
         return $result = mysqli_query($connection, $query);
     }
 }
-
+/*
+ * @param mysqli_result $connection connection to msql database
+ * @global array $_POST array with user search request
+ * @var string nameErr error message
+ * @return mysqli_result $result
+ * @var string $query query to mysql database
+ */
+//function to retrieve information from listing
 function milestone_details($connection) {
     if (empty($_POST["details"])) {
         $nameErr = "Name is required";
@@ -49,7 +80,13 @@ function milestone_details($connection) {
         return $result = mysqli_query($connection, $query);
     }
 }
-
+/*
+ * @param mysql_result $result
+ * @var int $row
+ * @var string $img_name
+ * @var string $img_path
+ */
+//displays listing entry from database
 function display_search_results($result) {
     if ($result != "") {
         while ($row = mysqli_fetch_array($result)) {
@@ -77,11 +114,23 @@ function display_search_results($result) {
         echo "<h1>Must enter valid input</h1>";
     }
 }
-
+/*
+ * @param mysql_result $connection
+ */
+//closes connection my mysql datbase
 function close_mysql_connection($connection) {
     mysqli_close($connection);
 }
-
+/*
+ * @param string $address0 address
+ * @var string $address1 reformated address
+ * @var string $json json formatted data
+ * @var string $json1 reformated json data
+ * @var float $lat lattitude of address
+ * @var float $long longitude of address
+ * @return array $return latitude and longitude values
+ */
+//finds and returns the lattitude and longitude of an address
 function get_lat_long($address0) {
     $address1 = str_replace(" ", "+", $address0);
     $json = file_get_contents("http://maps.google.com/maps/api/geocode/json?address=$address1&sensor=false");
@@ -95,7 +144,14 @@ function get_lat_long($address0) {
     );
     return $return;
 }
-
+/*
+ * @param string $address1
+ * @var array $l_temp latitude and longtude values
+ * @var WalkScrore $w new WalkScore object
+ * @var array $w_options array of address information formatted for WalkScore function
+ * @return int $score WalkScore value
+ */
+//function takes in address and finds and returns WalkScore value
 function get_walkscore($address) {
     require_once("WalkScore.php");
     $l_temp = get_lat_long($address);
@@ -108,7 +164,25 @@ function get_walkscore($address) {
     $score = $w->WalkScore($w_options)->walkscore;
     return $score;
 }
-
+/*
+ * @param mysql_result $connection connection to mysql database
+ * @var string description description of listing
+ * @var string $address address listing is located at
+ * @var int $zip_code zip code listing is located in
+ * @var string $us_state state listing is located in
+ * @var int $price price of listing
+ * @var int $sq_ft number of square feet in listing
+ * @var int $num_bedrooms number of bedrooms in listing
+ * @var int $num_bathrooms number of bathrooms in listing
+ * @var string $target_dir name of image to upload
+ * @var string $w_address address of listing
+ * @var int $walkscore WalkScore for listing
+ * @var bool $uploadOK
+ * @var string $image1 address image1 is stored at
+ * @var string query value to insert into sql database
+ * @ global array $_POST
+ */
+//Takes in user input and creates listing
 function input_listing($connection) {
     //$connection = connect_to_mysql();
     $description = $_POST['description'];
@@ -145,7 +219,16 @@ function input_listing($connection) {
 
     close_mysql_connection($connection);
 }
-
+/*
+ * @param mysql_result $connection connection to mysql database
+ * @var string email user's email
+ * @var string $password user's password
+ * @var string $first_name user's first name
+ * @var string $last_name user's last name
+ * @var string $query value to send to mysql database
+ * @global array $_POST
+ */
+//Takes in user input and adds new user to database
 function input_user($connection) {
     //$connection = connect_to_mysql();
 
@@ -163,7 +246,10 @@ function input_user($connection) {
 
     close_mysql_connection($connection);
 }
-
+/*
+ * @param int $result number of results 
+ */
+//displays number of results 
 function number_of_listings($result) {
     if ($result == "") {
         echo 0;
@@ -171,14 +257,14 @@ function number_of_listings($result) {
         echo mysqli_num_rows($result);
     }
 }
-
+//runs ajax and bootstrap scripts for body
 function run_scripts_body() {
     echo '        
             <script src="//ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
             <script src="//maxcdn.bootstrapcdn.com/bootstrap/3.3.0/js/bootstrap.min.js"></script>
         ';
 }
-
+//runs bootstrap scripts for head
 function run_scripts_head() {
     echo '
             <meta charset="utf-8">
@@ -188,7 +274,12 @@ function run_scripts_head() {
             <link href="http://fonts.googleapis.com/css?family=Crimson+Text" rel="stylesheet" type="text/css">
         ';
 }
-
+/*
+ * @param mysql_result $connection connection to database
+ * @var string $query input for sql database
+ * @return mysql_result $result featured listing from database
+ */
+//finds and returns a featured property from database
 function featured_properties($connection) {
     $query = "SELECT * ";
     $query .="FROM listings ";
@@ -228,7 +319,13 @@ function check_login() {
         header("Location: profile_user.php");
     }
 }
-
+/*
+ * @param mysql_result $result listing results to display 
+ * @var string img_name name of image file to be displayed
+ * @var string img_path path of image to be displayed
+ * @var array $row
+ */
+//funtion displays public information about listing results passed in to it
 function display_formatted_results($result) {
 
     if ($result != "") {
@@ -287,6 +384,13 @@ function display_formatted_results($result) {
     }
 }
 
+/*
+ * @param mysql_result $result listing results to display 
+ * @var string img_name name of image file to be displayed
+ * @var string img_path path of image to be displayed
+ * @var array $row
+ */
+//funtion displays all information about listing results passed in to it
 function display_formatted_details($result) {
     if ($result != "") {
         while ($row = mysqli_fetch_array($result)) {
