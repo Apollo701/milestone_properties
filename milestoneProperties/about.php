@@ -49,16 +49,16 @@
                     <p>Description</p>
                 </div>
                 <div class="col-lg-4 col-sm-6 text-center">
-                    <img class="img-circle img-responsive img-center" src="http://placehold.it/200x200" alt="">
+                    <img class="img-circle img-responsive img-center" src="assets/about_images/spaten.jpg" alt="">
                     <h3>Sammy Patenotte
-                        <small>Tech Lead</small>
+                        <small>Tech Lead and SVN Manager</small>
                     </h3>
                     <p>Description</p>
                 </div>
                 <div class="col-lg-4 col-sm-6 text-center">
-                    <img class="img-circle img-responsive img-center" src="http://placehold.it/200x200" alt="">
+                    <img class="img-circle img-responsive img-center" src="assets/about_images/rbeas.jpg" alt="">
                     <h3>Rachel Beasley
-                        <small>Job Title</small>
+                        <small>Database and Documentation</small>
                     </h3>
                     <p>Description</p>
                 </div>
