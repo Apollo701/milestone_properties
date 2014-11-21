@@ -71,6 +71,32 @@
         mysqli_close($connection);
     }
     
+    function get_lat_long($address1){
+    $address1 = str_replace(" ", "+", $address1);
+    $json = file_get_contents("http://maps.google.com/maps/api/geocode/json?address=$address1&sensor=false");
+    $json1 = json_decode($json);
+
+    $lat = $json1->{'results'}[0]->{'geometry'}->{'location'}->{'lat'};
+    $long = $json1->{'results'}[0]->{'geometry'}->{'location'}->{'lng'};
+    $return = array(
+        'lat' => $lat,
+        'long' =>$long,
+        );
+    return $return;
+}
+    function get_walkscore($address){
+         $l_temp = get_lat_long($address);
+         //$w = new WalkScore('dbd8b3f251a2ea4b4a6be60beae80642');
+         $w_options = array(
+        'address' => $address,
+        'lat' => $l_temp['lat'],
+        'lon' => $l_temp['long'],
+        );
+        var_dump($w_options);
+        //$score = $w->WalkScore($options)->walkscore;
+        //return $score;
+    }
+    
     function input_listing($connection){
         //$connection = connect_to_mysql();
         $description = $_POST['description'];
