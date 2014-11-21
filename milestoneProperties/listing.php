@@ -145,19 +145,8 @@
         </div>
             <br>
         </div>
-<!--        <br>
-        <div class="container">
-
-                   <?php
-        display_search_results($results);
-        
-        close_mysql_connection($connection);
-        ?>
-        </div>
---><br>
             <div class="container-full bottom-container" style="background-color:#e8e8e8">
         <div class="container container-pad" id="property-listings">
-            
             <div class="row">
               <div class="col-md-12">
                 <h1>Milestone Property Home Listings</h1>
@@ -168,151 +157,9 @@
             
             <div class="row">
                 <div class="col-sm-6"> 
-
-                    <!-- Begin Listing: 609 W GRAVERS LN-->
-                    <div class="brdr bgc-fff pad-10 box-shad btm-mrg-20 property-listing">
-                        <div class="media">
-                            <a class="pull-left" href="#" target="_parent">
-                            <img alt="image" class="img-responsive" src="http://images.prd.mris.com/image/V2/1/Yu59d899Ocpyr_RnF0-8qNJX1oYibjwp9TiLy-bZvU9vRJ2iC1zSQgFwW-fTCs6tVkKrj99s7FFm5Ygwl88xIA.jpg"></a>
-
-                            <div class="clearfix visible-sm"></div>
-
-                            <div class="media-body fnt-smaller">
-                                <a href="#" target="_parent"></a>
-
-                                <h4 class="media-heading">
-                                  <a href="#" target="_parent">$1,975,000 <small class="pull-right">609 W Gravers Ln</small></a></h4>
-
-
-                                <ul class="list-inline mrg-0 btm-mrg-10 clr-535353">
-                                    <li>4,820 SqFt</li>
-
-                                    <li style="list-style: none">|</li>
-
-                                    <li>5 Beds</li>
-
-                                    <li style="list-style: none">|</li>
-
-                                    <li>5 Baths</li>
-                                </ul>
-
-                                <p class="hidden-xs">Situated between fairmount
-                                park and the prestigious philadelphia cricket
-                                club, this beautiful 2+ acre property is truly
-                                ...</p><span class="fnt-smaller fnt-lighter fnt-arial">Courtesy of HS Fox & Roach-Chestnut Hill
-                                Evergreen</span>
-                            </div>
-                        </div>
-                    </div><!-- End Listing-->
-
-                    <!-- Begin Listing: 218 LYNNEBROOK LN-->
-                    <div class="brdr bgc-fff pad-10 box-shad btm-mrg-20 property-listing">
-                        <div class="media">
-                            <a class="pull-left" href="#" target="_parent">
-                            <img alt="image" class="img-responsive" src="http://images.prd.mris.com/image/V2/1/zMjCkcFeFDXDAP8xDhbD9ZmrVL7oGkBvSnh2bDBZ6UB5UHXa3_g8c6XYhRY_OxgGaMBMehiTWXDSLzBMaIzRhA.jpg"></a>
-
-                            <div class="clearfix visible-sm"></div>
-
-                            <div class="media-body fnt-smaller">
-                                <a href="#" target="_parent"></a>
-
-                                <h4 class="media-heading">
-                                  <a href="#" target="_parent">$1,975,000 <small class="pull-right">218 Lynnebrook Ln</small></a></h4>
-
-
-                                <ul class="list-inline mrg-0 btm-mrg-10 clr-535353">
-                                    <li>6,959 SqFt</li>
-
-                                    <li style="list-style: none">|</li>
-
-                                    <li>6 Beds</li>
-
-                                    <li style="list-style: none">|</li>
-
-                                    <li>5 Baths</li>
-                                </ul>
-
-                                <p class="hidden-xs">Impressively positioned
-                                overlooking 3.5 captivating acres, designated
-                                as "significant" by the chestnut hill
-                                historical s...</p><span class="fnt-smaller fnt-lighter fnt-arial">Courtesy of HS Fox & Roach-Blue Bell</span>
-                            </div>
-                        </div>
-                    </div><!-- End Listing-->
-
-                    <!-- Begin Listing: 209 CHESTNUT HILL AVE-->
-                    <div class="brdr bgc-fff pad-10 box-shad btm-mrg-20 property-listing">
-                        <div class="media">
-                            <a class="pull-left" href="#" target="_parent">
-                            <img alt="image" class="img-responsive" src="http://images.prd.mris.com/image/V2/1/iwn7qH9r9OPnqTaTTxxb8PBzQHk2EiHU2PBBntt041AZsVsGY-SeUexTMLgRcYSJukrKOwHaYnTVXAsk6RdSmA.jpg"></a>
-
-                            <div class="clearfix visible-sm"></div>
-
-                            <div class="media-body fnt-smaller">
-                                <a href="#" target="_parent"></a>
-
-                                <h4 class="media-heading">
-                                  <a href="#" target="_parent">$1,599,999 <small class="pull-right">209 Chestnut Hill ve</small></a></h4>
-
-
-                                <ul class="list-inline mrg-0 btm-mrg-10 clr-535353">
-                                    <li>16,581 SqFt</li>
-
-                                    <li style="list-style: none">|</li>
-
-                                    <li>8 Beds</li>
-
-                                    <li style="list-style: none">|</li>
-
-                                    <li>4 Baths</li>
-                                </ul>
-
-                                <p class="hidden-xs">Built in 1909 by
-                                pittsburgh steel magnate henry a. laughlin,
-                                greylock is a classic chestnut hill stone
-                                mansion once cons...</p><span class="fnt-smaller fnt-lighter fnt-arial">Courtesy of ng and Foster-Devon</span>
-                            </div>
-                        </div>
-                    </div><!-- End Listing-->
-
-                    <!-- Begin Listing: 704 SAINT GEORGES ST-->
-                    <div class="brdr bgc-fff pad-10 box-shad btm-mrg-20 property-listing">
-                        <div class="media">
-                            <a class="pull-left" href="#" target="_parent">
-                            <img alt="image" class="img-responsive" src="http://images.prd.mris.com/image/V2/1/7IZk2HTN0AcHnIb7VCvisTUc3kTbn0UyHQlVAlwkNLM3_8UNN8pcgy9u6KVNoRGGH_kdUlpYehdbqzctRNUebg.jpg"></a>
-
-                            <div class="clearfix visible-sm"></div>
-
-                            <div class="media-body fnt-smaller">
-                                <a href="#" target="_parent"></a>
-
-                                <h4 class="media-heading">
-                                  <a href="#" target="_parent">$1,595,000 <small class="pull-right">704 Saint Georges St</small></a></h4>
-
-
-                                <ul class="list-inline mrg-0 btm-mrg-10 clr-535353">
-                                    <li>0 SqFt</li>
-
-                                    <li style="list-style: none">|</li>
-
-                                    <li>4 Beds</li>
-
-                                    <li style="list-style: none">|</li>
-
-                                    <li>5 Baths</li>
-                                </ul>
-
-                                <p class="hidden-xs">Blake development is proud
-                                to offer the second of two distinctly unique
-                                homes located on one of the most desirable
-                                stree...</p><span class="fnt-smaller fnt-lighter fnt-arial">Courtesy of HS Fox & Roach-Chestnut Hill
-                                Evergreen</span>
-                            </div>
-                        </div>
-                    </div><!-- End Listing-->
-
-
-
+                <?php display_formatted_results($results);
+                    close_mysql_connection($connection);
+                ?>
                 </div>
 
                 <div class="col-sm-6">  

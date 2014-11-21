@@ -76,7 +76,7 @@
                     <div class="transbox">
                     <h1 class="welcome">Milestone Properties</h1>
                     <h3 class="welcome-paragraph text-center">Find your dream home today</h3>
-                    <form action="listingtest.php" method="post">
+                    <form action="listing.php" method="post">
                         <div class="input-group input-group-md">
                             <input name="usersearch" type="text" class="center-block form-control input-md" title="Enter search query" placeholder="Enter state, city, or zip code...">
                             <span class="input-group-btn"><button class="btn btn-md btn-primary" type="submit">Search Homes</button></span>

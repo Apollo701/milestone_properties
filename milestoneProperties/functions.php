@@ -227,24 +227,27 @@
         }
     }
     
-        function display_search_resultstest($result){
+        function display_formatted_results($result){
         if ($result != ""){
         while ($row = mysqli_fetch_array($result)) {
                   echo '<div class="brdr bgc-fff pad-10 box-shad btm-mrg-20 property-listing" style="overflow:hidden;">
                         <div class="media">
-                            <a class="pull-left" href="#" target="_parent">
-                            <img alt="image" class="img-responsive" style="height:90%;" src="http://images.prd.mris.com/image/V2/1/vGoNjc2jHGb87GlnnDQlf6LxeOUgIOn0bL6Wvn1nEnig2Ntq6W7xN5cOQBZZeNxl9O42DOkHUw0LNnj1ZB2KHA.jpg"></a>
+                            <a class="pull-left" href="#" target="_parent">';
+                            
+                            $img_name = $row["image1"];
+                            $img_path = 'http://sfsuswe.com/~f14g02/assets/images/' . $img_name;
+                            echo '<img class="img-responsive" src=" ' . $img_path . '" ' . '" /></a>
 
                             <div class="clearfix visible-sm"></div>
 
                             <div class="media-body fnt-smaller">
                                 <a href="#" target="_parent"></a>
 
-                                <h4 class="media-heading">
-                                  <a href="#" target="_parent">$' . number_format($row["price"]) . '</a><small class="pull-right">' . $row["address"] . '</small>
-                                     <small class="pull-right">' . $row["city"] . ", " . $row["us_state"]. ", " . $row["zip_code"] . '</small></h4>
+                                <h3 class="media-heading">
+                                  <a href="#" target="_parent">$' . number_format($row["price"]) . '</a><small class="pull-right"><i>' . $row["address"] . '</i></small></h3>
+                                     <p><small class="pull-right">' . $row["city"] . ", " . $row["us_state"]. ", " . $row["zip_code"] . '</small></p>
 
-<br>
+                                <br>
                                 <ul class="list-inline mrg-0 btm-mrg-10 clr-535353 pull-right">
                                     <li>' . $row["sq_ft"] . ' SqFt</li>
 
@@ -256,8 +259,16 @@
 
                                     <li>' . $row["num_bathrooms"] . ' Baths</li>
                                 </ul>
-<br><br>
-                                <p class="hidden-xs">' . substr($row["description"], 0, 120) . '...</p><span class="fnt-smaller fnt-lighter fnt-arial">Milestone Properties&copy</span>
+                                <br><br>
+                                <p class="hidden-xs">' . substr($row["description"], 0, 120) . '...</p>
+                                    <div class="btn-toolbar">
+                                    <button type="button" class="btn btn-success btn-sm pull-right">Details</button>
+                                    <button type="button" class="btn btn-default btn-sm pull-right">
+                                <span class="glyphicon glyphicon-star" aria-hidden="true"></span> Star
+                                    </button>
+                                    </div>
+                                    <br>
+                                    <span class="fnt-smaller fnt-lighter fnt-arial">Milestone Properties&copy</span>
                             </div>
                         </div>
                     </div>';
