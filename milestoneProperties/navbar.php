@@ -26,7 +26,7 @@
           <ul class="dropdown-menu" role="menu">
             <li><a href="profile_user.php">My Profile</a></li>
             <li class="divider"></li>
-            <li><a href="Login.php">Log-in</a></li>
+            <li><a href="login.php">Log-in</a></li>
             <li class="divider"></li>
             <li><a href="signup.php">Sign-up</a></li>
           </ul>
