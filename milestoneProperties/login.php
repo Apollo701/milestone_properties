@@ -33,7 +33,12 @@
         </style>
     </head>
     <body>
-        <?php run_scripts_body()?>
+        <?php run_scripts_body();
+            if(!empty($_POST)) {
+                check_login();
+            }
+        ?>
+        
         <div class="container top-container transbox">
             <div class="container text-center">
                 <h1>Login</h1>
