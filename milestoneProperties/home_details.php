@@ -57,20 +57,7 @@
 
         
           
-            
-        <div class="container bottom-container transbox">
-            <div class="row">
-            <div class="container text-center">
-                <div class="col-md-6">
-                    
-                </div>
-                <div class="col-md-2">
-                    <a href="#">Request More Info</a><br>
-                </div>
-            </div>
-           <div class="input-group input-group-sm col-sm-offset-4 col-sm-4">
-           </div>
-       <br></div>
+           
                           <script src="//ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
                 <script src="//maxcdn.bootstrapcdn.com/bootstrap/3.3.0/js/bootstrap.min.js"></script>
     </body>

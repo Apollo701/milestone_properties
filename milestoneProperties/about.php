@@ -12,7 +12,7 @@
             body {
                 padding-top: 50px; 
                 padding-bottom: 90px;
-                height: 100%
+                height: 100%;
             }
 
             .img-center {

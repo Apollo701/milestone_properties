@@ -117,40 +117,12 @@
             </div>
                 <div class="col-sm-6">  
 
-                    <!-- Begin Listing: 1220-32 N HOWARD ST-->
-                    <div class="brdr bgc-fff pad-10 box-shad btm-mrg-20 property-listing">
-                        <div class="media">
-                            <a class="pull-left" href="#" target="_parent">
-                            <img alt="image" class="img-responsive" src="http://images.prd.mris.com/image/V2/1/vGoNjc2jHGb87GlnnDQlf6LxeOUgIOn0bL6Wvn1nEnig2Ntq6W7xN5cOQBZZeNxl9O42DOkHUw0LNnj1ZB2KHA.jpg"></a>
-
-                            <div class="clearfix visible-sm"></div>
-
-                            <div class="media-body fnt-smaller">
-                                <a href="#" target="_parent"></a>
-
-                                <h4 class="media-heading">
-                                  <a href="#" target="_parent">$1,500,000 <small class="pull-right">1220-32 N Howard St</small></a></h4>
-
-
-                                <ul class="list-inline mrg-0 btm-mrg-10 clr-535353">
-                                    <li>4,900 SqFt</li>
-
-                                    <li style="list-style: none">|</li>
-
-                                    <li>1 Beds</li>
-
-                                    <li style="list-style: none">|</li>
-
-                                    <li>1 Baths</li>
-                                </ul>
-
-                                <p class="hidden-xs">A once in a lifetime
-                                opportunity to own a unique live / work space
-                                in one of philadelphia's most popular
-                                neighborhoods. ...</p><span class="fnt-smaller fnt-lighter fnt-arial">Courtesy of ll Banker Preferred-Philadelphia</span>
-                            </div>
-                        </div>
-                    </div><!-- End Listing-->
+                                        <?php
+        $connection = connect_to_mysql();
+        $results = featured_properties($connection);
+        display_formatted_results($results);
+        close_mysql_connection($connection);
+        ?>
                 </div>
                 </div>
         </div>
