@@ -10,11 +10,15 @@
         <title>About Us Page</title>
         <style>
             body {
-                padding-top: 70px; 
+                padding-top: 50px; 
+                padding-bottom: 90px;
             }
 
             .img-center {
                 margin: 0 auto;
+            }
+            .img-circle{
+                height: 30%;
             }
         </style>
     </head>
@@ -37,7 +41,7 @@
                     <h2 class="page-header">Our Team</h2>
                 </div>
                 <div class="col-lg-4 col-sm-6 text-center">
-                    <img class="img-circle img-responsive img-center" src="http://placehold.it/200x200" alt="">
+                    <img class="img-circle img-responsive img-center" src="assets/about_images/jdorn.jpg" alt="">
                     <h3>Jason Dorn
                         <small>Team Lead</small>
                     </h3>
