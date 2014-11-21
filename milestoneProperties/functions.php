@@ -71,8 +71,8 @@
         mysqli_close($connection);
     }
     
-    function get_lat_long($address1){
-    $address1 = str_replace(" ", "+", $address1);
+    function get_lat_long($address0){
+    $address1 = str_replace(" ", "+", $address0);
     $json = file_get_contents("http://maps.google.com/maps/api/geocode/json?address=$address1&sensor=false");
     $json1 = json_decode($json);
 
@@ -111,7 +111,7 @@
         $num_garages = $_POST['num_garages'];
         $target_dir = "/home/f14g02/public_html/assets/images/";
         $target_dir = $target_dir . basename(($_FILES["uploadFile"]["name"]));
-        $w_address = $address . "," . $city . "," .$us_state;
+        $w_address = $address . ", " . $city . ", " . $us_state;
         $walkscore= get_walkscore($w_address);
         $uploadOk=1;
         if (move_uploaded_file($_FILES["uploadFile"]["tmp_name"], $target_dir)){
