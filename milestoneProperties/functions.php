@@ -3,12 +3,16 @@
  * PHP version 5 
  * @author f14g02
  * @version 1.0
- * @package sample
+ * @package Milestone_Properties
  * define all global variables to be used in connecting to mysql
- * @global DB_Server string address of sfsuswe server for connecting to sql datatbase
- * @global DB_login string login name for connecting to sql datatbase
- * @global DB_password login string password name for connecting to sql datatbase
- * @global DB_name string team name for connecting to sql datatbase
+ * @global string $GLOBALS['DB_Server'] address of sfsuswe server for connecting to sql datatbase
+ * @name DB_Server
+ * @global string $GLOBALS['DB_login'] login name for connecting to sql datatbase
+ * @name DB_login
+ * @global string $GLOBALS['DB_password'] login string password name for connecting to sql datatbase
+ * @name DB_password
+ * @global string $GLOBALS['DB_name']  team name for connecting to sql datatbase
+ * @name  DB_name
  * @global counter integer counter for login
  */
 
@@ -18,7 +22,7 @@ define("DB_password", "dreamteam12");
 define("DB_name", "student_f14g02");
 $counter = 0;
 
-/*@global DB_Server string address of sfsuswe server for connecting to sql datatbase
+/* @global DB_Server string address of sfsuswe server for connecting to sql datatbase
  * @global DB_login string login name for connecting to sql datatbase
  * @global DB_password login string password name for connecting to sql datatbase
  * @global DB_name string team name for connecting to sql database
