@@ -73,7 +73,6 @@ a {
 @media only screen and (max-width: 991px) {
     #property-listings .property-listing {
         padding: 5px!important;
-        
     }
     #property-listings .property-listing a {
         margin: 0;

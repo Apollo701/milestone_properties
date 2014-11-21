@@ -230,10 +230,10 @@
         function display_search_resultstest($result){
         if ($result != ""){
         while ($row = mysqli_fetch_array($result)) {
-                  echo '<div class="brdr bgc-fff pad-10 box-shad btm-mrg-20 property-listing">
+                  echo '<div class="brdr bgc-fff pad-10 box-shad btm-mrg-20 property-listing" style="overflow:hidden;">
                         <div class="media">
                             <a class="pull-left" href="#" target="_parent">
-                            <img alt="image" class="img-responsive" src="http://images.prd.mris.com/image/V2/1/vGoNjc2jHGb87GlnnDQlf6LxeOUgIOn0bL6Wvn1nEnig2Ntq6W7xN5cOQBZZeNxl9O42DOkHUw0LNnj1ZB2KHA.jpg"></a>
+                            <img alt="image" class="img-responsive" style="height:90%;" src="http://images.prd.mris.com/image/V2/1/vGoNjc2jHGb87GlnnDQlf6LxeOUgIOn0bL6Wvn1nEnig2Ntq6W7xN5cOQBZZeNxl9O42DOkHUw0LNnj1ZB2KHA.jpg"></a>
 
                             <div class="clearfix visible-sm"></div>
 
@@ -241,25 +241,23 @@
                                 <a href="#" target="_parent"></a>
 
                                 <h4 class="media-heading">
-                                  <a href="#" target="_parent">$' . $row["price"] . '<small class="pull-right">' . $row["address"] . '</small></a></h4>
+                                  <a href="#" target="_parent">$' . number_format($row["price"]) . '</a><small class="pull-right">' . $row["address"] . '</small>
+                                     <small class="pull-right">' . $row["city"] . ", " . $row["us_state"]. ", " . $row["zip_code"] . '</small></h4>
 
-
-                                <ul class="list-inline mrg-0 btm-mrg-10 clr-535353">
-                                    <li>4,900 SqFt</li>
-
-                                    <li style="list-style: none">|</li>
-
-                                    <li>1 Beds</li>
+<br>
+                                <ul class="list-inline mrg-0 btm-mrg-10 clr-535353 pull-right">
+                                    <li>' . $row["sq_ft"] . ' SqFt</li>
 
                                     <li style="list-style: none">|</li>
 
-                                    <li>1 Baths</li>
+                                    <li>' . $row["num_bedrooms"] . ' Beds</li>
+
+                                    <li style="list-style: none">|</li>
+
+                                    <li>' . $row["num_bathrooms"] . ' Baths</li>
                                 </ul>
-
-                                <p class="hidden-xs">A once in a lifetime
-                                opportunity to own a unique live / work space
-                                in one of philadelphias most popular
-                                neighborhoods. ...</p><span class="fnt-smaller fnt-lighter fnt-arial">Courtesy of ll Banker Preferred-Philadelphia</span>
+<br><br>
+                                <p class="hidden-xs">' . substr($row["description"], 0, 120) . '...</p><span class="fnt-smaller fnt-lighter fnt-arial">Milestone Properties&copy</span>
                             </div>
                         </div>
                     </div>';
