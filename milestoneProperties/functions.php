@@ -213,7 +213,7 @@
                                 <a href="#" target="_parent"></a>
 
                                 <h4 class="media-heading">
-                                  <a href="#" target="_parent">$ ' . $row["price"] . '<small class="pull-right">1220-32 N Howard St</small></a></h4>
+                                  <a href="#" target="_parent">$' . $row["price"] . '<small class="pull-right">' . $row["address"] . '</small></a></h4>
 
 
                                 <ul class="list-inline mrg-0 btm-mrg-10 clr-535353">
