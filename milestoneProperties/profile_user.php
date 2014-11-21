@@ -29,7 +29,7 @@
         </style>
     </head>
     <body>
-        <?php run_scripts_body()?>
+        <?php run_scripts_body()?> 
         
         <div class="container top-container transbox">
             <div class="container text-center">

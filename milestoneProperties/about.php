@@ -77,9 +77,9 @@
                     <p>Description</p>
                 </div>
                 <div class="col-lg-4 col-sm-6 text-center">
-                    <img class="img-circle img-responsive img-center" src="http://placehold.it/200x200" alt="">
+                    <img class="img-circle img-responsive img-center" src="assets/about_images/jondo.jpg" alt="">
                     <h3>Jonathan Do
-                        <small>Job Title</small>
+                        <small>Front End Design</small>
                     </h3>
                     <p>Description</p>
                 </div>
