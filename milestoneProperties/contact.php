@@ -86,7 +86,19 @@
                         </form>
                     </div>
                 </div>
-
+                <div class="col-md-4">
+                    <form>
+                        <legend><span class="glyphicon glyphicon-globe"></span>Our office</legend>
+                        <address>
+                            <strong>Milestone Properties,</strong><br>
+                            1600 Holloway Avenue<br>
+                            San Francisco, CA 94132<br>
+                            <abbr title="Phone">
+                                P:</abbr>
+                            (123) 456-7890
+                        </address>
+                    </form>
+                </div>
             </div>
         </div>
 

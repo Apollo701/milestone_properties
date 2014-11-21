@@ -12,6 +12,7 @@
             body {
                 padding-top: 50px; 
                 padding-bottom: 90px;
+                height: 100%
             }
 
             .img-center {
@@ -62,9 +63,9 @@
                     <p>Description</p>
                 </div>
                 <div class="col-lg-4 col-sm-6 text-center">
-                    <img class="img-circle img-responsive img-center" src="http://placehold.it/200x200" alt="">
+                    <img class="img-circle img-responsive img-center" src="assets/about_images/vidya.jpg" alt="">
                     <h3>Sree Vidya Sastry
-                        <small>Job Title</small>
+                        <small>Front End Design</small>
                     </h3>
                     <p>Description</p>
                 </div>
