@@ -19,6 +19,10 @@
     
     
     function milestone_search($connection){
+        if (empty($_POST["usersearch"])) {
+    $nameErr = "Name is required";
+    return $result = "";
+        } else{
 	$query = "SELECT * ";
 	$query .="FROM listings ";
 	$query .="WHERE city =";
@@ -31,9 +35,13 @@
         $query .= "'{$_POST["usersearch"]}'";
         return $result = mysqli_query($connection, $query);
     }
+    }
     
     function display_search_results($result){
+        if ($result != ""){
         while ($row = mysqli_fetch_array($result)) {
+            echo '<div class="row>';
+            echo '<div class="col-md-2>';
             echo '<div class="container bottom-container transbox">';
             echo '<div class="panel panel-default">';
             echo '<div class="panel-heading">$' . $row["price"] . " for " . $row["address"] . ", " . $row["city"] . ", " . $row["us_state"]. ", " . $row["zip_code"] . '</div>';
@@ -46,11 +54,18 @@
             echo '</div>';
             echo '</div>';
             echo '</div>';
+            echo '</div>';
+            echo '</div>';
             echo '<br>';
-                     
-}
+        }       
+
         mysqli_free_result($result);
+    } else {
+        echo "<h1>Must enter valid input</h1>";
     }
+    
+        }
+        
     
     function close_mysql_connection($connection){
         mysqli_close($connection);
@@ -112,7 +127,11 @@
     }
     
     function number_of_listings($result){
+        if ($result == ""){
+            echo 0;
+        }else {
         echo mysqli_num_rows($result);
+    }
     }
     
     function run_scripts_body(){
@@ -179,4 +198,44 @@
             header("Location: profile_user.php"); 
         }
     }
+    
+        function display_search_resultstest($result){
+        if ($result != ""){
+        while ($row = mysqli_fetch_array($result)) {
+                  echo '<div class="brdr bgc-fff pad-10 box-shad btm-mrg-20 property-listing">
+                        <div class="media">
+                            <a class="pull-left" href="#" target="_parent">
+                            <img alt="image" class="img-responsive" src="http://images.prd.mris.com/image/V2/1/vGoNjc2jHGb87GlnnDQlf6LxeOUgIOn0bL6Wvn1nEnig2Ntq6W7xN5cOQBZZeNxl9O42DOkHUw0LNnj1ZB2KHA.jpg"></a>
+
+                            <div class="clearfix visible-sm"></div>
+
+                            <div class="media-body fnt-smaller">
+                                <a href="#" target="_parent"></a>
+
+                                <h4 class="media-heading">
+                                  <a href="#" target="_parent">$ ' . $row["price"] . '<small class="pull-right">1220-32 N Howard St</small></a></h4>
+
+
+                                <ul class="list-inline mrg-0 btm-mrg-10 clr-535353">
+                                    <li>4,900 SqFt</li>
+
+                                    <li style="list-style: none">|</li>
+
+                                    <li>1 Beds</li>
+
+                                    <li style="list-style: none">|</li>
+
+                                    <li>1 Baths</li>
+                                </ul>
+
+                                <p class="hidden-xs">A once in a lifetime
+                                opportunity to own a unique live / work space
+                                in one of philadelphias most popular
+                                neighborhoods. ...</p><span class="fnt-smaller fnt-lighter fnt-arial">Courtesy of ll Banker Preferred-Philadelphia</span>
+                            </div>
+                        </div>
+                    </div>';
+        }
+        }
+        }
 ?>
