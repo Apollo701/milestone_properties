@@ -412,7 +412,7 @@ function display_formatted_details($result) {
 
             $img_name = $row["image1"];
             $img_path = 'http://sfsuswe.com/~f14g02/assets/images/' . $img_name;
-            echo '<img class="img-responsive" src=" ' . $img_path . '" ' . '" /></a>
+            echo '<img class="img-responsive" src=" ' . $img_path . '" /></a>
 
                             <div class="clearfix visible-sm"></div>
 
