@@ -9,18 +9,19 @@
         <link href="//maxcdn.bootstrapcdn.com/bootstrap/3.3.0/css/bootstrap.min.css" rel="stylesheet">
         <link href="//maxcdn.bootstrapcdn.com/font-awesome/4.2.0/css/font-awesome.min.css" rel="stylesheet">
         <link href='http://fonts.googleapis.com/css?family=Crimson+Text' rel='stylesheet' type='text/css'>
+        <link rel="stylesheet" type="text/css" href="css/custom.css">
         <title>Milestone Properties</title>
         <style>
+            .bgc-fff{
+                    background-color: #f8f8f8!important;
 
+            }
         #index{
             padding-top:50px;
             background: url('assets/images/bg08.jpg');
             height: 600px;
             border-radius: 10px;
 /*            width: 73%;*/
-        }
-        .navbar-form{
-            visibility: hidden;
         }
         .row{
             padding: 1%;
@@ -43,6 +44,12 @@
             border-radius: 10px; 
             box-shadow: 1px 7px 36px -5px
         }
+                    .bottom-container{
+                margin-bottom: 40px;
+                padding: 2%;
+                
+                border-radius: 10px; 
+            }
 
         </style>
     </head>
@@ -87,6 +94,68 @@
                 <div class="col-sm-3"></div>
             </div> 
             </div>
+
+            <div class="container-full bottom-container">
+        <div class="container container-pad" id="property-listings">
+            <div class="row">
+              <div class="col-md-12">
+                <h1 class="text-center">Milestone Property Featured Homes</h1>
+                <br>
+                <br>
+              </div>
+            </div>
+            
+            <div class="row">
+                <div class="col-sm-6">
+                    <?php
+        $connection = connect_to_mysql();
+        $results = featured_properties($connection);
+        display_formatted_results($results);
+        close_mysql_connection($connection);
+        ?>
+                
+            </div>
+                <div class="col-sm-6">  
+
+                    <!-- Begin Listing: 1220-32 N HOWARD ST-->
+                    <div class="brdr bgc-fff pad-10 box-shad btm-mrg-20 property-listing">
+                        <div class="media">
+                            <a class="pull-left" href="#" target="_parent">
+                            <img alt="image" class="img-responsive" src="http://images.prd.mris.com/image/V2/1/vGoNjc2jHGb87GlnnDQlf6LxeOUgIOn0bL6Wvn1nEnig2Ntq6W7xN5cOQBZZeNxl9O42DOkHUw0LNnj1ZB2KHA.jpg"></a>
+
+                            <div class="clearfix visible-sm"></div>
+
+                            <div class="media-body fnt-smaller">
+                                <a href="#" target="_parent"></a>
+
+                                <h4 class="media-heading">
+                                  <a href="#" target="_parent">$1,500,000 <small class="pull-right">1220-32 N Howard St</small></a></h4>
+
+
+                                <ul class="list-inline mrg-0 btm-mrg-10 clr-535353">
+                                    <li>4,900 SqFt</li>
+
+                                    <li style="list-style: none">|</li>
+
+                                    <li>1 Beds</li>
+
+                                    <li style="list-style: none">|</li>
+
+                                    <li>1 Baths</li>
+                                </ul>
+
+                                <p class="hidden-xs">A once in a lifetime
+                                opportunity to own a unique live / work space
+                                in one of philadelphia's most popular
+                                neighborhoods. ...</p><span class="fnt-smaller fnt-lighter fnt-arial">Courtesy of ll Banker Preferred-Philadelphia</span>
+                            </div>
+                        </div>
+                    </div><!-- End Listing-->
+                </div>
+                </div>
+        </div>
+            </div>
+               
         <script src="//ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
         <script src="//maxcdn.bootstrapcdn.com/bootstrap/3.3.0/js/bootstrap.min.js"></script>
     </body>  
