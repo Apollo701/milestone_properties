@@ -292,7 +292,11 @@ function featured_properties($connection) {
     return $result = mysqli_query($connection, $query);
 }
 
-function sec_session_start() {
+/*
+ * @param string $email email of the user currently logged in
+ */
+// starts a cookie session to remember logged in user
+function sec_session_start($email) {
     $session_name = 'sec_session_id';   // Set a custom session name
     $secure = SECURE;
     // This stops JavaScript being able to access the session id.
@@ -303,9 +307,16 @@ function sec_session_start() {
     // Sets the session name to the one set above.
     session_name($session_name);
     session_start();            // Start the PHP session 
+    $_SESSION['email'] = $email;
+    $_SESSION['loggedIn'] = 1;
     session_regenerate_id();    // regenerated the session, delete the old one. 
 }
 
+/*
+ * @var string $email email of the user, with input sanitized
+ * @var string $password password of the user, with input sanitized
+ */
+//checks if login information is correct, if it is, redirect to the user's profile page
 function check_login() {
 
     $email = filter_var($_POST["email"], FILTER_SANITIZE_EMAIL);
@@ -319,14 +330,14 @@ function check_login() {
     } else if (!password_verify($password, $row["password"])) {
         echo "Wrong email/password combination.";
     } else {
-        sec_session_start();
+        sec_session_start($email);
         header("Location: profile_user.php");
     }
 }
 /*
  * @param mysql_result $result listing results to display 
- * @var string img_name name of image file to be displayed
- * @var string img_path path of image to be displayed
+ * @var string $img_name name of image file to be displayed
+ * @var string $img_path path of image to be displayed
  * @var array $row
  */
 //funtion displays public information about listing results passed in to it
