@@ -320,6 +320,7 @@ function sec_session_start($email) {
 function check_login() {
 
     $email = filter_var($_POST["email"], FILTER_SANITIZE_EMAIL);
+    
     $password = filter_var($_POST["password"], FILTER_SANITIZE_URL);
 
     $connection = connect_to_mysql();
@@ -334,6 +335,55 @@ function check_login() {
         header("Location: profile_user.php");
     }
 }
+
+/*
+ * @var string $email email of the user, with input sanitized
+ * @var string $password password of the user, with input sanitized
+ */
+//checks if login information is correct, if it is, redirect to the user's profile page
+function check_signup() {
+    $original_email = trim($_POST["InputEmail"]);
+    $clean_email = filter_var($original_email, FILTER_SANITIZE_EMAIL);
+    
+    // if email has special characters or doesn't have right format, exit
+    if ($original_email != $clean_email || filter_var($original_email,FILTER_VALIDATE_EMAIL)) {
+        echo "Email not valid";
+        exit();
+    }
+    
+    // if password contains special characters, exit
+    if(filter_var($_POST["InputPW1"], FILTER_VALIDATE_REGEXP, "^[a-zA-Z0-9_]*$")) {
+        echo "Password is not valid (only letters and numbers allowed)";
+        exit();
+    }
+    
+    //if passwords do not match, exit
+    if($_POST["InputPW1"] != $_POST["InputPW1"]) {
+        echo "Passwords do not match";
+        exit();
+    }
+    
+    // if first name contains any non-letter characters, exit
+    if(filter_var($_POST["InputFirstName"], FILTER_VALIDATE_REGEXP, "^[a-zA-Z]*$")) {
+        echo "First name not valid (only letters allowed)";
+        exit();
+    }
+    
+    // if last name contains any non-letter characters, exit
+    if(filter_var($_POST["InputLastName"], FILTER_VALIDATE_REGEXP, "^[a-zA-Z]*$")) {
+        echo "Last name not valid (only letters allowed)";
+        exit();
+    }
+     
+    // if email is already registered, exit
+    $connection = connect_to_mysql();
+    $row = mysqli_query($connection, "SELECT FROM USERS WHERE EMAIL == " . $original_email);
+    if($row->num_rows!=0) {
+        echo "Email already registered";
+        exit();
+    }
+}
+
 /*
  * @param mysql_result $result listing results to display 
  * @var string $img_name name of image file to be displayed
