@@ -50,11 +50,11 @@
                 <div class="col-sm-3">
                 <ol class="breadcrumb text-left">
                         <li><a href="index.php">Home</a></li>
-                        <li class="active">Listings: <?php echo $_POST["usersearch"];?></li>
+                        <li class="active">Listings: <?php if(!(isset($_POST["usersearch"]))){echo '';}else{echo $_POST["usersearch"];} ?></li>
                     </ol>
                 </div>
                 <div class="col-sm-6 text-center">
-                    <h2>Showing <?php echo number_of_listings($results); ?> Results for:<br> <?php echo '"' . $_POST["usersearch"]. '"'; ?> </h2>
+                    <h2>Showing <?php echo number_of_listings($results); ?> Results for:<br> <?php echo '"'; if(!(isset($_POST["usersearch"]))){echo '';}else{echo $_POST["usersearch"];} echo '"'; ?> </h2>
                 </div>
             </div>
            <div class="row">

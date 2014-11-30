@@ -11,7 +11,8 @@
         <style>
             body {
                 padding-top: 50px; 
-                padding-bottom: 90px;
+                //padding-bottom: 90px;
+                //margin-bottom: 40px;
                 height: 100%;
             }
 
@@ -21,6 +22,7 @@
             .img-circle{
                 height: 30%;
             }
+
         </style>
     </head>
     <body>
@@ -84,6 +86,8 @@
                     <p>Description</p>
                 </div>
             </div>
+        </div>
+        <br><br><br><br><br>
 
 
 
