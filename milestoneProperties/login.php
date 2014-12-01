@@ -71,6 +71,9 @@
                   </div>
                 </div>
               </form>
+            <div class="input-group input-group-sm col-sm-offset-4 col-sm-4">
+                <a href="login_forgot.php">Forgot Your Password?</a>
+            </div> <br>
         </div> 
     </body>
 </html>
