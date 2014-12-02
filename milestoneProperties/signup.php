@@ -18,7 +18,7 @@
             .navbar-brand{
             font-family: 'Crimson Text', serif;
             }
-            body{padding-top:0%;}
+            body{padding-bottom:8%;}
             .top-container{
                 margin-top: 80px;
 /*                background-color:#e5e5e5;*/
@@ -42,6 +42,7 @@
                 <h1>Account Creation</h1>
             </div>
             <form action="new_user_created.php" method="post" enctype="multipart/form-data" role="form">
+                <!User Login Information>
                 <div class="form-group">
                     <div class="input-group input-group-sm col-sm-offset-4 col-sm-4">
                         <label for="InputEmail">Email</label>
@@ -60,6 +61,9 @@
                         <input type="password" name="password" class="form-control" id="InputPW2" placeholder="Re-Enter Password">
                     </div>
                 </div>
+                
+                <!Contact Information>
+                <div class="container text-center"><h4>Contact Information</h4></div>
                 <div class="form-group">
                     <div class="input-group input-group-sm col-sm-offset-4 col-sm-4">
                         <label for="InputFirstName">First Name</label>
@@ -70,6 +74,34 @@
                     <div class="input-group input-group-sm col-sm-offset-4 col-sm-4">
                         <label for="InputLastName">Last Name</label>
                         <input type="lastname" name="last_name" class="form-control" id="InputLastName" placeholder="Last Name">
+                    </div>
+                </div>
+                <div class="form-group">
+                    <div class="input-group input-group-sm col-sm-offset-4 col-sm-4">
+                        <label for="InputPhone">Phone #</label>
+                        <input type="phone" name="phone" class="form-control" id="InputPhone" placeholder="(###)###-####">
+                    </div>
+                </div>
+                <div class="form-group">
+                    <div class="input-group input-group-sm col-sm-offset-4 col-sm-4">
+                        <label for="InputAddress">Last Name</label>
+                        <input type="Address" name="Address" class="form-control" id="InputAddress" placeholder="42 Wallaby Way">
+                    </div>
+                </div>
+                <div class="form-group">
+                    <div class="input-group input-group-sm col-sm-offset-4 col-sm-4">
+                        <label for="InputCity">City</label>
+                        <input type="City" name="City" class="form-control" id="InputCity" placeholder="City">
+                    </div>
+                </div><div class="form-group">
+                    <div class="input-group input-group-sm col-sm-offset-4 col-sm-4">
+                        <label for="InputState">State</label>
+                        <input type="State" name="State" class="form-control" id="InputState" placeholder="State">
+                    </div>
+                </div><div class="form-group">
+                    <div class="input-group input-group-sm col-sm-offset-4 col-sm-4">
+                        <label for="InputZip">Zip Code</label>
+                        <input type="Zip" name="Zip" class="form-control" id="InputZip" placeholder="Zip Code">
                     </div>
                 </div>
                 <div class="form-group">
