@@ -84,24 +84,24 @@
                 </div>
                 <div class="form-group">
                     <div class="input-group input-group-sm col-sm-offset-4 col-sm-4">
-                        <label for="InputAddress">Last Name</label>
-                        <input type="Address" name="Address" class="form-control" id="InputAddress" placeholder="42 Wallaby Way">
+                        <label for="InputAddress">Address</label>
+                        <input type="address" name="address" class="form-control" id="InputAddress" placeholder="42 Wallaby Way">
                     </div>
                 </div>
                 <div class="form-group">
                     <div class="input-group input-group-sm col-sm-offset-4 col-sm-4">
                         <label for="InputCity">City</label>
-                        <input type="City" name="City" class="form-control" id="InputCity" placeholder="City">
+                        <input type="city" name="city" class="form-control" id="InputCity" placeholder="City">
                     </div>
                 </div><div class="form-group">
                     <div class="input-group input-group-sm col-sm-offset-4 col-sm-4">
                         <label for="InputState">State</label>
-                        <input type="State" name="State" class="form-control" id="InputState" placeholder="State">
+                        <input type="state" name="state" class="form-control" id="InputState" placeholder="State">
                     </div>
                 </div><div class="form-group">
                     <div class="input-group input-group-sm col-sm-offset-4 col-sm-4">
                         <label for="InputZip">Zip Code</label>
-                        <input type="Zip" name="Zip" class="form-control" id="InputZip" placeholder="Zip Code">
+                        <input type="zip" name="zip" class="form-control" id="InputZip" placeholder="Zip Code">
                     </div>
                 </div>
                 <div class="form-group">

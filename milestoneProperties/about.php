@@ -11,8 +11,8 @@
         <style>
             body {
                 padding-top: 50px; 
-                //padding-bottom: 90px;
-                //margin-bottom: 40px;
+                padding-bottom: 90px;
+                margin-bottom: 40px;
                 height: 100%;
             }
 
