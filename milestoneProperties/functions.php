@@ -397,6 +397,8 @@ function create_user() {
     // hashes the password to store it safely in the DB
     $password = password_hash($_POST["InputPW1"], PASSWORD_DEFAULT);
     
+    $connection = connect_to_mysql();
+    
     // query to create a new user in the DB
     $query = "INSERT INTO USERS (email,password,zip_code,phone_number,first_name,last_name)";
     $query .="VALUES( ";
@@ -406,7 +408,12 @@ function create_user() {
     $query .= "'{$_POST["InputPhone"]}',";
     $query .= "'{$_POST["InputFirstName"]}',";
     $query .= "'{$_POST["InputLastName"]}')";
-    $result = mysqli_query($connection, $query);
+    
+    if(mysqli_query($connection, $query) == FALSE) {
+        echo "Failed to create user";
+    }
+    
+    close_mysql_connection($connection);
 }
 
 /*
