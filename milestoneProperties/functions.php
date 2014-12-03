@@ -66,6 +66,56 @@ function milestone_search($connection) {
 }
 /*
  * @param mysqli_result $connection connection to msql database
+ * @global array $_POST array with user search request and filter arguments
+ * @var string nameErr error message
+ * @return mysqli_result $result
+ * @var string $query query to mysql database
+ */
+//searches the database for listings with filters
+function milestone_search_with_filters($connection) {
+    if (empty($_POST["usersearch"])) {
+        $nameErr = "Name is required";
+        return $result = "";
+    } else {
+        $query = "SELECT * ";
+        $query .="FROM listings ";
+        $query .="WHERE (city =";
+        $query .= "'{$_POST["usersearch"]}'";
+        $query .= " OR us_state =";
+        $query .= "'{$_POST["usersearch"]}'";
+        $query .= " OR zip_code =";
+        $query .= "'{$_POST["usersearch"]}'";
+        $query .= " OR address =";
+        $query .= "'{$_POST["usersearch"]}')";
+        if (!empty($_POST["bedroom"])) {
+            $query .= " AND num_bedrooms =";
+            $query .= "{$_POST["bedroom"]}";
+        }
+        if (!empty($_POST["min_walkscore"])) {
+            $query .= " AND walkscore >=";
+            $query .= "{$_POST["min_walkscore"]}"; //form must be converted to int, "+%d" is a string
+        }
+        if (!empty($_POST["bathroom"])) {
+            $query .= " AND num_bathrooms =";
+            $query .= "{$_POST["bathroom"]}";
+        }
+        if (!empty($_POST["min_sq_ft"])) {
+            $query .= " AND sq_ft >=";
+            $query .= "{$_POST["min_sq_ft"]}"; //form must be converted to int, 
+        }
+        if (!empty($_POST["minprice"])) {
+            $query .= " AND price >=";
+            $query .= "{$_POST["minprice"]}";
+        }
+        if (!empty($_POST["maxprice"])) {
+            $query .= " AND price <=";
+            $query .= "{$_POST["maxprice"]}";
+        }
+        return $result = mysqli_query($connection, $query);
+    }
+}
+/*
+ * @param mysqli_result $connection connection to msql database
  * @global array $_POST array with user search request
  * @var string nameErr error message
  * @return mysqli_result $result
@@ -288,7 +338,7 @@ function run_scripts_head() {
  * @var string $query input for sql database
  * @return mysql_result $result featured listing from database
  */
-//finds and returns a featured property from database
+//finds and returns a featured(random) property from database
 function featured_properties($connection) {
     $query = "SELECT * ";
     $query .="FROM listings ";
