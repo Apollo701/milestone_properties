@@ -79,7 +79,7 @@
                 <div class="form-group">
                     <div class="input-group input-group-sm col-sm-offset-4 col-sm-4">
                         <label for="InputPhone">Phone #</label>
-                        <input type="phone" name="phone" class="form-control" id="InputPhone" placeholder="(###)###-####">
+                        <input type="phone" name="phone" class="form-control" id="InputPhone" placeholder="###-###-####">
                     </div>
                 </div>
                 <div class="form-group">
@@ -116,3 +116,16 @@
         </div> 
     </body>
 </html>
+
+
+<?php 
+    function check_empty ($var){
+        // returns NULL if blank form
+        if ($var == 0)
+            $var = NULL;
+        return $var;
+    } 
+    function check_require (){
+        // code to check required fields (input_user)?
+    }
+?>
