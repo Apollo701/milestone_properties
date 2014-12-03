@@ -342,10 +342,8 @@ function check_login() {
 }
 
 /*
- * @var string $email email of the user, with input sanitized
- * @var string $password password of the user, with input sanitized
  */
-//checks if login information is correct, if it is, redirect to the user's profile page
+//checks if signup information is correct, and that the user doesn't already exist
 function check_signup() {
     $original_email = trim($_POST["InputEmail"]);
     $clean_email = filter_var($original_email, FILTER_SANITIZE_EMAIL);
@@ -387,6 +385,28 @@ function check_signup() {
         echo "Email already registered";
         exit();
     }
+    
+    create_user();
+}
+
+/*
+ * @var string $password the password, hashed with default php algorithm
+ */
+// creates the user in the DB, with the already verified and sanitized information
+function create_user() {
+    // hashes the password to store it safely in the DB
+    $password = password_hash($_POST["InputPW1"], PASSWORD_DEFAULT);
+    
+    // query to create a new user in the DB
+    $query = "INSERT INTO USERS (email,password,zip_code,phone_number,first_name,last_name)";
+    $query .="VALUES( ";
+    $query .="'{$_POST["InputEmail"]}',";
+    $query .= "'{$password}',";
+    $query .= "'{$_POST["InputZip"]}',";
+    $query .= "'{$_POST["InputPhone"]}',";
+    $query .= "'{$_POST["InputFirstName"]}',";
+    $query .= "'{$_POST["InputLastName"]}')";
+    $result = mysqli_query($connection, $query);
 }
 
 /*
