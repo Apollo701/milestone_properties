@@ -30,6 +30,7 @@
                 border-radius: 10px; 
                 box-shadow: 1px 7px 36px -5px;
             }
+            .error {color: #FF0000;}
         </style>
     </head>
     <body>
@@ -68,6 +69,9 @@
                 <div class="form-group">
                   <div class="input-group input-group-sm col-sm-offset-4 col-sm-4">
                     <button type="submit" class="btn btn-default">Sign in</button>
+                    <span class="error">* <?php
+                    if($emptyFields) echo "Fields cannot be empty";
+                    else if($wrongCredentials) echo "Wrong email/password combination";?></span>
                   </div>
                 </div>
               </form>
@@ -77,3 +81,35 @@
         </div> 
     </body>
 </html>
+
+<?php
+
+if(empty($_POST)) {
+    $emptyFields=false;
+    $wrongCredentials = false;
+}
+
+/*
+ * @var string $email email of the user, with input sanitized
+ * @var string $password password of the user, with input sanitized
+ */
+//checks if login information is correct, if it is, redirect to the user's profile page
+function check_login() {
+
+    $email = filter_var($_POST["email"], FILTER_SANITIZE_EMAIL);
+    
+    $password = filter_var($_POST["password"], FILTER_SANITIZE_URL);
+
+    $connection = connect_to_mysql();
+    $row = mysqli_query($connection, "SELECT FROM USERS WHERE EMAIL == " . $email);
+
+    if (empty($_POST["email"]) || empty($_POST["password"])) {
+        $emptyFields = true;
+    } else if (!password_verify($password, $row["password"])) {
+        $wrongCredentials = true;
+    } else {
+        sec_session_start($email);
+        header("Location: profile_user.php");
+    }
+}
+?>

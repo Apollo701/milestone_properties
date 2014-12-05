@@ -128,4 +128,52 @@
     function check_require (){
         // code to check required fields (input_user)?
     }
+    
+    /*
+    */
+    //checks if signup information is correct, and that the user doesn't already exist
+    function check_signup() {
+        $original_email = trim($_POST["InputEmail"]);
+        $clean_email = filter_var($original_email, FILTER_SANITIZE_EMAIL);
+
+        // if email has special characters or doesn't have right format, exit
+        if ($original_email != $clean_email || filter_var($original_email,FILTER_VALIDATE_EMAIL)) {
+            echo "Email not valid";
+            exit();
+        }
+
+        // if password contains special characters, exit
+        if(filter_var($_POST["InputPW1"], FILTER_VALIDATE_REGEXP, "^[a-zA-Z0-9_]*$")) {
+            echo "Password is not valid (only letters and numbers allowed)";
+            exit();
+        }
+
+        //if passwords do not match, exit
+        if($_POST["InputPW1"] != $_POST["InputPW1"]) {
+            echo "Passwords do not match";
+            exit();
+        }
+
+        // if first name contains any non-letter characters, exit
+        if(filter_var($_POST["InputFirstName"], FILTER_VALIDATE_REGEXP, "^[a-zA-Z]*$")) {
+            echo "First name not valid (only letters allowed)";
+            exit();
+        }
+
+        // if last name contains any non-letter characters, exit
+        if(filter_var($_POST["InputLastName"], FILTER_VALIDATE_REGEXP, "^[a-zA-Z]*$")) {
+            echo "Last name not valid (only letters allowed)";
+            exit();
+        }
+
+        // if email is already registered, exit
+        $connection = connect_to_mysql();
+        $row = mysqli_query($connection, "SELECT FROM USERS WHERE EMAIL == " . $original_email);
+        if($row->num_rows!=0) {
+            echo "Email already registered";
+            exit();
+        }
+
+        create_user();
+    }
 ?>
