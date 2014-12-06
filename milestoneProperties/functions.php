@@ -408,8 +408,8 @@ function display_formatted_results($result) {
             echo '<div class="brdr bgc-fff pad-10 box-shad btm-mrg-20 property-listing" style="overflow:hidden;">
                         <div class="media">
                             <a class="pull-left" href="#" target="_parent">';
-            $rand_num = rand(1, 3);
-            $img_name = $row["image". $rand_num];
+            
+            $img_name = $row["image1"];
             $img_path = 'http://sfsuswe.com/~f14g02/assets/home_images/home' . $row["id"] . '/small/' . $img_name;
             echo '<img class="img-responsive" src="' . $img_path . '"/></a>
 

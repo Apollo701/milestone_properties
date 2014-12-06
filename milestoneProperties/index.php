@@ -209,9 +209,9 @@
                                 </div>
                             </div>
                         </div>
-<?php
-close_mysql_connection($connection);
-?>
+                        <?php
+                        close_mysql_connection($connection);
+                        ?>
 
                     </div>
                 </div>
