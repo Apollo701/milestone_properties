@@ -153,8 +153,8 @@ function display_search_results($result) {
             echo '</div>';
             echo '<div class="panel-body">';
             $img_name = $row["image1"];
-            $img_path = 'http://sfsuswe.com/~f14g02/assets/home_images/home' . $row["id"] . '/large/' . $img_name;
-            echo '<img src=" ' . $img_path . '" ' . 'style="width:250px;height:200px" />';
+            $img_path = 'http://sfsuswe.com/~f14g02/assets/home_images/home' . $row["id"] . '/small/' . $img_name;
+            echo '<img src=" ' . $img_path . '" />';
             echo '</div>';
             echo '</div>';
             echo '</div>';
@@ -410,7 +410,7 @@ function display_formatted_results($result) {
                             <a class="pull-left" href="#" target="_parent">';
 
             $img_name = $row["image1"];
-            $img_path = 'http://sfsuswe.com/~f14g02/assets/images/' . $img_name;
+            $img_path = 'http://sfsuswe.com/~f14g02/assets/home_images/home' . $row["id"] . '/small/' . $img_name;
             echo '<img class="img-responsive" src="' . $img_path . '"/></a>
 
                             <div class="clearfix visible-sm"></div>
@@ -486,7 +486,7 @@ function display_formatted_details($result) {
                             <a class="pull-left" href="#" target="_parent">';
 
             $img_name = $row["image1"];
-            $img_path = 'http://sfsuswe.com/~f14g02/assets/images/' . $img_name;
+            $img_path = 'http://sfsuswe.com/~f14g02/assets/home_images/home' . $row["id"] . "/small/" . $img_name;
             echo '<img class="img-responsive" src=" ' . $img_path . '" /></a>
 
                             <div class="clearfix visible-sm"></div>
