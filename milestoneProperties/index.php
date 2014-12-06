@@ -18,8 +18,8 @@
             }
         #index{
             padding-top:50px;
-            background: url('assets/images/bg08.jpg');
-            height: 600px;
+            background: url('assets/bg_images/bg2.jpg');
+            height: 455px;
             border-radius: 10px;
 /*            width: 73%;*/
         }
@@ -29,52 +29,31 @@
         .welcome{
             font-family: 'Crimson Text', serif;
             font-size: 50px;
+            color: white;
         }
         .welcome-paragraph{
             font-family: 'Crimson Text', serif;
             font-size: 30px;
+            color: white;
         }
         .navbar-brand{
             font-family: 'Crimson Text', serif;
 
         }
         .transbox{
-            background:rgba(0, 0, 0, 0.2);
+            background:rgba(0, 0, 0, .5);
             padding: 4%;
             border-radius: 10px; 
             box-shadow: 1px 7px 36px -5px
         }
                     .bottom-container{
-                margin-bottom: 40px;
-                padding: 2%;
-                
+                padding: 1%;
                 border-radius: 10px; 
             }
 
         </style>
     </head>
     <body>
-        
-<!--        <div class="container" id="index">
-            <div class="row">
-                <div class="col-sm-4"></div>
-                <div class="col-sm-5 text-center">
-                    <h1 class="welcome">Milestone Properties</h1>
-                    <h3 class="welcome-paragraph text-right">Find your dream home today</h3>
-                </div>
-                <div class="col-sm-3"></div>
-            </div>
-                    <div class="row">
-                        <div class="col-sm-6"></div>
-                    <form class="col-sm-4" action="listing.php" method="post">
-                        <div class="input-group input-group-md">
-                            <input name="usersearch" type="text" class="center-block form-control input-md" title="Enter search query" placeholder="Enter state, city, zip code, or address...">
-                            <span class="input-group-btn"><button class="btn btn-md btn-primary" type="submit">Search</button></span>
-                        </div>
-                    </form>
-                        <div class="col-sm-2"></div>
-                </div>
-            </div>-->
        
                 <div class="container" id="index">
                     <div class="row">
