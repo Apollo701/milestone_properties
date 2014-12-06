@@ -28,12 +28,12 @@
         }
         .welcome{
             font-family: 'Crimson Text', serif;
-            font-size: 50px;
+            font-size: 55px;
             color: white;
         }
         .welcome-paragraph{
             font-family: 'Crimson Text', serif;
-            font-size: 30px;
+            font-size: 35px;
             color: white;
         }
         .navbar-brand{
@@ -62,6 +62,7 @@
                     <div class="transbox">
                     <h1 class="welcome">Milestone Properties</h1>
                     <h3 class="welcome-paragraph text-center">Find your dream home today</h3>
+                    <br>
                     <form action="listing.php" method="post">
                         <div class="input-group input-group-md">
                             <input name="usersearch" type="text" class="center-block form-control input-md" title="Enter search query" placeholder="Enter state, city, or zip code...">
@@ -78,9 +79,9 @@
         <div class="container container-pad" id="property-listings">
             <div class="row">
               <div class="col-md-12">
-                <h1 class="text-center">Milestone Property Featured Homes</h1>
+                  <h1 class="text-center" style="font-size: 50px;font-family: 'Crimson Text', serif;">Milestone Property Featured Homes</h1>
                 <br>
-                <br>
+                
               </div>
             </div>
             
