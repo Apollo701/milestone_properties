@@ -1,4 +1,4 @@
-<?php include 'navbar.php';    ?>
+<?php include 'navbar.php'; ?>
 <?php include_once 'functions.php'; ?>
 <?php include 'footer.php'; ?>
 <!doctype html>
@@ -13,29 +13,29 @@
         <title>Home Details</title>
         <style>
             .brdr {
-    border: 1px solid #ededed;
-    height: 500px!important;
-}
+                border: 1px solid #ededed;
+                height: 500px!important;
+            }
             @media only screen and (min-width: 992px) {
-    #property-listings .property-listing img {
-        max-width: 600px;
-        margin-top:3%;
-        
-        
-   }
-}
-           .breadcrumb{
+                #property-listings .property-listing img {
+                    max-width: 600px;
+                    margin-top:3%;
+
+
+                }
+            }
+            .breadcrumb{
                 background: none;
                 text-align: left;
             }
             .navbar-brand{
-            font-family: 'Crimson Text', serif;
+                font-family: 'Crimson Text', serif;
             }
             .top-container{
                 margin-top: 70px;
-/*                background-color:#e5e5e5;*/
+                /*                background-color:#e5e5e5;*/
                 border-radius: 10px; 
-                
+
             }
             .transbox{
                 background:rgba(0, 0, 0, .07);
@@ -49,90 +49,92 @@
         </style>
     </head>
     <body>
-                                    <?php   $connection = connect_to_mysql();
-                                    $results = milestone_details($connection);
-                                    if ($results != "") {
-                                    $row = mysqli_fetch_array($results);
-                                    }else {
-                                        echo "<br><br><br><h2>Must enter valid input</h2>";
-                                        die();
-                                    }
-                            ?>
-        
-        
+        <?php
+        $connection = connect_to_mysql();
+        $results = milestone_details($connection);
+        if ($results != "") {
+            $row = mysqli_fetch_array($results);
+        } else {
+            echo "<br><br><br><h2>Must enter valid input</h2>";
+            die();
+        }
+        ?>
+
+
         <div class="container-full top-container" style="">
-        <div class="container container-pad transbox" id="property-listings">
-            <div class="row">
-              <div class="col-md-12">
-                <h1><?php echo "" . $row["address"] . ", " . $row["city"] . ", " . $row["us_state"] . " " . $row["zip_code"];?></h1>
-                <br>
-                <br>
-              </div>
-            </div>
-            
-            <div class="row ">
-                <div class="col-md-12">
-                  <div class="transbox brdr bgc-fff pad-10 box-shad btm-mrg-20 property-listing" style="overflow:hidden;">
-                        <div class="media center-block">
-                            <a class="pull-left" href="#" target="_parent">
+            <div class="container container-pad transbox" id="property-listings">
+                <div class="row">
+                    <div class="col-md-12">
+                        <h1><?php echo "" . $row["address"] . ", " . $row["city"] . ", " . $row["us_state"] . " " . $row["zip_code"]; ?></h1>
+                        <br>
+                        <br>
+                    </div>
+                </div>
 
-            <?php $img_name = $row["image1"]; ?>
-            <?php $img_path = 'http://sfsuswe.com/~f14g02/assets/home_images/home' . $row["id"] . "/small/" . $img_name;?>
-                <img class="img-responsive" src="<?php echo $img_path;?>" /></a>
+                <div class="row ">
+                    <div class="col-md-12">
+                        <div class="transbox brdr bgc-fff pad-10 box-shad btm-mrg-20 property-listing" style="overflow:hidden;">
+                            <div class="media center-block">
+                                <a class="pull-left" href="#" target="_parent">
 
-                            <div class="clearfix visible-sm"></div>
+                                    <?php $img_name = $row["image1"]; ?>
+                                    <?php $img_path = 'http://sfsuswe.com/~f14g02/assets/home_images/home' . $row["id"] . "/small/" . $img_name; ?>
+                                    <img class="img-responsive" src="<?php echo $img_path; ?>" /></a>
 
-                            <div class="media-body fnt-smaller">
-                                <a href="#" target="_parent"></a>
+                                <div class="clearfix visible-sm"></div>
 
-                                <h1 class="media-heading">
-                                  <a href="#" target="_parent">$<?php echo '' . number_format($row["price"]) . '';?></a></h1>
-                                     <p><small class="pull-right"><?php echo '' . $row["city"] . ", " . $row["us_state"] . ", " . $row["zip_code"];?></small></p>
+                                <div class="media-body fnt-smaller">
+                                    <a href="#" target="_parent"></a>
 
-                                <br>
-                                <ul class="list-inline mrg-0 btm-mrg-10 clr-535353 pull-right">
-                                    <li><?php echo '' . $row["sq_ft"] . '';?> SqFt</li>
+                                    <h1 class="media-heading">
+                                        <a href="#" target="_parent">$<?php echo '' . number_format($row["price"]) . ''; ?></a></h1>
+                                    <p><small class="pull-right"><?php echo '' . $row["city"] . ", " . $row["us_state"] . ", " . $row["zip_code"]; ?></small></p>
 
-                                    <li style="list-style: none">|</li>
+                                    <br>
+                                    <ul class="list-inline mrg-0 btm-mrg-10 clr-535353 pull-right">
+                                        <li><?php echo '' . $row["sq_ft"] . ''; ?> SqFt</li>
 
-                                    <li><?php echo '' . $row["num_bedrooms"] . '';?> Beds</li>
+                                        <li style="list-style: none">|</li>
 
-                                    <li style="list-style: none">|</li>
+                                        <li><?php echo '' . $row["num_bedrooms"] . ''; ?> Beds</li>
 
-                                    <li><?php echo '' . $row["num_bathrooms"] . '';?> Baths</li>
-                                </ul>
-                                <br><br>
-                                <p class="hidden-xs"><?php echo '' . $row["description"] . '';?></p>
+                                        <li style="list-style: none">|</li>
+
+                                        <li><?php echo '' . $row["num_bathrooms"] . ''; ?> Baths</li>
+                                    </ul>
+                                    <br><br>
+                                    <p class="hidden-xs"><?php echo '' . $row["description"] . ''; ?></p>
                                     <div class="btn-toolbar pull-right">
-                                    <form action="home_details.php" method="post">
-                                    <button type="button" class="btn btn-default btn-sm">
-                                <span class="glyphicon glyphicon-star" aria-hidden="true"></span> Star
-                                    </button>
-                                    <button name="details" type="submit" value="<?php echo '' . $row[0] . '';?>" class="btn btn-success btn-sm">Contact A Realtor</button>
-                                    
-                                    </form>
-                                    
+                                        <form action="home_details.php" method="post">
+                                            <button type="button" class="btn btn-default btn-sm">
+                                                <span class="glyphicon glyphicon-star" aria-hidden="true"></span> Star
+                                            </button>
+                                            <button name="details" type="submit" value="<?php echo '' . $row[0] . ''; ?>" class="btn btn-success btn-sm">Contact A Realtor</button>
+
+                                        </form>
+
                                     </div>
                                     <br>
                                     <span class="fnt-smaller fnt-lighter fnt-arial">Milestone Properties&copy</span>
+                                </div>
                             </div>
                         </div>
                     </div>
-                                </div>
-        </div>
+                </div>
             </div>
         </div>
-        
-        
-        
-                <?php // display_formatted_details($results);
-                    close_mysql_connection($connection);
-                ?>
 
-        
-          
-           
-                          <script src="//ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
-                <script src="//maxcdn.bootstrapcdn.com/bootstrap/3.3.0/js/bootstrap.min.js"></script>
+
+
+        <?php
+        // display_formatted_details($results);
+        close_mysql_connection($connection);
+        ?>
+
+
+
+
+        <script src="//ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
+        <script src="//maxcdn.bootstrapcdn.com/bootstrap/3.3.0/js/bootstrap.min.js"></script>
     </body>
 </html>
