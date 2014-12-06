@@ -153,7 +153,7 @@ function display_search_results($result) {
             echo '</div>';
             echo '<div class="panel-body">';
             $img_name = $row["image1"];
-            $img_path = 'http://sfsuswe.com/~f14g02/assets/images/' . $img_name;
+            $img_path = 'http://sfsuswe.com/~f14g02/assets/home_images/home' . $row["id"] . '/large/' . $img_name;
             echo '<img src=" ' . $img_path . '" ' . 'style="width:250px;height:200px" />';
             echo '</div>';
             echo '</div>';
