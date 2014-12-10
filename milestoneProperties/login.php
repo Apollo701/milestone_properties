@@ -1,6 +1,6 @@
 <?php include 'navbar.php';
       include_once 'functions.php';
-      include 'footer.php';
+      //include 'footer.php';
       include 'password.php' ?>
 
 <html lang="en">
@@ -38,11 +38,14 @@
         <?php run_scripts_body();
             static $emptyFields;
             static $wrongCredentials;
+            static $emailNotValid;
+            
             if($_SERVER["REQUEST_METHOD"] == "POST") {
                 check_login();
             }
             else {
                 $emptyFields = false;
+                $emailNotValid = false;
                 $wrongCredentials = false;
             }
         ?>
@@ -55,13 +58,13 @@
                 <div class="form-group">
                     <div class="input-group input-group-sm col-sm-offset-4 col-sm-4">
                         <label for="InputEmail">Email</label>
-                        <input type="email" class="form-control" name="InputEmail" placeholder="Enter Email">
+                        <input type="email" class="form-control" name="InputEmail" placeholder="Enter Email" value="<?php echo isset($_POST['InputEmail']) ? $_POST['InputEmail'] : '' ?>">
                     </div>
                 </div>
                 <div class="form-group">
                     <div class="input-group input-group-sm col-sm-offset-4 col-sm-4">
                         <label for="InputPW1">Password</label>
-                        <input type="password" class="form-control" name="InputPW1" placeholder="Create Password">
+                        <input type="password" class="form-control" name="InputPW1" placeholder="Create Password" value="<?php echo isset($_POST['InputPW1']) ? $_POST['InputPW1'] : '' ?>">
                     </div>
                 </div>
                 <div class="form-group">
@@ -102,16 +105,27 @@
 
         $email = filter_var($_POST["InputEmail"], FILTER_SANITIZE_EMAIL);
 
-        $password = filter_var($_POST["InputPW1"], FILTER_SANITIZE_URL);
-
         $connection = connect_to_mysql();
-        $row = mysqli_query($connection, "SELECT FROM USERS WHERE EMAIL == " . $email);
+        $query = "SELECT * FROM users WHERE email = '" . $email . "'";
+        echo $query . "\n";
+        $result = mysqli_query($connection, $query);
+        $row = mysqli_fetch_array($result);
 
         if ($_POST["InputEmail"] == "" || $_POST["InputPW1"] == "") {
             $GLOBALS['emptyFields'] = true;
-        } else if (!password_verify($password, $row["password"])) {
+        } 
+        
+        else if($_POST["InputEmail"] != $email) {
+            $GLOBALS['emailNotValid'] = true;
+        }
+        
+        else if (!password_verify($_POST["InputPW1"], $row["password"])) {
+            echo "Hash:" . password_hash($_POST["InputPW1"], PASSWORD_DEFAULT) . "\n";
+            echo "Row pass: " . $row["password"];
             $GLOBALS['wrongCredentials'] = true;
-        } else {
+        } 
+        
+        else {
             sec_session_start($email);
             header("Location: profile_user.php");
         }
@@ -120,6 +134,10 @@
     function display_errors() {
         if($GLOBALS['emptyFields']) {
             echo "Fields cannot be empty";
+        }
+        
+        else if($GLOBALS['emailNotValid']) {
+            echo "Email is not valid";
         }
 
         else if($GLOBALS['wrongCredentials']) {

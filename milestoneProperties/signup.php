@@ -75,7 +75,7 @@
                         if($GLOBALS['emailNotValid']) {echo "Email not valid";}
                         else if($GLOBALS['emailRegistered']) {echo "Email already registered";}
                         ?></span>
-                        <input type="email" class="form-control" name="InputEmail" placeholder="Enter Email"value="<?php echo isset($_POST['InputEmail']) ? $_POST['InputEmail'] : '' ?>">
+                        <input type="email" class="form-control" name="InputEmail" placeholder="Enter Email" value="<?php echo isset($_POST['InputEmail']) ? $_POST['InputEmail'] : '' ?>">
                     </div>
                 </div>
                 <div class="form-group">
@@ -84,7 +84,7 @@
                         <span class="error"><?php
                         if($GLOBALS['passwordNotValid']) {echo "Password is not valid (only letters and numbers allowed)";}
                         ?></span>
-                        <input type="password" class="form-control" name="InputPW1" placeholder="Create Password"value="<?php echo isset($_POST['InputPW1']) ? $_POST['InputPW1'] : '' ?>">
+                        <input type="password" class="form-control" name="InputPW1" placeholder="Create Password" value="<?php echo isset($_POST['InputPW1']) ? $_POST['InputPW1'] : '' ?>">
                     </div>
                 </div>
                 <div class="form-group">
@@ -93,7 +93,7 @@
                         <span class="error"><?php
                         if($GLOBALS['passwordNotMatch']) {echo "Passwords do not match";}
                         ?></span>
-                        <input type="password" class="form-control" name="InputPW2" placeholder="Re-Enter Password"value="<?php echo isset($_POST['InputPW2']) ? $_POST['InputPW2'] : '' ?>">
+                        <input type="password" class="form-control" name="InputPW2" placeholder="Re-Enter Password" value="<?php echo isset($_POST['InputPW2']) ? $_POST['InputPW2'] : '' ?>">
                     </div>
                 </div>
                 
@@ -105,7 +105,7 @@
                         <span class="error"><?php
                         if($GLOBALS['firstNameNotValid']) {echo "First name not valid (only letters allowed)";}
                         ?></span>
-                        <input type="firstname" class="form-control" name="InputFirstName" placeholder="First Name"value="<?php echo isset($_POST['InputFirstName']) ? $_POST['InputFirstName'] : '' ?>">
+                        <input type="firstname" class="form-control" name="InputFirstName" placeholder="First Name" value="<?php echo isset($_POST['InputFirstName']) ? $_POST['InputFirstName'] : '' ?>">
                     </div>
                 </div>
                 <div class="form-group">
@@ -114,7 +114,7 @@
                         <span class="error"><?php
                         if($GLOBALS['lastNameNotValid']) {echo "Last name not valid (only letters allowed)";}
                         ?></span>
-                        <input type="lastname" class="form-control" name="InputLastName" placeholder="Last Name"value="<?php echo isset($_POST['InputLastName']) ? $_POST['InputLastName'] : '' ?>">
+                        <input type="lastname" class="form-control" name="InputLastName" placeholder="Last Name" value="<?php echo isset($_POST['InputLastName']) ? $_POST['InputLastName'] : '' ?>">
                     </div>
                 </div>
                 <div class="form-group">
@@ -123,7 +123,7 @@
                         <span class="error"><?php
                         if($GLOBALS['phoneNumberNotValid']) {echo "Phone number not valid";}
                         ?></span>
-                        <input type="phone" class="form-control" name="InputPhone" placeholder="###-###-####"value="<?php echo isset($_POST['InputPhone']) ? $_POST['InputPhone'] : '' ?>">
+                        <input type="phone" class="form-control" name="InputPhone" placeholder="###-###-####" value="<?php echo isset($_POST['InputPhone']) ? $_POST['InputPhone'] : '' ?>">
                     </div>
                 </div>
                 <div class="form-group">
@@ -132,7 +132,7 @@
                         <span class="error"><?php
                         if($GLOBALS['zipCodeNotValid']) {echo "Zip code not valid (5 digits)";}
                         ?></span>
-                        <input type="zip" class="form-control" name="InputZip" placeholder="#####"value="<?php echo isset($_POST['InputZip']) ? $_POST['InputZip'] : '' ?>">
+                        <input type="zip" class="form-control" name="InputZip" placeholder="#####" value="<?php echo isset($_POST['InputZip']) ? $_POST['InputZip'] : '' ?>">
                     </div>
                 </div>
                 <div class="form-group">
