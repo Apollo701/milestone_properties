@@ -1,6 +1,6 @@
 <?php include 'navbar.php';
       include_once 'functions.php';
-      include 'footer.php';
+     // include 'footer.php';
       include 'password.php' ?>
 
 <html lang="en">
@@ -56,7 +56,7 @@
             $firstNameNotValid      = false;
             $lastNameNotValid       = false;
             $phoneNumberNotValid    = false;
-            $zipCodeNotValid     = false;
+            $zipCodeNotValid        = false;
             $emailRegistered        = false;
         }
         
@@ -66,7 +66,7 @@
             <div class="container text-center">
                 <h1>Account Creation</h1>
             </div>
-            <form action="new_user_created.php" method="post" enctype="multipart/form-data" role="form">
+            <form method="post" enctype="multipart/form-data" role="form">
                 <!User Login Information>
                 <div class="form-group">
                     <div class="input-group input-group-sm col-sm-offset-4 col-sm-4">
@@ -75,7 +75,7 @@
                         if($GLOBALS['emailNotValid']) {echo "Email not valid";}
                         else if($GLOBALS['emailRegistered']) {echo "Email already registered";}
                         ?></span>
-                        <input type="email" name="email" class="form-control" id="InputEmail" placeholder="Enter Email">
+                        <input type="email" class="form-control" name="InputEmail" placeholder="Enter Email"value="<?php echo isset($_POST['InputEmail']) ? $_POST['InputEmail'] : '' ?>">
                     </div>
                 </div>
                 <div class="form-group">
@@ -84,7 +84,7 @@
                         <span class="error"><?php
                         if($GLOBALS['passwordNotValid']) {echo "Password is not valid (only letters and numbers allowed)";}
                         ?></span>
-                        <input type="password" class="form-control" id="InputPW1" placeholder="Create Password">
+                        <input type="password" class="form-control" name="InputPW1" placeholder="Create Password"value="<?php echo isset($_POST['InputPW1']) ? $_POST['InputPW1'] : '' ?>">
                     </div>
                 </div>
                 <div class="form-group">
@@ -93,7 +93,7 @@
                         <span class="error"><?php
                         if($GLOBALS['passwordNotMatch']) {echo "Passwords do not match";}
                         ?></span>
-                        <input type="password" name="password" class="form-control" id="InputPW2" placeholder="Re-Enter Password">
+                        <input type="password" class="form-control" name="InputPW2" placeholder="Re-Enter Password"value="<?php echo isset($_POST['InputPW2']) ? $_POST['InputPW2'] : '' ?>">
                     </div>
                 </div>
                 
@@ -105,7 +105,7 @@
                         <span class="error"><?php
                         if($GLOBALS['firstNameNotValid']) {echo "First name not valid (only letters allowed)";}
                         ?></span>
-                        <input type="firstname" name="first_name" class="form-control" id="InputFirstName" placeholder="First Name">
+                        <input type="firstname" class="form-control" name="InputFirstName" placeholder="First Name"value="<?php echo isset($_POST['InputFirstName']) ? $_POST['InputFirstName'] : '' ?>">
                     </div>
                 </div>
                 <div class="form-group">
@@ -114,7 +114,7 @@
                         <span class="error"><?php
                         if($GLOBALS['lastNameNotValid']) {echo "Last name not valid (only letters allowed)";}
                         ?></span>
-                        <input type="lastname" name="last_name" class="form-control" id="InputLastName" placeholder="Last Name">
+                        <input type="lastname" class="form-control" name="InputLastName" placeholder="Last Name"value="<?php echo isset($_POST['InputLastName']) ? $_POST['InputLastName'] : '' ?>">
                     </div>
                 </div>
                 <div class="form-group">
@@ -123,7 +123,7 @@
                         <span class="error"><?php
                         if($GLOBALS['phoneNumberNotValid']) {echo "Phone number not valid";}
                         ?></span>
-                        <input type="phone" name="phone" class="form-control" id="InputPhone" placeholder="###-###-####">
+                        <input type="phone" class="form-control" name="InputPhone" placeholder="###-###-####"value="<?php echo isset($_POST['InputPhone']) ? $_POST['InputPhone'] : '' ?>">
                     </div>
                 </div>
                 <div class="form-group">
@@ -132,7 +132,7 @@
                         <span class="error"><?php
                         if($GLOBALS['zipCodeNotValid']) {echo "Zip code not valid (5 digits)";}
                         ?></span>
-                        <input type="zip" name="zip" class="form-control" id="InputZip" placeholder="#####">
+                        <input type="zip" class="form-control" name="InputZip" placeholder="#####"value="<?php echo isset($_POST['InputZip']) ? $_POST['InputZip'] : '' ?>">
                     </div>
                 </div>
                 <div class="form-group">
@@ -149,74 +149,74 @@
 </html>
 
 
-<?php 
-    function check_empty ($var){
-        // returns NULL if blank form
-        if ($var == 0)
-            $var = NULL;
-        return $var;
-    } 
-    function check_require (){
-        // code to check required fields (input_user)?
-    }
-    
+<?php
     /*
     */
     //checks if signup information is correct, and that the user doesn't already exist
     function check_signup() {
         $original_email = trim($_POST["InputEmail"]);
         $clean_email = filter_var($original_email, FILTER_SANITIZE_EMAIL);
+        
+        $fail = false;
 
         // if email has special characters or doesn't have right format, exit
-        if ($original_email != $clean_email || filter_var($original_email,FILTER_VALIDATE_EMAIL)) {
+        if ($original_email != $clean_email || !filter_var($original_email,FILTER_VALIDATE_EMAIL)) {
             $GLOBALS['emailNotValid'] = true;
-            exit();
+            $fail = true;
         }
 
         // if password contains special characters, exit
-        if(filter_var($_POST["InputPW1"], FILTER_VALIDATE_REGEXP, "^[a-zA-Z0-9_]*$")) {
+        if(!filter_var($_POST["InputPW1"], FILTER_VALIDATE_REGEXP, array("options"=>array("regexp"=>"/^[a-zA-Z0-9_]*$/")))) {
             $GLOBALS['passwordNotValid'] = true;
-            exit();
+            $fail = true;;
         }
 
         //if passwords do not match, exit
         if($_POST["InputPW1"] != $_POST["InputPW2"]) {
             $GLOBALS['passwordNotMatch'] = true;
-            exit();
+            $fail = true;;
         }
 
         // if first name contains any non-letter characters, exit
-        if(filter_var($_POST["InputFirstName"], FILTER_VALIDATE_REGEXP, "^[a-zA-Z]*$")) {
+        if(!filter_var($_POST["InputFirstName"], FILTER_VALIDATE_REGEXP, array("options"=>array("regexp"=>"/^[a-zA-Z]*$/")))) {
             $GLOBALS['firstNameNotValid'] = true;
-            exit();
+            $fail = true;;
         }
 
         // if last name contains any non-letter characters, exit
-        if(filter_var($_POST["InputLastName"], FILTER_VALIDATE_REGEXP, "^[a-zA-Z]*$")) {
+        if(!filter_var($_POST["InputLastName"], FILTER_VALIDATE_REGEXP, array("options"=>array("regexp"=>"/^[a-zA-Z]*$/")))) {
             $GLOBALS['lastNameNotValid'] = true;
-            exit();
+            $fail = true;;
         }
         
         // if last name contains any non-letter characters, exit
-        if(filter_var($_POST["InputPhone"], FILTER_VALIDATE_REGEXP, "^[0-9()-]*$")) {
+        if(!filter_var($_POST["InputPhone"], FILTER_VALIDATE_REGEXP, array("options"=>array("regexp"=>"/^[0-9-]*$/")))) {
             $GLOBALS['phoneNumberNotValid'] = true;
-            exit();
+            $fail = true;;
         }
         
         // if last name contains any non-letter characters, exit
-        if(filter_var($_POST["InputZip"], FILTER_VALIDATE_REGEXP, "^[a-zA-Z]{5}$")) {
+        if(!filter_var($_POST["InputZip"], FILTER_VALIDATE_REGEXP, array("options"=>array("regexp"=>"/^[0-9]{5}$/")))) {
             $GLOBALS['zipCodeNotValid'] = true;
-            exit();
+            $fail = true;;
         }
 
         // if email is already registered, exit
         $connection = connect_to_mysql();
-        $row = mysqli_query($connection, "SELECT FROM USERS WHERE EMAIL == " . $original_email);
-        if($row->num_rows!=0) {
-            $emailRegistered = true;
-            exit();
+        $query = "SELECT * FROM users WHERE email = '" . $original_email . "'";
+        $row = mysqli_query($connection, $query);
+        
+        echo "Num rows: " . mysqli_num_rows($row);
+        
+        if(mysqli_num_rows($row) != 0) {
+            $GLOBALS['emailRegistered'] = true;
+            $fail = true;
         }
+        
+        close_mysql_connection($connection);
 
-        create_user();
+        if(!$fail) {
+            create_user();
+        }
     }
 ?>

@@ -378,15 +378,16 @@ function create_user() {
     $connection = connect_to_mysql();
     
     // query to create a new user in the DB
-    $query = "INSERT INTO USERS (email,password,zip_code,phone_number,first_name,last_name)";
-    $query .="VALUES( ";
+    $query = "INSERT INTO users (email,password,user_type,zip_code,phone_number,first_name,last_name)";
+    $query .="VALUES(";
     $query .="'{$_POST["InputEmail"]}',";
     $query .= "'{$password}',";
-    $query .= "'{$_POST["InputZip"]}',";
+    $query .= "1,";
+    $query .= "{$_POST["InputZip"]},";
     $query .= "'{$_POST["InputPhone"]}',";
     $query .= "'{$_POST["InputFirstName"]}',";
     $query .= "'{$_POST["InputLastName"]}')";
-    
+        
     if(mysqli_query($connection, $query) == FALSE) {
         echo "Failed to create user";
     }
