@@ -25,8 +25,6 @@
                 #property-listings .property-listing img {
                     max-width: 600px;
                     margin-top:3%;
-
-
                 }
             }
             .breadcrumb{
