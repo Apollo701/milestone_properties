@@ -120,7 +120,7 @@
                                     $img_name1 = $row["image" . $rand_num];
                                     $img_path = 'http://sfsuswe.com/~f14g02/assets/home_images/home' . $row["id"] . '/small/' . $img_name1;
                                     ?>
-                                    <img class="img-responsive" src="<?php echo '' . $img_path . ''; ?>"/></a>
+                                    <img class="img-responsive" style="margin-top:9%;" src="<?php echo '' . $img_path . ''; ?>"/></a>
 
                                 <div class="clearfix visible-sm"></div>
 
@@ -184,7 +184,8 @@
                                     $img_name2 = $row["image" . $rand_num];
                                     $img_path = 'http://sfsuswe.com/~f14g02/assets/home_images/home' . $row["id"] . '/small/' . $img_name2;
                                     ?>
-                                    <img class="img-responsive" src="<?php echo '' . $img_path . ''; ?>"/></a>
+                                    
+                                    <img class="img-responsive" style="margin-top:9%;" src="<?php echo '' . $img_path . ''; ?>"/></a>
 
                                 <div class="clearfix visible-sm"></div>
 

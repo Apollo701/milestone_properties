@@ -85,12 +85,9 @@
 
                                     <?php $img_name = $row["image1"]; ?>
                                     <?php $img_path = 'http://sfsuswe.com/~f14g02/assets/home_images/home' . $row["id"] . "/small/" . $img_name; ?>
+                                    
                                     <img class="img-responsive" src="<?php echo $img_path; ?>" /></a>
-
-                                <div class="clearfix visible-sm"></div>
-
-                                <div class="media-body fnt-smaller">
-                                    <a href="#" target="_parent"></a>
+                                    
 
                                     <h1 class="media-heading">
                                         <a href="#" target="_parent">$<?php echo '' . number_format($row["price"]) . ''; ?></a></h1>
@@ -122,7 +119,7 @@
                                     </div>
                                     <br>
                                     <span class="fnt-smaller fnt-lighter fnt-arial">Milestone Properties&copy</span>
-                                </div>
+                               
                             </div>
                         </div>
                     </div>
