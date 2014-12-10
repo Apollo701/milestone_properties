@@ -35,7 +35,9 @@
     </head>
     <body>
         <?php run_scripts_body();
-            if(!empty($_POST)) {
+            static $emptyFields;
+            static $wrongCredentials;
+            if($_SERVER["REQUEST_METHOD"] == "POST") {
                 check_login();
             }
         ?>
@@ -44,17 +46,17 @@
             <div class="container text-center">
                 <h1>Login</h1>
             </div>
-            <form role="form">
+            <form role="form" method="post">
                 <div class="form-group">
                     <div class="input-group input-group-sm col-sm-offset-4 col-sm-4">
                         <label for="InputEmail">Email</label>
-                        <input type="email" class="form-control" id="InputEmail" placeholder="Enter Email">
+                        <input type="email" class="form-control" name="InputEmail" placeholder="Enter Email">
                     </div>
                 </div>
                 <div class="form-group">
                     <div class="input-group input-group-sm col-sm-offset-4 col-sm-4">
                         <label for="InputPW1">Password</label>
-                        <input type="password" class="form-control" id="InputPW1" placeholder="Create Password">
+                        <input type="password" class="form-control" name="InputPW1" placeholder="Create Password">
                     </div>
                 </div>
                 <div class="form-group">
@@ -69,9 +71,9 @@
                 <div class="form-group">
                   <div class="input-group input-group-sm col-sm-offset-4 col-sm-4">
                     <button type="submit" class="btn btn-default">Sign in</button>
-                    <span class="error">* <?php
-                    if($emptyFields) echo "Fields cannot be empty";
-                    else if($wrongCredentials) echo "Wrong email/password combination";?></span>
+                    <span class="error"> <?php
+                    if($GLOBALS['emptyFields']) {echo "Fields cannot be empty";}
+                    else if($GLOBALS['wrongCredentials']) {echo "Wrong email/password combination";}?></span>
                   </div>
                 </div>
               </form>
@@ -95,18 +97,18 @@ if(empty($_POST)) {
  */
 //checks if login information is correct, if it is, redirect to the user's profile page
 function check_login() {
-
-    $email = filter_var($_POST["email"], FILTER_SANITIZE_EMAIL);
     
-    $password = filter_var($_POST["password"], FILTER_SANITIZE_URL);
+    $email = filter_var($_POST["InputEmail"], FILTER_SANITIZE_EMAIL);
+    
+    $password = filter_var($_POST["InputPW1"], FILTER_SANITIZE_URL);
 
     $connection = connect_to_mysql();
     $row = mysqli_query($connection, "SELECT FROM USERS WHERE EMAIL == " . $email);
 
-    if (empty($_POST["email"]) || empty($_POST["password"])) {
-        $emptyFields = true;
+    if (empty($_POST["InputEmail"]) || empty($_POST["InputPW1"])) {
+        $GLOBALs['emptyFields'] = true;
     } else if (!password_verify($password, $row["password"])) {
-        $wrongCredentials = true;
+        $GLOBALS['wrongCredentials'] = true;
     } else {
         sec_session_start($email);
         header("Location: profile_user.php");
