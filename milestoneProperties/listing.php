@@ -1,6 +1,5 @@
 <?php include 'navbar.php';    ?>
 <?php include_once 'functions.php'; ?>
-<?php include 'footer.php'; ?>
 <!doctype html>
 <html lang="en">
     <head>
@@ -29,12 +28,13 @@
                 border-radius: 10px; 
             }
             .navbar-brand{
-            font-family: 'Crimson Text', serif;
-        }
+                font-family: 'Helvetica Neue', serif;
+                font-weight: lighter;        
+            }
             .transbox{
-                background:rgba(0, 0, 0, .07);
-                border-radius: 10px; 
-                box-shadow: 1px 7px 36px -5px;
+                border-radius: 4px;
+                -webkit-box-shadow: 0 1px 3px rgba(0, 0, 0, 0.2), 0 1px 0px rgba(0, 0, 0, 0.1);
+                box-shadow: 0 1px 3px rgba(0, 0, 0, 0.2), 0 1px 0px rgba(0, 0, 0, 0.1);
         }
         </style>
     </head>
@@ -54,7 +54,8 @@
                     </ol>
                 </div>
                 <div class="col-sm-6 text-center">
-                    <h2>Showing <?php echo number_of_listings($results); ?> Results for:<br> <?php echo '"'; if(!(isset($_POST["usersearch"]))){echo '';}else{echo $_POST["usersearch"];} echo '"'; ?> </h2>
+                    <h2 style="font-family: 'Helvetica Neue', serif;
+                font-weight: lighter; padding: 15px;">Milestone Property Home Listings</h2>
                 </div>
             </div>
            <div class="row">
@@ -148,8 +149,9 @@
             <div class="container-full bottom-container" style="background-color:#e8e8e8">
         <div class="container container-pad" id="property-listings">
             <div class="row">
-              <div class="col-md-12">
-                <h1>Milestone Property Home Listings</h1>
+              <div class="col-md-12 text-center">
+                  <h2 style="font-family: 'Helvetica Neue', serif;
+                font-weight: lighter; ">Showing <?php echo number_of_listings($results); ?> Results for:<br> <?php echo '"'; if(!(isset($_POST["usersearch"]))){echo '';}else{echo $_POST["usersearch"];} echo '"'; ?> </h2>
                 <br>
                 <br>
               </div>
@@ -272,6 +274,13 @@
                 </div><!-- End Col -->
             </div><!-- End row -->
         </div><!-- End container -->
+    </div>
+        
+            <div class="container container-fluid" style="background-color: #e7e7e7; border-color: #777; width: 100%; position: absolute;left: 0;right: 0">
+        <p class="text-center" ><a href="./contact.php" style="color:#777">Contact Us</a></p>
+        <p class="text-center"><a href="./about.php" style="color:#777">About Us</a></p>
+        <p class="navbar-text navbar-right" style="margin-right: 15px;">This is for demonstration purposes only. CSC648/848 San Francisco State University Team02 Milestone Properties&copy</p>
+
     </div>
 
 

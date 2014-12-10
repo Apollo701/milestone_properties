@@ -1,3 +1,4 @@
+
 <nav class="navbar navbar-default navbar-fixed-top" role="navigation">
   <div class="container">
     <!-- Brand and toggle get grouped for better mobile display -->
@@ -28,7 +29,9 @@
           <ul class="dropdown-menu" role="menu">
             <li><a href="profile_user.php">My Profile</a></li>
             <li class="divider"></li>
-            <li><a href="login.php">Log-in</a></li>
+            <!-- Button trigger modal -->
+
+            <li><a href="#" data-toggle="modal" data-target="#myModal">Log-in</a></li>
             <li class="divider"></li>
             <li><a href="signup.php">Sign-up</a></li>
           </ul>
