@@ -13,13 +13,19 @@
         <title>Milestone Properties</title>
         <style>
             .bgc-fff{
-                background-color: #f8f8f8!important;
+                background-color: #f8f8f8;
+            }
+            h1{
+                font-family: 'Helvetica Neue', serif;
+                font-weight: lighter;
+                font-size: 52px;
 
             }
             #index{
                 padding-top:50px;
                 background: url('assets/bg_images/bg2.jpg');
-                height: 455px;
+/*                height: 300px;*/
+                width: 80%;
                 border-radius: 10px;
                 /*            width: 73%;*/
             }
@@ -27,17 +33,20 @@
                 padding: 1%;
             }
             .welcome{
-                font-family: 'Crimson Text', serif;
-                font-size: 55px;
+                font-family: 'Helvetica Neue', serif;
+                font-weight: lighter;
                 color: white;
+                font-size: 52px;
+
             }
             .welcome-paragraph{
-                font-family: 'Crimson Text', serif;
-                font-size: 35px;
+                font-family: 'Helvetica Neue', serif;
+                font-weight: lighter;
                 color: white;
             }
-            .navbar-brand{
-                font-family: 'Crimson Text', serif;
+            .navbar-brand, .nav{
+                font-family: 'Helvetica Neue', serif;
+                font-weight: lighter;
 
             }
             .transbox{
@@ -47,6 +56,7 @@
                 box-shadow: 1px 7px 36px -5px
             }
             .bottom-container{
+                
                 padding: 1%;
                 border-radius: 10px; 
             }
@@ -60,7 +70,7 @@
                 <div class="col-sm-3"></div>
                 <div class="col-sm-6 text-center">
                     <div class="transbox">
-                        <h1 class="welcome">Milestone Properties</h1>
+                        <h2 class="welcome">Milestone Properties</h2>
                         <h3 class="welcome-paragraph text-center">Find your dream home today</h3>
                         <br>
                         <form action="listing.php" method="post">
@@ -79,7 +89,7 @@
             <div class="container container-pad" id="property-listings">
                 <div class="row">
                     <div class="col-md-12">
-                        <h1 class="text-center" style="font-size: 50px;font-family: 'Crimson Text', serif;">Milestone Property Featured Homes</h1>
+                        <h1 class="text-center">Milestone Property Featured Homes</h1>
                         <br>
 
                     </div>

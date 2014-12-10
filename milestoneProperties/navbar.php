@@ -15,9 +15,11 @@
     <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
       <ul class="nav navbar-nav">
           <li class="divider-vertical" style="height: 35px;margin: 8px 9px;border-left: 1px solid darkgray;border-right: 1px solid darkgray;"></li>
-          <li><a href="index.php" class="btn btn-lg" role="button"> Buy</a></li>
+          <li><a href="index.php" class="btn btn-lg" style="font-family: 'Helvetica Neue', serif;
+                font-weight: lighter;" role="button"> Buy</a></li>
           <li class="divider-vertical" style="height: 35px;margin: 8px 9px;border-left: 1px solid darkgray;border-right: 1px solid darkgray;"></li>
-          <li><a href="new_listing.php" class="btn btn-lg" role="button"> Sell</a></li>
+          <li><a href="new_listing.php" class="btn btn-lg" style="font-family: 'Helvetica Neue', serif;
+                font-weight: lighter;"role="button"> Sell</a></li>
       </ul>
 
       <ul class="nav navbar-nav navbar-right">
