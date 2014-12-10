@@ -232,6 +232,7 @@
                 </div>
             </div>
         </div>
+        <br><br><br><br>
     <div class="container container-fluid text-center" style="background-color: #e7e7e7; border-color: #777; width: 100%; position: absolute;left: 0;right: 0">
         <ul>
             <li id="footer"><a href="./contact.php"style="color:#777">Contact Us</a></li>
