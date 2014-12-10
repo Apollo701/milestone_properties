@@ -16,6 +16,10 @@
             .bgc-fff{
                 background-color: #f8f8f8;
             }
+            #footer{
+                display: inline;
+                padding: 50px;
+            }
             h1{
                 font-family: 'Helvetica Neue', serif;
                 font-weight: lighter;
@@ -228,11 +232,13 @@
                 </div>
             </div>
         </div>
-    <div class="container container-fluid" style="background-color: #e7e7e7; border-color: #777; width: 100%; position: absolute;left: 0;right: 0">
-        <p class="text-center" ><a href="./contact.php" style="color:#777">Contact Us</a></p>
-        <p class="text-center"><a href="./about.php" style="color:#777">About Us</a></p>
-        <p class="navbar-text navbar-right" style="margin-right: 15px;">This is for demonstration purposes only. CSC648/848 San Francisco State University Team02 Milestone Properties&copy</p>
-
+    <div class="container container-fluid text-center" style="background-color: #e7e7e7; border-color: #777; width: 100%; position: absolute;left: 0;right: 0">
+        <ul>
+            <li id="footer"><a href="./contact.php"style="color:#777">Contact Us</a></li>
+            <li id="footer"><a href="./about.php" style="color:#777">About Us</a></li>
+        </ul>
+            <p class="navbar-text navbar-right" style="margin-right: 15px;">This is for demonstration purposes only. CSC648/848 San Francisco State University Team02 Milestone Properties&copy</p>
+        
     </div>
 
 

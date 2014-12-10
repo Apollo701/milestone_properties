@@ -1,4 +1,6 @@
 <?php include 'navbar.php'; ?>
+<?php include 'login_modal.php'; ?>
+<?php include 'signup_modal.php'; ?>
 <?php include_once 'functions.php'; ?>
 
 <!DOCTYPE>
