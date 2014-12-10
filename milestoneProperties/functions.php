@@ -409,11 +409,11 @@ function change_password($connection, $user_email, $oldPw, $newPw) {
     $query .= "'{$user_email}' ";
     $query .="AND password = ";
     $query .= "'{$oldPw}'";
-    
+
     $result = mysqli_query($connection, $query);
-    
+
     //either email or password is incorrect, failed to change password
-    if(mysql_num_rows($result) == 0) {
+    if (mysql_num_rows($result) == 0) {
         $success = false;
         return $success;
     } else { //attempting to change password
@@ -424,14 +424,59 @@ function change_password($connection, $user_email, $oldPw, $newPw) {
         $query .= "'{$user_email}' ";
         $query .="AND password = ";
         $query .= "'{$oldPw}'";
-        
-        if(mysqli_query($connection, $query)) {
+
+        if (mysqli_query($connection, $query)) {
             $success = true;
             return $success;
         } else {
             $success = false;
             return $success;
-        }       
+        }
+    }
+}
+
+/*
+ * @param mysqli_result $connection connection to msql database
+ * @param string $user_email
+ * @var string $query query to mysql database
+ * @var string $newPw new randomly generated password with a length 8 characters
+ * @var string $message messsage to send in the email
+ * @return boolean success true if password is successfully changed, false on fail
+ */
+
+//Changes a user's password in the database to a new randomized password, sends an email with the new password to the corresponding email address
+function recover_password($connection, $user_email) {
+    //must get old password in order to change password
+    $query = "SELECT password , first_name, last_name ";
+    $query .="FROM users ";
+    $query .="WHERE email = ";
+    $query .= "'{$user_email}'";
+    $result = mysqli_query($connection, $query);
+    $row = mysqli_fetch_array($result);
+
+    //generating a new random password
+    $newPw = substr(str_shuffle("0123456789abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ"), 0, 8);
+
+    if (change_password($connection, $user_email, $row["password"], $newPw)) {
+        //send email with new password
+        $message = "Hello {$row["first_name"]} {$row["last_name"]},\n\n"
+                . "You have requested a password recovery for your account at "
+                . "Milestones Property. If you did not request password recovery"
+                . ", please contact us at our contact page.\n\n"
+                . "Your new password is: {$newPw}\n\n"
+                . "For your security, please change this password immediately.\n\n"
+                . "Find your dream home today\n"
+                . "-Milestone Properties\n\n"
+                . "This is for demonstration purposes only. CSC648/848 San "
+                . "Francisco State University Team02 Milestone Properties©";
+
+        mail($user_email, "Milestone Properties Password Recovery", $message);
+
+        $success = true;
+        return $success;
+    } else {
+        $success = false;
+        return $success;
     }
 }
 
