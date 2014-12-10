@@ -30,7 +30,7 @@
                 padding-top:50px;
                 background: url('assets/bg_images/bg2.jpg');
 /*                height: 300px;*/
-                width: 80%;
+                width: 66%;
                 border-radius: 10px;
                 /*            width: 73%;*/
             }
