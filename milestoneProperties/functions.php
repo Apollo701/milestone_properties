@@ -393,6 +393,47 @@ function create_user() {
     
     close_mysql_connection($connection);
 }
+/*
+ * @param mysqli_result $connection connection to msql database
+ * @param string $user_email
+ * @param string oldPw old password to be changed
+ * @param string newPw new and updated password
+ * @var string $query query to mysql database
+ * @return boolean success true if password is successfully changed, false on fail
+ */
+//Changes a user's password in the database to a new password
+function change_password($connection, $user_email, $oldPw, $newPw) {
+    $query = "SELECT email , password ";
+    $query .="FROM users ";
+    $query .="WHERE email = ";
+    $query .= "'{$user_email}' ";
+    $query .="AND password = ";
+    $query .= "'{$oldPw}'";
+    
+    $result = mysqli_query($connection, $query);
+    
+    //either email or password is incorrect, failed to change password
+    if(mysql_num_rows($result) == 0) {
+        $success = false;
+        return $success;
+    } else { //attempting to change password
+        $query = "UPDATE users ";
+        $query .="SET password = ";
+        $query .= "'{$newPw}' ";
+        $query .="WHERE email = ";
+        $query .= "'{$user_email}' ";
+        $query .="AND password = ";
+        $query .= "'{$oldPw}'";
+        
+        if(mysqli_query($connection, $query)) {
+            $success = true;
+            return $success;
+        } else {
+            $success = false;
+            return $success;
+        }       
+    }
+}
 
 /*
  * @param mysql_result $result listing results to display 
