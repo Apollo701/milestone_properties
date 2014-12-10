@@ -1,6 +1,7 @@
-<?php include 'navbar.php';    ?>
-<?php include_once 'functions.php'; ?>
-<?php include 'footer.php'; ?>
+<?php include 'navbar.php';
+      include_once 'functions.php';
+      include 'footer.php';
+      include 'password.php' ?>
 
 <html lang="en">
     <head>
@@ -29,14 +30,38 @@
                 border-radius: 10px; 
                 box-shadow: 1px 7px 36px -5px;
             }
+            .error {color: #FF0000;}
         </style>
     </head>
     <body>
         <?php run_scripts_body();
-        if(!empty($_POST)) {
+        
+        static $emailNotValid;
+        static $passwordNotValid;
+        static $passwordNotMatch;
+        static $firstNameNotValid;
+        static $lastNameNotValid;
+        static $phoneNumberNotValid;
+        static $zipCodeNotValid;
+        static $emailRegistered;
+        
+        if($_SERVER["REQUEST_METHOD"] == "POST") {
                 check_signup();
-            }
+        }
+            
+        else {
+            $emailNotValid          = false;
+            $passwordNotValid       = false;
+            $passwordNotMatch       = false;
+            $firstNameNotValid      = false;
+            $lastNameNotValid       = false;
+            $phoneNumberNotValid    = false;
+            $zipCodeNotValid     = false;
+            $emailRegistered        = false;
+        }
+        
         ?>
+        
         <div class="container top-container transbox">
             <div class="container text-center">
                 <h1>Account Creation</h1>
@@ -46,18 +71,28 @@
                 <div class="form-group">
                     <div class="input-group input-group-sm col-sm-offset-4 col-sm-4">
                         <label for="InputEmail">Email</label>
+                        <span class="error"><?php
+                        if($GLOBALS['emailNotValid']) {echo "Email not valid";}
+                        else if($GLOBALS['emailRegistered']) {echo "Email already registered";}
+                        ?></span>
                         <input type="email" name="email" class="form-control" id="InputEmail" placeholder="Enter Email">
                     </div>
                 </div>
                 <div class="form-group">
                     <div class="input-group input-group-sm col-sm-offset-4 col-sm-4">
                         <label for="InputPW1">New Password</label>
+                        <span class="error"><?php
+                        if($GLOBALS['passwordNotValid']) {echo "Password is not valid (only letters and numbers allowed)";}
+                        ?></span>
                         <input type="password" class="form-control" id="InputPW1" placeholder="Create Password">
                     </div>
                 </div>
                 <div class="form-group">
                     <div class="input-group input-group-sm col-sm-offset-4 col-sm-4">
                         <label for="InputPW2">Re-Enter New Password</label>
+                        <span class="error"><?php
+                        if($GLOBALS['passwordNotMatch']) {echo "Passwords do not match";}
+                        ?></span>
                         <input type="password" name="password" class="form-control" id="InputPW2" placeholder="Re-Enter Password">
                     </div>
                 </div>
@@ -67,41 +102,37 @@
                 <div class="form-group">
                     <div class="input-group input-group-sm col-sm-offset-4 col-sm-4">
                         <label for="InputFirstName">First Name</label>
+                        <span class="error"><?php
+                        if($GLOBALS['firstNameNotValid']) {echo "First name not valid (only letters allowed)";}
+                        ?></span>
                         <input type="firstname" name="first_name" class="form-control" id="InputFirstName" placeholder="First Name">
                     </div>
                 </div>
                 <div class="form-group">
                     <div class="input-group input-group-sm col-sm-offset-4 col-sm-4">
                         <label for="InputLastName">Last Name</label>
+                        <span class="error"><?php
+                        if($GLOBALS['lastNameNotValid']) {echo "Last name not valid (only letters allowed)";}
+                        ?></span>
                         <input type="lastname" name="last_name" class="form-control" id="InputLastName" placeholder="Last Name">
                     </div>
                 </div>
                 <div class="form-group">
                     <div class="input-group input-group-sm col-sm-offset-4 col-sm-4">
                         <label for="InputPhone">Phone #</label>
+                        <span class="error"><?php
+                        if($GLOBALS['phoneNumberNotValid']) {echo "Phone number not valid";}
+                        ?></span>
                         <input type="phone" name="phone" class="form-control" id="InputPhone" placeholder="###-###-####">
                     </div>
                 </div>
                 <div class="form-group">
                     <div class="input-group input-group-sm col-sm-offset-4 col-sm-4">
-                        <label for="InputAddress">Address</label>
-                        <input type="address" name="address" class="form-control" id="InputAddress" placeholder="42 Wallaby Way">
-                    </div>
-                </div>
-                <div class="form-group">
-                    <div class="input-group input-group-sm col-sm-offset-4 col-sm-4">
-                        <label for="InputCity">City</label>
-                        <input type="city" name="city" class="form-control" id="InputCity" placeholder="City">
-                    </div>
-                </div><div class="form-group">
-                    <div class="input-group input-group-sm col-sm-offset-4 col-sm-4">
-                        <label for="InputState">State</label>
-                        <input type="state" name="state" class="form-control" id="InputState" placeholder="State">
-                    </div>
-                </div><div class="form-group">
-                    <div class="input-group input-group-sm col-sm-offset-4 col-sm-4">
                         <label for="InputZip">Zip Code</label>
-                        <input type="zip" name="zip" class="form-control" id="InputZip" placeholder="Zip Code">
+                        <span class="error"><?php
+                        if($GLOBALS['zipCodeNotValid']) {echo "Zip code not valid (5 digits)";}
+                        ?></span>
+                        <input type="zip" name="zip" class="form-control" id="InputZip" placeholder="#####">
                     </div>
                 </div>
                 <div class="form-group">
@@ -138,31 +169,43 @@
 
         // if email has special characters or doesn't have right format, exit
         if ($original_email != $clean_email || filter_var($original_email,FILTER_VALIDATE_EMAIL)) {
-            echo "Email not valid";
+            $GLOBALS['emailNotValid'] = true;
             exit();
         }
 
         // if password contains special characters, exit
         if(filter_var($_POST["InputPW1"], FILTER_VALIDATE_REGEXP, "^[a-zA-Z0-9_]*$")) {
-            echo "Password is not valid (only letters and numbers allowed)";
+            $GLOBALS['passwordNotValid'] = true;
             exit();
         }
 
         //if passwords do not match, exit
-        if($_POST["InputPW1"] != $_POST["InputPW1"]) {
-            echo "Passwords do not match";
+        if($_POST["InputPW1"] != $_POST["InputPW2"]) {
+            $GLOBALS['passwordNotMatch'] = true;
             exit();
         }
 
         // if first name contains any non-letter characters, exit
         if(filter_var($_POST["InputFirstName"], FILTER_VALIDATE_REGEXP, "^[a-zA-Z]*$")) {
-            echo "First name not valid (only letters allowed)";
+            $GLOBALS['firstNameNotValid'] = true;
             exit();
         }
 
         // if last name contains any non-letter characters, exit
         if(filter_var($_POST["InputLastName"], FILTER_VALIDATE_REGEXP, "^[a-zA-Z]*$")) {
-            echo "Last name not valid (only letters allowed)";
+            $GLOBALS['lastNameNotValid'] = true;
+            exit();
+        }
+        
+        // if last name contains any non-letter characters, exit
+        if(filter_var($_POST["InputPhone"], FILTER_VALIDATE_REGEXP, "^[0-9()-]*$")) {
+            $GLOBALS['phoneNumberNotValid'] = true;
+            exit();
+        }
+        
+        // if last name contains any non-letter characters, exit
+        if(filter_var($_POST["InputZip"], FILTER_VALIDATE_REGEXP, "^[a-zA-Z]{5}$")) {
+            $GLOBALS['zipCodeNotValid'] = true;
             exit();
         }
 
@@ -170,7 +213,7 @@
         $connection = connect_to_mysql();
         $row = mysqli_query($connection, "SELECT FROM USERS WHERE EMAIL == " . $original_email);
         if($row->num_rows!=0) {
-            echo "Email already registered";
+            $emailRegistered = true;
             exit();
         }
 

@@ -1,6 +1,7 @@
-<?php include 'navbar.php';    ?>
-<?php include_once 'functions.php'; ?>
-<?php include 'footer.php'; ?>
+<?php include 'navbar.php';
+      include_once 'functions.php';
+      include 'footer.php';
+      include 'password.php' ?>
 
 <html lang="en">
     <head>
@@ -40,6 +41,10 @@
             if($_SERVER["REQUEST_METHOD"] == "POST") {
                 check_login();
             }
+            else {
+                $emptyFields = false;
+                $wrongCredentials = false;
+            }
         ?>
         
         <div class="container top-container transbox">
@@ -71,9 +76,7 @@
                 <div class="form-group">
                   <div class="input-group input-group-sm col-sm-offset-4 col-sm-4">
                     <button type="submit" class="btn btn-default">Sign in</button>
-                    <span class="error"> <?php
-                    if($GLOBALS['emptyFields']) {echo "Fields cannot be empty";}
-                    else if($GLOBALS['wrongCredentials']) {echo "Wrong email/password combination";}?></span>
+                    <span class="error"> <?php echo display_errors() ?></span>
                   </div>
                 </div>
               </form>
@@ -85,33 +88,42 @@
 </html>
 
 <?php
-
-if(empty($_POST)) {
-    $emptyFields=false;
-    $wrongCredentials = false;
-}
-
-/*
- * @var string $email email of the user, with input sanitized
- * @var string $password password of the user, with input sanitized
- */
-//checks if login information is correct, if it is, redirect to the user's profile page
-function check_login() {
-    
-    $email = filter_var($_POST["InputEmail"], FILTER_SANITIZE_EMAIL);
-    
-    $password = filter_var($_POST["InputPW1"], FILTER_SANITIZE_URL);
-
-    $connection = connect_to_mysql();
-    $row = mysqli_query($connection, "SELECT FROM USERS WHERE EMAIL == " . $email);
-
-    if (empty($_POST["InputEmail"]) || empty($_POST["InputPW1"])) {
-        $GLOBALs['emptyFields'] = true;
-    } else if (!password_verify($password, $row["password"])) {
-        $GLOBALS['wrongCredentials'] = true;
-    } else {
-        sec_session_start($email);
-        header("Location: profile_user.php");
+    if(empty($_POST)) {
+        $emptyFields=false;
+        $wrongCredentials = false;
     }
-}
+
+    /*
+     * @var string $email email of the user, with input sanitized
+     * @var string $password password of the user, with input sanitized
+     */
+    //checks if login information is correct, if it is, redirect to the user's profile page
+    function check_login() {
+
+        $email = filter_var($_POST["InputEmail"], FILTER_SANITIZE_EMAIL);
+
+        $password = filter_var($_POST["InputPW1"], FILTER_SANITIZE_URL);
+
+        $connection = connect_to_mysql();
+        $row = mysqli_query($connection, "SELECT FROM USERS WHERE EMAIL == " . $email);
+
+        if ($_POST["InputEmail"] == "" || $_POST["InputPW1"] == "") {
+            $GLOBALS['emptyFields'] = true;
+        } else if (!password_verify($password, $row["password"])) {
+            $GLOBALS['wrongCredentials'] = true;
+        } else {
+            sec_session_start($email);
+            header("Location: profile_user.php");
+        }
+    }
+
+    function display_errors() {
+        if($GLOBALS['emptyFields']) {
+            echo "Fields cannot be empty";
+        }
+
+        else if($GLOBALS['wrongCredentials']) {
+            echo "Wrong email/password combination";
+        }
+    }
 ?>
