@@ -1,6 +1,6 @@
 
 <!-- Modal -->
-<div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+<div class="modal fade" id="logInModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
   <div class="modal-dialog">
     <div class="modal-content">
       <div class="modal-header">
@@ -32,7 +32,8 @@
                 </div>
                 <div class="form-group">
                   <div class="input-group input-group-sm col-sm-offset-4 col-sm-4">
-                    <button type="submit" class="btn btn-default">Sign in</button>
+                      <button type="submit" class="btn btn-default">Sign in</button><br><br>
+                        <a href="login_forgot.php">Forgot Your Password?</a>
                   </div>
                 </div>
               </form>
