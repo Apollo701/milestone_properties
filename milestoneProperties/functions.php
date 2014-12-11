@@ -135,40 +135,6 @@ function milestone_details($connection) {
     }
 }
 /*
- * @param mysql_result $result
- * @var int $row
- * @var string $img_name
- * @var string $img_path
- */
-//displays listing entry from database
-function display_search_results($result) {
-    if ($result != "") {
-        while ($row = mysqli_fetch_array($result)) {
-            echo '<div class="row>';
-            echo '<div class="col-md-2>';
-            echo '<div class="container bottom-container transbox">';
-            echo '<div class="panel panel-default">';
-            echo '<div class="panel-heading">$' . $row["price"] . " for " . $row["address"] . ", " . $row["city"] . ", " . $row["us_state"] . ", " . $row["zip_code"] . '</div>';
-            echo '<h3 class="panel-title">' . $row["description"] . '</h3>';
-            echo '</div>';
-            echo '<div class="panel-body">';
-            $img_name = $row["image1"];
-            $img_path = 'http://sfsuswe.com/~f14g02/assets/home_images/home' . $row["id"] . '/small/' . $img_name;
-            echo '<img src=" ' . $img_path . '" />';
-            echo '</div>';
-            echo '</div>';
-            echo '</div>';
-            echo '</div>';
-            echo '</div>';
-            echo '<br>';
-        }
-
-        mysqli_free_result($result);
-    } else {
-        echo "<h1>Must enter valid input</h1>";
-    }
-}
-/*
  * @param mysql_result $connection
  */
 //closes connection my mysql datbase
