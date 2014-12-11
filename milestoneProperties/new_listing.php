@@ -2,16 +2,25 @@
 <?php include 'login_modal.php'; ?>
 <?php include 'signup_modal.php'; ?>
 <?php include_once 'functions.php'; ?>
-
 <!DOCTYPE>
 <html lang="en">
     <head>
-        <?php run_scripts_head()?>
+                <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <link href="//maxcdn.bootstrapcdn.com/bootstrap/3.3.0/css/bootstrap.min.css" rel="stylesheet">
+        <link rel="stylesheet" type="text/css" href="css/custom.css">
+        <link rel="stylesheet" type="text/css" href="css/dropzone.css">
+        <link rel="stylesheet" type="text/css" href="css/basic.css">
+
+
         <title>Sell Home</title>
         <style>
             .breadcrumb{
                 background: none;
                 text-align: left;
+            }
+            .dropzone{
+                text-align: right;
             }
             .navbar-brand{
             font-family: 'Crimson Text', serif;
@@ -31,12 +40,17 @@
         </style>
     </head>
     <body>
-        <?php run_scripts_body()?>
         <div class="container top-container transbox" id="sellhome">
-            <div class="container text-center">
-                <h1>Sell Home</h1>
+            <div class="row">
+                <div class="col-md-12">
+                    <h1>Sell Your Home Today</h1>
+                </div>
             </div>
-        <form action="new_listing_created.php" method="post" enctype="multipart/form-data">
+            <div class="row">
+                
+                <div class="col-md-8">
+        
+            <form action="new_listing_created.php" method="post" enctype="multipart/form-data"  class="dropzone" id="my-awesome-dropzone" >
             State:      <input type="text" name="us_state" value="" /><br />
             <br />
             City:       <input type="text" name="city" value="" /><br />
@@ -56,12 +70,21 @@
             Garages:    <input type="text" name="num_garages" value="" /><br />
             <br />
             Description:<input type="text" name="description" value="" /><br />
-            <br />
-            Insert Image: <input type="file" name="uploadFile" /><br />
+          
+            <br />       
+            <h3 class="text-center">Drag and drop home images anywhere in the form</h3>
             <br />
             <input type="submit" name="submit" value="Submit" />
             <br />
+            
         </form>
+                </div>
+              
+            </div>
+            
+            
+            
+      
         </div>
         <br><br><br><br>
             <div class="container container-fluid" style="background-color: #e7e7e7; border-color: #777; width: 100%; position: absolute;left: 0;right: 0">
@@ -72,6 +95,6 @@
     </div>
         <script src="//ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
         <script src="//maxcdn.bootstrapcdn.com/bootstrap/3.3.0/js/bootstrap.min.js"></script>
-        <script src="./path/to/dropzone.js"></script>
+        <script src="./js/dropzone.js"></script>
     </body>
 </html>
