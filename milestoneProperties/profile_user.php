@@ -4,7 +4,7 @@
 
 <html lang="en">
     <head>
-        <?php run_scripts_head()?>
+        <?php session_start(); run_scripts_head();?>
         <title>User Profile</title>
         <style>
             .breadcrumb{
@@ -29,11 +29,26 @@
         </style>
     </head>
     <body>
-        <?php run_scripts_body()?> 
+        <?php
+            if(!isset($_SESSION['loggedIn'])) {
+                header("Location: index.php");
+                exit();
+            }
+            
+            else if ($_SESSION['loggedIn'] != 1) {
+                header("Location: index.php");
+                exit();
+            }
+            
+            run_scripts_body();
+            
+            static $row;
+            $row = get_user_data();
+        ?> 
         
         <div class="container top-container transbox">
             <div class="container text-center">
-                <h1>Barry's Profile</h1>
+                <h1><?php show_info("first_name")?>'s Profile</h1>
             </div>
             <div class="input-group input-group-sm col-sm-offset-4 col-sm-4">
                 <b>Email:</b> bonds.barry@mail.sfsu.edu <br>
@@ -54,3 +69,22 @@
         
     </body>
 </html>
+
+<?php
+    function get_user_data() {
+        $connection = connect_to_mysql();
+        $query = "SELECT * FROM users WHERE email = '";
+        $query .= $_SESSION["email"] . "'";
+        
+        $result = mysqli_query($connection, $query);
+        $row = mysqli_fetch_array($result);
+        
+        if($row != false) {
+            return $row;
+        }
+    }
+    
+    function show_info($fieldName) {
+        echo $GLOBALS['row'][$fieldName];
+    }
+?>

@@ -219,4 +219,32 @@
             create_user();
         }
     }
+    
+    /*
+     * @var string $password the password, hashed with default php algorithm
+     */
+    // creates the user in the DB, with the already verified and sanitized information
+    function create_user() {
+        // hashes the password to store it safely in the DB
+        $password = password_hash($_POST["InputPW1"], PASSWORD_DEFAULT);
+
+        $connection = connect_to_mysql();
+
+        // query to create a new user in the DB
+        $query = "INSERT INTO users (email,password,user_type,zip_code,phone_number,first_name,last_name)";
+        $query .="VALUES(";
+        $query .="'{$_POST["InputEmail"]}',";
+        $query .= "'{$password}',";
+        $query .= "1,";
+        $query .= "{$_POST["InputZip"]},";
+        $query .= "'{$_POST["InputPhone"]}',";
+        $query .= "'{$_POST["InputFirstName"]}',";
+        $query .= "'{$_POST["InputLastName"]}')";
+
+        if(mysqli_query($connection, $query) == FALSE) {
+            echo "Failed to create user";
+        }
+
+        close_mysql_connection($connection);
+    }
 ?>

@@ -106,9 +106,7 @@
         $email = filter_var($_POST["InputEmail"], FILTER_SANITIZE_EMAIL);
 
         $connection = connect_to_mysql();
-        $query = "SELECT * FROM users WHERE email = '" . $email . "'";
-        echo $query . "\n";
-        $result = mysqli_query($connection, $query);
+        $result = mysqli_query($connection, "SELECT * FROM users WHERE email = '" . $email . "'");
         $row = mysqli_fetch_array($result);
 
         if ($_POST["InputEmail"] == "" || $_POST["InputPW1"] == "") {
@@ -120,14 +118,13 @@
         }
         
         else if (!password_verify($_POST["InputPW1"], $row["password"])) {
-            echo "Hash:" . password_hash($_POST["InputPW1"], PASSWORD_DEFAULT) . "\n";
-            echo "Row pass: " . $row["password"];
             $GLOBALS['wrongCredentials'] = true;
         } 
         
         else {
             sec_session_start($email);
             header("Location: profile_user.php");
+            exit();
         }
     }
 
