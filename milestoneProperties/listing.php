@@ -37,6 +37,9 @@
                 font-family: 'Helvetica Neue', serif;
                 font-weight: lighter;        
             }
+            .property-listing{
+                border-radius:4px;
+            }
             .transbox{
                 border-radius: 4px;
                 -webkit-box-shadow: 0 1px 3px rgba(0, 0, 0, 0.2), 0 1px 0px rgba(0, 0, 0, 0.1);
@@ -72,7 +75,7 @@
                   <div class="col-md-3 col-sm-3">
                     <div class="form-group">
                       <label for="bedroom">Search Homes</label>
-                      <input name="usersearch" type="text" class="form-control" placeholder="Enter state, city, or zip code...">
+                      <input name="usersearch" type="text" class="form-control" placeholder="<?php echo $_POST["usersearch"]?>">
                     </div>
                     <div class="form-group">
                       <label for="bedroom">Bedroom</label>
