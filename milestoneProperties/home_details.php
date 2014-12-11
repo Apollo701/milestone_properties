@@ -23,7 +23,7 @@
             }
             @media only screen and (min-width: 992px) {
                 #property-listings .property-listing img {
-                    max-width: 600px;
+                    max-width: 100%;
                     margin-top:3%;
                 }
             }
@@ -69,8 +69,9 @@
             <div class="container container-pad transbox" id="property-listings">
                 <div class="row">
                     <div class="col-md-12">
-                        <h1><?php echo "" . $row["address"] . ", " . $row["city"] . ", " . $row["us_state"] . " " . $row["zip_code"]; ?></h1>
-                        <br>
+                        <h1 style="font-family: 'Helvetica Neue', serif;
+                font-weight: lighter;"><?php echo "" . $row["address"] . ", " . $row["city"] . ", " . $row["us_state"] . " " . $row["zip_code"]; ?></h1>
+                        
                         <br>
                     </div>
                 </div>
@@ -88,10 +89,12 @@
                                     
 
                                     <h1 class="media-heading">
+                                        
                                         <a href="#" target="_parent">$<?php echo '' . number_format($row["price"]) . ''; ?></a></h1>
-                                    <p><small class="pull-right"><?php echo '' . $row["city"] . ", " . $row["us_state"] . ", " . $row["zip_code"]; ?></small></p>
-
                                     <br>
+                                    <br>
+                                    <br>
+                                    <div class="block-center">
                                     <ul class="list-inline mrg-0 btm-mrg-10 clr-535353 pull-right">
                                         <li><?php echo '' . $row["sq_ft"] . ''; ?> SqFt</li>
 
@@ -102,9 +105,19 @@
                                         <li style="list-style: none">|</li>
 
                                         <li><?php echo '' . $row["num_bathrooms"] . ''; ?> Baths</li>
+                                        
+                                        <li style="list-style: none">|</li>
+
+                                        <li><?php echo '' . $row["num_garages"] . ''; ?> Garages</li>
+                                        
+                                        <li style="list-style: none">|</li>
+
+                                        <li><?php echo '' . $row["walkscore"] . ''; ?> Walkscore</li>
                                     </ul>
-                                    <br><br>
+                                    </div>
+                                    <br><br><br><br><br><br>
                                     <p class="hidden-xs"><?php echo '' . $row["description"] . ''; ?></p>
+                                    <br><br><br>
                                     <div class="btn-toolbar pull-right">
                                         <form action="home_details.php" method="post">
                                             <button type="button" class="btn btn-default btn-sm">
@@ -116,7 +129,7 @@
 
                                     </div>
                                     <br>
-                                    <span class="fnt-smaller fnt-lighter fnt-arial">Milestone Properties&copy</span>
+                                    <span class="fnt-smaller fnt-lighter fnt-arial pull-right">Milestone Properties&copy</span>
                                
                             </div>
                         </div>
