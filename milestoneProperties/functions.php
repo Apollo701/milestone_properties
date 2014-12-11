@@ -430,55 +430,118 @@ function recover_password($connection, $user_email) {
 function display_formatted_results($result) {
 
     if ($result != "") {
+        
         while ($row = mysqli_fetch_array($result)) {
-            echo '<div class="brdr bgc-fff pad-10 box-shad btm-mrg-20 property-listing" style="overflow:hidden;">
-                        <div class="media">
-                            <a class="pull-left" href="#" target="_parent">';
-            
-            $img_name = $row["image1"];
-            $img_path = 'http://sfsuswe.com/~f14g02/assets/home_images/home' . $row["id"] . '/small/' . $img_name;
-            echo '<img class="img-responsive" src="' . $img_path . '"/></a>
+             echo '<div class="row">
+                    <div class="col-sm-6">
+                        <div class="brdr bgc-fff pad-10 box-shad btm-mrg-20 property-listing" style="overflow:hidden;">
+                            <div class="media">
+                                <a class="pull-left" href="#" target="_parent">';
+                                    
+                                    $rand_num = rand(1, 3);
+                                    $img_name1 = $row["image" . $rand_num];
+                                    $img_path = 'http://sfsuswe.com/~f14g02/assets/home_images/home' . $row["id"] . '/small/' . $img_name1;
+                                   
+                                    echo '<img class="img-responsive" style="margin-top:9%;" src="' .$img_path . '"/></a>
 
-                            <div class="clearfix visible-sm"></div>
+                                <div class="clearfix visible-sm"></div>
 
-                            <div class="media-body fnt-smaller">
-                                <a href="#" target="_parent"></a>
+                                <div class="media-body fnt-smaller">
+                                    <a href="#" target="_parent"></a>
 
-                                <h3 class="media-heading">
-                                  <a href="#" target="_parent">$' . number_format($row["price"]) . '</a><small class="pull-right"><i>' . $row["address"] . '</i></small></h3>
-                                     <p><small class="pull-right">' . $row["city"] . ", " . $row["us_state"] . ", " . $row["zip_code"] . '</small></p>
+                                    <h3 class="media-heading">
+                                        <a href="#" target="_parent">$' . number_format($row["price"]) . '</a><small class="pull-right"><i>' . $row["address"] . '</i></small></h3>
+                                    <p><small class="pull-right">' . $row["city"] . ", " . $row["us_state"] . ", " . $row["zip_code"] . '?></small></p>
 
-                                <br>
-                                <ul class="list-inline mrg-0 btm-mrg-10 clr-535353 pull-right">
-                                    <li>' . $row["sq_ft"] . ' SqFt</li>
+                                    <br>
+                                    <ul class="list-inline mrg-0 btm-mrg-10 clr-535353 pull-right">
+                                        <li>' . $row["sq_ft"] . 'SqFt</li>
 
-                                    <li style="list-style: none">|</li>
+                                        <li style="list-style: none">|</li>
 
-                                    <li>' . $row["num_bedrooms"] . ' Beds</li>
+                                        <li>' . $row["num_bedrooms"] . 'Beds</li>
 
-                                    <li style="list-style: none">|</li>
+                                        <li style="list-style: none">|</li>
 
-                                    <li>' . $row["num_bathrooms"] . ' Baths</li>
-                                </ul>
-                                <br><br>
-                                <p class="hidden-xs">' . substr($row["description"], 0, 120) . '...</p>
+                                        <li>' . $row["num_bathrooms"] . 'Baths</li>
+                                    </ul>
+                                    <br><br>
+                                    <p class="hidden-xs">' . substr($row["description"], 0, 120) . '...</p>
                                     <div class="btn-toolbar pull-right">
-                                    <form action="home_details.php" method="post">
-                                    <button type="button" class="btn btn-default btn-sm">
-                                <span class="glyphicon glyphicon-star" aria-hidden="true"></span> Star
-                                    </button>
-                                    <button name="details" type="submit" value="' . $row[0] . '" class="btn btn-success btn-sm">Details</button>
-                                    
-                                    </form>
-                                    
+                                        <form action="home_details.php" method="post">
+                                            <button type="button" class="btn btn-default btn-sm">
+                                                <span class="glyphicon glyphicon-star" aria-hidden="true"></span> Star
+                                            </button>
+                                            <button name="details" type="submit" value="' . $row[0] . '" class="btn btn-success btn-sm">Details</button>
+
+                                        </form>
+
                                     </div>
                                     <br>
                                     <span class="fnt-smaller fnt-lighter fnt-arial">Milestone Properties&copy</span>
+                                </div>
                             </div>
                         </div>
-                    </div>';
-        }
 
+
+                    </div>
+                    <div class="col-sm-6">';
+                                    
+                        if ($row = mysqli_fetch_array($result)){
+                        
+                        echo '<div class="brdr bgc-fff pad-10 box-shad btm-mrg-20 property-listing" style="overflow:hidden;">
+                            <div class="media">
+                                <a class="pull-left" href="#" target="_parent">';
+                                    
+                                    $rand_num = rand(1, 3);
+                                    $img_name1 = $row["image" . $rand_num];
+                                    $img_path = 'http://sfsuswe.com/~f14g02/assets/home_images/home' . $row["id"] . '/small/' . $img_name1;
+                                   
+                                    echo '<img class="img-responsive" style="margin-top:9%;" src="' .$img_path . '"/></a>
+
+                                <div class="clearfix visible-sm"></div>
+
+                                <div class="media-body fnt-smaller">
+                                    <a href="#" target="_parent"></a>
+
+                                    <h3 class="media-heading">
+                                        <a href="#" target="_parent">$' . number_format($row["price"]) . '</a><small class="pull-right"><i>' . $row["address"] . '</i></small></h3>
+                                    <p><small class="pull-right">' . $row["city"] . ", " . $row["us_state"] . ", " . $row["zip_code"] . '</small></p>
+
+                                    <br>
+                                    <ul class="list-inline mrg-0 btm-mrg-10 clr-535353 pull-right">
+                                        <li>' . $row["sq_ft"] . 'SqFt</li>
+
+                                        <li style="list-style: none">|</li>
+
+                                        <li>' . $row["num_bedrooms"] . 'Beds</li>
+
+                                        <li style="list-style: none">|</li>
+
+                                        <li>' . $row["num_bathrooms"] . 'Baths</li>
+                                    </ul>
+                                    <br><br>
+                                    <p class="hidden-xs">' . substr($row["description"], 0, 120) . '...</p>
+                                    <div class="btn-toolbar pull-right">
+                                        <form action="home_details.php" method="post">
+                                            <button type="button" class="btn btn-default btn-sm">
+                                                <span class="glyphicon glyphicon-star" aria-hidden="true"></span> Star
+                                            </button>
+                                            <button name="details" type="submit" value="' . $row[0] . '"class="btn btn-success btn-sm">Details</button>
+
+                                        </form>
+
+                                    </div>
+                                    <br>
+                                    <span class="fnt-smaller fnt-lighter fnt-arial">Milestone Properties&copy</span>
+                                </div>
+                            </div>
+
+                    </div>
+                </div>
+                </div>';
+        }
+        }
         mysqli_free_result($result);
     } else {
         echo "<h1>Must enter valid input</h1>";
