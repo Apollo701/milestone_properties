@@ -528,4 +528,36 @@ function display_formatted_results($result) {
     }
 }
 
+/*
+ * @param mysql_result $connection connection to mysql database
+ * @var string email user's email
+ * @var string $password user's password
+ * @var string $first_name user's first name
+ * @var string $last_name user's last name
+ * @var string $query value to send to mysql database
+ * @global array $_POST
+ */
+//Takes in user input and adds new user to database
+function input_user($connection) {
+    //$connection = connect_to_mysql();
+
+        if (is_already_user($_POST['user_email'])){
+    $email = $_POST['user_email'];
+    $password = $_POST['user_password'];
+    $query = "INSERT INTO users (user_email, user_password)
+                    VALUES ('$email', '$password')";
+
+    if (!mysqli_query($connection, $query)) {
+        die('Error: ' . mysqli_error($connection));
+    }
+    echo "1 record added";
+
+    close_mysql_connection($connection);
+}
+}
+
+function is_already_user($email){
+    
+}
+
 ?>
