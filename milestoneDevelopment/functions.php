@@ -509,7 +509,7 @@ function input_user($connection) {
     //$connection = connect_to_mysql();
         if (is_already_user($_POST['user_email'], $connection)){
     $email = $_POST['user_email'];
-    $password = $_POST['user_password'];
+    $password = md5($_POST['user_password']);
     $query = "INSERT INTO users (user_email, user_password)
                     VALUES ('$email', '$password')";
 
@@ -532,6 +532,10 @@ function is_already_user($email, $connection){
     if ($row = mysqli_fetch_array($result)){
         return TRUE;
     } else FALSE;   
+}
+
+function log_in($connection){
+    
 }
 
 ?>
