@@ -18,8 +18,8 @@ and open the template in the editor.
             $connection = connect_to_mysql();
             user_sign_in($connection);
             
-        header("Location: index.php");
-            exit();
+//        header("Location: index.php");
+//            exit();
         ?>
     </body>
 </html>

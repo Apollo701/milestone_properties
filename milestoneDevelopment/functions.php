@@ -538,8 +538,21 @@ function is_already_user($email, $connection){
     } else {FALSE;}
 }
 
-function log_in($connection){
-    
+function user_sign_in($connection){
+    $user_email_provided = $_POST['user_email'];
+    $password_provided = md5($_POST['user_password']);
+
+    $query = "SELECT user_email, user_password";
+    $query .="FROM users ";
+    $query .="WHERE user_email=";
+    $query .="' . $user_email_provided . '";
+    $result = mysqli_query($connection, $query);
+    if($result){
+        $row = mysqli_fetch_array($result);
+        if ($row['user_password'] == $password_provided){
+            echo "<br><br><br>You're logged in!!!!";
+        }
+    }
 }
 
 ?>

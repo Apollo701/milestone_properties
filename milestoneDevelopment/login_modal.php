@@ -8,7 +8,7 @@
             <h4 class="modal-title">Sign in</h4>
           </div>
           <div class="modal-body">
-            <form role="form">
+              <form role="form" action="signin_success.php" method="post" enctype="multipart/form-data">
               <div class="form-group">
                 <label for="emailAddress">Email address</label>
                 <input type="email" class="form-control input-lg" name="user_email" placeholder="Enter email">
@@ -22,12 +22,13 @@
                   <input type="checkbox" name="forget"> Keep me logged in
                 </label>
               </div>
+                  <div class="modal-footer">
+            <p>Don't have account ? <a href="#signUpModal"  data-toggle="modal" data-target="#signUpModal">Sign up here.</a></p>
+            <input type="submit" name="submit" class="btn btn-primary btn-block btn-lg" value="Submit">
+          </div>
             </form>
           </div>
-          <div class="modal-footer">
-            <p>Don't have account ? <a href="#signUpModal"  data-toggle="modal" data-target="#signUpModal">Sign up here.</a></p>
-            <input type="submit" class="btn btn-primary btn-block btn-lg" value="Sign in">
-          </div>
+          
         </div>
       </div>
 </div>
