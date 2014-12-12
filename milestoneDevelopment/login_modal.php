@@ -11,11 +11,11 @@
             <form role="form">
               <div class="form-group">
                 <label for="emailAddress">Email address</label>
-                <input type="email" class="form-control input-lg" placeholder="Enter email">
+                <input type="email" class="form-control input-lg" name="user_email" placeholder="Enter email">
               </div>
               <div class="form-group">
                 <label for="password">Password</label>
-                <input type="password" class="form-control input-lg" placeholder="Password">
+                <input type="password" class="form-control input-lg" name="user_password" placeholder="Password">
               </div>
               <div class="checkbox">
                 <label>
