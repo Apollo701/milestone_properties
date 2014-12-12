@@ -27,7 +27,7 @@
           <?php if ($login->isUserLoggedIn() == true){
             echo '<ul class="nav navbar-nav navbar-right">
         <li class="dropdown">
-            <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button"><span class="glyphicon glyphicon-user"></span>   ' . $_SESSION['user_email'] . '<span class="caret"></span></a>
+            <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button"><span class="glyphicon glyphicon-user"></span> Hello, ' . $_SESSION['user_name'] . '<span class="caret"></span></a>
             <ul class="dropdown-menu" role="menu">
             <li><a href="profile_user.php">My Profile</a></li>
             <li class="divider"></li>
