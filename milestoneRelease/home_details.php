@@ -1,4 +1,4 @@
-<?php session_start();
+<?php 
     include 'navbar.php';
     include 'login_modal.php';
     include 'signup_modal.php';

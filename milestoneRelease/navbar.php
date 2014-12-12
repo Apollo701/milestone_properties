@@ -24,7 +24,7 @@
       </ul>
 
       
-          <?php if ($login->isUserLoggedIn() == true){
+          <?php if ((isset($_SESSION['id'])) == true){
             echo '<ul class="nav navbar-nav navbar-right">
         <li class="dropdown">
             <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button"><span class="glyphicon glyphicon-user"></span> Hello, ' . $_SESSION['user_name'] . '<span class="caret"></span></a>
@@ -49,7 +49,7 @@
           </ul>
         </li>
       </ul> 
-          }';}
+          ';}
             ?>
             
     </div><!-- /.navbar-collapse -->

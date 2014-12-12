@@ -1,18 +1,3 @@
-      <?php
-// show potential errors / feedback (from registration object)
-if (isset($registration)) {
-    if ($registration->errors) {
-        foreach ($registration->errors as $error) {
-            echo $error;
-        }
-    }
-    if ($registration->messages) {
-        foreach ($registration->messages as $message) {
-            echo $message;
-        }
-    }
-}
-?>
 <!-- Modal -->
 <div class="modal fade" id="signUpModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
   <div class="modal-dialog">
@@ -25,7 +10,7 @@ if (isset($registration)) {
 
 
 <!-- register form -->
-<form method="post" action="./php-login-minimal-master/register.php" name="registerform">
+<form method="post" action="FILL ME IN" name="registerform">
 
     <!-- the user name input field uses a HTML5 pattern check -->
     <label for="login_input_username">Username (only letters and numbers, 2 to 64 characters)</label>
