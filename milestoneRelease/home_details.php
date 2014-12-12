@@ -1,7 +1,9 @@
-<?php include 'navbar.php'; ?>
-<?php include 'login_modal.php'; ?>
-<?php include 'signup_modal.php'; ?>
-<?php include_once 'functions.php'; ?>
+<?php session_start();
+    include 'navbar.php';
+    include 'login_modal.php';
+    include 'signup_modal.php';
+    include_once 'functions.php';
+?>
 <!doctype html>
 <html lang="en">
     <head>
@@ -52,16 +54,18 @@
     </head>
     <body>
         <?php
+        static $row;
+
         $connection = connect_to_mysql();
         $results = milestone_details($connection);
         if ($results != "") {
             $row = mysqli_fetch_array($results);
-        } else {
-            echo "<br><br><br><h2>Must enter valid input</h2>";
-            die();
+        }
+        
+        if(isset($_POST["contact"])) {
+            contact_realtor();
         }
         ?>
-
 
         <div class="container-full top-container" style="">
             <div class="container container-pad transbox" id="property-listings">
@@ -117,11 +121,11 @@
                                     <p class="hidden-xs"><?php echo '' . $row["description"] . ''; ?></p>
                                     <br><br><br>
                                     <div class="btn-toolbar pull-right">
-                                        <form action="home_details.php" method="post">
+                                        <form action="home_details.php?details=<?php echo $row[0] ?>" method="post">
                                             <button type="button" class="btn btn-default btn-sm">
                                                 <span class="glyphicon glyphicon-star" aria-hidden="true"></span> Star
                                             </button>
-                                            <button name="details" type="submit" value="<?php echo '' . $row[0] . ''; ?>" class="btn btn-success btn-sm">Contact A Realtor</button>
+                                            <button name="contact" type="submit" action="<?php contact_realtor() ?>" value="<?php echo '' . $row[0] . ''; ?>" class="btn btn-success btn-sm">Contact A Realtor</button>
 
                                         </form>
 
@@ -159,3 +163,23 @@
         <script src="//maxcdn.bootstrapcdn.com/bootstrap/3.3.0/js/bootstrap.min.js"></script>
     </body>
 </html>
+
+<?php
+    function contact_realtor() {
+        $connection = connect_to_mysql();
+        $query = "SELECT * FROM users WHERE user_email = 'apollo701@gmail.com'";
+        //$query .= $_SESSION['email'] . "'";
+        
+        $result = mysqli_query($connection, $query);
+        $user = mysqli_fetch_array($result);
+        $idUser = $user['user_id'];
+        
+        $query = "INSERT INTO touched (idUser,idListing) VALUES('";
+        $query .= $idUser . "','";
+        $query .= $GLOBALS['row'][0] . "')";
+        
+        mysqli_query($connection, $query);
+        
+        echo "<script type='text/javascript'>alert('Thank you for your interest! A broker will get back to you soon.');</script>";
+    }
+?>
