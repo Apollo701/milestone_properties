@@ -36,13 +36,21 @@
         <?php run_scripts_body();
             static $emptyFields;
             static $emailNotValid;
+            
+            if($_SERVER["REQUEST_METHOD"] == "POST") {
+                check_login_forgot();
+            }
+            else {
+                $emptyFields = false;
+                $emailNotValid = false;
+            }
         ?>
 
         <div class="container top-container transbox">
             <div class="container text-center">
                 <h1>Account Recovery</h1>
             </div>
-            
+            Enter the email you have registered on Milestones Property. Your password will be reset and instructions will be emailed to you.
             <form role="form" method="post">
                 <div class="form-group">
                     <div class="input-group input-group-sm col-sm-offset-4 col-sm-4">
@@ -62,6 +70,29 @@
 </html>
 
 <?php
+    if(empty($_POST)) {
+        $emptyFields=false;
+        $wrongCredentials = false;
+    }
+    
+    /*
+     * @var string $email email of the user, with input sanitized
+     */
+    //checks if email is correct, if it is, begins password recovery
+    function check_login_forgot() {
+        
+        $email = filter_var($_POST["InputEmail"], FILTER_SANITIZE_EMAIL);
+        
+        $connection = connect_to_mysql();
+        $query = "SELECT * FROM users WHERE email = '" . $email . "'";
+        
+        if(recover_password($connection, $email)) {
+            //give a success message to user notifying that password has been reset and that email has been sent
+        } else {
+            //something went wrong
+        }
+    }
+    
     function display_errors() {
         if($GLOBALS['emptyFields']) {
             echo "Fields cannot be empty";
