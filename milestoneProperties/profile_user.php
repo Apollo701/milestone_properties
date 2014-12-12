@@ -35,7 +35,7 @@
                 exit();
             }
             
-            else if ($_SESSION['loggedIn'] != 1) {
+            else if ($_SESSION['loggedIn'] != true) {
                 header("Location: index.php");
                 exit();
             }

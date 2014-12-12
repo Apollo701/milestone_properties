@@ -314,26 +314,6 @@ function featured_properties($connection) {
 }
 
 /*
- * @param string $email email of the user currently logged in
- */
-// starts a cookie session to remember logged in user
-function sec_session_start($email) {
-    session_destroy();
-    $session_name = 'milestoneProperties';   // Set a custom session name
-    $secure = SECURE;
-    // This stops JavaScript being able to access the session id.
-    $httponly = true;
-    // Gets current cookies params.
-    $cookieParams = session_get_cookie_params();
-    session_set_cookie_params($cookieParams["lifetime"], $cookieParams["path"], $cookieParams["domain"], $secure, $httponly);
-    // Sets the session name to the one set above.
-    session_name($session_name);
-    session_start();            // Start the PHP session
-    $_SESSION['email'] = $email;
-    $_SESSION['loggedIn'] = 1;
-}
-
-/*
  * @param mysqli_result $connection connection to msql database
  * @param string $user_email
  * @param string oldPw old password to be changed

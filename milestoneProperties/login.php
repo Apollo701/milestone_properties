@@ -1,7 +1,8 @@
-<?php include 'navbar.php';
+<?php session_start();
+      include 'navbar.php';
       include_once 'functions.php';
       //include 'footer.php';
-      include 'password.php' ?>
+      include 'password.php';?>
 
 <html lang="en">
     <head>
@@ -64,7 +65,7 @@
                 <div class="form-group">
                     <div class="input-group input-group-sm col-sm-offset-4 col-sm-4">
                         <label for="InputPW1">Password</label>
-                        <input type="password" class="form-control" name="InputPW1" placeholder="Create Password" value="<?php echo isset($_POST['InputPW1']) ? $_POST['InputPW1'] : '' ?>">
+                        <input type="password" class="form-control" name="InputPW1" placeholder="Enter Password" value="<?php echo isset($_POST['InputPW1']) ? $_POST['InputPW1'] : '' ?>">
                     </div>
                 </div>
                 <div class="form-group">
@@ -123,7 +124,7 @@
         
         else {
             sec_session_start($email);
-            header("Location: profile_user.php");
+            header("Location: temp.php");
             exit();
         }
     }
@@ -140,5 +141,26 @@
         else if($GLOBALS['wrongCredentials']) {
             echo "Wrong email/password combination";
         }
+    }
+    
+    /*
+    * @param string $email email of the user currently logged in
+    */
+    // starts a cookie session to remember logged in user
+    function sec_session_start($email) {
+        session_destroy();
+        $session_name = 'milestoneProperties';   // Set a custom session name
+        $secure = 'SECURE';
+        // This stops JavaScript being able to access the session id.
+        $httponly = true;
+        // Gets current cookies params.
+        $cookieParams = session_get_cookie_params();
+        session_set_cookie_params($cookieParams["lifetime"], $cookieParams["path"], $cookieParams["domain"], $secure, $httponly);
+        // Sets the session name to the one set above.
+        session_name($session_name);
+        session_start();            // Start the PHP session
+        $_SESSION['email'] = $email;
+        $_SESSION['loggedIn'] = true;
+        session_write_close();
     }
 ?>
