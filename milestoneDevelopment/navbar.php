@@ -30,7 +30,7 @@
             <li><a href="profile_user.php">My Profile</a></li>
             <li class="divider"></li>
             <!-- Button trigger modal -->
-            <li><a href="#" data-toggle="modal" data-target="#logInModal">Log-in</a></li>
+            <li><a href="#" data-toggle="modal" data-target="#logInModal">Sign-in</a></li>
             <li class="divider"></li>
             <li><a href="#" data-toggle="modal" data-target="#signUpModal">Sign-up</a></li>
           </ul>
