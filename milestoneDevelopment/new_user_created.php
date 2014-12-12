@@ -13,16 +13,14 @@ and open the template in the editor.
         <title></title>
     </head>
     <body>
-        <pre>
+        
         <?php
             $connection = connect_to_mysql();
             input_user($connection);
             
-            /* Redirect browser */
-            header("Location: index.php");
-            exit;
+        header("Location: index.php");
+            exit();
         ?>
-        </pre>
     </body>
 </html>
 

@@ -23,12 +23,13 @@
                   <input type="checkbox" name="agree"> Agree to our <a href="#">terms of use</a> and <a href="#">privacy policy</a>
                 </label>
               </div>
+                <div class="modal-footer">
+            <p>Already have account ? <a href="#logInModal" data-toggle="modal" data-target="#logInModal">Sign in here.</a></p>
+            <input type="submit" name="submit" class="btn btn-primary btn-block btn-lg" value="Submit">
+          </div>
             </form>
           </div>
-          <div class="modal-footer">
-            <p>Already have account ? <a href="#logInModal" data-toggle="modal" data-target="#logInModal">Sign in here.</a></p>
-            <input type="submit" class="btn btn-primary btn-block btn-lg" value="Sign up">
-          </div>
+          
         </div>
       </div>
 </div>

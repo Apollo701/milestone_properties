@@ -507,18 +507,22 @@ function display_formatted_results($result) {
 //Takes in user input and adds new user to database
 function input_user($connection) {
     //$connection = connect_to_mysql();
-        if (is_already_user($_POST['user_email'], $connection)){
     $email = $_POST['user_email'];
+    $user_exists = is_already_user($email, $connection);
+        if (!$user_exists){
     $password = md5($_POST['user_password']);
     $query = "INSERT INTO users (user_email, user_password)
                     VALUES ('$email', '$password')";
 
     if (!mysqli_query($connection, $query)) {
+        echo "<br><br><br>failed";
         die('Error: ' . mysqli_error($connection));
     }
     echo "1 record added";
 
-    close_mysql_connection($connection);
+    mysqli_close($connection);
+} else {echo 'failed';
+    mysqli_close($connection);
 }
 }
 
@@ -529,9 +533,9 @@ function is_already_user($email, $connection){
     $query .= "WHERE user_email=";
     $query .= "' . $user_email . '";
     $result = mysqli_query($connection, $query);
-    if ($row = mysqli_fetch_array($result)){
+    if ($result){
         return TRUE;
-    } else FALSE;   
+    } else {FALSE;}
 }
 
 function log_in($connection){
