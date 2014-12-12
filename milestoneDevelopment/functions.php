@@ -239,38 +239,7 @@ function input_listing($connection) {
 
     close_mysql_connection($connection);
 }
-/*
- * @param mysql_result $connection connection to mysql database
- * @var string email user's email
- * @var string $password user's password
- * @var string $first_name user's first name
- * @var string $last_name user's last name
- * @var string $query value to send to mysql database
- * @global array $_POST
- */
-//Takes in user input and adds new user to database
-function input_user($connection) {
-    //$connection = connect_to_mysql();
 
-    $email = $_POST['email'];
-    $password = $_POST['password'];
-    $first_name = $_POST['first_name'];
-    $last_name = $_POST['last_name'];
-    $phone = $_POST['phone'];
-    $address = $_POST['address'];
-    $city = $_POST['city'];
-    $state = $_POST['state'];
-    $zip = $_POST['zip'];
-    $query = "INSERT INTO users (email, password, user_type, zip_code, phone_number, first_name, last_name)
-                    VALUES ('$email', '$password', 1, '$zip', '$phone', '$first_name', '$last_name')";
-
-    if (!mysqli_query($connection, $query)) {
-        die('Error: ' . mysqli_error($connection));
-    }
-    echo "1 record added";
-
-    close_mysql_connection($connection);
-}
 /*
  * @param int $result number of results 
  */
