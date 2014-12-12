@@ -1,13 +1,22 @@
-<?php
-include_once 'includes/db_connect.php';
-include_once 'includes/functions.php';
- 
-sec_session_start();
- 
-if (login_check($mysqli) == true) {
-    $logged = 'in';
+<?php require_once("./php-login-minimal-master/config/db.php");
+
+// load the login class
+require_once("./php-login-minimal-master/classes/Login.php");
+
+// create a login object. when this object is created, it will do all login/logout stuff automatically
+// so this single line handles the entire login process. in consequence, you can simply ...
+$login = new Login();
+
+// ... ask if we are logged in here:
+if ($login->isUserLoggedIn() == true) { echo 'Hello Jason Dorn';
+    // the user is logged in. you can do whatever you want here.
+    // for demonstration purposes, we simply show the "you are logged in" view.
+    
+
 } else {
-    $logged = 'out';
+    // the user is not logged in. you can do whatever you want here.
+    // for demonstration purposes, we simply show the "you are not logged in" view.
+    include("./php-login-minimal-master/views/not_logged_in.php");
 }
 ?>
 <?php include 'navbar.php'; ?>

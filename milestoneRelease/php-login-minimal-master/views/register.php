@@ -1,4 +1,4 @@
-      <?php
+<?php
 // show potential errors / feedback (from registration object)
 if (isset($registration)) {
     if ($registration->errors) {
@@ -13,19 +13,9 @@ if (isset($registration)) {
     }
 }
 ?>
-<!-- Modal -->
-<div class="modal fade" id="signUpModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
-  <div class="modal-dialog">
-    <div class="modal-content">
-      <div class="modal-header">
-        <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
-        <h4 class="modal-title" id="myModalLabel">Sign Up</h4>
-      </div>
-      <div class="modal-body">
-
 
 <!-- register form -->
-<form method="post" action="./php-login-minimal-master/register.php" name="registerform">
+<form method="post" action="register.php" name="registerform">
 
     <!-- the user name input field uses a HTML5 pattern check -->
     <label for="login_input_username">Username (only letters and numbers, 2 to 64 characters)</label>
@@ -43,10 +33,6 @@ if (isset($registration)) {
     <input type="submit"  name="register" value="Register" />
 
 </form>
-      </div>
-      <div class="modal-footer">
-        <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
-      </div>
-    </div>
-  </div>
-</div>
+
+<!-- backlink -->
+<a href="index.php">Back to Login Page</a>

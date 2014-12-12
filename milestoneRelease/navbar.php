@@ -23,10 +23,23 @@
                 font-weight: lighter;"role="button"> Sell</a></li>
       </ul>
 
-      <ul class="nav navbar-nav navbar-right">
+      
+          <?php if ($login->isUserLoggedIn() == true){
+            echo '<ul class="nav navbar-nav navbar-right">
+        <li class="dropdown">
+            <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button"><span class="glyphicon glyphicon-user"></span>   ' . $_SESSION['user_email'] . '<span class="caret"></span></a>
+            <ul class="dropdown-menu" role="menu">
+            <li><a href="profile_user.php">My Profile</a></li>
+            <li class="divider"></li>
+            
+          </ul>
+        </li>
+      </ul>';
+          } else{
+             echo '<ul class="nav navbar-nav navbar-right">
         <li class="dropdown">
             <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button"><span class="glyphicon glyphicon-user"></span> My Account <span class="caret"></span></a>
-          <ul class="dropdown-menu" role="menu">
+            <ul class="dropdown-menu" role="menu">
             <li><a href="profile_user.php">My Profile</a></li>
             <li class="divider"></li>
             <!-- Button trigger modal -->
@@ -35,7 +48,10 @@
             <li><a href="#" data-toggle="modal" data-target="#signUpModal">Sign-up</a></li>
           </ul>
         </li>
-      </ul>
+      </ul> 
+          }';}
+            ?>
+            
     </div><!-- /.navbar-collapse -->
   </div><!-- /.container-fluid -->
 </nav>
