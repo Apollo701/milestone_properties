@@ -85,8 +85,6 @@ function milestone_search_with_filters($connection) {
         $query .= "'{$_POST["usersearch"]}'";
         $query .= " OR zip_code =";
         $query .= "'{$_POST["usersearch"]}'";
-        $query .= " OR address =";
-        $query .= "'{$_POST["usersearch"]}')";
         if (!empty($_POST["bedroom"])) {
             $query .= " AND num_bedrooms =";
             $query .= "{$_POST["bedroom"]}";
@@ -509,8 +507,7 @@ function display_formatted_results($result) {
 //Takes in user input and adds new user to database
 function input_user($connection) {
     //$connection = connect_to_mysql();
-
-        if (is_already_user($_POST['user_email'])){
+        if (is_already_user($_POST['user_email'], $connection)){
     $email = $_POST['user_email'];
     $password = $_POST['user_password'];
     $query = "INSERT INTO users (user_email, user_password)
@@ -525,8 +522,16 @@ function input_user($connection) {
 }
 }
 
-function is_already_user($email){
-    
+function is_already_user($email, $connection){
+    $user_email = $_POST['user_email'];
+    $query = "SELECT user_email";
+    $query .= "FROM users ";
+    $query .= "WHERE user_email=";
+    $query .= "' . $user_email . '";
+    $result = mysqli_query($connection, $query);
+    if ($row = mysqli_fetch_array($result)){
+        return TRUE;
+    } else FALSE;   
 }
 
 ?>
