@@ -46,9 +46,10 @@ function connect_to_mysql() {
  * @var string $query query to mysql database
  */
 //fucnction to search database for listings
+//function is inefficient as-is, implement query by selecting relevant columns 
 function milestone_search($connection) { 
     if (empty($_POST["usersearch"])) {
-        $nameErr = "Name is required";
+        $nameErr = "Name is required";//redundant, fix it
         return $result = "";
     } else {
         $query = "SELECT * ";
@@ -73,6 +74,7 @@ function milestone_search($connection) {
  * @var string $query query to mysql database
  */
 //searches the database for listings with filters
+//*Fix so is not directly accessing $_POST*
 function milestone_search_with_filters($connection) {
     if (empty($_POST["usersearch"])) { 
         $nameErr = "Name is required";
