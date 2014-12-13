@@ -80,11 +80,11 @@
                     </div>
                     <div class="form-group">
                       <label for="bedroom">Bedroom</label>
-                      <select class="form-control" name="min_bedroom">
-                        <option value="1">1</option>
-                        <option value="2">2</option>
-                        <option value="3">3</option>
-                        <option value="4">4</option>
+                      <select class="form-control" name="min_bedroom" >  
+                        <?php echo "<option value=\"1\" " . (1 == $_POST["min_bedroom"] ? "selected=\"selected\"" : "") . ">1</option>"; ?>
+                        <?php echo "<option value=\"2\" " . (2 == $_POST["min_bedroom"] ? "selected=\"selected\"" : "") . ">2</option>"; ?>
+                        <?php echo "<option value=\"3\" " . (3 == $_POST["min_bedroom"] ? "selected=\"selected\"" : "") . ">3</option>"; ?>
+                        <?php echo "<option value=\"4\" " . (4 == $_POST["min_bedroom"] ? "selected=\"selected\"" : "") . ">4</option>"; ?>
                       </select>
                     </div>
                   </div>
