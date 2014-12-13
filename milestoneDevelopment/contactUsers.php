@@ -74,7 +74,7 @@
         <h1 align="center"> Contact request: </h1>
         
         <?php
-        if($_SERVER["REQUEST_METHOD"] == "POST") {
+        if(isset($_POST['idRow'])) {
             remove_row();
         }
         ?>

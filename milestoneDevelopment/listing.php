@@ -51,7 +51,7 @@
     <body>
         <?php
         $connection = connect_to_mysql();
-        $results = milestone_search($connection);
+        $results = milestone_search_with_filters($connection);
         ?>
         
             

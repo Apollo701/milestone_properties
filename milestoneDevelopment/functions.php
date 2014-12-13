@@ -80,7 +80,7 @@ function milestone_search_with_filters($connection) {
     } else {
         $query = "SELECT * ";
         $query .="FROM listings ";
-        $query .="WHERE (city =";
+        $query .="WHERE city =";
         $query .= "'{$_POST["usersearch"]}'";
         $query .= " OR us_state =";
         $query .= "'{$_POST["usersearch"]}'";
@@ -110,6 +110,7 @@ function milestone_search_with_filters($connection) {
             $query .= " AND price <=";
             $query .= "{$_POST["maxprice"]}";
         }
+        
         return $result = mysqli_query($connection, $query);
     }
 }
@@ -122,16 +123,11 @@ function milestone_search_with_filters($connection) {
  */
 //function to retrieve information from listing
 function milestone_details($connection) {
-    if (empty($_POST["details"])) {
-        $nameErr = "Name is required";
-        return $result = "";
-    } else {
         $query = "SELECT * ";
         $query .="FROM listings ";
         $query .="WHERE id =";
-        $query .= "'{$_POST["details"]}'";
+        $query .= "'{$_GET["details"]}'";
         return $result = mysqli_query($connection, $query);
-    }
 }
 /*
  * @param mysql_result $connection
@@ -416,7 +412,7 @@ function display_formatted_results($result) {
                                     <br><br>
                                     <p class="hidden-xs">' . substr($row["description"], 0, 120) . '...</p>
                                     <div class="btn-toolbar pull-right">
-                                        <form action="home_details.php" method="post">
+                                        <form action="home_details.php" method="get">
                                             <button type="button" class="btn btn-default btn-sm">
                                                 <span class="glyphicon glyphicon-star" aria-hidden="true"></span> Star
                                             </button>

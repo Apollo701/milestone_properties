@@ -1,4 +1,5 @@
-<?php include 'navbar.php'; ?>
+<?php session_start();
+include 'navbar.php'; ?>
 <?php include 'login_modal.php'; ?>
 <?php include 'signup_modal.php'; ?>
 <?php include_once 'functions.php'; ?>
@@ -54,11 +55,17 @@
         <?php
         $connection = connect_to_mysql();
         $results = milestone_details($connection);
+        static $row;
+        
         if ($results != "") {
             $row = mysqli_fetch_array($results);
         } else {
             echo "<br><br><br><h2>Must enter valid input</h2>";
             die();
+        }
+        
+        if(isset($_POST['bookmark'])) {
+            bookmark_listing();
         }
         ?>
 
@@ -117,11 +124,13 @@
                                     <p class="hidden-xs"><?php echo '' . $row["description"] . ''; ?></p>
                                     <br><br><br>
                                     <div class="btn-toolbar pull-right">
-                                        <form action="home_details.php" method="post">
-                                            <button type="button" class="btn btn-default btn-sm">
-                                                <span class="glyphicon glyphicon-star" aria-hidden="true"></span> Star
+                                        <form action="home_details.php?details=<?php echo $row[0] ?>" method="post">
+                                            <button type="button" name="bookmark" class="btn btn-default btn-sm">
+                                                <span class="glyphicon glyphicon-star" value="<?php echo '' . $row[0] . ''; ?>" aria-hidden="true"></span> Star
                                             </button>
-                                            <button name="details" type="submit" value="<?php echo '' . $row[0] . ''; ?>" class="btn btn-success btn-sm">Contact A Realtor</button>
+                                        </form>
+                                        <form action="contact_realtor.php" method="post">
+                                            <button name="contact" type="submit" value="<?php echo '' . $row[0] . ''; ?>" class="btn btn-success btn-sm">Contact A Realtor</button>
 
                                         </form>
 
@@ -159,3 +168,12 @@
         <script src="//maxcdn.bootstrapcdn.com/bootstrap/3.3.0/js/bootstrap.min.js"></script>
     </body>
 </html>
+
+<?php
+    function bookmark_listing() {
+        $connection = connect_to_mysql();
+        $query = "INSERT into bookmarks (user_id, listing_id) VALUES(";
+        $query .= $_SESSION['id'] . ",";
+        //$query .= 
+    }
+?>
