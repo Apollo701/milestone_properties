@@ -1,4 +1,3 @@
-<?php session_start(); ?>
 <?php include 'navbar.php'; ?>
 <?php include 'login_modal.php'; ?>
 <?php include 'signup_modal.php'; ?>
