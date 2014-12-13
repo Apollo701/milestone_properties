@@ -50,8 +50,14 @@
     </head>
     <body>
         <?php
+        error_reporting(E_ALL & ~E_NOTICE);
         $connection = connect_to_mysql();
-        $results = milestone_search_with_filters($connection);
+        if($_POST["minprice"]){
+            $results = milestone_search_with_filters($connection);
+        }
+        else{
+        $results = milestone_search($connection);
+        }
         ?>
         
             
@@ -92,20 +98,21 @@
                     <div class="form-group">
                       <label for="status">Walkscore</label>
                       <select class="form-control" name = "min_walkscore">
-                        <option value="90"> >90+</option>
-                        <option value="80">80+</option>
-                        <option value="70">70+</option>
-                        <option value="60">60+</option>
-                        <option value="50">50+</option>
+                        <?php echo "<option value=\"0\" " . (0 == $_POST["min_walkscore"] ? "selected=\"selected\"" : "") . ">0</option>"; ?>
+                        <?php echo "<option value=\"90\" " . (90 == $_POST["min_walkscore"] ? "selected=\"selected\"" : "") . ">90</option>"; ?>
+                        <?php echo "<option value=\"80\" " . (80 == $_POST["min_walkscore"] ? "selected=\"selected\"" : "") . ">80</option>"; ?>
+                        <?php echo "<option value=\"70\" " . (70 == $_POST["min_walkscore"] ? "selected=\"selected\"" : "") . ">70</option>"; ?>
+                        <?php echo "<option value=\"60\" " . (60 == $_POST["min_walkscore"] ? "selected=\"selected\"" : "") . ">60</option>"; ?>
+                        <?php echo "<option value=\"50\" " . (50 == $_POST["min_walkscore"] ? "selected=\"selected\"" : "") . ">50</option>"; ?>
                       </select>
                     </div>
                     <div class="form-group">
                       <label for="bathroom">Bathroom</label>
                       <select class="form-control" name="min_bathroom">
-                        <option value="1">1</option>
-                        <option value="2">2</option>
-                        <option value="3">3</option>
-                        <option value="4">4</option>
+                        <?php echo "<option value=\"1\" " . (1 == $_POST["min_bathroom"] ? "selected=\"selected\"" : "") . ">1</option>"; ?>
+                        <?php echo "<option value=\"2\" " . (2 == $_POST["min_bathroom"] ? "selected=\"selected\"" : "") . ">2</option>"; ?>
+                        <?php echo "<option value=\"3\" " . (3 == $_POST["min_bathroom"] ? "selected=\"selected\"" : "") . ">3</option>"; ?>
+                        <?php echo "<option value=\"4\" " . (4 == $_POST["min_bathroom"] ? "selected=\"selected\"" : "") . ">4</option>"; ?>
                       </select>
                      
                     </div>
@@ -115,20 +122,20 @@
                     <div class="form-group">
                       <label for="min_sq_ft">Sq Ft</label>
                       <select class="form-control" name="min_sq_ft">
-                          <option value="70"> 70+</option>
-                        <option value="120" >120+</option>
-                        <option value="170">170+</option>
-                        <option value="190" >190+</option>
-                        <option value="210" >210+</option> 
+                        <?php echo "<option value=\"90\" " . (90 == $_POST["min_sq_ft"] ? "selected=\"selected\"" : "") . ">90</option>"; ?>
+                        <?php echo "<option value=\"120\" " . (120 == $_POST["min_sq_ft"] ? "selected=\"selected\"" : "") . ">120</option>"; ?>
+                        <?php echo "<option value=\"170\" " . (170 == $_POST["min_sq_ft"] ? "selected=\"selected\"" : "") . ">170</option>"; ?>
+                        <?php echo "<option value=\"190\" " . (190 == $_POST["min_sq_ft"] ? "selected=\"selected\"" : "") . ">190</option>"; ?>
+                        <?php echo "<option value=\"210\" " . (210 == $_POST["min_sq_ft"] ? "selected=\"selected\"" : "") . ">210</option>"; ?>
                       </select>
                     </div>
                     <div class="form-group">
                       <label for="minprice">Min Price</label>
                       <select class="form-control" name="minprice">
-                        <option value="20000">$20,000</option>
-                        <option value="40000">$40,000</option>
-                        <option value="60000">$60,000</option>
-                        <option value="70000">$70,000</option>
+                        <?php echo "<option value=\"20000\" " . (20000 == $_POST["minprice"] ? "selected=\"selected\"" : "") .">$20000</option>"; ?>
+                        <?php echo "<option value=\"40000\" " . (40000 == $_POST["minprice"] ? "selected=\"selected\"" : "") .">$40000</option>"; ?>
+                        <?php echo "<option value=\"60000\" " . (60000 == $_POST["minprice"] ? "selected=\"selected\"" : "") .">$60000</option>"; ?>
+                        <?php echo "<option value=\"80000\" " . (80000 == $_POST["minprice"] ? "selected=\"selected\"" : "") .">$80000</option>"; ?>
                       </select>
                     </div>
                   </div>
@@ -137,10 +144,10 @@
                     <div class="form-group">
                       <label for="maxprice">Max Price</label>
                       <select class="form-control" name="maxprice">
-                        <option value="100000">$100,000</option>
-                        <option value="150000">$150,000</option>
-                        <option value="200000">$200,000</option>
-                        <option value="300000">$300,000</option>
+                        <?php echo "<option value=\"500000\" " . (500000 == $_POST["maxprice"] ? "selected=\"selected\"" : "") .">$500000</option>"; ?>
+                        <?php echo "<option value=\"600000\" " . (600000 == $_POST["maxprice"] ? "selected=\"selected\"" : "") .">$600000</option>"; ?>
+                        <?php echo "<option value=\"700000\" " . (700000 == $_POST["maxprice"] ? "selected=\"selected\"" : "") .">$700000</option>"; ?>
+                        <?php echo "<option value=\"800000\" " . (800000 == $_POST["maxprice"] ? "selected=\"selected\"" : "") .">$800000</option>"; ?>
                       </select>
                     </div>
                     <div class="form-group">
@@ -167,13 +174,8 @@
               </div>
             </div>
                            
-                <?php display_formatted_results($results);
-                echo $_POST["min_bathroom"]."\n"; 
-                echo $_POST["min_bedroom"] . "\n";
-                echo $_POST["min_walkscore"] . "\n";
-                echo $_POST["min_sq_ft"] . "\n";
-                echo $_POST["minprice"] . "\n";
-                echo $_POST["maxprice"] . "\n";
+                <?php 
+                display_formatted_results($results);
                 ?>
 
         </div><!-- End container -->

@@ -80,14 +80,14 @@ function milestone_search_with_filters($connection) {
     } else {
         $query = "SELECT * ";
         $query .="FROM listings ";
-        $query .="WHERE city =";
+        $query .="WHERE (city = ";
         $query .= "'{$_POST["usersearch"]}'";
         $query .= " OR us_state =";
         $query .= "'{$_POST["usersearch"]}'";
         $query .= " OR zip_code =";
         $query .= "'{$_POST["usersearch"]}'";
         if (!empty($_POST["min_bedroom"])) {
-            $query .= " AND num_bedrooms >=";
+            $query .= ") AND num_bedrooms >=";
             $query .= "{$_POST["min_bedroom"]}";
         }
         if (!empty($_POST["min_walkscore"])) {
@@ -110,7 +110,6 @@ function milestone_search_with_filters($connection) {
             $query .= " AND price <=";
             $query .= "{$_POST["maxprice"]}";
         }
-        
         return $result = mysqli_query($connection, $query);
     }
 }
@@ -375,7 +374,7 @@ function display_formatted_results($result) {
 
     if ($result != "") {
         
-        while ($row = mysqli_fetch_array($result)) {
+        while ($row = mysqli_fetch_array($result)) { 
              echo '<div class="row">
                     <div class="col-sm-6">
                         <div class="brdr bgc-fff pad-10 box-shad btm-mrg-20 property-listing" style="overflow:hidden;">
@@ -488,7 +487,7 @@ function display_formatted_results($result) {
         }
         mysqli_free_result($result);
     } else {
-        echo "<h1>Must enter valid input</h1>";
+        echo "<h1></h1>";
     }
 }
 
