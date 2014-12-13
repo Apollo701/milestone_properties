@@ -42,7 +42,6 @@
                     <div class="col-sm-12 col-md-12">
                         <h1 class="h1">
                             Thank you for your interest in our property </h1>
-                        <?php print $_POST['contact'];?>
                         <h2 class="h2">Our realtors will be in contact with you shortly</h2>
                     </div>
                 </div>
