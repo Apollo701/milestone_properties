@@ -21,3 +21,42 @@
         </div>
     </body>
 </html>
+
+<?php
+    $connection = connect_to_mysql();
+    $results = details($connection);
+    if ($results != "") {
+        $row = mysqli_fetch_array($results);
+    } else {
+        die();
+    }
+    
+    function details($connection) {
+        if (empty($_POST["details"])) {
+            $nameErr = "Name is required";
+            return $result = "";
+        } else {
+            $query = "SELECT * ";
+            $query .="FROM listings ";
+            $query .="WHERE id =";
+            $query .= "'{$_POST["details"]}'";
+            return $result = mysqli_query($connection, $query);
+        }
+    }
+    
+    function row_destroy($connection, $id){
+        // sql to delete a record
+        $sql = "DELETE FROM offers WHERE id=" + $id;
+
+        if ($connection->query($sql) === TRUE) {
+            echo "Record deleted successfully";
+        } else {
+            echo "Error deleting record: " . $connection->error;
+        }
+    }
+    
+    
+    
+    
+    
+?>
