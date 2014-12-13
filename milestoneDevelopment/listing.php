@@ -122,6 +122,7 @@
                     <div class="form-group">
                       <label for="min_sq_ft">Sq Ft</label>
                       <select class="form-control" name="min_sq_ft">
+                        <?php echo "<option value=\"20\" " . (20 == $_POST["min_sq_ft"] ? "selected=\"selected\"" : "") . ">20</option>"; ?>
                         <?php echo "<option value=\"90\" " . (90 == $_POST["min_sq_ft"] ? "selected=\"selected\"" : "") . ">90</option>"; ?>
                         <?php echo "<option value=\"120\" " . (120 == $_POST["min_sq_ft"] ? "selected=\"selected\"" : "") . ">120</option>"; ?>
                         <?php echo "<option value=\"170\" " . (170 == $_POST["min_sq_ft"] ? "selected=\"selected\"" : "") . ">170</option>"; ?>
@@ -144,9 +145,10 @@
                     <div class="form-group">
                       <label for="maxprice">Max Price</label>
                       <select class="form-control" name="maxprice">
-                        <?php echo "<option value=\"500000\" " . (500000 == $_POST["maxprice"] ? "selected=\"selected\"" : "") .">$500000</option>"; ?>
-                        <?php echo "<option value=\"600000\" " . (600000 == $_POST["maxprice"] ? "selected=\"selected\"" : "") .">$600000</option>"; ?>
-                        <?php echo "<option value=\"700000\" " . (700000 == $_POST["maxprice"] ? "selected=\"selected\"" : "") .">$700000</option>"; ?>
+                        <?php echo "<option value=\"5000000\" " . (5000000 == $_POST["maxprice"] ? "selected=\"selected\"" : "") .">$5000000</option>"; ?>
+                        <?php echo "<option value=\"3000000\" " . (3000000 == $_POST["maxprice"] ? "selected=\"selected\"" : "") .">$3000000</option>"; ?>
+                        <?php echo "<option value=\"2000000\" " . (2000000 == $_POST["maxprice"] ? "selected=\"selected\"" : "") .">$2000000</option>"; ?>
+                        <?php echo "<option value=\"1000000\" " . (1000000 == $_POST["maxprice"] ? "selected=\"selected\"" : "") .">$1000000</option>"; ?>
                         <?php echo "<option value=\"800000\" " . (800000 == $_POST["maxprice"] ? "selected=\"selected\"" : "") .">$800000</option>"; ?>
                       </select>
                     </div>
