@@ -147,7 +147,7 @@
                                     <br><br>
                                     <p class="hidden-xs"><?php echo '' . substr($row["description"], 0, 120) . ''; ?>...</p>
                                     <div class="btn-toolbar pull-right">
-                                        <form action="home_details.php" method="post">
+                                        <form action="home_details.php" method="get">
                                             <button type="button" class="btn btn-default btn-sm">
                                                 <span class="glyphicon glyphicon-star" aria-hidden="true"></span> Star
                                             </button>
@@ -212,7 +212,7 @@
                                     <br><br>
                                     <p class="hidden-xs"><?php echo '' . substr($row["description"], 0, 120) . ''; ?>...</p>
                                     <div class="btn-toolbar pull-right">
-                                        <form action="home_details.php" method="post">
+                                        <form action="home_details.php" method="get">
                                             <button type="button" class="btn btn-default btn-sm">
                                                 <span class="glyphicon glyphicon-star" aria-hidden="true"></span> Star
                                             </button>

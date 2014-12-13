@@ -6,7 +6,7 @@
         <meta charset="utf-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <link href="//maxcdn.bootstrapcdn.com/bootstrap/3.3.0/css/bootstrap.min.css" rel="stylesheet">
-        <title>About Us Page</title>
+        <title>Contact realtor</title>
         <style>
             .jumbotron {
 
@@ -29,6 +29,12 @@
         </style>
     </head>
 
+    <?php
+        if(isset($_POST['contact'])) {
+            contact_realtor();
+        }
+    ?>
+    
     <body>
         <div class="jumbotron jumbotron-sm">
             <div class="container">
@@ -45,41 +51,38 @@
             <div class="row">
                 <div class="col-md-8 center-block" >
                     <div class="well well-sm">
-                        <form>
+                        <form action="<?php echo $_SERVER['PHP_SELF'] ?>" method="post">
                             <div class="row">
                                 <div class="col-md-6">
                                     <div class="form-group">
-                                        <label for="name">
-                                            Name</label>
-                                        <input type="text" class="form-control" id="name" placeholder="Enter name" required="required" />
+                                        <label for="name">Name</label>
+                                        <input type="text" class="form-control" name="name" placeholder="Enter name" required="required" value="<?php echo isset($_POST['name']) ? $_POST['name'] : '' ?>" />
                                     </div>
                                     <div class="form-group">
-                                        <label for="email">
-                                            Email Address</label>
+                                        <label for="email">Email Address</label>
                                         <div class="input-group">
                                             <span class="input-group-addon"><span class="glyphicon glyphicon-envelope"></span>
                                             </span>
-                                            <input type="email" class="form-control" id="email" placeholder="Enter email" required="required" /></div>
+                                            <input type="email" class="form-control" name="email" placeholder="Enter email" required="required" value="<?php echo isset($_POST['email']) ? $_POST['email'] : '' ?>"/>
+                                        </div>
                                     </div>
                                     <div class="form-group">
-                                        <label for="phone">
-                                            Phone Number</label>
+                                        <label for="phone">Phone Number</label>
                                         <div class="input-group">
                                             <span class="input-group-addon"><span class="glyphicon glyphicon-phone"></span>
                                             </span>
-                                            <input type="phone" class="form-control" id="phone" placeholder="Enter phone number" required="required" /></div>
+                                            <input type="phone" class="form-control" name="phone" placeholder="Enter phone number" required="required" value="<?php echo isset($_POST['phone']) ? $_POST['phone'] : '' ?>"/>
+                                        </div>
                                     </div>
                                 </div>
                                 <div class="col-md-6">
                                     <div class="form-group">
-                                        <label for="name">
-                                            Message</label>
-                                        <textarea name="message" id="message" class="form-control" rows="9" cols="25" required="required"
-                                                  placeholder="Please let us know if you have any questions"></textarea>
+                                        <label for="message">Message</label>
+                                        <textarea name="message" class="form-control" rows="9" cols="25" required="required" <?php if(!isset($_POST['message'])) { echo "placeholder=\"Please let us know if you have any questions\"";}?>><?php echo isset($_POST['message']) ? $_POST['message'] : '' ?></textarea>
                                     </div>
                                 </div>
                                 <div class="col-md-12">
-                                    <button type="submit" class="btn btn-primary pull-right" id="btnContactUs">
+                                    <button type="submit" name="contact" class="btn btn-primary pull-right">
                                         Send Message</button>
                                 </div>
                             </div>
@@ -112,3 +115,9 @@
         <script src="//maxcdn.bootstrapcdn.com/bootstrap/3.3.0/js/bootstrap.min.js"></script>
     </body>
 </html>
+
+<?php
+    function contact_realtor() {
+        
+    }
+?>
