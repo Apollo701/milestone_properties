@@ -49,6 +49,7 @@ include 'navbar.php'; ?>
                 margin-top: 3%;
                 text-align: center;
             }
+            body { padding-top: 30px; }
         </style>
     </head>
     <body>
@@ -125,13 +126,12 @@ include 'navbar.php'; ?>
                                     <br><br><br>
                                     <div class="btn-toolbar pull-right">
                                         <form action="home_details.php?details=<?php echo $row[0] ?>" method="post">
-                                            <button type="button" name="bookmark" class="btn btn-default btn-sm">
+                                            <button type="submit" value="<?php echo $row[0] ?>" name="bookmark" class="btn btn-default btn-sm">
                                                 <span class="glyphicon glyphicon-star" value="<?php echo '' . $row[0] . ''; ?>" aria-hidden="true"></span> Star
                                             </button>
                                         </form>
                                         <form action="contact_realtor.php" method="post">
                                             <button name="contact" type="submit" value="<?php echo '' . $row[0] . ''; ?>" class="btn btn-success btn-sm">Contact A Realtor</button>
-
                                         </form>
 
                                     </div>
@@ -173,7 +173,8 @@ include 'navbar.php'; ?>
     function bookmark_listing() {
         $connection = connect_to_mysql();
         $query = "INSERT into bookmarks (user_id, listing_id) VALUES(";
-        $query .= $_SESSION['id'] . ",";
-        //$query .= 
+        $query .= $_SESSION['id'] . "," . $_POST['bookmark'] . ")";
+        mysqli_query($connection, $query);
+        echo "<script type='text/javascript'>alert('Listing added to bookmarks');</script>";
     }
 ?>
