@@ -19,9 +19,11 @@ and open the template in the editor.
 //        echo $_POST['user_email'];
 //        echo md5($_POST['user_password']);
             $connection = connect_to_mysql();
-            $logged_in = user_sign_in($connection);
-            if ($logged_in){
-                $_SESSION['id'] = $logged_in;
+            $row = user_sign_in($connection);
+            if ($row){
+                $_SESSION['id'] = $row['id'];
+                $_SESSION['email'] = $row['email'];
+
             echo "<br>You're logged in!!!!";
             }
             

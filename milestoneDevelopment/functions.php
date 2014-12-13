@@ -550,7 +550,7 @@ function user_sign_in($connection){
     if($result){
         $row = mysqli_fetch_array($result);
         if ($row['password'] == $password_provided){
-            return $row['id'];
+            return $row;
         } else {return FALSE;}
     }
 }

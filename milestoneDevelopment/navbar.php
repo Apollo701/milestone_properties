@@ -1,3 +1,4 @@
+<?php session_start(); ?>
 
 <nav class="navbar navbar-default navbar-fixed-top" role="navigation">
   <div class="container">
@@ -22,8 +23,23 @@
           <li><a href="new_listing.php" class="btn btn-lg" style="font-family: 'Helvetica Neue', serif;
                 font-weight: lighter;"role="button"> Sell</a></li>
       </ul>
-
-      <ul class="nav navbar-nav navbar-right">
+<?php if ($_SESSION['id']){
+    $name = explode("@",$_SESSION['email']);
+    echo '<ul class="nav navbar-nav navbar-right">
+        <li class="dropdown">
+            <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button"><span class="glyphicon glyphicon-user"></span>  Hello, ' . $name[0] . ' <span class="caret"></span></a>
+          <ul class="dropdown-menu" role="menu">
+            <li><a href="profile_user.php">My Profile</a></li>
+            <li class="divider"></li>
+            <!-- Button trigger modal -->
+            <li><a href="#" data-toggle="modal" data-target="#logInModal">Sign-in</a></li>
+            <li class="divider"></li>
+            <li><a href="#" data-toggle="modal" data-target="#signUpModal">Sign-up</a></li>
+          </ul>
+        </li>
+      </ul>';
+} else{
+    echo'<ul class="nav navbar-nav navbar-right">
         <li class="dropdown">
             <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button"><span class="glyphicon glyphicon-user"></span> My Account <span class="caret"></span></a>
           <ul class="dropdown-menu" role="menu">
@@ -35,7 +51,9 @@
             <li><a href="#" data-toggle="modal" data-target="#signUpModal">Sign-up</a></li>
           </ul>
         </li>
-      </ul>
+      </ul>';
+} ?>
+      
     </div><!-- /.navbar-collapse -->
   </div><!-- /.container-fluid -->
 </nav>
