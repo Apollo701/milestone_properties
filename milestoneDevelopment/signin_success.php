@@ -23,6 +23,7 @@ and open the template in the editor.
             if ($row){
                 $_SESSION['id'] = $row['id'];
                 $_SESSION['email'] = $row['email'];
+                $_SESSION['admin'] = $row['admin'];
 
             echo "<br>You're logged in!!!!";
             }
