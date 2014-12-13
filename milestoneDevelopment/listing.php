@@ -57,7 +57,7 @@
         }
         else{
         $results = milestone_search($connection);
-        }
+        } 
         ?>
         
             
