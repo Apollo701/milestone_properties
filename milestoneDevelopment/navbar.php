@@ -23,7 +23,7 @@
           <li><a href="new_listing.php" class="btn btn-lg" style="font-family: 'Helvetica Neue', serif;
                 font-weight: lighter;"role="button"> Sell</a></li>
       </ul>
-<?php if ($_SESSION['id']){
+<?php if (isset($_SESSION['id'])){
     $name = explode("@",$_SESSION['email']);
     echo '<ul class="nav navbar-nav navbar-right">
         <li class="dropdown">
@@ -32,9 +32,8 @@
             <li><a href="profile_user.php">My Profile</a></li>
             <li class="divider"></li>
             <!-- Button trigger modal -->
-            <li><a href="#" data-toggle="modal" data-target="#logInModal">Sign-in</a></li>
-            <li class="divider"></li>
-            <li><a href="#" data-toggle="modal" data-target="#signUpModal">Sign-up</a></li>
+            <li><a href="sign_out.php">Sign-out</a></li>
+
           </ul>
         </li>
       </ul>';
