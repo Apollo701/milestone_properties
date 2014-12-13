@@ -46,7 +46,7 @@ function connect_to_mysql() {
  * @var string $query query to mysql database
  */
 //fucnction to search database for listings
-function milestone_search($connection) {
+function milestone_search($connection) { 
     if (empty($_POST["usersearch"])) {
         $nameErr = "Name is required";
         return $result = "";
@@ -64,6 +64,7 @@ function milestone_search($connection) {
         return $result = mysqli_query($connection, $query);
     }
 }
+
 /*
  * @param mysqli_result $connection connection to msql database
  * @global array $_POST array with user search request and filter arguments
@@ -73,7 +74,7 @@ function milestone_search($connection) {
  */
 //searches the database for listings with filters
 function milestone_search_with_filters($connection) {
-    if (empty($_POST["usersearch"])) {
+    if (empty($_POST["usersearch"])) { 
         $nameErr = "Name is required";
         return $result = "";
     } else {
@@ -85,17 +86,17 @@ function milestone_search_with_filters($connection) {
         $query .= "'{$_POST["usersearch"]}'";
         $query .= " OR zip_code =";
         $query .= "'{$_POST["usersearch"]}'";
-        if (!empty($_POST["bedroom"])) {
-            $query .= " AND num_bedrooms =";
-            $query .= "{$_POST["bedroom"]}";
+        if (!empty($_POST["min_bedroom"])) {
+            $query .= " AND num_bedrooms >=";
+            $query .= "{$_POST["min_bedroom"]}";
         }
         if (!empty($_POST["min_walkscore"])) {
             $query .= " AND walkscore >=";
             $query .= "{$_POST["min_walkscore"]}"; //form must be converted to int, "+%d" is a string
         }
-        if (!empty($_POST["bathroom"])) {
-            $query .= " AND num_bathrooms =";
-            $query .= "{$_POST["bathroom"]}";
+        if (!empty($_POST["min_bathroom"])) {
+            $query .= " AND num_bathrooms >=";
+            $query .= "{$_POST["min_bathroom"]}";
         }
         if (!empty($_POST["min_sq_ft"])) {
             $query .= " AND sq_ft >=";

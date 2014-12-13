@@ -4,7 +4,7 @@
 <?php include 'signup_modal.php'; ?>
 <?php include_once 'functions.php'; ?>
 <!doctype html>
-<html lang="en">
+<html lang="en"> 
     <head>
         <meta charset="utf-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -76,59 +76,59 @@
                   <div class="col-md-3 col-sm-3">
                     <div class="form-group">
                       <label for="bedroom">Search Homes</label>
-                      <input name="usersearch" type="text" class="form-control" placeholder="<?php echo $_POST["usersearch"]?>">
+                      <input name="usersearch" type="text" class="form-control" placeholder="<?php echo $_POST["usersearch"]?>" value = "<?php echo isset($_POST["usersearch"]) ? $_POST["usersearch"] : '' ?>">
                     </div>
                     <div class="form-group">
                       <label for="bedroom">Bedroom</label>
-                      <select class="form-control">
-                        <option>1</option>
-                        <option>2</option>
-                        <option>3</option>
-                        <option>4</option>
+                      <select class="form-control" name="min_bedroom">
+                        <option value="1">1</option>
+                        <option value="2">2</option>
+                        <option value="3">3</option>
+                        <option value="4">4</option>
                       </select>
                     </div>
                   </div>
                     <div class="col-md-3 col-sm-3">
                     <div class="form-group">
                       <label for="status">Walkscore</label>
-                      <select class="form-control">
-                        <option>90+</option>
-                        <option>80+</option>
-                        <option>70+</option>
-                        <option>60+</option>
-                        <option>50+</option>
+                      <select class="form-control" name = "min_walkscore">
+                        <option value="90"> >90+</option>
+                        <option value="80">80+</option>
+                        <option value="70">70+</option>
+                        <option value="60">60+</option>
+                        <option value="50">50+</option>
                       </select>
                     </div>
                     <div class="form-group">
                       <label for="bathroom">Bathroom</label>
-                      <select class="form-control">
-                        <option>1</option>
-                        <option>2</option>
-                        <option>3</option>
-                        <option>4</option>
+                      <select class="form-control" name="min_bathroom">
+                        <option value="1">1</option>
+                        <option value="2">2</option>
+                        <option value="3">3</option>
+                        <option value="4">4</option>
                       </select>
+                     
                     </div>
                   </div>
                   <!-- break -->
                   <div class="col-md-3 col-sm-3">
                     <div class="form-group">
-                      <label for="type">Sq Ft</label>
-                      <select class="form-control">
-                        <option>70+</option>
-                        <option>120+</option>
-                        <option>170+</option>
-                        <option>190+</option>
-                        <option>210+</option>
-                        
+                      <label for="min_sq_ft">Sq Ft</label>
+                      <select class="form-control" name="min_sq_ft">
+                          <option value="70"> 70+</option>
+                        <option value="120" >120+</option>
+                        <option value="170">170+</option>
+                        <option value="190" >190+</option>
+                        <option value="210" >210+</option> 
                       </select>
                     </div>
                     <div class="form-group">
                       <label for="minprice">Min Price</label>
-                      <select class="form-control">
-                        <option>$20,000</option>
-                        <option>$40,000</option>
-                        <option>$60,000</option>
-                        <option>$70,000</option>
+                      <select class="form-control" name="minprice">
+                        <option value="20000">$20,000</option>
+                        <option value="40000">$40,000</option>
+                        <option value="60000">$60,000</option>
+                        <option value="70000">$70,000</option>
                       </select>
                     </div>
                   </div>
@@ -136,11 +136,11 @@
                   <div class="col-md-3 col-sm-3">
                     <div class="form-group">
                       <label for="maxprice">Max Price</label>
-                      <select class="form-control">
-                        <option>$8,200</option>
-                        <option>$11,700</option>
-                        <option>$14,150</option>
-                        <option>$21,110</option>
+                      <select class="form-control" name="maxprice">
+                        <option value="100000">$100,000</option>
+                        <option value="150000">$150,000</option>
+                        <option value="200000">$200,000</option>
+                        <option value="300000">$300,000</option>
                       </select>
                     </div>
                     <div class="form-group">
@@ -168,7 +168,12 @@
             </div>
                            
                 <?php display_formatted_results($results);
-                    
+                echo $_POST["min_bathroom"]."\n"; 
+                echo $_POST["min_bedroom"] . "\n";
+                echo $_POST["min_walkscore"] . "\n";
+                echo $_POST["min_sq_ft"] . "\n";
+                echo $_POST["minprice"] . "\n";
+                echo $_POST["maxprice"] . "\n";
                 ?>
 
         </div><!-- End container -->
