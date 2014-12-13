@@ -511,7 +511,7 @@ function input_user($connection) {
     $user_exists = is_already_user($email, $connection);
         if (!$user_exists){
     $password = md5($_POST['user_password']);
-    $query = "INSERT INTO users (user_email, user_password)
+    $query = "INSERT INTO users (email, password)
                     VALUES ('$email', '$password')";
 
     if (!mysqli_query($connection, $query)) {
@@ -528,9 +528,9 @@ function input_user($connection) {
 
 function is_already_user($email, $connection){
     $user_email = $_POST['user_email'];
-    $query = "SELECT user_email";
+    $query = "SELECT email";
     $query .= "FROM users ";
-    $query .= "WHERE user_email=";
+    $query .= "WHERE email=";
     $query .= "' . $user_email . '";
     $result = mysqli_query($connection, $query);
     if ($result){
@@ -542,16 +542,16 @@ function user_sign_in($connection){
     $user_email_provided = $_POST['user_email'];
     $password_provided = md5($_POST['user_password']);
 
-    $query = "SELECT user_email, user_password";
+    $query = "SELECT *";
     $query .="FROM users ";
-    $query .="WHERE user_email=";
-    $query .="' . $user_email_provided . '";
+    $query .="WHERE email=";
+    $query .="'$user_email_provided'";
     $result = mysqli_query($connection, $query);
     if($result){
         $row = mysqli_fetch_array($result);
-        if ($row['user_password'] == $password_provided){
-            echo "<br><br><br>You're logged in!!!!";
-        }
+        if ($row['password'] == $password_provided){
+            return $row['id'];
+        } else {return FALSE;}
     }
 }
 

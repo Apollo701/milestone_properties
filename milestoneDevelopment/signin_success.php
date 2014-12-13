@@ -1,4 +1,5 @@
 <?php
+session_start();
 include_once 'functions.php';
 ?>
 <!DOCTYPE html>
@@ -15,11 +16,18 @@ and open the template in the editor.
     <body>
         
         <?php
+//        echo $_POST['user_email'];
+//        echo md5($_POST['user_password']);
             $connection = connect_to_mysql();
-            user_sign_in($connection);
+            $logged_in = user_sign_in($connection);
+            if ($logged_in){
+                $_SESSION['id'] = $logged_in;
+            echo "<br>You're logged in!!!!";
+            }
             
-//        header("Location: index.php");
-//            exit();
+        header("Location: index.php");
+            exit();
+            
         ?>
     </body>
 </html>
