@@ -131,7 +131,7 @@ include 'navbar.php'; ?>
                                             </button>
                                         </form>
                                         <form action="contact_realtor.php" method="post">
-                                            <button name="contact" type="submit" value="<?php echo '' . $row[0] . ''; ?>" class="btn btn-success btn-sm">Contact A Realtor</button>
+                                            <button name="idListing" type="submit" value="<?php echo '' . $row[0] . ''; ?>" class="btn btn-success btn-sm">Contact A Realtor</button>
                                         </form>
 
                                     </div>

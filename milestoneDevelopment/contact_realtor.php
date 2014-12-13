@@ -42,6 +42,7 @@
                     <div class="col-sm-12 col-md-12">
                         <h1 class="h1">
                             Thank you for your interest in our property </h1>
+                        <?php print $_POST['contact'];?>
                         <h2 class="h2">Our realtors will be in contact with you shortly</h2>
                     </div>
                 </div>
@@ -78,11 +79,11 @@
                                 <div class="col-md-6">
                                     <div class="form-group">
                                         <label for="message">Message</label>
-                                        <textarea name="message" class="form-control" rows="9" cols="25" required="required" <?php if(!isset($_POST['message'])) { echo "placeholder=\"Please let us know if you have any questions\"";}?>><?php echo isset($_POST['message']) ? $_POST['message'] : '' ?></textarea>
+                                        <textarea name="message" maxlength="300" class="form-control" rows="9" cols="25" required="required" <?php if(!isset($_POST['message'])) { echo "placeholder=\"Please let us know if you have any questions (300 characters max)\"";}?>><?php echo isset($_POST['message']) ? $_POST['message'] : '' ?></textarea>
                                     </div>
                                 </div>
                                 <div class="col-md-12">
-                                    <button type="submit" name="contact" class="btn btn-primary pull-right">
+                                    <button type="submit" name="contact" value="<?php echo '' . $_POST['idListing'] . ''; ?>" class="btn btn-primary pull-right">
                                         Send Message</button>
                                 </div>
                             </div>
@@ -118,6 +119,15 @@
 
 <?php
     function contact_realtor() {
+        $connection = connect_to_mysql();
+        $query = "INSERT INTO touched (idListing, name, email, phone, message) VALUES('";
+        $query .= $_POST['contact'] . "','";
+        $query .= $_POST['name'] . "','";
+        $query .= $_POST['email'] . "','";
+        $query .= $_POST['phone'] . "','";
+        $query .= $_POST['message'] . "')";
+        mysqli_query($connection, $query);
         
+        echo "<script type='text/javascript'>alert('Request sent to realtor!');</script>";
     }
 ?>

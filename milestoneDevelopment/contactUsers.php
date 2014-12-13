@@ -82,7 +82,9 @@
         <table class="table table-hover">
             <tr>
                 <th>User name</th>
+                <th>User email</th>
                 <th>User phone number</th>
+                <th>Message</th>
                 <th>Listing location</th>
                 <th>Action</th>
             </tr>
@@ -108,31 +110,23 @@
     function contact_requests() {
         $connection = connect_to_mysql();
         $query = "SELECT * FROM touched";
-        $query2 = "SELECT * FROM users WHERE id = ";
         
-        $touchedResult = mysqli_query($connection, $query);
+        $result = mysqli_query($connection, $query);
+        $row;
         
-        $touchedRow;
-        $userQuery;
-        $userResult;
-        $userRow;
-        
-        $max = mysqli_num_rows($touchedResult);
+        $max = mysqli_num_rows($result);
         for ($i = 0; $i < $max; $i++) {
-            mysqli_data_seek($touchedResult, $i);
-            $touchedRow = mysqli_fetch_array($touchedResult);
-            
-            $userQuery = $query2 . $touchedRow['idUser'];
-            $userResult = mysqli_query($connection, $userQuery);
-            $userRow = mysqli_fetch_array($userResult);
+            mysqli_data_seek($result, $i);
+            $row = mysqli_fetch_array($result);
             
             echo "<tr>\n";
-            echo "<td> ". $userRow['first_name'] . " " . $userRow['last_name'] . " </td>\n";
-            echo "<td> ". $userRow['phone_number'] . " </td>\n";
-            echo "<td> <a href=\"http://www.sfsuswe.com/~f14g02/home_details.php?details=" . $touchedRow['idListing'] . "\">Visit listing</a></td>\n";
+            echo "<td> ". $row['name'] . "</td>\n";
+            echo "<td> ". $row['email'] . " </td>\n";
+            echo "<td> ". $row['phone'] . " </td>\n";
+            echo "<td> <a href=\"http://www.sfsuswe.com/~f14g02/home_details.php?details=" . $row['idListing'] . "\">Visit listing</a></td>\n";
             echo "<td>";
             echo "<form action=\"" . $_SERVER['PHP_SELF'] . "\" method=\"post\">";
-            echo "<button name=\"idRow\" type=\"submit\" value=\"" . $touchedRow['id'] . "\">Remove contact request</button>";
+            echo "<button name=\"idRow\" type=\"submit\" value=\"" . $row['id'] . "\">Remove contact request</button>";
             echo "</form>";
             echo "</td>\n";
             echo "</tr>";
