@@ -17,7 +17,12 @@ and open the template in the editor.
         <?php
         $connection = connect_to_mysql();
         input_listing($connection);
+        // redirects to homepage after completed input
+        header("Location: index.php");
+        echo "<p>1 record added</p>";
+            exit();
         ?>
+        
         </pre>
     </body>
 </html>

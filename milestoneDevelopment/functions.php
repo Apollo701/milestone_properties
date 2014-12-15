@@ -553,5 +553,82 @@ function user_sign_in($connection){
     }
 }
 
+function display_table(){
+            //$db_host = 'sfsuswe.com';
+            //$db_user = 'f14g02';
+            //$db_pwd = 'dreamteam12';
+            //$database = 'student_f14g02';
+            $table = 'listings';
+
+            if (!mysql_connect(DB_Server, DB_login, DB_password))
+                die("Can't connect to database");
+            if (!mysql_select_db(DB_name))
+                die("Can't select database");
+
+            // sending query
+            $result = mysql_query("SELECT * FROM {$table}");
+            if (!$result) {
+                die("Query to show fields from table failed");
+            }
+            
+            $fields_num = mysql_num_fields($result);
+            
+            //echo "<h1>Table: {$table}</h1>";
+            echo "<table border='1'><tr>";
+            // printing table headers
+            $field = mysql_fetch_field($result);
+                echo "<td><b>{$field->name}</b></td>";
+            $field = mysql_fetch_field($result);
+            for($i=0; $i<$fields_num-7; $i++)
+            {
+                $field = mysql_fetch_field($result);
+                echo "<td><b>{$field->name}\t</b></td>";
+            }
+            echo "</tr>\n";
+            // printing table rows
+            while($row = mysql_fetch_row($result))
+            {
+                echo "<tr>";
+
+                // $row is array... foreach( .. ) puts every element
+                // of $row to $cell variable
+                $i = 0;
+                foreach($row as $cell){
+                    if ($i == 0)
+                        $listingID = $cell;
+                    if ($i == 1)
+                        $cell;
+                    else if ($i > 10)
+                        break;
+                    else
+                        echo "<td>$cell</td>";
+                    $i++;
+                }
+                // delete button
+                echo "<td>
+                <form name='deleteID' action='destroy_listing.php' method='POST'>
+                    <input type='hidden' name='listingID' value='<?php echo $listingID; ?>'/>
+                    <input type='submit' name='deleteID' value='Delete'/>
+                </form>
+                </td>";
+                echo "</tr>\n";
+                }
+ 
+            mysql_free_result($result);
+}
+
+function destroy_listing ($connection){
+    // acquires field from form and delete from query
+    $listingID = $_POST['listingID'];
+    echo "$listingID";
+    $sql = "DELETE FROM listings WHERE id = $listingID";
+    
+    if (mysqli_query($connection, $sql)) {
+        echo "Record deleted successfully";
+    } else {
+        echo "Error deleting record: " . mysqli_error($connection);
+    }
+    mysqli_close($connection);
+}
 
 ?>
