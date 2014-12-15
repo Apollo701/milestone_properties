@@ -607,7 +607,7 @@ function display_table(){
                 // delete button with value of listingID
                 echo "<td>
                 <form name='deleteID' action='destroy_listing.php' method='POST'>
-                    <input type='hidden' name='listingID' value='<?php echo $listingID;?>'/>
+                    <input type='hidden' name='listingID' value='$listingID'/>
                     <input type='submit' name='deleteID' value='Delete'/>
                 </form>
                 </td>";
