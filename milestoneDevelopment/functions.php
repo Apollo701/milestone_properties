@@ -604,10 +604,10 @@ function display_table(){
                         echo "<td>$cell</td>";
                     $i++;
                 }
-                // delete button
+                // delete button with value of listingID
                 echo "<td>
                 <form name='deleteID' action='destroy_listing.php' method='POST'>
-                    <input type='hidden' name='listingID' value='<?php echo $listingID; ?>'/>
+                    <input type='hidden' name='listingID' value='<?php echo $listingID;?>'/>
                     <input type='submit' name='deleteID' value='Delete'/>
                 </form>
                 </td>";
@@ -619,8 +619,8 @@ function display_table(){
 
 function destroy_listing ($connection){
     // acquires field from form and delete from query
+    // value from function not transfering to $listingID
     $listingID = $_POST['listingID'];
-    echo "$listingID";
     $sql = "DELETE FROM listings WHERE id = $listingID";
     
     if (mysqli_query($connection, $sql)) {

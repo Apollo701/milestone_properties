@@ -30,12 +30,13 @@
         </style>
     </head>
     <body>
-        <div class="container text-center">
-            <h1>(%Realtor)'s Profile</h1> 
-        </div>
         <div class="container top-container transbox">
-            <br><?php display_table()?><br>
+            <div class="container text-center">
+                <h1>Listings Database</h1> 
+            </div>
+            <?php display_table()?><br> 
         </div>
+        
         
     </body>
 </html>
