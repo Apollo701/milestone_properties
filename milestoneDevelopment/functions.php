@@ -328,7 +328,6 @@ function change_password($connection, $user_email, $oldPw, $newPw) {
  * @var string $message messsage to send in the email
  * @return boolean success true if password is successfully changed, false on fail
  */
-
 //Changes a user's password in the database to a new randomized password, sends an email with the new password to the corresponding email address
 function recover_password($connection, $user_email) {
     //must get old password in order to change password
