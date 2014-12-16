@@ -283,12 +283,17 @@ function featured_properties($connection) {
  * @param string $user_email
  * @param string oldPw old password to be changed
  * @param string newPw new and updated password
+ * @var array $caller debug_backtrace(), used to get calling method
  * @var string $query query to mysql database
  * @return boolean :true if password is successfully changed, false on fail
  */
 //Changes a user's password in the database to a new password
-function change_password($connection, $user_email, $oldPw, $newPw) {
-    $oldPw = md5($oldPw);
+function change_password($connection, $user_email, $oldPw, $newPw) {    
+    //if the calling function is recover_password(), then the oldPw is already hashed, no need to rehash it
+    $caller = debug_backtrace();
+    if($caller[1]['function'] != 'recover_password') {
+        $oldPw = md5($oldPw);
+    }
     
     $query = "SELECT email , password ";
     $query .="FROM users ";
@@ -300,7 +305,8 @@ function change_password($connection, $user_email, $oldPw, $newPw) {
     $result = mysqli_query($connection, $query);
 
     //either email or password is incorrect, failed to change password
-    if (mysql_num_rows($result) == 0) {
+    if (mysqli_num_rows($result) == 0) {
+        //echo "change_password():Account does not exist";
         return false;
     } else { //attempting to change password
         $newPw = md5($newPw);
@@ -314,8 +320,10 @@ function change_password($connection, $user_email, $oldPw, $newPw) {
         $query .= "'{$oldPw}'";
 
         if (mysqli_query($connection, $query)) {
+            //echo "change_password():success";
             return true;
         } else {
+            //echo "change_password():update query fail";
             return false;
         }
     }
@@ -354,12 +362,18 @@ function recover_password($connection, $user_email) {
                 . "-Milestone Properties\n\n"
                 . "This is for demonstration purposes only. CSC648/848 San "
                 . "Francisco State University Team02 Milestone Properties©";
+        $message = wordwrap($message, 70);
 
         if(mail($user_email, "Milestone Properties Password Recovery", $message)) {
-            return true;
+            //echo "recover_password():Email has been sent";
+            return 1;
         } else {
-            return false;
+            //echo "recover_password():Error in sending email";
+            return -1;
         }
+    } else {
+        //echo "recover_password():change_password failed";
+        return -2;
     }
 }
 

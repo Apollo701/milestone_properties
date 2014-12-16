@@ -139,13 +139,19 @@
      */
     //checks if email is correct, if it is, begins password recovery
     function start_password_recovery($connection, $clean_email) {
-
-        if (recover_password($connection, $clean_email)) {
-            //need to indicate success and email has been sent
-            echo "Email sent successfully!";
-        } else {
-            echo "Something went wrong, email has not been sent.";
-        }    
+        switch (recover_password($connection, $clean_email)) {
+            case 1:
+                //echo "Success! Password has been reset, email has been sent!";
+                break;
+            case -1:
+                //echo "Error in sending email, but password has been reset";
+                break;
+            case -2:
+                //echo "Error in changing the password";
+                break;
+            default:
+                echo "Something is seriously broken";
+        }
     }
     
 ?>
