@@ -49,7 +49,7 @@
             <div class="input-group input-group-sm col-sm-offset-4 col-sm-4">
                 <b>Email:</b> <?php show_info("email")?> <br>
                 <b>Password:</b> *********<br>
-                <a href="#"> Change Password</a><br>
+                <a href="change_password.php"> Change Password</a><br>
             </div><br>
         </div>    
             

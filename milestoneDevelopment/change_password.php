@@ -36,38 +36,55 @@
     <body>
         <?php run_scripts_body();
             static $emptyFields;
-            static $emailNotValid;
-            static $emailNotRegistered;
+            static $oldPasswordIncorrect;
+            static $passwordNotValid;
+            static $passwordNotMatch;
             
             if($_SERVER["REQUEST_METHOD"] == "POST") {
-                check_login_forgot();
+                check_change_password();
             }
             else {
                 $emptyFields = false;
-                $emailNotValid = false;
-                $emailNotRegistered = false;
+                $oldPasswordIncorrect = false;
+                $passwordNotValid = false;
+                $passwordNotMatch = false;
             }
         ?>
 
         <div class="container top-container transbox">
             <div class="container text-center">
-                <h1>Account Recovery</h1>
+                <h1>Change Password</h1>
             </div>
             <div class="row">
                 <div class="col-sm-8 col-sm-offset-2">
-                    For demonstration purposes, the password recovery functionality will have no real security. Please enter the email you have registered at Milestones Property.
-                    Your password will be reset, and further instructions will be sent to the email address you have entered.
                 </div>
             </div>
             <form method="post" enctype="multipart/form-data" role="form">
                 <div class="form-group">
                     <div class="input-group input-group-sm col-sm-offset-4 col-sm-4">
-                        <label for="InputEmail">Email</label>
+                        <label for="InputOldPW">Current Password</label>
                         <span class="error"><?php
-                        if($GLOBALS['emailNotValid']) {echo "Email not valid";}
-                        else if($GLOBALS['emailNotRegistered']) {echo "Email has not been registered";}
+                        if($GLOBALS['oldPasswordIncorrect']) {echo "Password is incorrect.";}
                         ?></span>
-                        <input type="email" class="form-control" name="InputEmail" placeholder="Enter Email" value="<?php echo isset($_POST['InputEmail']) ? $_POST['InputEmail'] : '' ?>">
+                        <input type="password" class="form-control" name="InputOldPW" placeholder="Create Password" value="<?php echo isset($_POST['InputOldPW']) ? $_POST['InputOldPW'] : '' ?>">
+                    </div>
+                </div>
+                <div class="form-group">
+                    <div class="input-group input-group-sm col-sm-offset-4 col-sm-4">
+                        <label for="InputPW1">New Password</label>
+                        <span class="error"><?php
+                        if($GLOBALS['passwordNotValid']) {echo "Password is not valid (only letters and numbers allowed)";}
+                        ?></span>
+                        <input type="password" class="form-control" name="InputPW1" placeholder="Create Password" value="<?php echo isset($_POST['InputPW1']) ? $_POST['InputPW1'] : '' ?>">
+                    </div>
+                </div>
+                <div class="form-group">
+                    <div class="input-group input-group-sm col-sm-offset-4 col-sm-4">
+                        <label for="InputPW2">Re-Enter New Password</label>
+                        <span class="error"><?php
+                        if($GLOBALS['passwordNotMatch']) {echo "Passwords do not match";}
+                        ?></span>
+                        <input type="password" class="form-control" name="InputPW2" placeholder="Re-Enter Password" value="<?php echo isset($_POST['InputPW2']) ? $_POST['InputPW2'] : '' ?>">
                     </div>
                 </div>
                 <div class="form-group">
@@ -87,40 +104,42 @@
     </body>
 </html>
 
-<?php   
+<?php
     /*
-     * @var string $original_email what the user entered
-     * @var string $clean_email user email with input sanitized
      * @var mysqli_result $connection connection to msql database
      * @var string $query query to mysql database
      * @var array $row result from mysql database, contains information regarding a user
      * @var boolean $fail is true if user input is incorrect in any way
      */
     //checks if email is correct, if it is, begins password recovery
-    function check_login_forgot() {
-        $original_email = trim($_POST["InputEmail"]);
-        $clean_email = filter_var($original_email, FILTER_SANITIZE_EMAIL);
-        
+    function check_change_password() {        
         $fail = false;
-
-        // if email has special characters or doesn't have right format, exit
-        if ($original_email != $clean_email || !filter_var($original_email,FILTER_VALIDATE_EMAIL)) {
-            $GLOBALS['emailNotValid'] = true;
-            $fail = true;
-        }
         
-        // if email is not already registered, exit
+        //if old password is incorrect, exit
         $connection = connect_to_mysql();
-        $query = "SELECT * FROM users WHERE email = '" . $original_email . "'";
+        $query = "SELECT * FROM users WHERE email = '" . $_SESSION['email'] . "' AND password = '" . md5($_POST["InputOldPW"]) ."'";
         $row = mysqli_query($connection, $query);
                 
         if(mysqli_num_rows($row) != 1) {
-            $GLOBALS['emailNotRegistered'] = true;
+            $GLOBALS['oldPasswordIncorrect'] = true;
             $fail = true;
+        }
+
+        
+        // if password contains special characters, exit
+        if(!filter_var($_POST["InputPW1"], FILTER_VALIDATE_REGEXP, array("options"=>array("regexp"=>"/^[a-zA-Z0-9_]*$/")))) {
+            $GLOBALS['passwordNotValid'] = true;
+            $fail = true;;
+        }
+        
+        //if passwords do not match, exit
+        if($_POST["InputPW1"] != $_POST["InputPW2"]) {
+            $GLOBALS['passwordNotMatch'] = true;
+            $fail = true;;
         }
         
         if(!$fail) {
-            start_password_recovery($connection, $clean_email);
+            start_password_change($connection);
         }
         
         close_mysql_connection($connection);
@@ -128,23 +147,12 @@
     
     /*
      * @param mysqli_result $connection connection to msql database
-     * @param string $clean_email sanitized email
+     * 
      */
-    //checks if email is correct, if it is, begins password recovery
-    function start_password_recovery($connection, $clean_email) {
-        switch (recover_password($connection, $clean_email)) {
-            case 1:
-                //echo "Success! Password has been reset, email has been sent!";
-                break;
-            case -1:
-                //echo "Error in sending email, but password has been reset";
-                break;
-            case -2:
-                //echo "Error in changing the password";
-                break;
-            default:
-                echo "Something is seriously broken";
-        }
+    //Changes a user's password in the database to a new password
+    function start_password_change($connection) {
+        change_password($connection, $_SESSION['email'], $_POST["InputOldPW"], $_POST["InputPW1"]);
+        //need to give confirmation that password has been changed
     }
     
 ?>
