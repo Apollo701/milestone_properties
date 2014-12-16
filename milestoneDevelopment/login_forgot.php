@@ -139,13 +139,13 @@
      */
     //checks if email is correct, if it is, begins password recovery
     function start_password_recovery($connection, $clean_email) {
-        
+
         if (recover_password($connection, $clean_email)) {
             //need to indicate success and email has been sent
+            echo "Email sent successfully!";
         } else {
-            //need to indicate fail
-        }
-        
+            echo "Something went wrong, email has not been sent.";
+        }    
     }
     
 ?>

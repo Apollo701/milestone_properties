@@ -284,10 +284,12 @@ function featured_properties($connection) {
  * @param string oldPw old password to be changed
  * @param string newPw new and updated password
  * @var string $query query to mysql database
- * @return boolean success true if password is successfully changed, false on fail
+ * @return boolean :true if password is successfully changed, false on fail
  */
 //Changes a user's password in the database to a new password
 function change_password($connection, $user_email, $oldPw, $newPw) {
+    $oldPw = md5($oldPw);
+    
     $query = "SELECT email , password ";
     $query .="FROM users ";
     $query .="WHERE email = ";
@@ -299,9 +301,10 @@ function change_password($connection, $user_email, $oldPw, $newPw) {
 
     //either email or password is incorrect, failed to change password
     if (mysql_num_rows($result) == 0) {
-        $success = false;
-        return $success;
+        return false;
     } else { //attempting to change password
+        $newPw = md5($newPw);
+        
         $query = "UPDATE users ";
         $query .="SET password = ";
         $query .= "'{$newPw}' ";
@@ -311,11 +314,9 @@ function change_password($connection, $user_email, $oldPw, $newPw) {
         $query .= "'{$oldPw}'";
 
         if (mysqli_query($connection, $query)) {
-            $success = true;
-            return $success;
+            return true;
         } else {
-            $success = false;
-            return $success;
+            return false;
         }
     }
 }
