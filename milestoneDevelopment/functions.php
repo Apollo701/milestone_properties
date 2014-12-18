@@ -625,7 +625,8 @@ function display_table(){
                 </td>";
                 echo "</tr>\n";
                 }
- 
+			
+			echo "</table>";
             mysql_free_result($result);
 }
 

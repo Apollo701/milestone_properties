@@ -1,3 +1,7 @@
+<link href="//maxcdn.bootstrapcdn.com/bootstrap/3.3.0/css/bootstrap.min.css" rel="stylesheet">
+<link rel="stylesheet" type="text/css" href="css/custom.css">
+<link rel="stylesheet" type="text/css" href="css/dropzone.css">
+<link rel="stylesheet" type="text/css" href="css/basic.css">
 <?php include 'navbar.php'; ?>
 <?php include 'login_modal.php'; ?>
 <?php include 'signup_modal.php'; ?>
@@ -5,13 +9,8 @@
 <!DOCTYPE>
 <html lang="en">
     <head>
-                <meta charset="utf-8">
+		<meta charset="utf-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <link href="//maxcdn.bootstrapcdn.com/bootstrap/3.3.0/css/bootstrap.min.css" rel="stylesheet">
-        <link rel="stylesheet" type="text/css" href="css/custom.css">
-        <link rel="stylesheet" type="text/css" href="css/dropzone.css">
-        <link rel="stylesheet" type="text/css" href="css/basic.css">
-
 
         <title>Sell Home</title>
         <style>
@@ -27,7 +26,7 @@
             }
             body{padding-top:0%;}
             .top-container{
-                margin-top: 80px;
+                margin-top: 70px;
 /*                background-color:#e5e5e5;*/
                 border-radius: 10px; 
                 
@@ -36,11 +35,13 @@
                 background:rgba(0, 0, 0, .07);
                 border-radius: 10px; 
                 box-shadow: 1px 7px 36px -5px;
+				margin-bottom:50px;
             }
             input {
                 display: inline;
                 float: right;
-              }
+			}
+			h4 { text-align: center;}
         </style>
     </head>
     <body>
@@ -87,12 +88,10 @@
               
         </div>
             
-        <br><br><br><br>
-        <div class="container container-fluid" style="background-color: #e7e7e7; border-color: #777; width: 100%; position: absolute;left: 0;right: 0">
-            <p class="navbar-text navbar-left" ><a href="./contact.php" style="color:#777">Contact Us</a></p>
-            <p class="navbar-text navbar-left"><a href="./about.php" style="color:#777">About Us</a></p>
-            <p class="navbar-text navbar-right" style="margin-right: 15px;">This is for demonstration purposes only. CSC648/848 San Francisco State University Team02 Milestone Properties&copy</p>
+		<div class="footer" style="background-color: #e7e7e7; border-color: #777; width: 100%; position: fixed;bottom: 0">
+			<h4>This is for demonstration purposes only. CSC648/848 San Francisco State University Team02 Milestone Properties</h4>
         </div>
+		
         <script src="//ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
         <script src="//maxcdn.bootstrapcdn.com/bootstrap/3.3.0/js/bootstrap.min.js"></script>
         <script src="./js/dropzone.js"></script>

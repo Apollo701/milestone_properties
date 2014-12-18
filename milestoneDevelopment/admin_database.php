@@ -4,7 +4,7 @@
 <html lang="en">
     <head>
         <?php run_scripts_head();?>
-        <title>User Profile</title>
+        <title>Listings database</title>
         <style>
             .breadcrumb{
                 background: none;
@@ -36,7 +36,8 @@
             </div>
             <?php display_table()?><br> 
         </div>
-        
-        
     </body>
+	<div class="footer" style="background-color: #e7e7e7; border-color: #777; width: 100%; position: fixed;bottom: 0">
+		<h4>This is for demonstration purposes only. CSC648/848 San Francisco State University Team02 Milestone Properties</h4>
+	</div>
 </html>

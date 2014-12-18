@@ -17,11 +17,14 @@
     <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
       <ul class="nav navbar-nav">
           <li class="divider-vertical" style="height: 35px;margin: 8px 9px;border-left: 1px solid darkgray;border-right: 1px solid darkgray;"></li>
-          <li><a href="index.php" class="btn btn-lg" style="font-family: 'Helvetica Neue', serif;
-                font-weight: lighter;" role="button"> Buy</a></li>
-          <li class="divider-vertical" style="height: 35px;margin: 8px 9px;border-left: 1px solid darkgray;border-right: 1px solid darkgray;"></li>
           <li><a href="new_listing.php" class="btn btn-lg" style="font-family: 'Helvetica Neue', serif;
                 font-weight: lighter;"role="button"> Sell</a></li>
+			<li class="divider-vertical" style="height: 35px;margin: 8px 9px;border-left: 1px solid darkgray;border-right: 1px solid darkgray;"></li>
+			<li><a href="contact.php" class="btn btn-lg" style="font-family: 'Helvetica Neue', serif;
+                font-weight: lighter;" role="button"> Contact</a></li>
+			<li class="divider-vertical" style="height: 35px;margin: 8px 9px;border-left: 1px solid darkgray;border-right: 1px solid darkgray;"></li>
+			<li><a href="about.php" class="btn btn-lg" style="font-family: 'Helvetica Neue', serif;
+                font-weight: lighter;" role="button"> About us</a></li>
       </ul>
 <?php if (isset($_SESSION['id'])){
     $name = explode("@",$_SESSION['email']);
@@ -40,10 +43,8 @@
 } else{
     echo'<ul class="nav navbar-nav navbar-right">
         <li class="dropdown">
-            <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button"><span class="glyphicon glyphicon-user"></span> My Account <span class="caret"></span></a>
+            <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button"><span class="glyphicon glyphicon-user"></span> My account <span class="caret"></span></a>
           <ul class="dropdown-menu" role="menu">
-            <li><a href="profile_user.php">My Profile</a></li>
-            <li class="divider"></li>
             <!-- Button trigger modal -->
             <li><a href="#" data-toggle="modal" data-target="#logInModal">Sign-in</a></li>
             <li class="divider"></li>

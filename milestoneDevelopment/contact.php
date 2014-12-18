@@ -1,6 +1,5 @@
 <?php include 'navbar.php'; ?>
 <?php include_once 'functions.php'; ?>
-<?php include 'footer.php'; ?>
 <!doctype html>
 <html lang="en">
     <head>
@@ -10,7 +9,7 @@
         <title>About Us Page</title>
         <style>
             .jumbotron {
-
+				margin-top: 10px;
                 color: #000;
                 border-radius: 0px;
             }
@@ -26,6 +25,7 @@
                 text-align: center;
                 font-size: 18px
             }
+			h4 { text-align: center;}
         </style>
     </head>
 
@@ -100,6 +100,10 @@
                     </form>
                 </div>
             </div>
+        </div>
+		
+		<div class="footer" style="background-color: #e7e7e7; border-color: #777; width: 100%; position: fixed;bottom: 0">
+			<h4>This is for demonstration purposes only. CSC648/848 San Francisco State University Team02 Milestone Properties</h4>
         </div>
 
         <script src="//maxcdn.bootstrapcdn.com/bootstrap/3.3.0/js/bootstrap.min.js"></script>
