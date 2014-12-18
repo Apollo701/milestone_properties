@@ -1,5 +1,6 @@
-<?php
-include 'navbar.php'; ?>
+<link href="//maxcdn.bootstrapcdn.com/bootstrap/3.3.0/css/bootstrap.min.css" rel="stylesheet">
+<link rel="stylesheet" type="text/css" href="css/custom.css">
+<?php include 'navbar.php'; ?>
 <?php include 'login_modal.php'; ?>
 <?php include 'signup_modal.php'; ?>
 <?php include_once 'functions.php'; ?>
@@ -8,8 +9,6 @@ include 'navbar.php'; ?>
     <head>
         <meta charset="utf-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <link href="//maxcdn.bootstrapcdn.com/bootstrap/3.3.0/css/bootstrap.min.css" rel="stylesheet">
-        <link rel="stylesheet" type="text/css" href="css/custom.css">
         <title>Home Details</title>
         <style>
             .brdr {

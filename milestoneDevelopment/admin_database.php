@@ -1,9 +1,9 @@
 <?php include 'navbar.php';    ?>
 <?php include_once 'functions.php'; ?>
+<?php run_scripts_head();?>
 
 <html lang="en">
     <head>
-        <?php run_scripts_head();?>
         <title>Listings database</title>
         <style>
             .breadcrumb{

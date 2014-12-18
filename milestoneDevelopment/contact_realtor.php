@@ -1,3 +1,4 @@
+<link href="//maxcdn.bootstrapcdn.com/bootstrap/3.3.0/css/bootstrap.min.css" rel="stylesheet">
 <?php include 'navbar.php'; ?>
 <?php include_once 'functions.php'; ?>
 <!doctype html>
@@ -5,7 +6,6 @@
     <head>
         <meta charset="utf-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <link href="//maxcdn.bootstrapcdn.com/bootstrap/3.3.0/css/bootstrap.min.css" rel="stylesheet">
         <title>Contact realtor</title>
         <style>
             .jumbotron {
