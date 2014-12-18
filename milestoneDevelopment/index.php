@@ -60,6 +60,7 @@
                 
                 padding: 1%;
                 border-radius: 10px; 
+				margin-bottom: 70px;
             }
 			h4 { text-align: center;}
         </style>
@@ -110,7 +111,7 @@
                         ?>
                         <div class="brdr bgc-fff pad-10 box-shad btm-mrg-20 property-listing" style="overflow:hidden;">
                             <div class="media">
-                                <a class="pull-left" href="#" target="_parent">
+                                <a class="pull-left" href="home_details.php?details=<?php echo $row["id"] ?>" target="_parent">
                                     <?php
                                     $rand_num = rand(1, 3);
                                     $img_name1 = $row["image" . $rand_num];
@@ -143,18 +144,22 @@
                                     </ul>
                                     <br><br>
                                     <p class="hidden-xs"><?php echo '' . substr($row["description"], 0, 120) . ''; ?>...</p>
-                                    <div class="btn-toolbar pull-right">
-                                        <form action="contact_realtor.php" method="post">
+                                    <div class="row">
+										<div class="col-md-3"></div>
+										<div class="col-md-5">
+											<form action="contact_realtor.php" method="post">
                                             <button name="idListing" type="submit" value="<?php echo $row["id"]?>" class="btn btn-default btn-sm">
                                                 <span class="glyphicon glyphicon-envelope" aria-hidden="true"></span> Contact realtor
                                             </button>
 										</form>
-										<form action="home_details.php" method="get">
-                                            <button name="details" type="submit" value="<?php echo '' . $row[0] . ''; ?>" class="btn btn-success btn-sm">Details</button>
+										</div>
+										<div class="col-md-4">
+											<form action="home_details.php" method="get">
+                                            <button name="details" type="submit" value="<?php echo '' . $row[0] . ''; ?>" class="btn btn-success btn-sm">
+												<span class="glyphicon glyphicon-star" aria-hidden="true"></span> Details</button>
                                         </form>
-
-                                    </div>
-                                    <br>
+										</div>
+									</div>
                                 </div>
                             </div>
                         </div>
@@ -176,7 +181,7 @@
                         ?>
                         <div class="brdr bgc-fff pad-10 box-shad btm-mrg-20 property-listing" style="overflow:hidden;">
                             <div class="media">
-                                <a class="pull-left" href="#" target="_parent">
+                                <a class="pull-left" href="home_details.php?details=<?php echo $row["id"]?>" target="_parent">
                                     <?php
                                     $rand_num = rand(1, 3);
                                     $img_name2 = $row["image" . $rand_num];
@@ -209,29 +214,34 @@
                                     </ul>
                                     <br><br>
                                     <p class="hidden-xs"><?php echo '' . substr($row["description"], 0, 120) . ''; ?>...</p>
-                                    <div class="btn-toolbar pull-right">
-                                        <form action="contact_realtor.php" method="post">
+									<div class="row">
+										<div class="col-md-3"></div>
+										<div class="col-md-5">
+											<form action="contact_realtor.php" method="post">
                                             <button name="idListing" type="submit" value="<?php echo $row["id"]?>" class="btn btn-default btn-sm">
                                                 <span class="glyphicon glyphicon-envelope" aria-hidden="true"></span> Contact realtor
                                             </button>
 										</form>
-										<form action="home_details.php" method="get">
-                                            <button name="details" type="submit" value="<?php echo '' . $row[0] . ''; ?>" class="btn btn-success btn-sm">Details</button>
+										</div>
+										<div class="col-md-4">
+											<form action="home_details.php" method="get">
+                                            <button name="details" type="submit" value="<?php echo '' . $row[0] . ''; ?>" class="btn btn-success btn-sm">
+												<span class="glyphicon glyphicon-star" aria-hidden="true"></span> Details</button>
                                         </form>
-
-                                    </div>
+										</div>
+									</div>
+								</div>
                                     <br>
-                                </div>
-                            </div>
-                        </div>
-                        <?php
-                        close_mysql_connection($connection);
-                        ?>
+							</div>
+						</div>
+					</div>
+					<?php
+					close_mysql_connection($connection);
+					?>
 
-                    </div>
-                </div>
-            </div>
-        </div>
+				</div>
+			</div>
+		</div>
 
         <div class="footer" style="background-color: #e7e7e7; border-color: #777; width: 100%; position: fixed;bottom: 0">
             <h4>This is for demonstration purposes only. CSC648/848 San Francisco State University Team02 Milestone Properties</h4>
