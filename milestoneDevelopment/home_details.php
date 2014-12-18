@@ -91,7 +91,9 @@
                                     <?php $img_name = $row["image1"]; ?>
                                     <?php $img_path = 'http://sfsuswe.com/~f14g02/assets/home_images/home' . $row["id"] . "/small/" . $img_name; ?>
                                     
-                                    <img class="img-responsive" src="<?php echo $img_path; ?>" /></a>
+                                    <img class="img-responsive" src="<?php echo $img_path; ?>" />
+									<span class="fnt-smaller fnt-lighter fnt-arial pull-right">Milestone Properties&copy</span>
+								</a>
                                     
 
                                     <h1 class="media-heading">
@@ -121,23 +123,15 @@
                                         <li><?php echo '' . $row["walkscore"] . ''; ?> Walkscore</li>
                                     </ul>
                                     </div>
-                                    <br><br><br><br><br><br>
+                                    <br><br><br><br><br>
                                     <p class="hidden-xs"><?php echo '' . $row["description"] . ''; ?></p>
-                                    <br><br><br>
+                                    <br><br>
                                     <div class="btn-toolbar pull-right">
-                                        <form action="home_details.php?details=<?php echo $row[0] ?>" method="post">
-                                            <button type="submit" value="<?php echo $row[0] ?>" name="bookmark" class="btn btn-default btn-sm">
-                                                <span class="glyphicon glyphicon-star" value="<?php echo '' . $row[0] . ''; ?>" aria-hidden="true"></span> Star
-                                            </button>
-                                        </form>
                                         <form action="contact_realtor.php" method="post">
                                             <button name="idListing" type="submit" value="<?php echo '' . $row[0] . ''; ?>" class="btn btn-success btn-sm">Contact A Realtor</button>
                                         </form>
-
                                     </div>
                                     <br>
-                                    <span class="fnt-smaller fnt-lighter fnt-arial pull-right">Milestone Properties&copy</span>
-                               
                             </div>
                         </div>
                     </div>
