@@ -116,7 +116,9 @@
                                     $img_name1 = $row["image" . $rand_num];
                                     $img_path = 'http://sfsuswe.com/~f14g02/assets/home_images/home' . $row["id"] . '/small/' . $img_name1;
                                     ?>
-                                    <img class="img-responsive" style="margin-top:9%;" src="<?php echo '' . $img_path . ''; ?>"/></a>
+                                    <img class="img-responsive" style="margin-top:9%;" src="<?php echo '' . $img_path . ''; ?>"/>
+									<span class="fnt-smaller fnt-lighter fnt-arial">Milestone Properties&copy</span>
+								</a>
 
                                 <div class="clearfix visible-sm"></div>
 
@@ -142,17 +144,17 @@
                                     <br><br>
                                     <p class="hidden-xs"><?php echo '' . substr($row["description"], 0, 120) . ''; ?>...</p>
                                     <div class="btn-toolbar pull-right">
-                                        <form action="home_details.php" method="get">
-                                            <button type="button" class="btn btn-default btn-sm">
-                                                <span class="glyphicon glyphicon-star" aria-hidden="true"></span> Star
+                                        <form action="contact_realtor.php" method="post">
+                                            <button name="idListing" type="submit" value="<?php echo $row["id"]?>" class="btn btn-default btn-sm">
+                                                <span class="glyphicon glyphicon-envelope" aria-hidden="true"></span> Contact realtor
                                             </button>
+										</form>
+										<form action="home_details.php" method="get">
                                             <button name="details" type="submit" value="<?php echo '' . $row[0] . ''; ?>" class="btn btn-success btn-sm">Details</button>
-
                                         </form>
 
                                     </div>
                                     <br>
-                                    <span class="fnt-smaller fnt-lighter fnt-arial">Milestone Properties&copy</span>
                                 </div>
                             </div>
                         </div>
@@ -180,8 +182,9 @@
                                     $img_name2 = $row["image" . $rand_num];
                                     $img_path = 'http://sfsuswe.com/~f14g02/assets/home_images/home' . $row["id"] . '/small/' . $img_name2;
                                     ?>
-                                    
-                                    <img class="img-responsive" style="margin-top:9%;" src="<?php echo '' . $img_path . ''; ?>"/></a>
+                                    <img class="img-responsive" style="margin-top:9%;" src="<?php echo '' . $img_path . ''; ?>"/>
+									<span class="fnt-smaller fnt-lighter fnt-arial">Milestone Properties&copy</span>
+								</a>
 
                                 <div class="clearfix visible-sm"></div>
 
@@ -207,17 +210,17 @@
                                     <br><br>
                                     <p class="hidden-xs"><?php echo '' . substr($row["description"], 0, 120) . ''; ?>...</p>
                                     <div class="btn-toolbar pull-right">
-                                        <form action="home_details.php" method="get">
-                                            <button type="button" class="btn btn-default btn-sm">
-                                                <span class="glyphicon glyphicon-star" aria-hidden="true"></span> Star
+                                        <form action="contact_realtor.php" method="post">
+                                            <button name="idListing" type="submit" value="<?php echo $row["id"]?>" class="btn btn-default btn-sm">
+                                                <span class="glyphicon glyphicon-envelope" aria-hidden="true"></span> Contact realtor
                                             </button>
+										</form>
+										<form action="home_details.php" method="get">
                                             <button name="details" type="submit" value="<?php echo '' . $row[0] . ''; ?>" class="btn btn-success btn-sm">Details</button>
-
                                         </form>
 
                                     </div>
                                     <br>
-                                    <span class="fnt-smaller fnt-lighter fnt-arial">Milestone Properties&copy</span>
                                 </div>
                             </div>
                         </div>

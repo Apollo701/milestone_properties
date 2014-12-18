@@ -68,12 +68,14 @@
            </div>
        <br></div>
         
-        <div class="container top-container transbox">
+        <!--
+		<div class="container top-container transbox">
             <div class="container text-center">
                 <h1>Bookmarks</h1>
             </div>
-            <?php get_bookmarks() ?>
+            <?php //get_bookmarks() ?>
        <br></div>
+		-->
         
     </body>
 
