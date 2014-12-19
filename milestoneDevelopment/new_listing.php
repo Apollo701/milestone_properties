@@ -21,9 +21,7 @@
             .dropzone{
                 text-align: left;
             }
-            .navbar-brand{
-            font-family: 'Crimson Text', serif;
-            }
+
             body{padding-top:0%;}
             .top-container{
                 margin-top: 70px;
