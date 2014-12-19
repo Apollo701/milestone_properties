@@ -63,14 +63,20 @@
         <div class="container top-container transbox">
             <div class="container text-center">
                  <a href="new_listing.php"> Create A Listing</a>
-            </div>
+            </div><br>
+            <div class="container text-center">
+                 <a href="realtor_database.php"> Edit Listings</a>
+            </div> </div>
+            
        <br></div>
+        <div class="container top-container transbox">
          <?php
         error_reporting(E_ALL & ~E_NOTICE);
         $connection = connect_to_mysql();
         $results = get_realtor_listings($connection);   
         display_formatted_results($results);
         ?>
+        </div>
     </body>
 </html>
 

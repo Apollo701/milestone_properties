@@ -227,19 +227,19 @@ function input_listing($connection) {
     $num_bathrooms = $_POST['num_bathrooms'];
     $num_garages = $_POST['num_garages'];
     $target_dir = "/home/f14g02/public_html/assets/images/";
-    $target_dir = $target_dir . basename(($_FILES["uploadFile"]["name"]));
+    //$target_dir = $target_dir . basename(($_FILES["uploadFile"]["name"]));
     $w_address = $address . ", " . $city . ", " . $us_state;
     $walkscore = get_walkscore($w_address);
     $uploadOk = 1;
     if (move_uploaded_file($_FILES["uploadFile"]["tmp_name"], $target_dir)) {
-        $image1 = basename($_FILES["uploadFile"]["name"]);
+       $image1 = basename($_FILES["uploadFile"]["name"]);
         echo "The file " . basename($_FILES["uploadFile"]["name"]) . " has been uploaded.";
     } else {
         echo "Sorry, there was an error uploading your file.";
     }
 
     $query = "INSERT INTO listings (description, address, zip_code, city, us_state, price, sq_ft, num_bedrooms,"
-            . "num_bathrooms, num_garages, image1, walkscore)
+            . "num_bathrooms, num_garages, image1, walk_score)
                     VALUES ('$description', '$address', '$zip_code', '$city', '$us_state', '$price', '$sq_ft',"
             . " '$num_bedrooms', '$num_bathrooms', '$num_garages', '$image1', '$walkscore')";
 
@@ -710,4 +710,68 @@ function assign_realtor ($connection){
     mysqli_close($connection);
 }
 
+function realtor_display_table($realtor_id){
+            //$db_host = 'sfsuswe.com';
+            //$db_user = 'f14g02';
+            //$db_pwd = 'dreamteam12';
+            //$database = 'student_f14g02';
+            $table = 'listings';
+
+            if (!mysql_connect(DB_Server, DB_login, DB_password))
+                die("Can't connect to database");
+            if (!mysql_select_db(DB_name))
+                die("Can't select database");
+
+            // sending query
+            $result = mysql_query("SELECT * FROM {$table} WHERE realtor = '$realtor_id'");
+            if (!$result) {
+                die("Query to show fields from table failed");
+            }
+            
+            $fields_num = mysql_num_fields($result);
+            
+            //echo "<h1>Table: {$table}</h1>";
+            echo "<table border='1'><tr>";
+            // printing table headers
+            $field = mysql_fetch_field($result);
+                echo "<td><b>{$field->name}</b></td>";
+            $field = mysql_fetch_field($result);
+            for($i=0; $i<$fields_num-7; $i++)
+            {
+                $field = mysql_fetch_field($result);
+                echo "<td><b>{$field->name}\t</b></td>";
+            }
+            echo "</tr>\n";
+            // printing table rows
+            while($row = mysql_fetch_row($result))
+            {
+                echo "<tr>";
+
+                // $row is array... foreach( .. ) puts every element
+                // of $row to $cell variable
+                $i = 0;
+                foreach($row as $cell){
+                    if ($i == 0)
+                        $listingID = $cell;
+                    if ($i == 1)
+                        $cell;
+                    else if ($i > 10)
+                        break;
+                    else
+                        echo "<td>$cell</td>";
+                    $i++;
+                }
+                // delete button with value of listingID;
+                echo "<td>
+                <form name='deleteID' action='destroy_listing.php' method='POST'>
+                    <input type='hidden' name='listingID' value='$listingID'/>
+                    <input type='submit' name='deleteID' value='Delete'/>
+                </form>
+                </td>";
+                echo "</tr>\n";
+                }
+			
+			echo "</table>";
+            mysql_free_result($result);
+}
 ?>
