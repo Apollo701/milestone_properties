@@ -20,8 +20,12 @@
             }
             .h1 {
                 text-align: center;
+                font-family: 'Helvetica Neue', serif;
+                font-weight: lighter;
             }
             .h2 {
+                font-family: 'Helvetica Neue', serif;
+                font-weight: lighter;
                 text-align: center;
                 font-size: 18px
             }
