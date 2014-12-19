@@ -302,6 +302,26 @@ function featured_properties($connection) {
 }
 
 /*
+ * @param mysql_result $connection connection to database
+ * @param int $listing_id the id of the listing as stored in the database
+ * @var string $query input for sql database
+ * @return mysql_result $result featured listing from database
+ */
+//increments a listing's hits counter
+function visited_listing($connection, $listing_id) {
+    $query = "UPDATE listings ";
+    $query .="SET clicked_on = clicked_on + 1 ";
+    $query .="WHERE id = ";
+    $query .= "{$listing_id} ";
+
+    if (mysqli_query($connection, $query)) {
+        return true;
+    } else {
+        return false;
+    }
+}
+
+/*
  * @param mysqli_result $connection connection to msql database
  * @param string $user_email
  * @param string oldPw old password to be changed

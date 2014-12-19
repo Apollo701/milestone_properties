@@ -65,6 +65,8 @@
             die();
         }
         
+        visited_listing($connection, $_GET["details"]);
+        
         if(isset($_POST['bookmark'])) {
             bookmark_listing();
         }
@@ -120,7 +122,7 @@
                                         
                                         <li style="list-style: none">|</li>
 
-                                        <li><?php echo '' . $row["walkscore"] . ''; ?> Walkscore</li>
+                                        <li><?php echo '' . $row["walk_score"] . ''; ?> Walkscore</li>
                                     </ul>
                                     </div>
                                     <br><br><br><br><br>
