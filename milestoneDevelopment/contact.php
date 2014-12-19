@@ -29,6 +29,11 @@
                 text-align: center;
                 font-size: 18px
             }
+                        .navbar-brand, .nav{
+                font-family: 'Helvetica Neue', serif;
+                font-weight: lighter;
+
+            }
 			h4 { text-align: center;}
         </style>
     </head>

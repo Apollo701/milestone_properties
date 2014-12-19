@@ -31,7 +31,8 @@
         if($_SESSION['admin'] == 0){
     echo '<ul class="nav navbar-nav navbar-right">
         <li class="dropdown">
-            <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button"><span class="glyphicon glyphicon-user"></span>  Hello, ' . $name[0] . ' <span class="caret"></span></a>
+            <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button style="font-family: "Helvetica Neue", serif;
+                font-weight: lighter;"><span class="glyphicon glyphicon-user"></span>  Hello, ' . $name[0] . ' <span class="caret"></span></a>
           <ul class="dropdown-menu" role="menu">
             <li><a href="profile_user.php">My Profile</a></li>
             <li class="divider"></li>
@@ -45,7 +46,8 @@
         elseif($_SESSION['admin'] == 1){
     echo '<ul class="nav navbar-nav navbar-right">
         <li class="dropdown">
-            <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button"><span class="glyphicon glyphicon-user"></span>  Hello, ' . $name[0] . ' <span class="caret"></span></a>
+            <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" style="font-family: "Helvetica Neue", serif;
+                font-weight: lighter;><span class="glyphicon glyphicon-user"></span>  Hello, ' . $name[0] . ' <span class="caret"></span></a>
           <ul class="dropdown-menu" role="menu">
             <li><a href="profile_realtor.php">My Profile</a></li>
             <li class="divider"></li>
@@ -59,7 +61,8 @@
 } else{
     echo'<ul class="nav navbar-nav navbar-right">
         <li class="dropdown">
-            <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button"><span class="glyphicon glyphicon-user"></span> My Account <span class="caret"></span></a>
+            <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button style="font-family: "Helvetica Neue", serif;
+                font-weight: lighter;"><span class="glyphicon glyphicon-user"></span> My Account <span class="caret"></span></a>
           <ul class="dropdown-menu" role="menu">
             <!-- Button trigger modal -->
             <li><a href="#" data-toggle="modal" data-target="#logInModal">Sign-in</a></li>

@@ -18,6 +18,11 @@
                 margin-bottom: 40px;
                 height: 100%;
             }
+                        .navbar-brand, .nav{
+                font-family: 'Helvetica Neue', serif;
+                font-weight: lighter;
+
+            }
             .page-header{
                 font-family: 'Helvetica Neue', serif;
                 font-weight: lighter;

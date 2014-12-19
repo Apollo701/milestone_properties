@@ -18,6 +18,12 @@ a {
 }*/
 
 /**** LAYOUT ****/
+.navbar-brand, .nav{
+                font-family: 'Helvetica Neue', serif;
+                font-weight: lighter;
+
+            }
+
 .list-inline>li {
     padding: 0 10px 0 0;
 }

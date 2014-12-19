@@ -17,6 +17,7 @@
                 background: none;
                 text-align: left;
             }
+            
             .top-container{
                 margin-top: 30px;
                 background-color:#e5e5e5;
@@ -29,7 +30,7 @@
                 background-color:#e5e5e5;
                 border-radius: 10px; 
             }
-            .navbar-brand{
+            .navbar-brand, .nav{
                 font-family: 'Helvetica Neue', serif;
                 font-weight: lighter;        
             }
