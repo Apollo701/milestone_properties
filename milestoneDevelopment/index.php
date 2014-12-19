@@ -26,7 +26,7 @@
                 padding-top:50px;
                 background: url('assets/bg_images/bg2.jpg');
 /*                height: 300px;*/
-                width: 66%;
+                width: 62%;
                 border-radius: 10px;
                 /*            width: 73%;*/
             }
