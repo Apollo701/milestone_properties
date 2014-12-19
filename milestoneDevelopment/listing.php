@@ -67,61 +67,17 @@
                 </div>
             </div>
             <div class="row">
-                <div class="col-md-10 col-md-offset-1 col-xs-12">
+                <div class="col-md-12 col-xs-12">
                     <div class="quick-search">
                         <div class="row">
                             <form action="listing.php" method="post">
-                                <div class="col-md-3 col-sm-3">
+                                <div class="col-md-2 col-sm-2">
                                     <div class="form-group">
                                         <label for="bedroom">Search Homes</label>
                                         <input name="usersearch" type="text" class="form-control" placeholder="<?php echo $_POST["usersearch"] ?>" value = "<?php echo isset($_POST["usersearch"]) ? $_POST["usersearch"] : '' ?>">
                                     </div>
-                                    <div class="form-group">
-                                        <label for="bedroom">Bedroom</label>
-                                        <select class="form-control" name="min_bedroom" >  
-<?php echo "<option value=\"1\" " . (1 == $_POST["min_bedroom"] ? "selected=\"selected\"" : "") . ">1</option>"; ?>
-<?php echo "<option value=\"2\" " . (2 == $_POST["min_bedroom"] ? "selected=\"selected\"" : "") . ">2</option>"; ?>
-<?php echo "<option value=\"3\" " . (3 == $_POST["min_bedroom"] ? "selected=\"selected\"" : "") . ">3</option>"; ?>
-<?php echo "<option value=\"4\" " . (4 == $_POST["min_bedroom"] ? "selected=\"selected\"" : "") . ">4</option>"; ?>
-                                        </select>
-                                    </div>
                                 </div>
-                                <div class="col-md-3 col-sm-3">
-                                    <div class="form-group">
-                                        <label for="status">Walkscore</label>
-                                        <select class="form-control" name = "min_walkscore">
-                                            <?php echo "<option value=\"0\" " . (0 == $_POST["min_walkscore"] ? "selected=\"selected\"" : "") . ">0</option>"; ?>
-                                            <?php echo "<option value=\"90\" " . (90 == $_POST["min_walkscore"] ? "selected=\"selected\"" : "") . ">90</option>"; ?>
-<?php echo "<option value=\"80\" " . (80 == $_POST["min_walkscore"] ? "selected=\"selected\"" : "") . ">80</option>"; ?>
-<?php echo "<option value=\"70\" " . (70 == $_POST["min_walkscore"] ? "selected=\"selected\"" : "") . ">70</option>"; ?>
-<?php echo "<option value=\"60\" " . (60 == $_POST["min_walkscore"] ? "selected=\"selected\"" : "") . ">60</option>"; ?>
-<?php echo "<option value=\"50\" " . (50 == $_POST["min_walkscore"] ? "selected=\"selected\"" : "") . ">50</option>"; ?>
-                                        </select>
-                                    </div>
-                                    <div class="form-group">
-                                        <label for="bathroom">Bathroom</label>
-                                        <select class="form-control" name="min_bathroom">
-<?php echo "<option value=\"1\" " . (1 == $_POST["min_bathroom"] ? "selected=\"selected\"" : "") . ">1</option>"; ?>
-<?php echo "<option value=\"2\" " . (2 == $_POST["min_bathroom"] ? "selected=\"selected\"" : "") . ">2</option>"; ?>
-<?php echo "<option value=\"3\" " . (3 == $_POST["min_bathroom"] ? "selected=\"selected\"" : "") . ">3</option>"; ?>
-<?php echo "<option value=\"4\" " . (4 == $_POST["min_bathroom"] ? "selected=\"selected\"" : "") . ">4</option>"; ?>
-                                        </select>
-
-                                    </div>
-                                </div>
-                                <!-- break -->
-                                <div class="col-md-3 col-sm-3">
-                                    <div class="form-group">
-                                        <label for="min_sq_ft">Sq Ft</label>
-                                        <select class="form-control" name="min_sq_ft">
-                                            <?php echo "<option value=\"20\" " . (20 == $_POST["min_sq_ft"] ? "selected=\"selected\"" : "") . ">20</option>"; ?>
-                                            <?php echo "<option value=\"90\" " . (90 == $_POST["min_sq_ft"] ? "selected=\"selected\"" : "") . ">90</option>"; ?>
-<?php echo "<option value=\"120\" " . (120 == $_POST["min_sq_ft"] ? "selected=\"selected\"" : "") . ">120</option>"; ?>
-<?php echo "<option value=\"170\" " . (170 == $_POST["min_sq_ft"] ? "selected=\"selected\"" : "") . ">170</option>"; ?>
-<?php echo "<option value=\"190\" " . (190 == $_POST["min_sq_ft"] ? "selected=\"selected\"" : "") . ">190</option>"; ?>
-<?php echo "<option value=\"210\" " . (210 == $_POST["min_sq_ft"] ? "selected=\"selected\"" : "") . ">210</option>"; ?>
-                                        </select>
-                                    </div>
+                                <div class="col-md-2 col-sm-2"> 
                                     <div class="form-group">
                                         <label for="minprice">Min Price</label>
                                         <select class="form-control" name="minprice">
@@ -132,8 +88,7 @@
                                         </select>
                                     </div>
                                 </div>
-                                <!-- break -->
-                                <div class="col-md-3 col-sm-3">
+                                                             <div class="col-md-2 col-sm-2">
                                     <div class="form-group">
                                         <label for="maxprice">Max Price</label>
                                         <select class="form-control" name="maxprice">
@@ -144,9 +99,38 @@
 <?php echo "<option value=\"800000\" " . (800000 == $_POST["maxprice"] ? "selected=\"selected\"" : "") . ">$800000</option>"; ?>
                                         </select>
                                     </div>
+                                    
+                                </div>
+                                <div class="col-md-2 col-sm-2">
+                                   <div class="form-group">
+                                        <label for="bedroom"> Min Bedroom</label>
+                                        <select class="form-control" name="min_bedroom" >  
+<?php echo "<option value=\"1\" " . (1 == $_POST["min_bedroom"] ? "selected=\"selected\"" : "") . ">1</option>"; ?>
+<?php echo "<option value=\"2\" " . (2 == $_POST["min_bedroom"] ? "selected=\"selected\"" : "") . ">2</option>"; ?>
+<?php echo "<option value=\"3\" " . (3 == $_POST["min_bedroom"] ? "selected=\"selected\"" : "") . ">3</option>"; ?>
+<?php echo "<option value=\"4\" " . (4 == $_POST["min_bedroom"] ? "selected=\"selected\"" : "") . ">4</option>"; ?>
+                                        </select>
+                                    </div>
+                                </div>
+                                <div class="col-md-2 col-sm-2">
+                                    <div class="form-group">
+                                        <label for="status">Min Walkscore</label>
+                                        <select class="form-control" name = "min_walkscore">
+                                            <?php echo "<option value=\"0\" " . (0 == $_POST["min_walkscore"] ? "selected=\"selected\"" : "") . ">0</option>"; ?>
+                                            <?php echo "<option value=\"90\" " . (90 == $_POST["min_walkscore"] ? "selected=\"selected\"" : "") . ">90</option>"; ?>
+<?php echo "<option value=\"80\" " . (80 == $_POST["min_walkscore"] ? "selected=\"selected\"" : "") . ">80</option>"; ?>
+<?php echo "<option value=\"70\" " . (70 == $_POST["min_walkscore"] ? "selected=\"selected\"" : "") . ">70</option>"; ?>
+<?php echo "<option value=\"60\" " . (60 == $_POST["min_walkscore"] ? "selected=\"selected\"" : "") . ">60</option>"; ?>
+<?php echo "<option value=\"50\" " . (50 == $_POST["min_walkscore"] ? "selected=\"selected\"" : "") . ">50</option>"; ?>
+                                        </select>
+                                    </div>
+                                </div>
+                                <!-- break -->
+                                <!-- break -->
+                                <div class="col-md-2 col-sm-2"> 
                                     <div class="form-group">
                                         <label for="maxprice">&nbsp;</label>
-                                        <input type="submit" name="submit" value="Search Again" class="btn btn-primary btn-block">
+                                        <input type="submit" name="submit" value="Filter" class="btn btn-primary btn-block">
                                     </div>
                                 </div>
 
