@@ -48,20 +48,21 @@ function connect_to_mysql() {
 //fucnction to search database for listings
 //function is inefficient as-is, implement query by selecting relevant columns 
 function milestone_search($connection) { 
-    if (empty($_POST["usersearch"])) {
+    $user_search = filter_input(INPUT_POST, "usersearch", FILTER_SANITIZE_STRING);
+    if (!$user_search) {
         $nameErr = "Name is required";//redundant, fix it
         return $result = "";
     } else {
         $query = "SELECT * ";
         $query .="FROM listings ";
         $query .="WHERE city =";
-        $query .= "'{$_POST["usersearch"]}'";
+        $query .= "'$user_search'";
         $query .= " OR us_state =";
-        $query .= "'{$_POST["usersearch"]}'";
+        $query .= "'$user_search'";
         $query .= " OR zip_code =";
-        $query .= "'{$_POST["usersearch"]}'";
+        $query .= "'$user_search'";
         $query .= " OR address =";
-        $query .= "'{$_POST["usersearch"]}'";
+        $query .= "'$user_search'";
         return $result = mysqli_query($connection, $query);
     }
 }
@@ -76,59 +77,66 @@ function milestone_search($connection) {
 //searches the database for listings with filters
 //*Fix so is not directly accessing $_POST*
 function milestone_search_with_filters($connection) {
-    if (empty($_POST["usersearch"])) { 
+    $user_search = filter_input(INPUT_POST, "usersearch", FILTER_SANITIZE_STRING);
+    if (!$user_search) { 
         $nameErr = "Name is required";
         return $result = "";
     } else {
         $query = "SELECT * ";
         $query .="FROM listings ";
         $query .="WHERE (city = ";
-        $query .= "'{$_POST["usersearch"]}'";
+        $query .= "'$user_search'";
         $query .= " OR us_state =";
-        $query .= "'{$_POST["usersearch"]}'";
+        $query .= "'$user_search'";
         $query .= " OR zip_code =";
-        $query .= "'{$_POST["usersearch"]}'";
-        if (!empty($_POST["min_bedroom"])) {
+        $query .= "'$user_search'";
+        $bed = filter_input(INPUT_POST, "min_bedroom", FILTER_VALIDATE_INT);
+        if ($bed) {
             $query .= ") AND num_bedrooms >=";
-            $query .= "{$_POST["min_bedroom"]}";
+            $query .= " '$bed' ";
         }
-        if (!empty($_POST["min_walkscore"])) {
+        $walk = filter_input(INPUT_POST, "min_walkscore", FILTER_VALIDATE_INT);
+        if ($walk) {
             $query .= " AND walkscore >=";
-            $query .= "{$_POST["min_walkscore"]}"; //form must be converted to int, "+%d" is a string
+            $query .= " '$walk' "; //form must be converted to int, "+%d" is a string
         }
-        if (!empty($_POST["min_bathroom"])) {
+        $bath = filter_input(INPUT_POST, "min_bathroom", FILTER_VALIDATE_INT);
+        if ($bath) {
             $query .= " AND num_bathrooms >=";
-            $query .= "{$_POST["min_bathroom"]}";
+            $query .= " '$bath' ";
         }
-        if (!empty($_POST["min_sq_ft"])) {
+        $ft = filter_input(INPUT_POST, "min_sq_ft", FILTER_VALIDATE_INT);
+        if ($ft) {
             $query .= " AND sq_ft >=";
-            $query .= "{$_POST["min_sq_ft"]}"; //form must be converted to int, 
+            $query .= " '$ft' "; //form must be converted to int, 
         }
-        if (!empty($_POST["minprice"])) {
+        $miprice = filter_input(INPUT_POST, "minprice", FILTER_VALIDATE_INT);
+        if ($miprice) {
             $query .= " AND price >=";
-            $query .= "{$_POST["minprice"]}";
+            $query .= " '$miprice' ";
         }
-        if (!empty($_POST["maxprice"])) {
+        $maprice = filter_input(INPUT_POST, "maxprice", FILTER_VALIDATE_INT);
+        if ($maprice) {
             $query .= " AND price <=";
-            $query .= "{$_POST["maxprice"]}";
+            $query .= " '$maprice' ";
         }
         return $result = mysqli_query($connection, $query);
     }
 }
 
 function get_realtor_listings($connection) {
-    //if(isset($_SESSION['id'])) { 
-        //$nameErr = "Realtor not logged in";
-        //return $result = "";
-    //} else {
+    if(!isset($_SESSION['id'])) { 
+        $nameErr = "Realtor not logged in";
+        return $result = "";
+    } else {
         $query = "SELECT * ";
         $query .="FROM listings ";
         $query .="WHERE realtor = ";
-        //$query .= "'{$_SESSION['id']}'";
-        $query .= " '24' ";
+        $query .= "'{$_SESSION['id']}'";
+        //$query .= " '24' ";
       
         return $result = mysqli_query($connection, $query);
-    //}
+    }
 }
 /*
  * @param mysqli_result $connection connection to msql database
