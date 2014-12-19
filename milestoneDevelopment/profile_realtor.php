@@ -1,6 +1,12 @@
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<link href="//maxcdn.bootstrapcdn.com/bootstrap/3.3.0/css/bootstrap.min.css" rel="stylesheet">
+<link href="//maxcdn.bootstrapcdn.com/font-awesome/4.2.0/css/font-awesome.min.css" rel="stylesheet">
+<link href="http://fonts.googleapis.com/css?family=Crimson+Text" rel="stylesheet" type="text/css">
 <?php include 'navbar.php';    ?>
+<?php include 'login_modal.php'; ?>
+<?php include 'signup_modal.php'; ?>
 <?php include_once 'functions.php'; ?>
-<?php include 'footer.php'; ?>
 
 <html lang="en">
     <head>
@@ -29,25 +35,64 @@
         </style>
     </head>
     <body>
+        <?php
+            if(!isset($_SESSION['email'])) {
+                header("Location: index.php");
+                exit();
+            }
+            
+            run_scripts_body();
+            
+            static $row;
+            $row = get_user_data();
+        ?> 
           <div class="container text-center top-container">
-                <h1>Welcome Eve</h1>
+                <h1>Welcome <?php show_info("first_name")?> </h1>
             </div>
         <?php run_scripts_body()?>
       
         <div class="container transbox">
             
             <div class="input-group input-group-sm col-sm-offset-4 col-sm-4">
-                <b>Name:</b> Eve Milestone<br>
-                <b>Email:</b> Eve@milestone_properties.com <br>
-                <b>Phone:</b> 657-9305<br>
+                <b>First Name:</b> <?php show_info("first_name")?> <br>
+                <b>Last Name:</b> <?php show_info("last_name")?> <br>
+                <b>Phone number:</b> <?php show_info("phone_number")?> <br>
             </div><br>
         </div>    
             
         <div class="container top-container transbox">
             <div class="container text-center">
-                 <a href="new_listing"> Create A Listing</a>
+                 <a href="new_listing.php"> Create A Listing</a>
             </div>
        <br></div>
-        
+         <?php
+        error_reporting(E_ALL & ~E_NOTICE);
+        $connection = connect_to_mysql();
+        $results = get_realtor_listings($connection);   
+        display_formatted_results($results);
+        ?>
     </body>
 </html>
+
+<?php
+
+    function get_user_data() {
+        $connection = connect_to_mysql();
+        $query = "SELECT * FROM users WHERE email = '";
+        $query .= $_SESSION["email"] . "'";
+        
+        $result = mysqli_query($connection, $query);
+        $row = mysqli_fetch_array($result);
+        
+        if($row != false) {
+            close_mysql_connection($connection);
+            return $row;
+        }
+    }
+    
+    function show_info($fieldName) {
+        echo $GLOBALS['row'][$fieldName];
+    }
+    
+   
+    ?>

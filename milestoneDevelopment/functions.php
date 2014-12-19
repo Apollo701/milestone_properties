@@ -115,6 +115,21 @@ function milestone_search_with_filters($connection) {
         return $result = mysqli_query($connection, $query);
     }
 }
+
+function get_realtor_listings($connection) {
+    //if(isset($_SESSION['id'])) { 
+        //$nameErr = "Realtor not logged in";
+        //return $result = "";
+    //} else {
+        $query = "SELECT * ";
+        $query .="FROM listings ";
+        $query .="WHERE realtor = ";
+        //$query .= "'{$_SESSION['id']}'";
+        $query .= " '24' ";
+      
+        return $result = mysqli_query($connection, $query);
+    //}
+}
 /*
  * @param mysqli_result $connection connection to msql database
  * @global array $_POST array with user search request
@@ -425,12 +440,16 @@ function display_formatted_results($result) {
                                     <br><br>
                                     <p class="hidden-xs">' . substr($row["description"], 0, 120) . '...</p>
                                     <div class="btn-toolbar pull-right">
-                                        <form action="home_details.php" method="get">
-                                            <button type="button" class="btn btn-default btn-sm">
-                                                <span class="glyphicon glyphicon-star" aria-hidden="true"></span> Star
+                                       <form action="contact_realtor.php" method="post">
+                                            <button name="idListing" type="submit" value="' . $row["id"] . ' " class="btn btn-default btn-sm">
+                                                <span class="glyphicon glyphicon-envelope" aria-hidden="true"></span> Contact realtor
                                             </button>
-                                            <button name="details" type="submit" value="' . $row[0] . '" class="btn btn-success btn-sm">Details</button>
-
+										</form>
+										</div>
+										<div class="col-md-4">
+											<form action="home_details.php" method="get">
+                                            <button name="details" type="submit" value="' . $row[0] . '" class="btn btn-success btn-sm">
+												<span class="glyphicon glyphicon-star" aria-hidden="true"></span> Details</button>
                                         </form>
 
                                     </div>
@@ -479,13 +498,17 @@ function display_formatted_results($result) {
                                     </ul>
                                     <br><br>
                                     <p class="hidden-xs">' . substr($row["description"], 0, 120) . '...</p>
-                                    <div class="btn-toolbar pull-right">
-                                        <form action="home_details.php" method="get">
-                                            <button type="button" class="btn btn-default btn-sm">
-                                                <span class="glyphicon glyphicon-star" aria-hidden="true"></span> Star
+                                    <div class="btn-toolbar pull-right">				
+                                       <form action="contact_realtor.php" method="post">
+                                            <button name="idListing" type="submit" value="' . $row["id"] . ' " class="btn btn-default btn-sm">
+                                                <span class="glyphicon glyphicon-envelope" aria-hidden="true"></span> Contact realtor
                                             </button>
-                                            <button name="details" type="submit" value="' . $row[0] . '"class="btn btn-success btn-sm">Details</button>
-
+										</form>
+										</div>
+										<div class="col-md-4">
+											<form action="home_details.php" method="get">
+                                            <button name="details" type="submit" value="' . $row[0] . '" class="btn btn-success btn-sm">
+												<span class="glyphicon glyphicon-star" aria-hidden="true"></span> Details</button>
                                         </form>
 
                                     </div>

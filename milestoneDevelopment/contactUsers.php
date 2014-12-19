@@ -119,6 +119,7 @@
             echo "<td> ". $row['name'] . "</td>\n";
             echo "<td> ". $row['email'] . " </td>\n";
             echo "<td> ". $row['phone'] . " </td>\n";
+            echo "<td> ". $row['message'] . " </td>\n";
             echo "<td> <a href=\"http://www.sfsuswe.com/~f14g02/home_details.php?details=" . $row['idListing'] . "\">Visit listing</a></td>\n";
             echo "<td>";
             echo "<form action=\"" . $_SERVER['PHP_SELF'] . "\" method=\"post\">";
