@@ -1,5 +1,9 @@
 <link href="//maxcdn.bootstrapcdn.com/bootstrap/3.3.0/css/bootstrap.min.css" rel="stylesheet">
+<link href="//maxcdn.bootstrapcdn.com/font-awesome/4.2.0/css/font-awesome.min.css" rel="stylesheet">
+<link rel="stylesheet" type="text/css" href="css/custom.css">
 <?php include 'navbar.php'; ?>
+<?php include 'login_modal.php'; ?>
+<?php include 'signup_modal.php'; ?>
 <?php include_once 'functions.php'; ?>
 <!doctype html>
 <html lang="en">

@@ -4,6 +4,8 @@
 <link href="//maxcdn.bootstrapcdn.com/font-awesome/4.2.0/css/font-awesome.min.css" rel="stylesheet">
 <link href="http://fonts.googleapis.com/css?family=Crimson+Text" rel="stylesheet" type="text/css">
 <?php include 'navbar.php';    ?>
+<?php include 'login_modal.php'; ?>
+<?php include 'signup_modal.php'; ?>
 <?php include_once 'functions.php'; ?>
 
 <html lang="en">
