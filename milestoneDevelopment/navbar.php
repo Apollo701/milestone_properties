@@ -28,6 +28,7 @@
       </ul>
 <?php if (isset($_SESSION['id'])){
     $name = explode("@",$_SESSION['email']);
+        if($_SESSION['admin'] == 0){
     echo '<ul class="nav navbar-nav navbar-right">
         <li class="dropdown">
             <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button"><span class="glyphicon glyphicon-user"></span>  Hello, ' . $name[0] . ' <span class="caret"></span></a>
@@ -40,6 +41,21 @@
           </ul>
         </li>
       </ul>';
+        }
+        elseif($_SESSION['admin'] == 1){
+    echo '<ul class="nav navbar-nav navbar-right">
+        <li class="dropdown">
+            <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button"><span class="glyphicon glyphicon-user"></span>  Hello, ' . $name[0] . ' <span class="caret"></span></a>
+          <ul class="dropdown-menu" role="menu">
+            <li><a href="profile_realtor.php">My Profile</a></li>
+            <li class="divider"></li>
+            <!-- Button trigger modal -->
+            <li><a href="sign_out.php">Sign-out</a></li>
+
+          </ul>
+        </li>
+      </ul>';
+        }
 } else{
     echo'<ul class="nav navbar-nav navbar-right">
         <li class="dropdown">

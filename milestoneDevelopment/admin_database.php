@@ -30,11 +30,13 @@
         </style>
     </head>
     <body>
+        
         <div class="container top-container transbox">
             <div class="container text-center">
                 <h1>Listings Database</h1> 
             </div>
-            <?php display_table()?><br> 
+            <?php 
+            display_table()?><br> 
         </div>
     </body>
 	<div class="footer" style="background-color: #e7e7e7; border-color: #777; width: 100%; position: fixed;bottom: 0">

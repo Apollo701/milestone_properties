@@ -616,11 +616,18 @@ function display_table(){
                         echo "<td>$cell</td>";
                     $i++;
                 }
-                // delete button with value of listingID
+                // delete button with value of listingID;
                 echo "<td>
                 <form name='deleteID' action='destroy_listing.php' method='POST'>
                     <input type='hidden' name='listingID' value='$listingID'/>
                     <input type='submit' name='deleteID' value='Delete'/>
+                </form>
+                </td>";
+                echo "<td>
+                <form name='assignRealtor' action='assign_realtor.php' method='POST'>
+                    Realtor name: <input type=\"text\" name=\"rname\"><br>
+                    <input type='hidden' name='listingID' value='$listingID'/>
+                    <input type='submit' name='assignRealtor' value='Assign Realtor'/>
                 </form>
                 </td>";
                 echo "</tr>\n";
@@ -640,6 +647,30 @@ function destroy_listing ($connection){
         echo "Record deleted successfully";
     } else {
         echo "Error deleting record: " . mysqli_error($connection);
+    }
+    mysqli_close($connection);
+}
+
+function assign_realtor ($connection){
+    // acquires field from form and delete from query
+    // value from function not transfering to $listingID
+    $listingID = $_POST['listingID'];
+    $realtorName = $_POST['rname'];
+    $sql0 = "SELECT id FROM users WHERE first_name=$rname";
+    if ($result = mysqli_query($connection, $sql0)) {
+        echo "Realtor exists successfully";
+    } else {
+        echo "Error finding realtor: " . mysqli_error($connection);
+    }
+  
+    $obj=mysqli_fetch_object($result);
+    $r_id = $obj->id;
+    $sql1 = "UPDATE listings SET realtor = $r_id WHERE id = $listingID";
+    
+    if (mysqli_query($connection, $sql1)) {
+        echo "Realtor assigned successfully";
+    } else {
+        echo "Error assigning realtor: " . mysqli_error($connection);
     }
     mysqli_close($connection);
 }
