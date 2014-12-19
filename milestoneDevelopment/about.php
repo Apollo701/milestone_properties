@@ -18,6 +18,10 @@
                 margin-bottom: 40px;
                 height: 100%;
             }
+            .page-header{
+                font-family: 'Helvetica Neue', serif;
+                font-weight: lighter;
+            }
 
             .img-center {
                 margin: 0 auto;
@@ -25,6 +29,7 @@
             .img-circle{
                 height: 30%;
             }
+            
 			h4 {text-align: center;}
         </style>
     </head>
