@@ -59,7 +59,7 @@
 } else{
     echo'<ul class="nav navbar-nav navbar-right">
         <li class="dropdown">
-            <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button"><span class="glyphicon glyphicon-user"></span> My account <span class="caret"></span></a>
+            <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button"><span class="glyphicon glyphicon-user"></span> My Account <span class="caret"></span></a>
           <ul class="dropdown-menu" role="menu">
             <!-- Button trigger modal -->
             <li><a href="#" data-toggle="modal" data-target="#logInModal">Sign-in</a></li>
