@@ -625,7 +625,7 @@ function display_table(){
                 </td>";
                 echo "<td>
                 <form name='assignRealtor' action='assign_realtor.php' method='POST'>
-                    Realtor name: <input type=\"text\" name=\"rname\"><br>
+                    Realtor name: <input type='text' name='rname'><br>
                     <input type='hidden' name='listingID' value='$listingID'/>
                     <input type='submit' name='assignRealtor' value='Assign Realtor'/>
                 </form>
@@ -656,22 +656,34 @@ function assign_realtor ($connection){
     // value from function not transfering to $listingID
     $listingID = $_POST['listingID'];
     $realtorName = $_POST['rname'];
-    $sql0 = "SELECT id FROM users WHERE first_name=$rname";
+    $sql0 = "SELECT * FROM users WHERE first_name='$realtorName'";
+    
     if ($result = mysqli_query($connection, $sql0)) {
-        echo "Realtor exists successfully";
+        if($result->num_rows > 0){
+            echo "User exists";
+            $result = mysqli_query($connection, $sql0);
+            $obj=mysqli_fetch_object($result);
+            if($obj->admin == 1){
+                $r_id = $obj->id;
+                $sql1 = "UPDATE listings SET realtor = $r_id WHERE id = $listingID";
+
+                if (mysqli_query($connection, $sql1)) {
+                    echo "Realtor assigned successfully";
+                } else {
+                    echo "Error assigning realtor: " . mysqli_error($connection);
+                }
+            }
+            else{
+                echo "User is not realtor" ;
+            }
+        }
+        else{
+            echo "User does not exist";
+        }
     } else {
         echo "Error finding realtor: " . mysqli_error($connection);
     }
-  
-    $obj=mysqli_fetch_object($result);
-    $r_id = $obj->id;
-    $sql1 = "UPDATE listings SET realtor = $r_id WHERE id = $listingID";
-    
-    if (mysqli_query($connection, $sql1)) {
-        echo "Realtor assigned successfully";
-    } else {
-        echo "Error assigning realtor: " . mysqli_error($connection);
-    }
+   
     mysqli_close($connection);
 }
 
