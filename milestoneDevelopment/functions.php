@@ -408,7 +408,7 @@ function display_formatted_results($result) {
 
                                     <h3 class="media-heading">
                                         <a href="#" target="_parent">$' . number_format($row["price"]) . '</a><small class="pull-right"><i>' . $row["address"] . '</i></small></h3>
-                                    <p><small class="pull-right">' . $row["city"] . ", " . $row["us_state"] . ", " . $row["zip_code"] . '?></small></p>
+                                    <p><small class="pull-right">' . $row["city"] . ", " . $row["us_state"] . ", " . $row["zip_code"] . '</small></p>
 
                                     <br>
                                     <ul class="list-inline mrg-0 btm-mrg-10 clr-535353 pull-right">
