@@ -738,6 +738,51 @@ function assign_realtor ($connection){
     mysqli_close($connection);
 }
 
+function edit_listing ($connection){
+    // acquires field from form and delete from query
+    // value from function not transfering to $listingID
+    $listingID = $_POST['listingID'];
+    $sql = "UPDATE listings SET ";
+     $bed = filter_input(INPUT_POST, "num_bedroom", FILTER_VALIDATE_INT);
+        if ($bed) {
+            $sql .= "num_bedrooms=";
+            $sql .= " '$bed' ";
+        }
+        /*$walk = filter_input(INPUT_POST, "min_walkscore", FILTER_VALIDATE_INT);
+        if ($walk) {
+            $query .= " AND walkscore >=";
+            $query .= " '$walk' "; //form must be converted to int, "+%d" is a string
+        }
+        $bath = filter_input(INPUT_POST, "min_bathroom", FILTER_VALIDATE_INT);
+        if ($bath) {
+            $query .= " AND num_bathrooms >=";
+            $query .= " '$bath' ";
+        }
+        $ft = filter_input(INPUT_POST, "min_sq_ft", FILTER_VALIDATE_INT);
+        if ($ft) {
+            $query .= " AND sq_ft >=";
+            $query .= " '$ft' "; //form must be converted to int, 
+        }
+        $miprice = filter_input(INPUT_POST, "minprice", FILTER_VALIDATE_INT);
+        if ($miprice) {
+            $query .= " AND price >=";
+            $query .= " '$miprice' ";
+        }
+        $maprice = filter_input(INPUT_POST, "maxprice", FILTER_VALIDATE_INT);
+        if ($maprice) {
+            $query .= " AND price <=";
+            $query .= " '$maprice' ";
+        }*/
+        $sql .= "WHERE id = $listingID";
+    echo $_POST['num_bedrooms'];
+    if (mysqli_query($connection, $sql)) {
+        echo "Record updated successfully";
+    } else {
+        echo "Error updating record: " . mysqli_error($connection);
+    }
+    mysqli_close($connection);
+}
+
 function realtor_display_table($realtor_id){
             //$db_host = 'sfsuswe.com';
             //$db_user = 'f14g02';
@@ -771,6 +816,7 @@ function realtor_display_table($realtor_id){
             }
             echo "</tr>\n";
             // printing table rows
+            
             while($row = mysql_fetch_row($result))
             {
                 echo "<tr>";
@@ -779,16 +825,28 @@ function realtor_display_table($realtor_id){
                 // of $row to $cell variable
                 $i = 0;
                 foreach($row as $cell){
-                    if ($i == 0)
+                    if ($i == 0){
                         $listingID = $cell;
-                    if ($i == 1)
+                    }
+                    if ($i == 1){
                         $cell;
-                    else if ($i > 10)
+                    }
+                    else if ($i > 10){
                         break;
-                    else
-                        echo "<td>$cell</td>";
+                    }
+                    else{
+                        echo"<td>$cell</td>";
+
+                    }
                     $i++;
                 }
+                 echo "<td>
+                    <form name='Edit' action='edit_listing.php' method='POST'>;
+                    <input type='hidden' name='listingID' value='$listingID'/>
+                    <input type='submit' name='deleteID' value='Edit'/>
+                </form>
+                </td>";
+                
                 // delete button with value of listingID;
                 echo "<td>
                 <form name='deleteID' action='destroy_listing.php' method='POST'>
@@ -796,10 +854,12 @@ function realtor_display_table($realtor_id){
                     <input type='submit' name='deleteID' value='Delete'/>
                 </form>
                 </td>";
+               
                 echo "</tr>\n";
                 }
 			
 			echo "</table>";
             mysql_free_result($result);
-}
+     }
+
 ?>
