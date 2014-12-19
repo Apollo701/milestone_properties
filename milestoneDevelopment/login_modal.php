@@ -23,7 +23,7 @@
                         </label>
                     </div>
                     <div class="modal-footer">
-                        <p>Don't have account ? <a href="#signUpModal"  data-toggle="modal" data-target="#signUpModal">Sign up here.</a></p>
+                        <p>Don't have account ? <a href="#signUpModal"  data-toggle="modal" data-target="#signUpModal" data-dismiss="modal">Sign up here.</a></p>
                         <p>Forgot your password ? <a href="login_forgot.php">Click here</a></p>
                         <input type="submit" name="submit" class="btn btn-primary btn-block btn-lg" value="Submit">
                     </div>

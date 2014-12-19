@@ -24,7 +24,7 @@
                 </label>
               </div>
                 <div class="modal-footer">
-            <p>Already have account ? <a href="#logInModal" data-toggle="modal" data-target="#logInModal">Sign in here.</a></p>
+            <p>Already have account ? <a href="#logInModal" data-toggle="modal" data-target="#logInModal" data-dismiss="modal">Sign in here.</a></p>
             <input type="submit" name="submit" class="btn btn-primary btn-block btn-lg" value="Submit">
           </div>
             </form>
