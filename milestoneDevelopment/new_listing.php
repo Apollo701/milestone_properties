@@ -50,7 +50,9 @@
         <div class="container top-container transbox" id="sellhome">
             <div class="row">
                 <div class="col-md-5 col-md-offset-4">
-                    <h1>Sell Your Home Today</h1>
+                    <h1 style="           
+                font-family: 'Helvetica Neue', serif;
+                font-weight: lighter;">Sell Your Home Today</h1>
                 </div>
             </div>
             <div class="row">
