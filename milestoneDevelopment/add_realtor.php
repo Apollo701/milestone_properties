@@ -69,7 +69,7 @@
                     <form action="new_realtor_created.php" method="post" enctype="multipart/form-data"  class="dropzone" id="my-awesome-dropzone" >
                         Email:      <input type="text" name="user_email" value="" /><br />
                         <br />
-                        Password:       <input type="text" name="password" value="" /><br />
+                        Password:       <input type="text" name="user_password" value="" /><br />
                         <br />
                         
                         Phone Number:      <input type="text" name="phone_number" value="" /><br />
