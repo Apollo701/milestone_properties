@@ -40,7 +40,7 @@
             
         <div class="container top-container transbox">
             <div class="container text-center">
-                 <a href="new_realtor_created.php"> Create A Realtor</a>
+                 <a href="add_realtor.php"> Create A Realtor</a>
             </div><br>
             <div class="container text-center">
                  <a href="admin_database.php"> Edit Listings</a>
