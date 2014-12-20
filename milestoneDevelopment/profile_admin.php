@@ -31,18 +31,12 @@
     </head>
     <body>
         <?php
-            static $row;
+           static $row;
             $row = get_user_data();
         ?> 
           <div class="container text-center top-container">
                 <h1>Welcome <?php show_info("first_name")?> </h1>
-            </div>
-      
-        <div class="container transbox">
-            
-            <div class="input-group input-group-sm col-sm-offset-4 col-sm-4">
-            </div><br>
-        </div>    
+            </div> 
             
         <div class="container top-container transbox">
             <div class="container text-center">
@@ -50,6 +44,9 @@
             </div><br>
             <div class="container text-center">
                  <a href="admin_database.php"> Edit Listings</a>
+            </div><br>
+        <div class="container text-center">
+                 <a href="contactUsers.php"> User Messages</a>
             </div> </div>
             
        <br></div>
@@ -63,3 +60,25 @@
         </div>
     </body>
 </html>
+<?php
+
+    function get_user_data() {
+        $connection = connect_to_mysql();
+        $query = "SELECT * FROM users WHERE email = '";
+        $query .= $_SESSION["email"] . "'";
+        
+        $result = mysqli_query($connection, $query);
+        $row = mysqli_fetch_array($result);
+        
+        if($row != false) {
+            close_mysql_connection($connection);
+            return $row;
+        }
+    }
+    
+    function show_info($fieldName) {
+        echo $GLOBALS['row'][$fieldName];
+    }
+    
+   
+    ?>
