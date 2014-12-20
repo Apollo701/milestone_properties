@@ -1,6 +1,6 @@
 <?php require 'navbar.php'; ?>
 <?php if($_SESSION['admin']!= 2) {
-               echo "<br><br><br><br>Unauthorized Access";
+               echo "<br>Unauthorized Access";
                exit();
             }
             ?>
