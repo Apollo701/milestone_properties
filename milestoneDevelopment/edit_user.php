@@ -29,7 +29,7 @@
 		<?php
 		
 		if(!isset($_SESSION['id'])) {
-			header("Location: index.php");
+			echo "<script> location.replace(\"index.php\"); </script>";
 		}
 		
 		static $firstNameNotValid;
