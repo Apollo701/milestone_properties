@@ -22,9 +22,7 @@
                 font-weight: lighter;
 
             }
-            .dropzone{
-                text-align: left;
-            }
+
             body{padding-top:0%;}
             .top-container{
                 margin-top: 70px;
