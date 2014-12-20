@@ -130,7 +130,9 @@
                                     <br><br>
                                     <div class="btn-toolbar pull-right">
                                         <form action="contact_realtor.php" method="post">
-                                            <button name="idListing" type="submit" value="<?php echo '' . $row[0] . ''; ?>" class="btn btn-success btn-sm">Contact A Realtor</button>
+                                            <button name="idListing" type="submit" value="<?php echo '' . $row[0] . ''; ?>" class="btn btn-success btn-sm">
+												<span class="glyphicon glyphicon-envelope" aria-hidden="true"></span> Contact A Realtor
+											</button>
                                         </form>
                                     </div>
                                     <br>
