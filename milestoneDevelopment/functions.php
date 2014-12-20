@@ -568,18 +568,74 @@ function display_formatted_results($result) {
 //Takes in user input and adds new user to database
 function input_user($connection) {
     //$connection = connect_to_mysql();
-    $email = $_POST['user_email'];
+    //$email = $_POST['user_email'];
+    $email = filter_input(INPUT_POST, "user_email", FILTER_VALIDATE_EMAIL);
     $user_exists = is_already_user($email, $connection);
         if (!$user_exists){
-    $password = md5($_POST['user_password']);
+    $pass = filter_input(INPUT_POST, "user_password", FILTER_SANITIZE_STRING);
+    $password = md5($pass);
     $query = "INSERT INTO users (email, password)
                     VALUES ('$email', '$password')";
-
+    
     if (!mysqli_query($connection, $query)) {
         echo "<br><br><br>failed";
         die('Error: ' . mysqli_error($connection));
     }
     echo "1 record added";
+    
+    $first_name = filter_input(INPUT_POST, "first_name", FILTER_SANITIZE_STRING);
+    if($first_name){
+          $sql = "UPDATE users SET ";
+            $sql .= "first_name=";
+            $sql .= " '$first_name' ";
+            $sql .= "WHERE email = '$email'";
+            if (mysqli_query($connection, $sql)) {
+                echo "Record updated successfully";
+            } 
+            else {
+                echo "Error updating record: " . mysqli_error($connection);
+            }
+    }
+    $last_name = filter_input(INPUT_POST, "last_name", FILTER_SANITIZE_STRING);
+    if($last_name){
+          $sql = "UPDATE users SET ";
+            $sql .= "last_name=";
+            $sql .= " '$last_name' ";
+            $sql .= "WHERE email = '$email'";
+            if (mysqli_query($connection, $sql)) {
+                echo "Record updated successfully";
+            } 
+            else {
+                echo "Error updating record: " . mysqli_error($connection);
+            }
+    }
+    $phone_number = filter_input(INPUT_POST, "phone_number", FILTER_VALIDATE_INT);
+    if($phone_number){
+          $sql = "UPDATE users SET ";
+            $sql .= "phone_number=";
+            $sql .= " '$phone_number' ";
+            $sql .= "WHERE email = '$email'";
+            if (mysqli_query($connection, $sql)) {
+                echo "Record updated successfully";
+            } 
+            else {
+                echo "Error updating record: " . mysqli_error($connection);
+            }
+    }
+    $admin = filter_input(INPUT_POST, "admin", FILTER_VALIDATE_INT);
+    echo $admin; 
+    if($admin){
+          $sql = "UPDATE users SET ";
+            $sql .= "admin=";
+            $sql .= " '$admin' ";
+            $sql .= "WHERE email = '$email'";
+            if (mysqli_query($connection, $sql)) {
+                echo "Record updated successfully";
+            } 
+            else {
+                echo "Error updating record: " . mysqli_error($connection);
+            }
+    }
 
     mysqli_close($connection);
 } else {echo 'failed';

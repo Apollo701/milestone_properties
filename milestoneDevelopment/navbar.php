@@ -52,7 +52,7 @@
         </li>
       </ul>';
         }
-        elseif($_SESSION['admin'] == 1){
+        elseif($_SESSION['admin'] == 1 || $_SESSION['admin'] == 2){
     echo '<ul class="nav navbar-nav navbar-right">
         <li class="dropdown">
             <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" style="font-family: "Helvetica Neue", serif;
