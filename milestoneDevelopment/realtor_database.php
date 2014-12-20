@@ -36,10 +36,11 @@
                 <div class="container text-center">
                     <h1>My Listings</h1> 
                 </div>
+                </div>
                 <?php
-                realtor_display_table($GLOBALS['row']['id'])
+                realtor_display_table($_SESSION['id']);
                 ?><br> 
-            </div>
+            
 
         </body>
         <div class="footer" style="background-color: #e7e7e7; border-color: #777; width: 100%; position: fixed;bottom: 0">

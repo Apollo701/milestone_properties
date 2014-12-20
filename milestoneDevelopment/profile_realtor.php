@@ -1,8 +1,10 @@
-<?php if(($_SESSION['admin']!==1)) {
-                header("Location: index.php");
-                exit();
-            }?>
+
 <?php require 'navbar.php'; ?>
+<?php if($_SESSION['admin']!= 1) {
+               echo "<br><br>Unauthorized Access";
+               exit();
+            }
+            ?>
 <html lang="en">
     <head>
         <title>Realtor Profile</title>
@@ -30,15 +32,12 @@
     </head>
     <body>
         <?php
-            
-            
             static $row;
             $row = get_user_data();
         ?> 
           <div class="container text-center top-container">
                 <h1>Welcome <?php show_info("first_name")?> </h1>
             </div>
-        <?php run_scripts_body()?>
       
         <div class="container transbox">
             
