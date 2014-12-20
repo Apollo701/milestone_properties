@@ -137,7 +137,7 @@ $result = milestone_search_with_filters($connection);
                                     <div class="media">
                                         <a class="pull-left" href="home_details.php?details=<?php echo $row["id"] ?>" target="_parent">
         <?php
-        $rand_num = rand(1, 3);
+        $rand_num = rand(1, 1);
         $img_name1 = $row["image" . $rand_num];
         $img_path = 'http://sfsuswe.com/~f14g02/assets/home_images/home' . $row["id"] . '/small/' . $img_name1;
         ?>
@@ -197,7 +197,8 @@ $result = milestone_search_with_filters($connection);
                                         <div class="media">
                                             <a class="pull-left" href="home_details.php?details=<?php echo $row["id"] ?>" target="_parent">
             <?php
-            $rand_num = rand(1, 3);
+            
+            $rand_num = rand(1, 1);
             $img_name1 = $row["image" . $rand_num];
             $img_path = 'http://sfsuswe.com/~f14g02/assets/home_images/home' . $row["id"] . '/small/' . $img_name1;
             ?>
