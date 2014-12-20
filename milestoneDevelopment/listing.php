@@ -119,7 +119,7 @@
         </div>
 <?php
 $connection = connect_to_mysql();
-$result = milestone_search($connection);
+$result = milestone_search_with_filters($connection);
 ?>
         <div class="container-full bottom-container" style="background-color:#e8e8e8">
             <div class="container container-pad" id="property-listings">

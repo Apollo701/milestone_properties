@@ -75,7 +75,6 @@ function milestone_search($connection) {
  * @var string $query query to mysql database
  */
 //searches the database for listings with filters
-//*Fix so is not directly accessing $_POST*
 function milestone_search_with_filters($connection) {
     $user_search = filter_input(INPUT_POST, "usersearch", FILTER_SANITIZE_STRING);
     if (!$user_search) { 
@@ -86,30 +85,30 @@ function milestone_search_with_filters($connection) {
         $query .="FROM listings ";
         $query .="WHERE (city = ";
         $query .= "'$user_search'";
-        $query .= " OR us_state =";
+        $query .= " OR us_state = ";
         $query .= "'$user_search'";
-        $query .= " OR zip_code =";
-        $query .= "'$user_search'";
+        $query .= " OR zip_code = ";
+        $query .= "'$user_search' )";
         $bed = filter_input(INPUT_POST, "min_bedroom", FILTER_VALIDATE_INT);
         if ($bed) {
-            $query .= ") AND num_bedrooms >=";
+            $query .= " AND num_bedrooms >=";
             $query .= " '$bed' ";
         }
         $walk = filter_input(INPUT_POST, "min_walkscore", FILTER_VALIDATE_INT);
         if ($walk) {
-            $query .= " AND walkscore >=";
-            $query .= " '$walk' "; //form must be converted to int, "+%d" is a string
+            $query .= " AND walk_score >=";
+            $query .= " '$walk' ";
         }
-        $bath = filter_input(INPUT_POST, "min_bathroom", FILTER_VALIDATE_INT);
-        if ($bath) {
-            $query .= " AND num_bathrooms >=";
-            $query .= " '$bath' ";
-        }
-        $ft = filter_input(INPUT_POST, "min_sq_ft", FILTER_VALIDATE_INT);
-        if ($ft) {
-            $query .= " AND sq_ft >=";
-            $query .= " '$ft' "; //form must be converted to int, 
-        }
+//        $bath = filter_input(INPUT_POST, "min_bathroom", FILTER_VALIDATE_INT);
+//        if ($bath) {
+//            $query .= " AND num_bathrooms >=";
+//            $query .= " '$bath' ";
+//        }
+//        $ft = filter_input(INPUT_POST, "min_sq_ft", FILTER_VALIDATE_INT);
+//        if ($ft) {
+//            $query .= " AND sq_ft >=";
+//            $query .= " '$ft' "; //form must be converted to int, 
+//        }
         $miprice = filter_input(INPUT_POST, "minprice", FILTER_VALIDATE_INT);
         if ($miprice) {
             $query .= " AND price >=";
