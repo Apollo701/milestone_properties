@@ -36,12 +36,14 @@
 			h4 { text-align: center;}
         </style>
     </head>
-    <body>
-        <div class="container top-container transbox" id="sellhome">
+    <body>                        
+                        <?php if (isset($_SESSION['id'])){
+                            
+                            echo '<div class="container top-container transbox" id="sellhome">
             <div class="row">
                 <div class="col-md-5 col-md-offset-4">
                     <h1 style="           
-                font-family: 'Helvetica Neue', serif;
+                font-family: "Helvetica Neue", serif;
                 font-weight: lighter;">Sell Your Home Today</h1>
                 </div>
             </div>
@@ -76,11 +78,21 @@
                         <br>
                         <h4>Check our terms and conditions <a href="#termsModal" data-toggle="modal" data-target="#termsModal" data-dismiss="modal">here</a></h4>
                         <br />
-                        
-                        <?php if (isset($_SESSION['id'])){
-                            echo '<input type="submit" name="submit" value="Sell My Home!" />';
+
+                            <input type="submit" name="submit" value="Sell My Home!" />
+                            <br />
+                    </form>
+                </div>
+                
+              
+        </div>
+            
+        </div>';
                         } else {
-                            echo '<h3>You must be logged in to submit a listing!</h3>';
+                            echo '<br>';
+                            echo '<br>';
+                            echo '<br>';
+                            echo '<h3 class="text-center">You must be logged in to submit a listing!</h3>';
                         }
                             ?>
                         <br />
