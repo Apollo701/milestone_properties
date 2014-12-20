@@ -49,7 +49,13 @@
     <body>
         <?php
         $connection = connect_to_mysql();
-        $results = milestone_details($connection);
+        
+               if(isset($_POST['bookmark'])) {
+            bookmark_listing();
+            $results = get_search_back($connection);
+            $row = mysqli_fetch_array($results);
+        }else{
+                    $results = milestone_details($connection);
         static $row;
         
         if ($results != "") {
@@ -57,13 +63,14 @@
         } else {
             echo "<br><br><br><h2>Must enter valid input</h2>";
             die();
+                }
+        }
+
+         if(isset($_GET["details"])){
+            visited_listing($connection, $_GET["details"]);
         }
         
-        visited_listing($connection, $_GET["details"]);
         
-        if(isset($_POST['bookmark'])) {
-            bookmark_listing();
-        }
         ?>
 
 
@@ -82,6 +89,7 @@
                     <div class="col-md-12">
                         <div class="transbox brdr bgc-fff pad-10 box-shad btm-mrg-20 property-listing" style="overflow:hidden;">
                             <div class="media center-block">
+                                
                                 <a class="pull-left" href="#" target="_parent">
 
                                     <?php $img_name = $row["image1"]; ?>
@@ -125,7 +133,7 @@
                                     <div class="row">
 										<div class="col-md-3"></div>
 										<div class="col-md-1">
-											<form action="<?php echo $_SERVER['PHP_SELF']?>" method="post">
+											<form action="home_details.php" method="post">
 												<button name="bookmark" type="submit" value="<?php echo '' . $row[0] . ''; ?>" class="btn btn-sm">
 													<span class="glyphicon glyphicon-star" aria-hidden="true"></span> Bookmark
 												</button>
@@ -155,6 +163,7 @@
         // display_formatted_details($results);
         close_mysql_connection($connection);
         ?>
+        
     </body>
 </html>
 

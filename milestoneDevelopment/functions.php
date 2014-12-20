@@ -67,6 +67,20 @@ function milestone_search($connection) {
     }
 }
 
+function get_search_back($connection){
+        $user_search = filter_input(INPUT_POST, "bookmark", FILTER_SANITIZE_STRING);
+    if (!$user_search) {
+        $nameErr = "Name is required";//redundant, fix it
+        return $result = "";
+    } else {
+        $query = "SELECT * ";
+        $query .="FROM listings ";
+        $query .="WHERE id =";
+        $query .= "'$user_search'";
+        return $result = mysqli_query($connection, $query);
+    }
+}
+
 /*
  * @param mysqli_result $connection connection to msql database
  * @global array $_POST array with user search request and filter arguments
