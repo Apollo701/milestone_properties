@@ -31,8 +31,6 @@
                 exit();
             }
             
-            run_scripts_body();
-            
             static $row;
             $row = get_user_data();
         ?> 

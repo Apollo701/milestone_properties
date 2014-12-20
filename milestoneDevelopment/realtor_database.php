@@ -32,12 +32,6 @@
         <br>
         <br>
         <br>
-
-        <?php
-        if (($_SESSION['admin'] == 1)) {
-            static $row;
-            $row = get_user_data();
-            ?>
             <div class="container top-container transbox">
                 <div class="container text-center">
                     <h1>My Listings</h1> 
@@ -46,12 +40,13 @@
                 realtor_display_table($GLOBALS['row']['id'])
                 ?><br> 
             </div>
+
         </body>
         <div class="footer" style="background-color: #e7e7e7; border-color: #777; width: 100%; position: fixed;bottom: 0">
             <h4>This is for demonstration purposes only. CSC648/848 San Francisco State University Team02 Milestone Properties</h4>
         </div>
     </html>
-    <?php
+
 } else {
 
     header("Location: index.php");
