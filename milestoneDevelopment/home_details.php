@@ -125,8 +125,8 @@
                                     <div class="row">
 										<div class="col-md-3"></div>
 										<div class="col-md-1">
-											<form action="contact_realtor.php" method="post">
-												<button name="idListing" type="submit" value="<?php echo '' . $row[0] . ''; ?>" class="btn btn-sm">
+											<form action="<?php echo $_SERVER['PHP_SELF']?>" method="post">
+												<button name="bookmark" type="submit" value="<?php echo '' . $row[0] . ''; ?>" class="btn btn-sm">
 													<span class="glyphicon glyphicon-star" aria-hidden="true"></span> Bookmark
 												</button>
 											</form>

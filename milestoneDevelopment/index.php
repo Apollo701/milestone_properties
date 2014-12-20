@@ -139,8 +139,8 @@
                                     <p class="hidden-xs"><?php echo '' . substr($row["description"], 0, 120) . ''; ?>...</p>
                                     <div class="row">
                                         <div class="col-md-4">
-											<form action="contact_realtor.php" method="post">
-                                                <button name="idListing" type="submit" value="<?php echo $row["id"] ?>" class="btn btn-default btn-sm">
+											<form action="<?php echo $_SERVER['PHP_SELF']?>" method="post">
+                                                <button name="bookmark" type="submit" value="<?php echo $row["id"] ?>" class="btn btn-default btn-sm">
                                                     <span class="glyphicon glyphicon-star" aria-hidden="true"></span> Bookmark
                                                 </button>
                                             </form>
@@ -214,8 +214,8 @@
                                     <p class="hidden-xs"><?php echo '' . substr($row["description"], 0, 120) . ''; ?>...</p>
                                     <div class="row">
                                         <div class="col-md-4">
-											<form action="contact_realtor.php" method="post">
-                                                <button name="idListing" type="submit" value="<?php echo $row["id"] ?>" class="btn btn-default btn-sm">
+											<form action="<?php echo $_SERVER['PHP_SELF']?>" method="post">
+                                                <button name="bookmark" type="submit" value="<?php echo $row["id"] ?>" class="btn btn-default btn-sm">
                                                     <span class="glyphicon glyphicon-star" aria-hidden="true"></span> Bookmark
                                                 </button>
                                             </form>

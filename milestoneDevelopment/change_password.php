@@ -144,8 +144,12 @@
      */
     //Changes a user's password in the database to a new password
     function start_password_change($connection) {
-        change_password($connection, $_SESSION['email'], $_POST["InputOldPW"], $_POST["InputPW1"]);
-        //need to give confirmation that password has been changed
+        if(change_password($connection, $_SESSION['email'], $_POST["InputOldPW"], $_POST["InputPW1"])) {
+			echo "<script type='text/javascript'>alert('Successfully changed password!');</script>";
+			header("Location: index.php");
+		}
+        else
+			echo "<script type='text/javascript'>alert('Failed to change password!');</script>";
     }
     
 ?>
