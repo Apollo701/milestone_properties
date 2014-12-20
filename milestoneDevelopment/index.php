@@ -25,7 +25,7 @@
             #index{
                 padding-top:50px;
                 background: url('assets/bg_images/bg2.jpg');
-/*                height: 300px;*/
+                /*                height: 300px;*/
                 width: 62%;
                 border-radius: 10px;
                 /*            width: 73%;*/
@@ -57,12 +57,12 @@
                 box-shadow: 1px 7px 36px -5px;
             }
             .bottom-container{
-                
+
                 padding: 1%;
                 border-radius: 10px; 
-				margin-bottom: 70px;
+                margin-bottom: 70px;
             }
-			h4 { text-align: center;}
+            h4 { text-align: center;}
         </style>
     </head>
     <body>
@@ -101,7 +101,7 @@
                     <div class="col-sm-6">
                         <?php
                         $connection = connect_to_mysql();
-                        $results = featured_properties($connection);
+                        $results = featured_properties($connection, 2);
                         if ($results != "") {
                             $row = mysqli_fetch_array($results);
                         } else {
@@ -118,8 +118,8 @@
                                     $img_path = 'http://sfsuswe.com/~f14g02/assets/home_images/home' . $row["id"] . '/small/' . $img_name1;
                                     ?>
                                     <img class="img-responsive" style="margin-top:9%;" src="<?php echo '' . $img_path . ''; ?>"/>
-									<span class="fnt-smaller fnt-lighter fnt-arial">Milestone Properties&copy</span>
-								</a>
+                                    <span class="fnt-smaller fnt-lighter fnt-arial">Milestone Properties&copy</span>
+                                </a>
 
                                 <div class="clearfix visible-sm"></div>
 
@@ -145,21 +145,21 @@
                                     <br><br>
                                     <p class="hidden-xs"><?php echo '' . substr($row["description"], 0, 120) . ''; ?>...</p>
                                     <div class="row">
-										<div class="col-md-3"></div>
-										<div class="col-md-5">
-											<form action="contact_realtor.php" method="post">
-                                            <button name="idListing" type="submit" value="<?php echo $row["id"]?>" class="btn btn-default btn-sm">
-                                                <span class="glyphicon glyphicon-envelope" aria-hidden="true"></span> Contact realtor
-                                            </button>
-										</form>
-										</div>
-										<div class="col-md-4">
-											<form action="home_details.php" method="get">
-                                            <button name="details" type="submit" value="<?php echo '' . $row[0] . ''; ?>" class="btn btn-success btn-sm">
-												<span class="glyphicon glyphicon-star" aria-hidden="true"></span> Details</button>
-                                        </form>
-										</div>
-									</div>
+                                        <div class="col-md-3"></div>
+                                        <div class="col-md-5">
+                                            <form action="contact_realtor.php" method="post">
+                                                <button name="idListing" type="submit" value="<?php echo $row["id"] ?>" class="btn btn-default btn-sm">
+                                                    <span class="glyphicon glyphicon-envelope" aria-hidden="true"></span> Contact realtor
+                                                </button>
+                                            </form>
+                                        </div>
+                                        <div class="col-md-4">
+                                            <form action="home_details.php" method="get">
+                                                <button name="details" type="submit" value="<?php echo '' . $row[0] . ''; ?>" class="btn btn-success btn-sm">
+                                                    <span class="glyphicon glyphicon-star" aria-hidden="true"></span> Details</button>
+                                            </form>
+                                        </div>
+                                    </div>
                                 </div>
                             </div>
                         </div>
@@ -170,8 +170,8 @@
                     </div>
                     <div class="col-sm-6">  
                         <?php
-                        $connection = connect_to_mysql();
-                        $results = featured_properties($connection);
+                        //$connection = connect_to_mysql();
+                        //$results = featured_properties($connection); //no longer necessary
                         if ($results != "") {
                             $row = mysqli_fetch_array($results);
                         } else {
@@ -181,15 +181,15 @@
                         ?>
                         <div class="brdr bgc-fff pad-10 box-shad btm-mrg-20 property-listing" style="overflow:hidden;">
                             <div class="media">
-                                <a class="pull-left" href="home_details.php?details=<?php echo $row["id"]?>" target="_parent">
+                                <a class="pull-left" href="home_details.php?details=<?php echo $row["id"] ?>" target="_parent">
                                     <?php
                                     $rand_num = rand(1, 3);
                                     $img_name2 = $row["image" . $rand_num];
                                     $img_path = 'http://sfsuswe.com/~f14g02/assets/home_images/home' . $row["id"] . '/small/' . $img_name2;
                                     ?>
                                     <img class="img-responsive" style="margin-top:9%;" src="<?php echo '' . $img_path . ''; ?>"/>
-									<span class="fnt-smaller fnt-lighter fnt-arial">Milestone Properties&copy</span>
-								</a>
+                                    <span class="fnt-smaller fnt-lighter fnt-arial">Milestone Properties&copy</span>
+                                </a>
 
                                 <div class="clearfix visible-sm"></div>
 
@@ -214,34 +214,34 @@
                                     </ul>
                                     <br><br>
                                     <p class="hidden-xs"><?php echo '' . substr($row["description"], 0, 120) . ''; ?>...</p>
-									<div class="row">
-										<div class="col-md-3"></div>
-										<div class="col-md-5">
-											<form action="contact_realtor.php" method="post">
-                                            <button name="idListing" type="submit" value="<?php echo $row["id"]?>" class="btn btn-default btn-sm">
-                                                <span class="glyphicon glyphicon-envelope" aria-hidden="true"></span> Contact realtor
-                                            </button>
-										</form>
-										</div>
-										<div class="col-md-4">
-											<form action="home_details.php" method="get">
-                                            <button name="details" type="submit" value="<?php echo '' . $row[0] . ''; ?>" class="btn btn-success btn-sm">
-												<span class="glyphicon glyphicon-star" aria-hidden="true"></span> Details</button>
-                                        </form>
-										</div>
-									</div>
-								</div>
-                                    <br>
-							</div>
-						</div>
-					</div>
-					<?php
-					close_mysql_connection($connection);
-					?>
+                                    <div class="row">
+                                        <div class="col-md-3"></div>
+                                        <div class="col-md-5">
+                                            <form action="contact_realtor.php" method="post">
+                                                <button name="idListing" type="submit" value="<?php echo $row["id"] ?>" class="btn btn-default btn-sm">
+                                                    <span class="glyphicon glyphicon-envelope" aria-hidden="true"></span> Contact realtor
+                                                </button>
+                                            </form>
+                                        </div>
+                                        <div class="col-md-4">
+                                            <form action="home_details.php" method="get">
+                                                <button name="details" type="submit" value="<?php echo '' . $row[0] . ''; ?>" class="btn btn-success btn-sm">
+                                                    <span class="glyphicon glyphicon-star" aria-hidden="true"></span> Details</button>
+                                            </form>
+                                        </div>
+                                    </div>
+                                </div>
+                                <br>
+                            </div>
+                        </div>
+                    </div>
+                    <?php
+                    //close_mysql_connection($connection);
+                    ?>
 
-				</div>
-			</div>
-		</div>
+                </div>
+            </div>
+        </div>
 
         <div class="footer" style="background-color: #e7e7e7; border-color: #777; width: 100%; position: fixed;bottom: 0">
             <h4>This is for demonstration purposes only. CSC648/848 San Francisco State University Team02 Milestone Properties</h4>
