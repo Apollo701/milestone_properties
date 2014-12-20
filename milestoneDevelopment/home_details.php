@@ -128,12 +128,22 @@
                                     <br><br><br><br><br>
                                     <p class="hidden-xs"><?php echo '' . $row["description"] . ''; ?></p>
                                     <br><br>
-                                    <div class="btn-toolbar pull-right">
-                                        <form action="contact_realtor.php" method="post">
-                                            <button name="idListing" type="submit" value="<?php echo '' . $row[0] . ''; ?>" class="btn btn-success btn-sm">
-												<span class="glyphicon glyphicon-envelope" aria-hidden="true"></span> Contact A Realtor
-											</button>
-                                        </form>
+                                    <div class="row">
+										<div class="col-md-3"></div>
+										<div class="col-md-1">
+											<form action="contact_realtor.php" method="post">
+												<button name="idListing" type="submit" value="<?php echo '' . $row[0] . ''; ?>" class="btn btn-sm">
+													<span class="glyphicon glyphicon-star" aria-hidden="true"></span> Bookmark
+												</button>
+											</form>
+										</div>
+										<div class="col-md-1">
+											<form action="contact_realtor.php" method="post">
+												<button name="idListing" type="submit" value="<?php echo '' . $row[0] . ''; ?>" class="btn btn-success btn-sm">
+													<span class="glyphicon glyphicon-envelope" aria-hidden="true"></span> Contact A Realtor
+												</button>
+											</form>
+										</div>
                                     </div>
                                     <br>
                             </div>

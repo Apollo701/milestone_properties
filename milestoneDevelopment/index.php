@@ -160,7 +160,7 @@
                                                 </button>
                                             </form>
                                         </div>
-                                        <div class="col-md-2">
+                                        <div class="col-md-3">
                                             <form action="home_details.php" method="get">
                                                 <button name="details" type="submit" value="<?php echo '' . $row[0] . ''; ?>" class="btn btn-success btn-sm">Details</button>
                                             </form>
