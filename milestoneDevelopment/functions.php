@@ -289,15 +289,16 @@ function run_scripts_head() {
 }
 /*
  * @param mysql_result $connection connection to database
+ * @param int $num = number of results desired
  * @var string $query input for sql database
  * @return mysql_result $result featured listing from database
  */
-//finds and returns a featured(random) property from database
-function featured_properties($connection) {
+//finds and returns a given number of featured properties from database
+function featured_properties($connection, $num) {
     $query = "SELECT * ";
     $query .="FROM listings ";
-    $query .="ORDER BY RAND()";
-    $query .="LIMIT 1";
+    $query .="ORDER BY clicked_on DESC ";
+    $query .="LIMIT {$num}";
     return $result = mysqli_query($connection, $query);
 }
 
