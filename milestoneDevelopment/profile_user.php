@@ -54,7 +54,7 @@
             
         <div class="container top-container transbox">
             <div class="container text-center">
-                <h1>Contact Information</h1> <a href="#"> Edit</a>
+                <h1>Contact Information</h1> <a href="edit_user.php"> Edit</a>
             </div>
            <div class="input-group input-group-sm col-sm-offset-4 col-sm-4">
                 <b>First Name:</b> <?php show_info("first_name")?> <br>
