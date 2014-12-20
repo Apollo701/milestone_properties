@@ -77,7 +77,12 @@
                         <h4>Check our terms and conditions <a href="#termsModal" data-toggle="modal" data-target="#termsModal" data-dismiss="modal">here</a></h4>
                         <br />
                         
-                        <input type="submit" name="submit" value="Sell My Home!" />
+                        <?php if (isset($_SESSION['id'])){
+                            echo '<input type="submit" name="submit" value="Sell My Home!" />';
+                        } else {
+                            echo '<h3>You must be logged in to submit a listing!</h3>';
+                        }
+                            ?>
                         <br />
                     </form>
                 </div>
@@ -94,6 +99,19 @@
 
     </body>
 </html>
+<?php
+    function bookmark_listing() {
+        $connection = connect_to_mysql();
+        if (isset($_SESSION['id'])){
+        $query = "INSERT into bookmarks (user_id, listing_id) VALUES(";
+        $query .= $_SESSION['id'] . "," . $_POST['bookmark'] . ")";
+        mysqli_query($connection, $query);
+        echo "<script type='text/javascript'>alert('Listing added to bookmarks');</script>";
+        } else {
+            echo "<script type='text/javascript'>alert('You must be logged in to bookmark a property!');</script>";
+        }
+    }
+?>
 
 <?php
     function new_listing() {
