@@ -233,22 +233,31 @@ function input_listing($connection) {
     $num_bedrooms = filter_input(INPUT_POST, "num_bedrooms", FILTER_VALIDATE_INT);
     $num_bathrooms = filter_input(INPUT_POST, "num_bathrooms", FILTER_VALIDATE_INT);
     $num_garages = filter_input(INPUT_POST, "num_garages", FILTER_VALIDATE_INT);
-    $target_dir = "/home/f14g02/public_html/assets/images/";
+    $target_id_query = "Select id from listings Where id<(select max(Id) from listings)
+		order by id desc limit 1";
+	$result = mysqli_query($connection, $target_id_query);
+	$row = mysqli_fetch_array($result);
+        echo $row[0]; 
+
     //$target_dir = $target_dir . basename(($_FILES["uploadFile"]["name"]));
     $w_address = $address . ", " . $city . ", " . $us_state;
     $walkscore = get_walkscore($w_address);
     $uploadOk = 1;
-    if (move_uploaded_file($_FILES["uploadFile"]["tmp_name"], $target_dir)) {
-       $image1 = basename($_FILES["uploadFile"]["name"]);
-        echo "The file " . basename($_FILES["uploadFile"]["name"]) . " has been uploaded.";
+    
+    $i = 1;
+    while ($i <  (count($_FILES)+1) ){
+    $target_dir = "/home/f14g02/public_html/assets/home_images/home" . (((int)$row[0])+2) . "/small/home" . (((int)$row[0])+2) . "_" . $i . ".jpg";
+    if (move_uploaded_file($_FILES["image" . $i]["tmp_name"], $target_dir)) {
+       ${'image' . $i} = "home" . (((int)$row[0])+2) . "_" . $i . ".jpg";
+        echo "The file " . basename($_FILES["image" . $i]["name"]) . " has been uploaded.\n";
     } else {
         echo "Sorry, there was an error uploading your file.";
+        $i++;
     }
-
-    $query = "INSERT INTO listings (description, address, zip_code, city, us_state, price, sq_ft, num_bedrooms,"
-            . "num_bathrooms, num_garages, image1, walk_score)
-                    VALUES ('$description', '$address', '$zip_code', '$city', '$us_state', '$price', '$sq_ft',"
-            . " '$num_bedrooms', '$num_bathrooms', '$num_garages', '$image1', '$walkscore')";
+    $i++;
+    }
+    $query = "INSERT INTO listings (description, address, zip_code, city, us_state, price, sq_ft, num_bedrooms, num_bathrooms, num_garages, image1, image2, image3, walk_score)";
+    $query .= "VALUES('$description', '$address', '$zip_code', '$city', '$us_state', '$price', '$sq_ft', '$num_bedrooms', '$num_bathrooms', '$num_garages', '$image1', '$image2', '$image3', '$walkscore')";
 
     if (!mysqli_query($connection, $query)) {
         die('Error: ' . mysqli_error($connection));

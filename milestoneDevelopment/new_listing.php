@@ -15,9 +15,7 @@
                 font-weight: lighter;
 
             }
-            .dropzone{
-                text-align: left;
-            }
+
             body{padding-top:0%;}
             .top-container{
                 margin-top: 70px;
@@ -49,7 +47,7 @@
             </div>
             <div class="row">
                 <div class="col-md-6 col-md-offset-3">
-                    <form action="new_listing_created.php" method="post" enctype="multipart/form-data"  class="dropzone" id="my-awesome-dropzone" >
+                    <form action="new_listing_created.php" method="post" enctype="multipart/form-data">
                         State:      <input type="text" name="us_state" value="" /><br />
                         <br />
                         City:       <input type="text" name="city" value="" /><br />
@@ -68,10 +66,13 @@
                         <br />
                         Garages:    <input type="text" name="num_garages" value="" /><br />
                         <br />
-                        Description:<input type="text" name="description" value="" /><br />
-
+                        Description:<input type="text" name="description" value="" /><br />                    
                         <br />       
-                        <h3 class="text-center">Drag and drop home images anywhere in the form</h3>
+                        <input type="file" name="image1" id="image1">
+                        <br>
+                        <input type="file" name="image2" id="image2">
+                        <br>
+                        <input type="file" name="image3" id="image3">
                         <br>
                         <h4>Check our terms and conditions <a href="#termsModal" data-toggle="modal" data-target="#termsModal" data-dismiss="modal">here</a></h4>
                         <br />
@@ -91,7 +92,6 @@
         </div>
 		
 
-        <script src="./js/dropzone.js"></script>
     </body>
 </html>
 
