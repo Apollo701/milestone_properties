@@ -1,14 +1,5 @@
-<link href="//maxcdn.bootstrapcdn.com/bootstrap/3.3.0/css/bootstrap.min.css" rel="stylesheet">
-<link rel="stylesheet" type="text/css" href="css/custom.css">
-<link rel="stylesheet" type="text/css" href="css/dropzone.css">
-<link rel="stylesheet" type="text/css" href="css/basic.css">
-<?php include 'navbar.php'; ?>
-<?php include 'login_modal.php'; ?>
-<?php include 'signup_modal.php'; ?>
-<?php include 'terms_conditions.php'; ?>
-<?php include_once 'functions.php'; ?>
-<!DOCTYPE>
 <html lang="en">
+<?php require 'navbar.php'; ?>
     <head>
 		<meta charset="utf-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">

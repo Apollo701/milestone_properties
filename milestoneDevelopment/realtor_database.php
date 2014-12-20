@@ -1,8 +1,5 @@
-<?php include 'navbar.php';    ?>
-<?php include_once 'functions.php'; ?>
-<?php run_scripts_head();?>
-
 <html lang="en">
+<?php require 'navbar.php'; ?>
     <head>
         <title>Listings database</title>
         <style>

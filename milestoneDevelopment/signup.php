@@ -1,9 +1,5 @@
-<?php include 'navbar.php';
-      include_once 'functions.php';
-     // include 'footer.php';
-      include 'password.php' ?>
-
 <html lang="en">
+<?php require 'navbar.php'; ?>
     <head>
         <meta charset="utf-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">

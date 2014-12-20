@@ -1,13 +1,5 @@
-<link href="//maxcdn.bootstrapcdn.com/bootstrap/3.3.0/css/bootstrap.min.css" rel="stylesheet">
-<link href="//maxcdn.bootstrapcdn.com/font-awesome/4.2.0/css/font-awesome.min.css" rel="stylesheet">
-<link rel="stylesheet" type="text/css" href="css/custom.css">
-<?php include 'navbar.php'; ?>
-<?php include 'login_modal.php'; ?>
-<?php include 'signup_modal.php'; ?>
-<?php include 'terms_conditions.php'; ?>
-<?php include_once 'functions.php'; ?>
-<!DOCTYPE>
 <html lang="en">
+<?php require 'navbar.php'; ?>
     <head>
         <meta charset="utf-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -258,9 +250,6 @@
             <h4>This is for demonstration purposes only. CSC648/848 San Francisco State University Team02 Milestone Properties</h4>
         </div>
 
-        <script src="//ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
-        <script src="//maxcdn.bootstrapcdn.com/bootstrap/3.3.0/js/bootstrap.min.js"></script>
-        <script src="js/jquery.js"></script>
-        <script src="js/script.js"></script>
+
     </body>  
 </html>

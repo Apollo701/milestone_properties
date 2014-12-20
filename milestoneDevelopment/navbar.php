@@ -1,4 +1,11 @@
 <?php session_start(); ?>
+<?php require 'password.php'; ?>
+<?php require 'login_modal.php'; ?>
+<?php require 'signup_modal.php'; ?>
+<?php require 'terms_conditions.php'; ?>
+<?php include_once 'functions.php'; ?>
+<link href="//maxcdn.bootstrapcdn.com/bootstrap/3.3.0/css/bootstrap.min.css" rel="stylesheet">
+<link rel="stylesheet" type="text/css" href="css/custom.css">
 
 <nav class="navbar navbar-default navbar-fixed-top" role="navigation">
   <div class="container">
@@ -76,3 +83,7 @@
     </div><!-- /.navbar-collapse -->
   </div><!-- /.container-fluid -->
 </nav>
+        <script src="//ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
+        <script src="//maxcdn.bootstrapcdn.com/bootstrap/3.3.0/js/bootstrap.min.js"></script>
+        <script src="js/jquery.js"></script>
+        <script src="js/script.js"></script>
