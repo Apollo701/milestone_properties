@@ -169,20 +169,25 @@ $result = milestone_search_with_filters($connection);
                                             <br><br>
                                             <p class="hidden-xs"><?php echo '' . substr($row["description"], 0, 120) . ''; ?>...</p>
                                             <div class="row">
-                                                <div class="col-md-3"></div>
-                                                <div class="col-md-5">
-                                                    <form action="contact_realtor.php" method="post">
-                                                        <button name="idListing" type="submit" value="<?php echo $row["id"] ?>" class="btn btn-default btn-sm">
-                                                            <span class="glyphicon glyphicon-envelope" aria-hidden="true"></span> Contact realtor
-                                                        </button>
-                                                    </form>
-                                                </div>
                                                 <div class="col-md-4">
-                                                    <form action="home_details.php" method="get">
-                                                        <button name="details" type="submit" value="<?php echo '' . $row[0] . ''; ?>" class="btn btn-success btn-sm">
-                                                            <span class="glyphicon glyphicon-star" aria-hidden="true"></span> Details</button>
-                                                    </form>
-                                                </div>
+											<form action="home_details.php" method="post">
+                                                <button name="bookmark" type="submit" value="<?php echo $row["id"] ?>" class="btn btn-default btn-sm">
+                                                    <span class="glyphicon glyphicon-star" aria-hidden="true"></span> Bookmark
+                                                </button>
+                                            </form>
+										</div>
+                                        <div class="col-md-5">
+                                            <form action="contact_realtor.php" method="post">
+                                                <button name="idListing" type="submit" value="<?php echo $row["id"] ?>" class="btn btn-default btn-sm">
+                                                    <span class="glyphicon glyphicon-envelope" aria-hidden="true"></span> Contact realtor
+                                                </button>
+                                            </form>
+                                        </div>
+                                        <div class="col-md-3">
+                                            <form action="home_details.php" method="get">
+                                                <button name="details" type="submit" value="<?php echo '' . $row[0] . ''; ?>" class="btn btn-success btn-sm">Details</button>
+                                            </form>
+                                        </div>
                                             </div>
                                         </div>
                                     </div>
@@ -230,20 +235,25 @@ $result = milestone_search_with_filters($connection);
                                                 <br><br>
                                                 <p class="hidden-xs"><?php echo '' . substr($row["description"], 0, 120) . ''; ?>...</p>
                                                 <div class="row">
-                                                    <div class="col-md-3"></div>
-                                                    <div class="col-md-5">
-                                                        <form action="contact_realtor.php" method="post">
-                                                            <button name="idListing" type="submit" value="<?php echo $row["id"] ?>" class="btn btn-default btn-sm">
-                                                                <span class="glyphicon glyphicon-envelope" aria-hidden="true"></span> Contact realtor
-                                                            </button>
-                                                        </form>
-                                                    </div>
                                                     <div class="col-md-4">
-                                                        <form action="home_details.php" method="get">
-                                                            <button name="details" type="submit" value="<?php echo '' . $row[0] . ''; ?>" class="btn btn-success btn-sm">
-                                                                <span class="glyphicon glyphicon-star" aria-hidden="true"></span> Details</button>
-                                                        </form>
-                                                    </div>
+											<form action="home_details.php" method="post">
+                                                <button name="bookmark" type="submit" value="<?php echo $row["id"] ?>" class="btn btn-default btn-sm">
+                                                    <span class="glyphicon glyphicon-star" aria-hidden="true"></span> Bookmark
+                                                </button>
+                                            </form>
+										</div>
+                                        <div class="col-md-5">
+                                            <form action="contact_realtor.php" method="post">
+                                                <button name="idListing" type="submit" value="<?php echo $row["id"] ?>" class="btn btn-default btn-sm">
+                                                    <span class="glyphicon glyphicon-envelope" aria-hidden="true"></span> Contact realtor
+                                                </button>
+                                            </form>
+                                        </div>
+                                        <div class="col-md-3">
+                                            <form action="home_details.php" method="get">
+                                                <button name="details" type="submit" value="<?php echo '' . $row[0] . ''; ?>" class="btn btn-success btn-sm">Details</button>
+                                            </form>
+                                        </div>
                                                 </div>
                                             </div>
                                         </div>
