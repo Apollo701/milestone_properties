@@ -6,6 +6,8 @@
 <?php include_once 'functions.php'; ?>
 <link href="//maxcdn.bootstrapcdn.com/bootstrap/3.3.0/css/bootstrap.min.css" rel="stylesheet">
 <link rel="stylesheet" type="text/css" href="css/custom.css">
+<link rel="stylesheet" type="text/css" href="css/basic.css">
+
 
 <nav class="navbar navbar-default navbar-fixed-top" role="navigation">
   <div class="container">

@@ -155,12 +155,6 @@
         // display_formatted_details($results);
         close_mysql_connection($connection);
         ?>
-
-
-
-
-        <script src="//ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
-        <script src="//maxcdn.bootstrapcdn.com/bootstrap/3.3.0/js/bootstrap.min.js"></script>
     </body>
 </html>
 

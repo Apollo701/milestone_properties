@@ -90,9 +90,7 @@
                     </div>
                 </div>
 
-                <div class="row">
-                    <div class="col-sm-6">
-                        <?php
+                                        <?php
                         $connection = connect_to_mysql();
                         $results = featured_properties($connection, 2);
                         if ($results != "") {
@@ -102,6 +100,8 @@
                             die();
                         }
                         ?>
+                <div class="row">
+                    <div class="col-sm-6">
                         <div class="brdr bgc-fff pad-10 box-shad btm-mrg-20 property-listing" style="overflow:hidden;">
                             <div class="media">
                                 <a class="pull-left" href="home_details.php?details=<?php echo $row["id"] ?>" target="_parent">

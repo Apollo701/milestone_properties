@@ -1,7 +1,7 @@
 <html lang="en">
 <?php require 'navbar.php'; ?>
     <head>
-		<meta charset="utf-8">
+        <meta charset="utf-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
         <title>Sell Home</title>
@@ -90,8 +90,7 @@
 			<h4>This is for demonstration purposes only. CSC648/848 San Francisco State University Team02 Milestone Properties</h4>
         </div>
 		
-        <script src="//ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
-        <script src="//maxcdn.bootstrapcdn.com/bootstrap/3.3.0/js/bootstrap.min.js"></script>
+
         <script src="./js/dropzone.js"></script>
     </body>
 </html>
