@@ -1,13 +1,5 @@
-<meta charset="utf-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<link href="//maxcdn.bootstrapcdn.com/bootstrap/3.3.0/css/bootstrap.min.css" rel="stylesheet">
-<link href="//maxcdn.bootstrapcdn.com/font-awesome/4.2.0/css/font-awesome.min.css" rel="stylesheet">
-<link href="http://fonts.googleapis.com/css?family=Crimson+Text" rel="stylesheet" type="text/css">
-<?php include 'navbar.php';    ?>
-<?php include 'login_modal.php'; ?>
-<?php include 'signup_modal.php'; ?>
-<?php include_once 'functions.php'; ?>
-<!DOCTYPE>
+
+<?php require 'navbar.php';    ?>
 <?php
             if($_SESSION['admin']!= 2) {
                 header("Location: index.php");
@@ -16,8 +8,7 @@
         ?> 
 <html lang="en">
     <head>
-        <?php run_scripts_head()?>
-		<meta charset="utf-8">
+        <meta charset="utf-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
         <title>Add Realtor</title>
@@ -66,7 +57,7 @@
             </div>
             <div class="row">
                 <div class="col-md-6 col-md-offset-3">
-                    <form action="new_realtor_created.php" method="post" enctype="multipart/form-data"  class="dropzone" id="my-awesome-dropzone" >
+                    <form action="new_realtor_created.php" method="post" enctype="multipart/form-data"" >
                         Email:      <input type="text" name="user_email" value="" /><br />
                         <br />
                         Password:       <input type="text" name="user_password" value="" /><br />
@@ -93,8 +84,5 @@
 		<div class="footer" style="background-color: #e7e7e7; border-color: #777; width: 100%; position: fixed;bottom: 0">
 			<h4>This is for demonstration purposes only. CSC648/848 San Francisco State University Team02 Milestone Properties</h4>
         </div>
-		
-        <script src="//ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
-        <script src="//maxcdn.bootstrapcdn.com/bootstrap/3.3.0/js/bootstrap.min.js"></script>
-        <script src="./js/dropzone.js"></script>
+	
     </body>
