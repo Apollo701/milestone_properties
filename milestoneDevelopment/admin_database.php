@@ -8,9 +8,9 @@
                 background: none;
                 text-align: left;
             }
-            .navbar-brand{
-            font-family: 'Crimson Text', serif;
-            }
+            .navbar-brand, .nav{
+                font-family: 'Helvetica Neue', serif;
+                font-weight: lighter;            }
             body{padding-top:0%;}
             .top-container{
                 margin-top: 80px;
