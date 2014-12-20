@@ -742,45 +742,154 @@ function assign_realtor ($connection){
 function edit_listing ($connection){
     // acquires field from form and delete from query
     // value from function not transfering to $listingID
-    $listingID = $_POST['listingID'];
-    $sql = "UPDATE listings SET ";
-     $bed = filter_input(INPUT_POST, "num_bedroom", FILTER_VALIDATE_INT);
+    //$listingID = $_POST['listingID'];
+    $listingID = filter_input(INPUT_POST, "listingID", FILTER_VALIDATE_INT);
+    
+    $description = filter_input(INPUT_POST, "description", FILTER_SANITIZE_STRING);
+        if ($description) {
+            $sql = "UPDATE listings SET ";
+            $sql .= "description=";
+            $sql .= " '$description' ";
+            $sql .= "WHERE id = $listingID";
+            if (mysqli_query($connection, $sql)) {
+                echo "Record updated successfully";
+            } 
+            else {
+                echo "Error updating record: " . mysqli_error($connection);
+            }
+        }
+        
+    $address = filter_input(INPUT_POST, "address", FILTER_SANITIZE_STRING);
+        if ($address) {
+            $sql = "UPDATE listings SET ";
+            $sql .= "address=";
+            $sql .= " '$address' ";
+            $sql .= "WHERE id = $listingID";
+            if (mysqli_query($connection, $sql)) {
+                echo "Record updated successfully";
+            } 
+            else {
+                echo "Error updating record: " . mysqli_error($connection);
+            }
+        }
+    $bed = filter_input(INPUT_POST, "num_bedrooms", FILTER_VALIDATE_INT);
         if ($bed) {
+            $sql = "UPDATE listings SET ";
             $sql .= "num_bedrooms=";
             $sql .= " '$bed' ";
+            $sql .= "WHERE id = $listingID";
+            if (mysqli_query($connection, $sql)) {
+                echo "Record updated successfully";
+            } 
+            else {
+                echo "Error updating record: " . mysqli_error($connection);
+            }
         }
-        /*$walk = filter_input(INPUT_POST, "min_walkscore", FILTER_VALIDATE_INT);
+    $zip_code = filter_input(INPUT_POST, "zip_code", FILTER_VALIDATE_INT);
+        if ($zip_code) {
+            $sql = "UPDATE listings SET ";
+            $sql .= "zip_code=";
+            $sql .= " '$zip_code' ";
+            $sql .= "WHERE id = $listingID";
+            if (mysqli_query($connection, $sql)) {
+                echo "Record updated successfully";
+            } 
+            else {
+                echo "Error updating record: " . mysqli_error($connection);
+            }
+        }
+    $city = filter_input(INPUT_POST, "city", FILTER_SANITIZE_STRING);
+        if ($city) {
+            $sql = "UPDATE listings SET ";
+            $sql .= "city=";
+            $sql .= " '$city' ";
+            $sql .= "WHERE id = $listingID";
+            if (mysqli_query($connection, $sql)) {
+                echo "Record updated successfully";
+            } 
+            else {
+                echo "Error updating record: " . mysqli_error($connection);
+            }
+        }
+    $us_state = filter_input(INPUT_POST, "us_state", FILTER_SANITIZE_STRING);
+        if ($us_state) {
+            $sql = "UPDATE listings SET ";
+            $sql .= "us_state=";
+            $sql .= " '$us_state' ";
+            $sql .= "WHERE id = $listingID";
+            if (mysqli_query($connection, $sql)) {
+                echo "Record updated successfully";
+            } 
+            else {
+                echo "Error updating record: " . mysqli_error($connection);
+            }
+        }
+    $walk = filter_input(INPUT_POST, "walkscore", FILTER_VALIDATE_INT);
         if ($walk) {
-            $query .= " AND walkscore >=";
-            $query .= " '$walk' "; //form must be converted to int, "+%d" is a string
+            $sql = "UPDATE listings SET ";
+            $sql .= "walkscore=";
+            $sql .= " '$walk' ";
+            $sql .= "WHERE id = $listingID";
+            if (mysqli_query($connection, $sql)) {
+                echo "Record updated successfully";
+            } 
+            else {
+                echo "Error updating record: " . mysqli_error($connection);
+            }
         }
-        $bath = filter_input(INPUT_POST, "min_bathroom", FILTER_VALIDATE_INT);
+    $bath = filter_input(INPUT_POST, "num_bathrooms", FILTER_VALIDATE_INT);
         if ($bath) {
-            $query .= " AND num_bathrooms >=";
-            $query .= " '$bath' ";
+            $sql = "UPDATE listings SET ";
+            $sql .= "num_bathrooms=";
+            $sql .= " '$bath' ";
+            $sql .= "WHERE id = $listingID";
+            if (mysqli_query($connection, $sql)) {
+                echo "Record updated successfully";
+            } 
+            else {
+                echo "Error updating record: " . mysqli_error($connection);
+            }
         }
-        $ft = filter_input(INPUT_POST, "min_sq_ft", FILTER_VALIDATE_INT);
+        $ft = filter_input(INPUT_POST, "sq_ft", FILTER_VALIDATE_INT);
         if ($ft) {
-            $query .= " AND sq_ft >=";
-            $query .= " '$ft' "; //form must be converted to int, 
+            $sql = "UPDATE listings SET ";
+            $sql .= "sq_ft=";
+            $sql .= " '$ft' ";
+            $sql .= "WHERE id = $listingID";
+            if (mysqli_query($connection, $sql)) {
+                echo "Record updated successfully";
+            } 
+            else {
+                echo "Error updating record: " . mysqli_error($connection);
+            }
         }
-        $miprice = filter_input(INPUT_POST, "minprice", FILTER_VALIDATE_INT);
-        if ($miprice) {
-            $query .= " AND price >=";
-            $query .= " '$miprice' ";
+        $price = filter_input(INPUT_POST, "price", FILTER_VALIDATE_INT);
+        if ($price) {
+            $sql = "UPDATE listings SET ";
+            $sql .= "price=";
+            $sql .= " '$price' ";
+            $sql .= "WHERE id = $listingID";
+            if (mysqli_query($connection, $sql)) {
+                echo "Record updated successfully";
+            } 
+            else {
+                echo "Error updating record: " . mysqli_error($connection);
+            }
         }
-        $maprice = filter_input(INPUT_POST, "maxprice", FILTER_VALIDATE_INT);
-        if ($maprice) {
-            $query .= " AND price <=";
-            $query .= " '$maprice' ";
-        }*/
-        $sql .= "WHERE id = $listingID";
-    echo $_POST['num_bedrooms'];
-    if (mysqli_query($connection, $sql)) {
-        echo "Record updated successfully";
-    } else {
-        echo "Error updating record: " . mysqli_error($connection);
-    }
+        $num_garages= filter_input(INPUT_POST, "num_garages", FILTER_VALIDATE_INT);
+        if ($num_garages) {
+            $sql = "UPDATE listings SET ";
+            $sql .= "num_garages=";
+            $sql .= " '$num_garages' ";
+            $sql .= "WHERE id = $listingID";
+            if (mysqli_query($connection, $sql)) {
+                echo "Record updated successfully";
+            } 
+            else {
+                echo "Error updating record: " . mysqli_error($connection);
+            }
+        }
+    //echo $sql;
     mysqli_close($connection);
 }
 
@@ -790,7 +899,7 @@ function realtor_display_table($realtor_id){
             //$db_pwd = 'dreamteam12';
             //$database = 'student_f14g02';
             $table = 'listings';
-
+        
             if (!mysql_connect(DB_Server, DB_login, DB_password))
                 die("Can't connect to database");
             if (!mysql_select_db(DB_name))
@@ -807,8 +916,8 @@ function realtor_display_table($realtor_id){
             //echo "<h1>Table: {$table}</h1>";
             echo "<table border='1'><tr>";
             // printing table headers
-            $field = mysql_fetch_field($result);
-                echo "<td><b>{$field->name}</b></td>";
+           // $field = mysql_fetch_field($result);
+                //echo "<td><b>{$field->name}</b></td>";
             $field = mysql_fetch_field($result);
             for($i=0; $i<$fields_num-7; $i++)
             {
@@ -817,36 +926,49 @@ function realtor_display_table($realtor_id){
             }
             echo "</tr>\n";
             // printing table rows
-            
+           
             while($row = mysql_fetch_row($result))
-            {
+            { 
                 echo "<tr>";
 
                 // $row is array... foreach( .. ) puts every element
                 // of $row to $cell variable
                 $i = 0;
+                
                 foreach($row as $cell){
-                    if ($i == 0){
+                    
+                   if ($i == 0){
                         $listingID = $cell;
                     }
-                    if ($i == 1){
-                        $cell;
-                    }
-                    else if ($i > 10){
+                   // if ($i == 1){
+                      // $cell;
+                    //}
+                    elseif ($i > 10){
                         break;
                     }
                     else{
-                        echo"<td>$cell</td>";
+                        $tmp = mysql_fetch_field($result,$i);
+                        $edit_field = $tmp->name;
+                        echo 
+                         "<td>
+                             <form name='Edit2' action='edit_listing.php' method='POST'>
+                             <input type='text' name='$edit_field' value='$cell' ><br>
+                             <input type='hidden' name='listingID' value='$listingID'/>
+                             <input type='submit' name='edit' value='Edit'/>
+                    </form>
+                    </td>";
+                               
 
                     }
                     $i++;
+                     
                 }
-                 echo "<td>
-                    <form name='Edit' action='edit_listing.php' method='POST'>;
-                    <input type='hidden' name='listingID' value='$listingID'/>
-                    <input type='submit' name='deleteID' value='Edit'/>
-                </form>
-                </td>";
+                 /*echo "<td>
+                     <form name='Edit' action='edit_listing.php' method='POST'>
+                 <input type='hidden' name='listingID' value='$listingID'/>
+                 <input type='submit' name='deleteID' value='Edit'/>
+                </form> 
+                </td>";*/
                 
                 // delete button with value of listingID;
                 echo "<td>
