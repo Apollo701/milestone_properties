@@ -270,7 +270,7 @@ function input_listing($connection) {
     }
     $i++;
     }
-    $query = "INSERT INTO new_listings (description, address, zip_code, city, us_state, price, sq_ft, num_bedrooms, num_bathrooms, num_garages, image1, image2, image3, walk_score)";
+    $query = "INSERT INTO listings (description, address, zip_code, city, us_state, price, sq_ft, num_bedrooms, num_bathrooms, num_garages, image1, image2, image3, walk_score)";
     $query .= "VALUES('$description', '$address', '$zip_code', '$city', '$us_state', '$price', '$sq_ft', '$num_bedrooms', '$num_bathrooms', '$num_garages', '$image1', '$image2', '$image3', '$walkscore')";
 
     if (!mysqli_query($connection, $query)) {
