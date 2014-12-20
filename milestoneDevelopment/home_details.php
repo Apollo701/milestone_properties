@@ -4,6 +4,7 @@
 <?php include 'login_modal.php'; ?>
 <?php include 'signup_modal.php'; ?>
 <?php include_once 'functions.php'; ?>
+<?php include 'terms_conditions.php'; ?>
 <!doctype html>
 <html lang="en">
     <head>
