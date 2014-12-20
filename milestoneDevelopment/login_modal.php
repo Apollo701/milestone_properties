@@ -16,11 +16,6 @@
                         <label for="password">Password</label>
                         <input type="password" class="form-control input-lg" name="user_password" placeholder="Password">
                     </div>
-                    <div class="checkbox">
-                        <label>
-                            <input type="checkbox" name="forget"> Keep me logged in
-                        </label>
-                    </div>
                     <div class="modal-footer">
                         <p>Don't have account ? <a href="#signUpModal"  data-toggle="modal" data-target="#signUpModal" data-dismiss="modal">Sign up here.</a></p>
                         <p>Forgot your password ? <a href="login_forgot.php">Click here</a></p>
