@@ -72,26 +72,26 @@
                                 <div class="col-md-2 col-sm-2"> 
                                     <div class="form-group">
                                         <label for="minprice">Min Price:</label>
-                                        <input class="form-control" type="text" name="minprice" value="" placeholder="min price">                                        
+                                        <input class="form-control" type="text" name="minprice" value = "<?php echo isset($_POST["minprice"]) ? $_POST["minprice"] : '' ?>" placeholder="min price">                                        
                                     </div>
                                 </div>
                                                              <div class="col-md-2 col-sm-2">
                                     <div class="form-group">
                                         <label for="maxprice">Max Price:</label>
-                                        <input class="form-control" type="text" name="maxprice" value="" placeholder="max price">                                        
+                                        <input class="form-control" type="text" name="maxprice" value = "<?php echo isset($_POST["maxprice"]) ? $_POST["maxprice"] : '' ?>" placeholder="max price">                                        
                                     </div>
                                     
                                 </div>
                                 <div class="col-md-2 col-sm-2">
                                    <div class="form-group">
                                         <label for="bedroom"> Min Bedroom:</label>
-                                        <input class="form-control" type="text" name="min_bedroom" value="" placeholder="min bedrooms">                                        
+                                        <input class="form-control" type="text" name="min_bedroom" value = "<?php echo isset($_POST["min_bedroom"]) ? $_POST["min_bedroom"] : '' ?>" placeholder="min bedrooms">                                        
                                     </div>
                                 </div>
                                 <div class="col-md-2 col-sm-2">
                                     <div class="form-group">
                                         <label for="status">Min Walkscore:</label>
-                                        <input class="form-control" type="text" name="min_walkscore" value="" placeholder="min walkscore">                                        
+                                        <input class="form-control" type="text" name="min_walkscore" value = "<?php echo isset($_POST["min_walkscore"]) ? $_POST["min_walkscore"] : '' ?>" placeholder="min walkscore">                                        
                                     </div>
                                 </div>
                                 <!-- break -->
