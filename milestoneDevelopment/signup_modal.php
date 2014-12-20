@@ -20,7 +20,7 @@
               </div>
               <div class="checkbox">
                 <label>
-                  <input type="checkbox" name="agree"> Agree to our <a href="#">terms of use</a> and <a href="#">privacy policy</a>
+                  <input type="checkbox" name="agree"> Agree to our <a href="#termsModal" data-toggle="modal" data-target="#termsModal">terms and conditions</a>
                 </label>
               </div>
                 <div class="modal-footer">
