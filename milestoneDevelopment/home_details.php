@@ -170,9 +170,13 @@
 <?php
     function bookmark_listing() {
         $connection = connect_to_mysql();
+        if (isset($_SESSION['id'])){
         $query = "INSERT into bookmarks (user_id, listing_id) VALUES(";
         $query .= $_SESSION['id'] . "," . $_POST['bookmark'] . ")";
         mysqli_query($connection, $query);
         echo "<script type='text/javascript'>alert('Listing added to bookmarks');</script>";
+        } else {
+            echo "<script type='text/javascript'>alert('You must be logged in to bookmark a property!');</script>";
+        }
     }
 ?>
