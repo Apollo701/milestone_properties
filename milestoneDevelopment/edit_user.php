@@ -61,7 +61,7 @@
 			<form role="form" method="post">
 				<div class="form-group">
 						<div class="input-group input-group-sm col-sm-offset-4 col-sm-4">
-							<label for="InputFirstName">Email</label>
+							<label for="InputFirstName">First Name</label>
 							<span class="error"><?php
 							if($GLOBALS['firstNameNotValid']) {echo "First name not valid";}
 							?></span>
@@ -70,7 +70,7 @@
 				</div>
 				<div class="form-group">
 					<div class="input-group input-group-sm col-sm-offset-4 col-sm-4">
-						<label for="InputLastName">New Password</label>
+						<label for="InputLastName">Last Name</label>
 						<span class="error"><?php
 							if($GLOBALS['lastNameNotValid']) {echo "Last name is not valid";}
 						?></span>
