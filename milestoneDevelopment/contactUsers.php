@@ -1,5 +1,10 @@
 <html lang="en">
 <?php require 'navbar.php'; ?>
+    <?php if($_SESSION['admin']!= 2 && $_SESSION['admin']!= 1 ) {
+               echo "<br><br>Unauthorized Access";
+               exit();
+            }
+            ?>
     <head>
         <meta charset="utf-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">

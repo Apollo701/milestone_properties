@@ -54,7 +54,11 @@
             </div><br>
             <div class="container text-center">
                  <a href="realtor_database.php"> Edit Listings</a>
-            </div> </div>
+            </div> <br>
+            <div class="container text-center">
+                 <a href="contactUsers.php"> User Messages</a>
+            </div>
+        </div>
             
        <br></div>
         <div class="container top-container transbox">

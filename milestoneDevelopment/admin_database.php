@@ -1,5 +1,10 @@
 <html lang="en">
 <?php require 'navbar.php'; ?>
+    <?php if($_SESSION['admin']!= 2) {
+               echo "<br><br>Unauthorized Access";
+               exit();
+            }
+            ?>
     <head>
         <title>Listings database</title>
         <style>
