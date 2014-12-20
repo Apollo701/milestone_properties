@@ -52,44 +52,38 @@
                 <div class="col-lg-4 col-sm-6 text-center">
                     <img class="img-circle img-responsive img-center" src="assets/about_images/jdorn.jpg" alt="">
                     <h3>Jason Dorn
-                        <small>Team Lead</small>
+                        <small>Team Lead & Full-Stack Engineer</small>
                     </h3>
-                    <p>Description</p>
                 </div>
                 <div class="col-lg-4 col-sm-6 text-center">
                     <img class="img-circle img-responsive img-center" src="assets/about_images/spaten.jpg" alt="">
                     <h3>Sammy Patenotte
                         <small>Tech Lead and SVN Manager</small>
                     </h3>
-                    <p>Description</p>
                 </div>
                 <div class="col-lg-4 col-sm-6 text-center">
                     <img class="img-circle img-responsive img-center" src="assets/about_images/rbeas.jpg" alt="">
                     <h3>Rachel Beasley
                         <small>Database and Documentation</small>
                     </h3>
-                    <p>Description</p>
                 </div>
                 <div class="col-lg-4 col-sm-6 text-center">
                     <img class="img-circle img-responsive img-center" src="assets/about_images/vidya.jpg" alt="">
                     <h3>Sree Vidya Sastry
                         <small>Front End Design</small>
                     </h3>
-                    <p>Description</p>
                 </div>
                 <div class="col-lg-4 col-sm-6 text-center">
                     <img class="img-circle img-responsive img-center" src="assets/about_images/hchiu.jpg" alt="">
                     <h3>Harry Chiu
                         <small>Back End Design</small>
                     </h3>
-                    <p>Description</p>
                 </div>
                 <div class="col-lg-4 col-sm-6 text-center">
                     <img class="img-circle img-responsive img-center" src="assets/about_images/jondo.jpg" alt="">
                     <h3>Jonathan Do
                         <small>Front End Design</small>
                     </h3>
-                    <p>Description</p>
                 </div>
             </div>
         </div>

@@ -1,5 +1,9 @@
-<html lang="en">
+<?php if(($_SESSION['admin']!==1)) {
+                header("Location: index.php");
+                exit();
+            }?>
 <?php require 'navbar.php'; ?>
+<html lang="en">
     <head>
         <title>Realtor Profile</title>
         <style>
@@ -7,9 +11,9 @@
                 background: none;
                 text-align: left;
             }
-            .navbar-brand{
-            font-family: 'Crimson Text', serif;
-            }
+            .navbar-brand, .nav{
+                font-family: 'Helvetica Neue', serif;
+                font-weight: lighter;            }
             body{padding-top:0%;}
             .top-container{
                 margin-top: 80px;
@@ -26,10 +30,7 @@
     </head>
     <body>
         <?php
-            if(!isset($_SESSION['email'])) {
-                header("Location: index.php");
-                exit();
-            }
+            
             
             static $row;
             $row = get_user_data();
