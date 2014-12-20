@@ -1,5 +1,5 @@
 <html lang="en">
-<?php require 'navbar.php'; ?>
+    <?php require 'navbar.php'; ?>
     <head>
         <title>Listings database</title>
         <style>
@@ -7,15 +7,17 @@
                 background: none;
                 text-align: left;
             }
-            .navbar-brand{
-            font-family: 'Crimson Text', serif;
+            .navbar-brand, .nav{
+                font-family: 'Helvetica Neue', serif;
+                font-weight: lighter;
+
             }
             body{padding-top:0%;}
             .top-container{
                 margin-top: 80px;
-/*                background-color:#e5e5e5;*/
+                /*                background-color:#e5e5e5;*/
                 border-radius: 10px; 
-                
+
             }
             .transbox{
                 background:rgba(0, 0, 0, .07);
@@ -27,44 +29,46 @@
         </style>
     </head>
     <body>
+        <br>
+        <br>
+        <br>
+
         <?php
-            if(!isset($_SESSION['email'])) {
-                header("Location: index.php");
-                exit();
-            }
-            
-            run_scripts_body();
-            
+        if (($_SESSION['admin'] == 1)) {
             static $row;
             $row = get_user_data();
-        ?> 
-        
-        <div class="container top-container transbox">
-            <div class="container text-center">
-                <h1>My Listings</h1> 
+            ?>
+            <div class="container top-container transbox">
+                <div class="container text-center">
+                    <h1>My Listings</h1> 
+                </div>
+                <?php
+                realtor_display_table($GLOBALS['row']['id'])
+                ?><br> 
             </div>
-           <?php 
-           realtor_display_table( $GLOBALS['row']['id'])
-           ?><br> 
+        </body>
+        <div class="footer" style="background-color: #e7e7e7; border-color: #777; width: 100%; position: fixed;bottom: 0">
+            <h4>This is for demonstration purposes only. CSC648/848 San Francisco State University Team02 Milestone Properties</h4>
         </div>
-    </body>
-	<div class="footer" style="background-color: #e7e7e7; border-color: #777; width: 100%; position: fixed;bottom: 0">
-		<h4>This is for demonstration purposes only. CSC648/848 San Francisco State University Team02 Milestone Properties</h4>
-	</div>
-</html>
+    </html>
+    <?php
+} else {
 
-  <?php
-  function get_user_data() {
-        $connection = connect_to_mysql();
-        $query = "SELECT * FROM users WHERE email = '";
-        $query .= $_SESSION["email"] . "'";
-        
-        $result = mysqli_query($connection, $query);
-        $row = mysqli_fetch_array($result);
-        
-        if($row != false) {
-            close_mysql_connection($connection);
-            return $row;
-        }
+    header("Location: index.php");
+    exit();
+}
+
+function get_user_data() {
+    $connection = connect_to_mysql();
+    $query = "SELECT * FROM users WHERE email = '";
+    $query .= $_SESSION["email"] . "'";
+
+    $result = mysqli_query($connection, $query);
+    $row = mysqli_fetch_array($result);
+
+    if ($row != false) {
+        close_mysql_connection($connection);
+        return $row;
     }
-    ?>
+}
+?>
