@@ -1,4 +1,5 @@
 <html lang="en">
+
 <?php require 'navbar.php'; ?>
     <head>
         <title>Listings database</title>
@@ -27,7 +28,13 @@
         </style>
     </head>
     <body>
-        
+             <?php
+            if($_SESSION['admin']!= 2) {
+                header("Location: index.php");
+                exit;
+            }
+        ?> 
+       
         <div class="container top-container transbox">
             <div class="container text-center">
                 <h1>Listings Database</h1> 

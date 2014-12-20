@@ -222,17 +222,17 @@ function get_walkscore($address) {
  */
 //Takes in user input and creates listing
 function input_listing($connection) {
-    //$connection = connect_to_mysql();
-    $description = $_POST['description'];
-    $address = $_POST['address'];
-    $zip_code = $_POST['zip_code'];
-    $city = $_POST['city'];
-    $us_state = $_POST['us_state'];
-    $price = $_POST['price'];
-    $sq_ft = $_POST['sq_ft'];
-    $num_bedrooms = $_POST['num_bedrooms'];
-    $num_bathrooms = $_POST['num_bathrooms'];
-    $num_garages = $_POST['num_garages'];
+    //$connection = connect_to_mysql(); $maprice = filter_input(INPUT_POST, "maxprice", FILTER_VALIDATE_INT);
+    $description = filter_input(INPUT_POST,"description", FILTER_SANITIZE_STRING);
+    $address = filter_input(INPUT_POST, "address", FILTER_SANITIZE_STRING);
+    $zip_code = filter_input(INPUT_POST, "zipcode", FILTER_VALIDATE_INT);
+    $city = filter_input(INPUT_POST, "city", FILTER_SANITIZE_STRING);
+    $us_state = filter_input(INPUT_POST, "us_state", FILTER_SANITIZE_STRING);
+    $price = filter_input(INPUT_POST, "price", FILTER_VALIDATE_INT);
+    $sq_ft = filter_input(INPUT_POST, "sq_ft", FILTER_VALIDATE_INT);
+    $num_bedrooms = filter_input(INPUT_POST, "num_bedrooms", FILTER_VALIDATE_INT);
+    $num_bathrooms = filter_input(INPUT_POST, "num_bathrooms", FILTER_VALIDATE_INT);
+    $num_garages = filter_input(INPUT_POST, "num_garages", FILTER_VALIDATE_INT);
     $target_dir = "/home/f14g02/public_html/assets/images/";
     //$target_dir = $target_dir . basename(($_FILES["uploadFile"]["name"]));
     $w_address = $address . ", " . $city . ", " . $us_state;
@@ -568,7 +568,6 @@ function display_formatted_results($result) {
 //Takes in user input and adds new user to database
 function input_user($connection) {
     //$connection = connect_to_mysql();
-    //$email = $_POST['user_email'];
     $email = filter_input(INPUT_POST, "user_email", FILTER_VALIDATE_EMAIL);
     $user_exists = is_already_user($email, $connection);
         if (!$user_exists){
@@ -644,7 +643,7 @@ function input_user($connection) {
 }
 
 function is_already_user($email, $connection){
-    $user_email = $_POST['user_email'];
+    $user_email = filter_input(INPUT_POST, "user_email", FILTER_VALIDATE_EMAIL);
     $query = "SELECT email";
     $query .= "FROM users ";
     $query .= "WHERE email=";
@@ -656,8 +655,8 @@ function is_already_user($email, $connection){
 }
 
 function user_sign_in($connection){
-    $user_email_provided = $_POST['user_email'];
-    $password_provided = md5($_POST['user_password']);
+    $user_email_provided = filter_input(INPUT_POST, "user_email", FILTER_VALIDATE_EMAIL);
+    $password_provided = md5(filter_input(INPUT_POST, "user_password", FILTER_SANITIZE_STRING));
 
     $query = "SELECT *";
     $query .="FROM users ";
@@ -679,10 +678,12 @@ function display_table(){
             //$database = 'student_f14g02';
             $table = 'listings';
 
-            if (!mysql_connect(DB_Server, DB_login, DB_password))
+            if (!mysql_connect(DB_Server, DB_login, DB_password)){
                 die("Can't connect to database");
-            if (!mysql_select_db(DB_name))
+            }
+            if (!mysql_select_db(DB_name)){
                 die("Can't select database");
+            }
 
             // sending query
             $result = mysql_query("SELECT * FROM {$table}");
@@ -698,7 +699,7 @@ function display_table(){
             $field = mysql_fetch_field($result);
                 echo "<td><b>{$field->name}</b></td>";
             $field = mysql_fetch_field($result);
-            for($i=0; $i<$fields_num-7; $i++)
+            for($i=0; $i<$fields_num-11; $i++)
             {
                 $field = mysql_fetch_field($result);
                 echo "<td><b>{$field->name}\t</b></td>";
@@ -713,14 +714,18 @@ function display_table(){
                 // of $row to $cell variable
                 $i = 0;
                 foreach($row as $cell){
-                    if ($i == 0)
+                    if ($i == 0){
                         $listingID = $cell;
-                    if ($i == 1)
+                    }
+                    if ($i == 1){
                         $cell;
-                    else if ($i > 10)
+                    }
+                    else if ($i > 10){
                         break;
-                    else
+                    }
+                    else{
                         echo "<td>$cell</td>";
+                    }
                     $i++;
                 }
                 // delete button with value of listingID;
@@ -747,7 +752,7 @@ function display_table(){
 function destroy_listing ($connection){
     // acquires field from form and delete from query
     // value from function not transfering to $listingID
-    $listingID = $_POST['listingID'];
+    $listingID = filter_input(INPUT_POST, "listingID",FILTER_VALIDATE_INT); 
     $sql = "DELETE FROM listings WHERE id = $listingID";
     
     if (mysqli_query($connection, $sql)) {
@@ -761,8 +766,8 @@ function destroy_listing ($connection){
 function assign_realtor ($connection){
     // acquires field from form and delete from query
     // value from function not transfering to $listingID
-    $listingID = $_POST['listingID'];
-    $realtorName = $_POST['rname'];
+    $listingID = filter_input(INPUT_POST, "listingID",FILTER_VALIDATE_INT); 
+    $realtorName = filter_input(INPUT_POST, "rname",FILTER_SANITIZE_STRING); 
     $sql0 = "SELECT * FROM users WHERE first_name='$realtorName'";
     
     if ($result = mysqli_query($connection, $sql0)) {
@@ -797,7 +802,6 @@ function assign_realtor ($connection){
 function edit_listing ($connection){
     // acquires field from form and delete from query
     // value from function not transfering to $listingID
-    //$listingID = $_POST['listingID'];
     $listingID = filter_input(INPUT_POST, "listingID", FILTER_VALIDATE_INT);
     
     $description = filter_input(INPUT_POST, "description", FILTER_SANITIZE_STRING);
@@ -971,10 +975,8 @@ function realtor_display_table($realtor_id){
             //echo "<h1>Table: {$table}</h1>";
             echo "<table border='1'><tr>";
             // printing table headers
-           // $field = mysql_fetch_field($result);
-                //echo "<td><b>{$field->name}</b></td>";
             $field = mysql_fetch_field($result);
-            for($i=0; $i<$fields_num-7; $i++)
+            for($i=0; $i<$fields_num-10; $i++)
             {
                 $field = mysql_fetch_field($result);
                 echo "<td><b>{$field->name}\t</b></td>";
