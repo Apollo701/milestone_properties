@@ -126,7 +126,6 @@
                                     </div>
                                 </div>
                                 <!-- break -->
-                                <!-- break -->
                                 <div class="col-md-2 col-sm-2"> 
                                     <div class="form-group">
                                         <label for="maxprice">&nbsp;</label>

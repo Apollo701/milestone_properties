@@ -1,6 +1,10 @@
-<?php include 'navbar.php';
-      include_once 'functions.php';
-      //include 'footer.php';?>
+<link href="//maxcdn.bootstrapcdn.com/bootstrap/3.3.0/css/bootstrap.min.css" rel="stylesheet">
+<link href="//maxcdn.bootstrapcdn.com/font-awesome/4.2.0/css/font-awesome.min.css" rel="stylesheet">
+<link rel="stylesheet" type="text/css" href="css/custom.css">
+<?php include 'navbar.php'; ?>
+<?php include 'login_modal.php'; ?>
+<?php include 'signup_modal.php'; ?>
+<?php include_once 'functions.php'; ?>
 
 <html lang="en">
     <head>
@@ -36,7 +40,7 @@
         </style>
     </head>
     <body>
-        <?php run_scripts_body();
+        <?php
             static $emptyFields;
             static $emailNotValid;
             static $emailNotRegistered;
@@ -84,6 +88,8 @@
         <div class="footer" style="background-color: #e7e7e7; border-color: #777; width: 100%; position: fixed;bottom: 0">
             <h4>This is for demonstration purposes only. CSC648/848 San Francisco State University Team02 Milestone Properties</h4>
         </div>
+        <script src="//ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
+        <script src="//maxcdn.bootstrapcdn.com/bootstrap/3.3.0/js/bootstrap.min.js"></script>
     </body>
 </html>
 
