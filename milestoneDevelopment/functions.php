@@ -664,7 +664,13 @@ function input_user($connection) {
     mysqli_close($connection);
 }
 }
-
+/*
+ * @param mysql_result $connection connection to database
+ * @param string $email email to be checked
+ * @var string $query input for sql database
+ * @return mysql_result $result user
+ */
+//checks to see if sign-up email is already in database
 function is_already_user($email, $connection){
     $user_email = filter_input(INPUT_POST, "user_email", FILTER_VALIDATE_EMAIL);
     $query = "SELECT email";
@@ -676,7 +682,13 @@ function is_already_user($email, $connection){
         return TRUE;
     } else {FALSE;}
 }
-
+/*
+ * @param mysql_result $connection connection to database
+ * @var string $user_email_provided email for login
+ * @var string $password_provided password for login
+ * @return mysql_result $result user
+ */
+//signs user in
 function user_sign_in($connection){
     $user_email_provided = filter_input(INPUT_POST, "user_email", FILTER_VALIDATE_EMAIL);
     $password_provided = md5(filter_input(INPUT_POST, "user_password", FILTER_SANITIZE_STRING));
@@ -694,6 +706,12 @@ function user_sign_in($connection){
     }
 }
 
+/*
+ * @var string $table sql table to output from
+ * @var string $password_provided password for login
+ * @return mysql_result $result listings
+ */
+//shows database entries for editing
 function display_table(){
             //$db_host = 'sfsuswe.com';
             //$db_user = 'f14g02';
@@ -772,6 +790,12 @@ function display_table(){
             mysql_free_result($result);
 }
 
+/*
+ * @param mysql_result $connection connection to database
+ * @var string $listingID id of listing to assign
+ * @var string $sql sql query to delte listing
+ */
+//deltes listing
 function destroy_listing ($connection){
     // acquires field from form and delete from query
     // value from function not transfering to $listingID
@@ -786,6 +810,14 @@ function destroy_listing ($connection){
     mysqli_close($connection);
 }
 
+/*
+ * @param mysql_result $connection connection to database
+ * @var string $listingID id of listing to assign
+ * @var string $realtor_name name of realtor user assigned
+ * @var string $sql0 sql query to check if realtor exists
+ * @var string $sql1 sql query to assign realtor
+ */
+//assigns realtor to listing
 function assign_realtor ($connection){
     // acquires field from form and delete from query
     // value from function not transfering to $listingID
@@ -822,6 +854,22 @@ function assign_realtor ($connection){
     mysqli_close($connection);
 }
 
+/*
+ * @param mysql_result $connection connection to database
+ * @var string $listingID id for looking up which entry to edit
+ * @var string $description column value to edit for entry
+ * @var string $address column value to edit for entry
+ * @var int $bed column value to edit for entry
+ * @var int $zip_code column value to edit for entry
+ * @var string $city column value to edit for entry
+ * @var string $us_state column value to edit for entry
+ * @var int $walk column value to edit for entry
+ * @var int $bath column value to edit for entry
+ * @var int $ft column value to edit for entry
+ * @var int $price column value to edit for entry
+ * @var int $num_garages column value to edit for entry
+ */
+//edits datbase listing
 function edit_listing ($connection){
     // acquires field from form and delete from query
     // value from function not transfering to $listingID
@@ -975,6 +1023,12 @@ function edit_listing ($connection){
     mysqli_close($connection);
 }
 
+/*
+ * @pram string $realtor_id id for logged in realtor user
+ * @var string $table sql table to output from
+ * @var string $password_provided password for login
+ */
+//shows database entries for editing belonging to realtor
 function realtor_display_table($realtor_id){
             //$db_host = 'sfsuswe.com';
             //$db_user = 'f14g02';

@@ -61,7 +61,8 @@
         </div>
             
        <br></div>
-        <div class="container top-container transbox">
+        <div class="container text-center top-container">
+            <h>My Listings</h> <br>
          <?php
         error_reporting(E_ALL & ~E_NOTICE);
         $connection = connect_to_mysql();

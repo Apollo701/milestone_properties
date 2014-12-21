@@ -1,5 +1,10 @@
 <html lang="en">
     <?php require 'navbar.php'; ?>
+    <?php if($_SESSION['admin']!= 1) {
+               echo "<br><br>Unauthorized Access";
+               exit();
+            }
+            ?>
     <head>
         <title>Listings database</title>
         <style>
@@ -47,24 +52,3 @@
             <h4>This is for demonstration purposes only. CSC648/848 San Francisco State University Team02 Milestone Properties</h4>
         </div>
     </html>
-
-} else {
-
-    header("Location: index.php");
-    exit();
-}
-
-function get_user_data() {
-    $connection = connect_to_mysql();
-    $query = "SELECT * FROM users WHERE email = '";
-    $query .= $_SESSION["email"] . "'";
-
-    $result = mysqli_query($connection, $query);
-    $row = mysqli_fetch_array($result);
-
-    if ($row != false) {
-        close_mysql_connection($connection);
-        return $row;
-    }
-}
-?>
