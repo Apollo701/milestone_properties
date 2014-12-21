@@ -105,7 +105,6 @@
                                         <a href="#" target="_parent">$<?php echo '' . number_format($row["price"]) . ''; ?></a></h1>
                                     <br>
                                     <br>
-                                    <br>
                                     <div class="block-center">
                                     <ul class="list-inline mrg-0 btm-mrg-10 clr-535353 pull-right">
                                         <li><?php echo '' . $row["sq_ft"] . ''; ?> SqFt</li>
@@ -127,7 +126,7 @@
                                         <li><?php echo '' . $row["walk_score"] . ''; ?> Walkscore</li>
                                     </ul>
                                     </div>
-                                    <br><br><br><br><br>
+                                    <br><br><br><br>
                                     <p class="hidden-xs"><?php echo '' . $row["description"] . ''; ?></p>
                                     <br><br>
                                     <div class="row">
